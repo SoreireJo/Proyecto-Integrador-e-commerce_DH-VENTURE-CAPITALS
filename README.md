@@ -57,7 +57,7 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 * [CompraGamer](https://compragamer.com/) - Venta de insumos similares
 * [BigPoint](https://bigpoint.com.ar/) - Detalles de productos deseado
 * [Likely](https://likely.es/account/register) - Diseño de pagina web.
-* [](https://www.fullh4rd.com.ar/) - Estética vistosa, funcionalidad amigable y tipo de producto similar.
+* [fullh4rd](https://www.fullh4rd.com.ar/) - Estética vistosa, funcionalidad amigable y tipo de producto similar.
 
 
 ---
