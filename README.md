@@ -7,7 +7,6 @@ Proyecto integrador para curso Full Stack - Programacion Web - Digital House.
 
 _A definir
 
-Mira **Deployment** para conocer como desplegar el proyecto.
 
 
 ### Pre-requisitos 📋
