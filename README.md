@@ -57,8 +57,8 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 * [Likely](https://likely.es/account/register) - Diseño de pagina web.
 * [fullh4rd](https://www.fullh4rd.com.ar/) - Estética vistosa, funcionalidad amigable y tipo de producto similar.
 
-##Tablero TRELLO 📋
-* [Trello](https://trello.com/b/PhOrSyRC/tecnocom-project)
+## Tablero TRELLO 📋
+* [Trello - Proyecto TecnoCom](https://trello.com/b/PhOrSyRC/tecnocom-project)
 
 ---
 ⌨️ con ❤️ por [TecnoCom](url de nuestra futura pagina) 😊
