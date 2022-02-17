@@ -13,7 +13,8 @@
     --color-article-border: #ebebeb;
     --color-article-title: #666;
     --color-article-title-shdw: rgb(100,100,100);
-    --color-discount: #39b54a;
+    --color-discount: #830f92;
+    --color-article-cart: #33128b;
     --color-footer-back: rgb(21, 8, 29);
     --color-footer-item: var(--color-item);
     --color-footer-item-select: var(--color-select-option);
@@ -36,18 +37,18 @@
     /* Mobile / Desktop font sizes Form */
     --fz-form-search-mob: 14px;
     --fz-form-input-mob: 14px;
-    --fz-form-label-mob: ;
+    --fz-form-label-mob: 14;
     --fz-form-label-dsk: 15;
-    --fz-form-option-mob: ;
+    --fz-form-option-mob: 13;
     --fz-form-option-dsk: 14;
 
     /* Mobile / Desktop font sizes Tarjeta Producto */
-    --fz-price-mob: ;
+    --fz-price-mob: 17;
     --fz-price-dsk: 19;
-    --fz-discount-mob: ;
-    --fz-discount-mob: 17;
-    --fz-price-mob: ;
-    --fz-price-dsk: ;
+    --fz-discount-mob: 15;
+    --fz-discount-dsk: 17;
+    --fz-price-mob: 18;
+    --fz-price-dsk: 20;
 }
 
 /* id deseables para inputs de forms */
@@ -195,61 +196,127 @@ header .form .submit{
 /* --------------------------------*/
 /* -- Vistas de Varios Productos --*/
 /* --------------------------------*/
-main{
+main.main-index {
     width: 90%;
     margin: 0 auto;
-    height: 25rem;
+    height: auto;
 }
 
-main section h3{
+main.main-index  section h3{
     margin: 20px 0px;
 }
 
-main section article{
+main.main-index  section article{
     background-color: var(--color-section-article-back);    
     margin: 10px 0px;
 }
 
-main section article img{
+main.main-index  section article img{
     width: 100%;
 }
 
 /* section.offers, y todas las */
 /* sections vista de producto  */
-section.offers{
+main.main-index section.last-tec,
+main.main-index section.offers{
     display: flex;
     flex-wrap: wrap;
 }
 
 
 
-
-
 /* -------------------------------*/
 /* ---- Detalles del Artículo ----*/
 /* -------------------------------*/
-
-
+main.main-index article div.main-article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: baseline;
+    border-top: 1px solid var(--color-article-border);
+    background-color: var(--color-article-back);
+    position: relative;
+    padding: 15px;
+}
 
 
 /* ----------------*/
 /* ---- Precio ----*/
 /* ----------------*/
-
-
+main.main-index .price {
+    font-size: 18px;
+    width: 30%;
+}
 
 
 /* -------------------*/
 /* ---- Descuemto ----*/
 /* -------------------*/
+main.main-index,
+main.main-index .discount {
+    width: 70%;
+    color: var(--color-discount);
+}
+
+section article i{
+    width: 70%;
+    color: var(--color-article-cart);
+}
+
+main.main-index .discount {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+main.main-index h3 {
+    color: var(--color-article-title);
+}
 
 
+/* descripción hide */
+main.main-index .description {
+    display: "none";
+    color: var(--color-article-back);
+    font-size: 0px;
+    font-weight: normal;
+}
 
+/* descripción show */
+main.main-index section article:hover .description {
+    display: "block";
+    color: var(--color-article-title);
+    font-size: 16px;
+    margin-top: 20px;
+    transition: 0.5s;
+}
+
+
+main.main-index section article:hover {
+    box-shadow: 0px 0px 25px var(--color-article-title-shdw);
+}
 
 /* -------------------*/
 /* ---- Favoritos ----*/
 /* -------------------*/
+main.main-index section article i {
+    display: block;
+    font-size: 16px;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-article-cart);
+    background-color: var(--color-article-back);
+    border-radius: 50%;
+    position: absolute;
+    right: 20px;
+    top: -15px;
+}
 
+main.main-index section article:hover i {
+    transition: transform 0.8s;
+    transform: rotate(-90deg);
+}
 
 
 
@@ -271,6 +338,12 @@ h6{
 /* ------- Media Querys ----------*/
 /* -------------------------------*/
 
+main.main-index article div.main-article {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 /* -------------------------------*/
 /* ------- Media Querys ----------*/
 /* -------------------------------*/
@@ -278,6 +351,17 @@ h6{
 /* -------------------------------*/
 @media (min-width: 250px){
     /* Modo mobile, mínima expresión */
+    main.main-index section article:hover .description2 {
+        display: inline;
+    }
+    main.main-index article div.main-article {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    main.main-index .discount {
+        text-align: center;
+    }
 }
 
 
@@ -289,6 +373,33 @@ h6{
 @media (min-width: 361px){
     /* Para la vista de productos modo mobile  */
     /* mostrando 1 producto por fila           */
+    main.main-index section article:hover .description2 {
+        display: inline;
+    }
+
+    main.main-index article div.main-article {
+        flex-direction: column;
+    }
+
+    main.main-index section article {
+        box-shadow: 0px 0px 10px rgb(100, 100, 100);
+    }
+
+    main.main-index section div.products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    main.main-index section div.products article {
+        width: 45%;
+    }
+
+    main.main-index .price,
+    main.main-index .discount {
+        width: 50%;
+    }
 }
 
 
@@ -302,6 +413,11 @@ h6{
     /* También podría expandirse algún flex    */
     /*   También un control extra en flexs     */
     /*   de vista de varios productos          */
+    main.main-index article div.main-article {
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
     h1{
         font-size: var(--fz-h1-dsk);
     }
@@ -319,6 +435,13 @@ h6{
         font-size: var(--fz-p-dsk);
         padding-bottom: 8px;
     }
+    .price {
+        font-size: var(--fz-price-dsk);
+    }
+
+    .discount {
+        font-size: var(--fz-discount-dsk);
+    }
 }
 
 
@@ -332,6 +455,12 @@ h6{
     /*   ej. inputs no crezcan tanto,          */
     /*   También un control extra en flexs     */
     /*   de vista de varios productos          */
+    main.main-index article div.main-article {
+        flex-direction: column;
+    }
+    main.main-index section div.products article {
+        width: 22%;
+    }
 }
 
 
@@ -343,4 +472,7 @@ h6{
 @media (min-width: 1010px){
     /* Aquí algunos flex column pasan a row */
     /* para un modo desktop total           */
+    main.main-index article div.main-article {
+        flex-direction: row;
+    }
 }
