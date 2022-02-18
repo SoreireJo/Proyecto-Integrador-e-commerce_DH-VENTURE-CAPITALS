@@ -1,25 +1,40 @@
 :root{
-    /* Paleta de colores */
+    /* ------------------------ */
+    /* -- Paletas de colores -- */
+    /* ------------------------ */
     --color-body-back: #ebebeb;
+
+    /* Header */
     --color-header-back: #3a0346;
     --color-item: black;
     --color-system-button-item: white;
     --color-system-button:#140a6d;
+
+    /* Search Bar */
     --color-search-back: white;
+
+    /* Forms */
     --color-input-back: #dfdddd;
     --color-input-border: rgb(18, 10, 126);
     --color-input-item: #666;
+
+    /* Tarjeta de Producto */
+
     --color-article-back: white;
     --color-article-border: #ebebeb;
     --color-article-title: #666;
     --color-article-title-shdw: rgb(100,100,100);
     --color-discount: #830f92;
     --color-article-cart: #33128b;
+
+    /* Footer */
     --color-footer-back: rgb(21, 8, 29);
     --color-footer-item: var(--color-item);
     --color-footer-item-select: var(--color-select-option);
 
-    /* Mobile / Desktop font sizes Elements */
+    /* ------------------------------------------ */
+    /* -- Mobile / Desktop font sizes Elements -- */
+    /* ------------------------------------------ */
     --fz-h1-mob: 21px;
     --fz-h1-dsk: 25px;
     --fz-h3-mob: 20px;
@@ -61,7 +76,7 @@
 #pic
 */
 
-/* General */
+/* General clear*/
 *{
     margin: 0px;
     padding: 0px;
@@ -71,12 +86,14 @@
     box-sizing: border-box;
 }
 
+/* Para rellenar */
 .linea{ height: .8rem; }
 
 .media-linea{ height: .4rem; }
 
 .bocadito{ height: .1rem; width: .5rem; }
 
+/* Body */
 body{
     font-family: 'Roboto', sans-serif;
     background-color: var(--color-body-back);
@@ -240,6 +257,10 @@ main.main-index article div.main-article {
     padding: 15px;
 }
 
+main section article {
+    box-shadow: 0px 0px 10px var(--color-article-title-shdw);
+}
+
 
 /* ----------------*/
 /* ---- Precio ----*/
@@ -381,9 +402,6 @@ main.main-index article div.main-article {
         flex-direction: column;
     }
 
-    main.main-index section article {
-        box-shadow: 0px 0px 10px rgb(100, 100, 100);
-    }
 
     main.main-index section div.products {
         display: flex;
