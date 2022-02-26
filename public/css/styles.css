@@ -7,8 +7,10 @@
     /* Header */
     --color-header-back: #3a0346;
     --color-item: black;
-    --color-system-button-item: white;
-    --color-system-button:#140a6d;
+    --color-system-button-item: rgb(82, 17, 99);
+    --color-system-button:#bab9bd;
+    --color-system-button-sel:#431194;
+    --color-select-option-shdw: #2d125a;
 
     /* Search Bar */
     --color-search-back: white;
@@ -19,14 +21,24 @@
     --color-input-item: #666;
 
     /* Tarjeta de Producto */
-
-    --color-article-back: white;
+    --color-article-back: rgb(224, 224, 224);
     --color-article-border: #ebebeb;
-    --color-article-title: #666;
+    --color-article-title: rgb(27, 13, 224);
     --color-article-title-shdw: rgb(100,100,100);
-    --color-discount: #830f92;
-    --color-article-cart: #33128b;
-
+    --color-discount: #208108;
+    --color-price: #464343;
+    --color-description: #2d20a7;
+    --color-article-cart: #8b1255;
+    --color-article-nfv: rgb(148, 147, 147);
+    --color-article-fv: rgb(89, 0, 255);
+    --color-button-plus-back: rgb(236, 236, 248);
+    --color-button-plus: #0263ca;
+    --color-button-plus-sel: #ffffff;
+    --color-button-plus-sel-bck: #0263ca;
+    --color-button-comp: rgb(18, 10, 126);
+    --color-button-comp-sel: #ffffff;
+    --color-button-comp-sel-bck: rgb(18, 10, 126);
+    
     /* Footer */
     --color-footer-back: rgb(21, 8, 29);
     --color-footer-item: var(--color-item);
@@ -52,18 +64,20 @@
     /* Mobile / Desktop font sizes Form */
     --fz-form-search-mob: 14px;
     --fz-form-input-mob: 14px;
-    --fz-form-label-mob: 14;
-    --fz-form-label-dsk: 15;
-    --fz-form-option-mob: 13;
-    --fz-form-option-dsk: 14;
+    --fz-form-label-mob: 14px;
+    --fz-form-label-dsk: 15px;
+    --fz-form-option-mob: 13px;
+    --fz-form-option-dsk: 14px;
 
     /* Mobile / Desktop font sizes Tarjeta Producto */
-    --fz-price-mob: 17;
-    --fz-price-dsk: 19;
-    --fz-discount-mob: 15;
-    --fz-discount-dsk: 17;
-    --fz-price-mob: 18;
-    --fz-price-dsk: 20;
+    --fz-price-mob: 26px;
+    --fz-price-dsk: 32px;
+    --fz-discount-mob: 17px;
+    --fz-discount-dsk: 19px;
+    --fz-crtbtt-mob: 16px;
+    --fz-crtbtt-dsk: 18px;
+    --fz-desc-mob: 18px;
+    --fz-desc-dsk: 18px;
 }
 
 /* id deseables para inputs de forms */
@@ -76,6 +90,7 @@
 #pic
 */
 
+
 /* General clear*/
 *{
     margin: 0px;
@@ -86,12 +101,6 @@
     box-sizing: border-box;
 }
 
-/* Para rellenar */
-.linea{ height: .8rem; }
-
-.media-linea{ height: .4rem; }
-
-.bocadito{ height: .1rem; width: .5rem; }
 
 /* Body */
 body{
@@ -104,8 +113,10 @@ body{
 h1{
     font-size: var(--fz-h1-mob);
 }
-h3{
+
+main h3{
     font-size: var(--fz-h3-mob);
+    font-family: BauerRegular, 'Roboto', sans-serif;
 }
 
 h5{
@@ -125,13 +136,12 @@ p{
 }
 
 
+
 /* -----------------------------------*/
 /* ------------ Header ---------------*/
 /* -----------------------------------*/
-header {
-    background-color: var(--color-header-back);
-    height: auto;
-}
+
+
 div.top-header{
     display: flex;
     flex-wrap: wrap;
@@ -139,9 +149,11 @@ div.top-header{
     justify-content: space-around;
 } 
 
+
 /* -------------------------------*/
 /* ----------- logo --------------*/
 /* -------------------------------*/
+
 
 
 /* -------------------------------*/
@@ -154,7 +166,6 @@ form.form-search{
     justify-content: center;
     padding: 1%;
 }
-
 
 header .form-search .submit-search{
     display: flex;
@@ -189,10 +200,10 @@ header .form .submit{
 
 
 
-
 /* ---------------*/
 /* --- Banners ---*/
 /* ---------------*/
+
 
 
 
@@ -224,11 +235,11 @@ main.main-index  section h3{
 }
 
 main.main-index  section article{
-    background-color: var(--color-section-article-back);    
+    background-color: var(--color-section-article-back);  
     margin: 10px 0px;
 }
 
-main.main-index  section article img{
+section, main.main-index  section article img{
     width: 100%;
 }
 
@@ -238,27 +249,36 @@ main.main-index section.last-tec,
 main.main-index section.offers{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-
+main.main-index h3 {
+    color: var(--color-article-title);
+}
 
 /* -------------------------------*/
 /* ---- Detalles del Artículo ----*/
 /* -------------------------------*/
+main.main-index article div.main-card-img {
+    display: flex;
+    justify-content: center;
+    height: 220px;
+    width: 100%;
+}
+
+div.main-card-img img.product_img {
+    padding: 1px;
+    object-fit: contain;
+}
+
+
 main.main-index article div.main-article {
     width: 100%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: baseline;
-    border-top: 1px solid var(--color-article-border);
-    background-color: var(--color-article-back);
-    position: relative;
     padding: 15px;
-}
-
-main section article {
-    box-shadow: 0px 0px 10px var(--color-article-title-shdw);
 }
 
 
@@ -266,8 +286,10 @@ main section article {
 /* ---- Precio ----*/
 /* ----------------*/
 main.main-index .price {
-    font-size: 18px;
-    width: 30%;
+    font-size: var(--fz-price-mob);
+    color: var(--color-price);
+    align-self: center;
+    /* width: 30%; */
 }
 
 
@@ -276,70 +298,91 @@ main.main-index .price {
 /* -------------------*/
 main.main-index,
 main.main-index .discount {
-    width: 70%;
-    color: var(--color-discount);
+    width: 90%;
+    align-self: flex-end;
 }
 
-section article i{
-    width: 70%;
+section article span.i-cart{
     color: var(--color-article-cart);
 }
 
 main.main-index .discount {
-    font-size: 16px;
-    font-weight: normal;
-}
-
-main.main-index h3 {
-    color: var(--color-article-title);
+    font-size: var(-fz-discount-mob);
+    color: var(--color-discount);
 }
 
 
-/* descripción hide */
+/* descripción normal */
 main.main-index .description {
     display: "none";
-    color: var(--color-article-back);
     font-size: 0px;
-    font-weight: normal;
+    color: var(--color-article-back);
 }
 
+
+
+/* descripción hover */
 /* descripción show */
-main.main-index section article:hover .description {
+/* article:hoverF */
+main.main-index section article .description{
     display: "block";
-    color: var(--color-article-title);
-    font-size: 16px;
+    position: absoute;
+    color: var(--color-description);
+    font-size: var(--fz-desc-mob);
     margin-top: 20px;
     transition: 0.5s;
 }
 
 
-main.main-index section article:hover {
-    box-shadow: 0px 0px 25px var(--color-article-title-shdw);
+/* --------------*/
+/* ---- Sell ----*/
+/* --------------*/
+
+span.sell{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
 
-/* -------------------*/
-/* ---- Favoritos ----*/
-/* -------------------*/
-main.main-index section article i {
+button.buttAgregar{
+    display: block;
+    font-size: var(--fz-crtbtt-mob);
+    width: 95%;
+}
+
+
+button.buttAgregar:hover{
+    color: var(--color-button-plus-sel);
+    background-color: var(--color-button-plus-sel-bck);
+}
+
+button.buttComprar{
+    display: block;
+    color: var(--color-button-comp);
+    font-size: var(--fz-crtbtt-mob);
+    width: 95%;
+    color:rgb(18, 10, 126);
+    
+}
+
+button.buttComprar:hover{
+    color: var(--color-button-comp-sel);
+    background-color: var(--color-button-comp-sel-bck);
+}
+
+
+/*
+main.main-index section article span.i-cart i {
     display: block;
     font-size: 16px;
     padding: 5px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid var(--color-article-cart);
-    background-color: var(--color-article-back);
-    border-radius: 50%;
-    position: absolute;
-    right: 20px;
-    top: -15px;
+    width: auto;
+    height: auto;
+    text-align: center;
 }
-
-main.main-index section article:hover i {
-    transition: transform 0.8s;
-    transform: rotate(-90deg);
-}
-
-
+*/
 
 /* -------------------------------*/
 /* ------- Pie de Página ---------*/
@@ -353,6 +396,9 @@ footer{
 h6{
     color: var(--color-discount);
 }
+
+
+
 
 
 /* -------------------------------*/
@@ -389,9 +435,9 @@ main.main-index article div.main-article {
 /* -------------------------------*/
 /* ------- Media Querys ----------*/
 /* -------------------------------*/
-/* ----------- +360 --------------*/
+/* ----------- +440 --------------*/
 /* -------------------------------*/
-@media (min-width: 361px){
+@media (min-width: 441px){
     /* Para la vista de productos modo mobile  */
     /* mostrando 1 producto por fila           */
     main.main-index section article:hover .description2 {
@@ -407,7 +453,7 @@ main.main-index article div.main-article {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: space-between;;
     }
 
     main.main-index section div.products article {
@@ -418,15 +464,18 @@ main.main-index article div.main-article {
     main.main-index .discount {
         width: 50%;
     }
+
+    /* ----------Nerea ------------*/
+
 }
 
 
 /* -------------------------------*/
 /* ------- Media Querys ----------*/
 /* -------------------------------*/
-/* ----------- +500 --------------*/
+/* ----------- +640 --------------*/
 /* -------------------------------*/
-@media (min-width: 500px){
+@media (min-width: 640px){
     /* Aquí pasamos los fonts a tamaño dsk     */
     /* También podría expandirse algún flex    */
     /*   También un control extra en flexs     */
@@ -456,9 +505,14 @@ main.main-index article div.main-article {
     .price {
         font-size: var(--fz-price-dsk);
     }
-
-    .discount {
+    .discount{
         font-size: var(--fz-discount-dsk);
+    }
+    main.main-index section article:hover .description{
+        font-size: var(--fz-desc-dsk);
+    }
+    main.main-index section article button.buttAgregar{
+        font-size: var(--fz-crtbtt-dsk);
     }
 }
 
@@ -490,7 +544,12 @@ main.main-index article div.main-article {
 @media (min-width: 1010px){
     /* Aquí algunos flex column pasan a row */
     /* para un modo desktop total           */
-    main.main-index article div.main-article {
-        flex-direction: row;
+
+    /* main.main-index article div.main-article { */
+        /* flex-direction: row; */
+    /*} */
+    main.main-index{
+        width: 1010px;
     }
+
 }
