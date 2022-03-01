@@ -1,52 +1,24 @@
 :root{
-    /* ------------------------ */
-    /* -- Paletas de colores -- */
-    /* ------------------------ */
+    /* Paleta de colores */
     --color-body-back: #ebebeb;
-
-    /* Header */
     --color-header-back: #3a0346;
     --color-item: black;
-    --color-system-button-item: rgb(82, 17, 99);
-    --color-system-button:#bab9bd;
-    --color-system-button-sel:#431194;
-    --color-select-option-shdw: #2d125a;
-
-    /* Search Bar */
+    --color-system-button-item: white;
+    --color-system-button:#140a6d;
     --color-search-back: white;
-
-    /* Forms */
     --color-input-back: #dfdddd;
     --color-input-border: rgb(18, 10, 126);
     --color-input-item: #666;
-
-    /* Tarjeta de Producto */
-    --color-article-back: rgb(224, 224, 224);
+    --color-article-back: white;
     --color-article-border: #ebebeb;
-    --color-article-title: rgb(27, 13, 224);
+    --color-article-title: #666;
     --color-article-title-shdw: rgb(100,100,100);
-    --color-discount: #208108;
-    --color-price: #464343;
-    --color-description: #2d20a7;
-    --color-article-cart: #8b1255;
-    --color-article-nfv: rgb(148, 147, 147);
-    --color-article-fv: rgb(89, 0, 255);
-    --color-button-plus-back: rgb(236, 236, 248);
-    --color-button-plus: #0263ca;
-    --color-button-plus-sel: #ffffff;
-    --color-button-plus-sel-bck: #0263ca;
-    --color-button-comp: rgb(18, 10, 126);
-    --color-button-comp-sel: #ffffff;
-    --color-button-comp-sel-bck: rgb(18, 10, 126);
-    
-    /* Footer */
+    --color-discount: #39b54a;
     --color-footer-back: rgb(21, 8, 29);
     --color-footer-item: var(--color-item);
     --color-footer-item-select: var(--color-select-option);
 
-    /* ------------------------------------------ */
-    /* -- Mobile / Desktop font sizes Elements -- */
-    /* ------------------------------------------ */
+    /* Mobile / Desktop font sizes Elements */
     --fz-h1-mob: 21px;
     --fz-h1-dsk: 25px;
     --fz-h3-mob: 20px;
@@ -64,20 +36,18 @@
     /* Mobile / Desktop font sizes Form */
     --fz-form-search-mob: 14px;
     --fz-form-input-mob: 14px;
-    --fz-form-label-mob: 14px;
-    --fz-form-label-dsk: 15px;
-    --fz-form-option-mob: 13px;
-    --fz-form-option-dsk: 14px;
+    --fz-form-label-mob: ;
+    --fz-form-label-dsk: 15;
+    --fz-form-option-mob: ;
+    --fz-form-option-dsk: 14;
 
     /* Mobile / Desktop font sizes Tarjeta Producto */
-    --fz-price-mob: 26px;
-    --fz-price-dsk: 32px;
-    --fz-discount-mob: 17px;
-    --fz-discount-dsk: 19px;
-    --fz-crtbtt-mob: 16px;
-    --fz-crtbtt-dsk: 18px;
-    --fz-desc-mob: 18px;
-    --fz-desc-dsk: 18px;
+    --fz-price-mob: ;
+    --fz-price-dsk: 19;
+    --fz-discount-mob: ;
+    --fz-discount-mob: 17;
+    --fz-price-mob: ;
+    --fz-price-dsk: ;
 }
 
 /* id deseables para inputs de forms */
@@ -90,8 +60,7 @@
 #pic
 */
 
-
-/* General clear*/
+/* General */
 *{
     margin: 0px;
     padding: 0px;
@@ -101,8 +70,12 @@
     box-sizing: border-box;
 }
 
+.linea{ height: .8rem; }
 
-/* Body */
+.media-linea{ height: .4rem; }
+
+.bocadito{ height: .1rem; width: .5rem; }
+
 body{
     font-family: 'Roboto', sans-serif;
     background-color: var(--color-body-back);
@@ -113,10 +86,8 @@ body{
 h1{
     font-size: var(--fz-h1-mob);
 }
-
-main h3{
+h3{
     font-size: var(--fz-h3-mob);
-    font-family: BauerRegular, 'Roboto', sans-serif;
 }
 
 h5{
@@ -136,12 +107,13 @@ p{
 }
 
 
-
 /* -----------------------------------*/
 /* ------------ Header ---------------*/
 /* -----------------------------------*/
-
-
+header {
+    background-color: var(--color-header-back);
+    height: auto;
+}
 div.top-header{
     display: flex;
     flex-wrap: wrap;
@@ -149,11 +121,9 @@ div.top-header{
     justify-content: space-around;
 } 
 
-
 /* -------------------------------*/
 /* ----------- logo --------------*/
 /* -------------------------------*/
-
 
 
 /* -------------------------------*/
@@ -166,6 +136,7 @@ form.form-search{
     justify-content: center;
     padding: 1%;
 }
+
 
 header .form-search .submit-search{
     display: flex;
@@ -200,10 +171,10 @@ header .form .submit{
 
 
 
+
 /* ---------------*/
 /* --- Banners ---*/
 /* ---------------*/
-
 
 
 
@@ -224,165 +195,169 @@ header .form .submit{
 /* --------------------------------*/
 /* -- Vistas de Varios Productos --*/
 /* --------------------------------*/
-main.main-index {
+main{
     width: 90%;
     margin: 0 auto;
-    height: auto;
+    height: 25rem;
 }
 
-main.main-index  section h3{
+main section h3{
     margin: 20px 0px;
 }
 
-main.main-index  section article{
-    background-color: var(--color-section-article-back);  
+main section article{
+    background-color: var(--color-section-article-back);    
     margin: 10px 0px;
 }
 
-section, main.main-index  section article img{
+main section article img{
     width: 100%;
 }
 
 /* section.offers, y todas las */
 /* sections vista de producto  */
-main.main-index section.last-tec,
-main.main-index section.offers{
+section.offers{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
-main.main-index h3 {
-    color: var(--color-article-title);
-}
+
+
+
 
 /* -------------------------------*/
 /* ---- Detalles del Artículo ----*/
 /* -------------------------------*/
-main.main-index article div.main-card-img {
-    display: flex;
-    justify-content: center;
-    height: 220px;
-    width: 100%;
+/*====== Product Detail ======*/
+
+.products-wrapper {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+.products-title {
+    font-size: 2.4em;
+    font-weight: 400;
+    color: var(--gray);
 }
-
-div.main-card-img img.product_img {
-    padding: 1px;
-    object-fit: contain;
-}
-
-
-main.main-index article div.main-article {
-    width: 100%;
-    display: flex;
+.product-detail {
+    background-color: var(--color-article-back);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+.product-detail-img {
     flex-direction: column;
-    flex-wrap: wrap;
-    align-items: baseline;
+    width: 70%;
+    display: block;
+    margin: auto;
+  }
+  
+  .product-detail-info {
+    border-left: 1px solid var(--light-gray);
     padding: 15px;
-}
-
+    height: 100%;
+  }
+  
+  .product-detail-title {
+    font-weight: 400;
+    font-size: 2.8em;
+  }
+  
+  .product-detail-description {
+    padding: 15px;
+    font-size: 1.8em;
+    line-height: 1.5;
+  }
+  
+  .product-detail-price {
+    font-size: 5.5em;
+    margin: 10px 0;
+  }
+  
+  .small {
+    font-size: 1.8em;
+    color: var(--green);
+  }
+  
+  .small span {
+    text-decoration: line-through;
+  }
+  
+  .actions-list {
+    margin-bottom: 50px;
+  }
+  
+  .actions-list li {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+    padding: 20px 0;
+  }
+  
+  .actions-list i {
+    color: var(--green);
+    font-size: 2em;
+    margin-right: 15px;
+  }
+  
+  .actions-list p {
+    color: var(--gray);
+    font-size: 1.7em;
+    margin: 0;
+  }
+  
+  .buy-now-button {
+    background-color: lightblue;
+    font-size: 1.6em;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+  }
+  
+  .action-button {
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 30px;
+    margin-top: 15px;
+  }
+  
+  .action-button.edit {
+    background-color: chocolate;
+  }
+  .action-button.delete {
+    background-color: rgb(248, 69, 37);
+  }
 
 /* ----------------*/
 /* ---- Precio ----*/
 /* ----------------*/
-main.main-index .price {
-    font-size: var(--fz-price-mob);
-    color: var(--color-price);
-    align-self: center;
-    /* width: 30%; */
-}
+
+
 
 
 /* -------------------*/
 /* ---- Descuemto ----*/
 /* -------------------*/
-main.main-index,
-main.main-index .discount {
-    width: 90%;
-    align-self: flex-end;
-}
-
-section article span.i-cart{
-    color: var(--color-article-cart);
-}
-
-main.main-index .discount {
-    font-size: var(-fz-discount-mob);
-    color: var(--color-discount);
-}
-
-
-/* descripción normal */
-main.main-index .description {
-    display: "none";
-    font-size: 0px;
-    color: var(--color-article-back);
-}
 
 
 
-/* descripción hover */
-/* descripción show */
-/* article:hoverF */
-main.main-index section article .description{
-    display: "block";
-    position: absoute;
-    color: var(--color-description);
-    font-size: var(--fz-desc-mob);
-    margin-top: 20px;
-    transition: 0.5s;
-}
+
+/* -------------------*/
+/* ---- Favoritos ----*/
+/* -------------------*/
 
 
-/* --------------*/
-/* ---- Sell ----*/
-/* --------------*/
 
-span.sell{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-button.buttAgregar{
-    display: block;
-    font-size: var(--fz-crtbtt-mob);
-    width: 95%;
-}
-
-
-button.buttAgregar:hover{
-    color: var(--color-button-plus-sel);
-    background-color: var(--color-button-plus-sel-bck);
-}
-
-button.buttComprar{
-    display: block;
-    color: var(--color-button-comp);
-    font-size: var(--fz-crtbtt-mob);
-    width: 95%;
-    color:rgb(18, 10, 126);
-    
-}
-
-button.buttComprar:hover{
-    color: var(--color-button-comp-sel);
-    background-color: var(--color-button-comp-sel-bck);
-}
-
-
-/*
-main.main-index section article span.i-cart i {
-    display: block;
-    font-size: 16px;
-    padding: 5px;
-    width: auto;
-    height: auto;
-    text-align: center;
-}
-*/
 
 /* -------------------------------*/
 /* ------- Pie de Página ---------*/
@@ -398,18 +373,9 @@ h6{
 }
 
 
-
-
-
 /* -------------------------------*/
 /* ------- Media Querys ----------*/
 /* -------------------------------*/
-
-main.main-index article div.main-article {
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
 
 /* -------------------------------*/
 /* ------- Media Querys ----------*/
@@ -418,73 +384,30 @@ main.main-index article div.main-article {
 /* -------------------------------*/
 @media (min-width: 250px){
     /* Modo mobile, mínima expresión */
-    main.main-index section article:hover .description2 {
-        display: inline;
-    }
-    main.main-index article div.main-article {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-    main.main-index .discount {
-        text-align: center;
-    }
 }
 
 
 /* -------------------------------*/
 /* ------- Media Querys ----------*/
 /* -------------------------------*/
-/* ----------- +440 --------------*/
+/* ----------- +360 --------------*/
 /* -------------------------------*/
-@media (min-width: 441px){
+@media (min-width: 361px){
     /* Para la vista de productos modo mobile  */
     /* mostrando 1 producto por fila           */
-    main.main-index section article:hover .description2 {
-        display: inline;
-    }
-
-    main.main-index article div.main-article {
-        flex-direction: column;
-    }
-
-
-    main.main-index section div.products {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: space-between;;
-    }
-
-    main.main-index section div.products article {
-        width: 45%;
-    }
-
-    main.main-index .price,
-    main.main-index .discount {
-        width: 50%;
-    }
-
-    /* ----------Nerea ------------*/
-
 }
 
 
 /* -------------------------------*/
 /* ------- Media Querys ----------*/
 /* -------------------------------*/
-/* ----------- +640 --------------*/
+/* ----------- +500 --------------*/
 /* -------------------------------*/
-@media (min-width: 640px){
+@media (min-width: 500px){
     /* Aquí pasamos los fonts a tamaño dsk     */
     /* También podría expandirse algún flex    */
     /*   También un control extra en flexs     */
     /*   de vista de varios productos          */
-    main.main-index article div.main-article {
-        flex-wrap: wrap;
-        flex-direction: row;
-    }
-
     h1{
         font-size: var(--fz-h1-dsk);
     }
@@ -502,18 +425,6 @@ main.main-index article div.main-article {
         font-size: var(--fz-p-dsk);
         padding-bottom: 8px;
     }
-    .price {
-        font-size: var(--fz-price-dsk);
-    }
-    .discount{
-        font-size: var(--fz-discount-dsk);
-    }
-    main.main-index section article:hover .description{
-        font-size: var(--fz-desc-dsk);
-    }
-    main.main-index section article button.buttAgregar{
-        font-size: var(--fz-crtbtt-dsk);
-    }
 }
 
 
@@ -527,12 +438,6 @@ main.main-index article div.main-article {
     /*   ej. inputs no crezcan tanto,          */
     /*   También un control extra en flexs     */
     /*   de vista de varios productos          */
-    main.main-index article div.main-article {
-        flex-direction: column;
-    }
-    main.main-index section div.products article {
-        width: 22%;
-    }
 }
 
 
@@ -544,12 +449,4 @@ main.main-index article div.main-article {
 @media (min-width: 1010px){
     /* Aquí algunos flex column pasan a row */
     /* para un modo desktop total           */
-
-    /* main.main-index article div.main-article { */
-        /* flex-direction: row; */
-    /*} */
-    main.main-index{
-        width: 1010px;
-    }
-
 }

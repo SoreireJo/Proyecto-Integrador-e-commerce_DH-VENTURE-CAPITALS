@@ -1,0 +1,135 @@
+/* ---------------------------------------------*/
+/* ------- Formulario Login y Register----------*/
+/* --------------------------------------------*/
+
+/*MAIN */
+.container-main {
+    margin: 0 auto;
+    width: 90%;
+}
+  
+.title {
+    margin: 15px 30px;
+}
+  
+.container-users {
+    margin-top: 40px;
+    margin-bottom: 32px;
+}
+  
+
+.register-profile,
+.login-access{
+    padding: 16px;
+    margin:15px auto;
+    border-radius: 8px;
+    border-color: var(--color-input-border);
+    box-shadow: 4px 4px 8px var(--color-article-title-shdw);
+}
+  
+legend{
+    font-size: var(--fz-form-legend-mob);
+    color: var(--color-legend);
+}
+  
+label{
+    font-size: var(--fz-form-label-mob);
+    color: var(--color-label);
+    padding-bottom: 5px;
+    display: block; 
+    cursor: pointer;
+} 
+
+.titulo-registro{
+      font-size: var(--fz-tittle-mob);
+      text-align: left;
+}
+  
+/* Deselecciona un elemento en específico para no aplicar estilos */
+input:not([type="submit"],[type="search"],[type="radio"],[type="checkbox"])
+{    
+    font-size: var(--fz-form-input-mob);
+    padding: 8px;
+    display: block;
+    width: 100%;
+    margin-bottom: 1.5em;
+    border-radius: 7px;
+    outline: none;
+}
+
+
+.user-profile{
+    display: flex;
+    text-align: center;
+    justify-content:space-between;
+    align-items: center;
+    padding: 15px 20px 15px 
+}
+
+
+.container-buttons{
+    display:flex;
+    justify-content:space-evenly;
+}
+
+  
+div#button-form,
+#button-form-login{
+      position:relative;
+      margin:10px;
+      padding:10px;
+      width:100%;
+      height: 35px;
+      background-color: #3a0346;
+      border-radius:5px;
+      /* box-shadow:0px 3px 0px #180017; */
+      text-align: center;
+}
+  
+.container-link a{
+    text-decoration: none;
+    font-size: var(--fz-form-label-mob);
+}
+
+#IniSesion{
+    font-size: var(--fz-form-link-mob);
+}
+
+#link{
+    text-align: center;
+}
+
+
+@media (min-width: 768px){
+  input:not([type="submit"],[type="search"],[type="radio"],[type="checkbox"])
+  {    
+      font-size: var(--fz-form-input-dsk);
+  }
+    legend{
+      font-size: var(--fz-form-legend-dsk);
+    }
+    label {
+      font-size: var(--fz-form-label-dsk);
+    }
+    .shop-sales{
+      margin: 0px 71px 0px 0px
+    }
+    p#texto{
+      font-size: var(--fz-form-input-dsk);
+    }
+    .titulo-registro{
+        font-size: var(--fz-tittle-dsk);
+        text-align: left;
+    }
+    button.container-buttons{
+      font-size: var(--fz-label-dsk);
+    }
+    .container-link a{
+      font-size: var(--fz-form-label-dsk);
+    }
+    #IniSesion{
+      font-size: var(--fz-form-link-dsk);
+    }
+}
+  
+/*FIN MAIN */
