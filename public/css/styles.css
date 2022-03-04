@@ -1,53 +1,54 @@
-:root{
-    /* Paleta de colores */
-    --color-body-back: #ebebeb;
-    --color-header-back: #3a0346;
-    --color-item: black;
-    --color-system-button-item: white;
-    --color-system-button:#140a6d;
-    --color-search-back: white;
-    --color-input-back: #dfdddd;
-    --color-input-border: rgb(18, 10, 126);
-    --color-input-item: #666;
-    --color-article-back: white;
-    --color-article-border: #ebebeb;
-    --color-article-title: #666;
-    --color-article-title-shdw: rgb(100,100,100);
-    --color-discount: #39b54a;
-    --color-footer-back: rgb(21, 8, 29);
-    --color-footer-item: var(--color-item);
-    --color-footer-item-select: var(--color-select-option);
+:root {
+  /* Paleta de colores */
+  --color-body-back: #ebebeb;
+  --color-header-back: #3a0346;
+  --color-item: black;
+  --color-system-button-item: white;
+  --color-system-button: #140a6d;
+  --color-search-back: white;
+  --color-input-back: #dfdddd;
+  --color-input-border: rgb(18, 10, 126);
+  --color-input-item: #666;
+  --color-article-back: white;
+  --color-article-border: #ebebeb;
+  --color-article-title: #666;
+  --color-article-title-shdw: rgb(100, 100, 100);
+  --color-discount: #39b54a;
+  --color-footer-back: rgb(21, 8, 29);
+  --color-footer-item: var(--color-item);
+  --color-footer-item-select: var(--color-select-option); /*<------------------- que seria esto */
+  --area-shadow: 0 15px 20px rgba(0, 0, 0, 0.1); /*lo agregue*/
 
-    /* Mobile / Desktop font sizes Elements */
-    --fz-h1-mob: 21px;
-    --fz-h1-dsk: 25px;
-    --fz-h3-mob: 20px;
-    --fz-h3-dsk: 24px;
-    --fz-h5-mob: 16px;
-    --fz-h5-dsk: 20px;
-    --fz-h6-mob: 15px;
-    --fz-h6-dsk: 16px;
-    --fz-p-mob: 14px;
-    --fz-p-dsk: 16px;
-    --fz-header-nav-item-mob: 18px;
-    --fz-header-nav-item-mob: 20px;
-    --fz-top-span-mob: 16px;
+  /* Mobile / Desktop font sizes Elements */
+  --fz-h1-mob: 21px;
+  --fz-h1-dsk: 25px;
+  --fz-h3-mob: 20px;
+  --fz-h3-dsk: 24px;
+  --fz-h5-mob: 16px;
+  --fz-h5-dsk: 20px;
+  --fz-h6-mob: 15px;
+  --fz-h6-dsk: 16px;
+  --fz-p-mob: 14px;
+  --fz-p-dsk: 16px;
+  --fz-header-nav-item-mob: 18px;
+  --fz-header-nav-item-mob: 20px;
+  --fz-top-span-mob: 16px;
 
-    /* Mobile / Desktop font sizes Form */
-    --fz-form-search-mob: 14px;
-    --fz-form-input-mob: 14px;
-    --fz-form-label-mob: ;
-    --fz-form-label-dsk: 15;
-    --fz-form-option-mob: ;
-    --fz-form-option-dsk: 14;
+  /* Mobile / Desktop font sizes Form */
+  --fz-form-search-mob: 14px;
+  --fz-form-input-mob: 14px;
+  --fz-form-label-mob: ;
+  --fz-form-label-dsk: 15;
+  --fz-form-option-mob: ;
+  --fz-form-option-dsk: 14;
 
-    /* Mobile / Desktop font sizes Tarjeta Producto */
-    --fz-price-mob: ;
-    --fz-price-dsk: 19;
-    --fz-discount-mob: ;
-    --fz-discount-mob: 17;
-    --fz-price-mob: ;
-    --fz-price-dsk: ;
+  /* Mobile / Desktop font sizes Tarjeta Producto */
+  --fz-price-mob: ;
+  --fz-price-dsk: 19;
+  --fz-discount-mob: ;
+  --fz-discount-mob: 17;
+  --fz-price-mob: ;
+  --fz-price-dsk: ;
 }
 
 /* id deseables para inputs de forms */
@@ -61,286 +62,546 @@
 */
 
 /* General */
-*{
-    margin: 0px;
-    padding: 0px;
-    text-decoration: none;
-    list-style: none;
-    font-size: 20px;
-    box-sizing: border-box;
+* {
+  margin: 0px;
+  padding: 0px;
+  text-decoration: none;
+  list-style: none;
+
+  box-sizing: border-box;
+}
+img {
+  width: 100%;
 }
 
-.linea{ height: .8rem; }
-
-.media-linea{ height: .4rem; }
-
-.bocadito{ height: .1rem; width: .5rem; }
-
-body{
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--color-body-back);
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: var(--color-body-back);
 }
-
 
 /* Encabezados */
-h1{
-    font-size: var(--fz-h1-mob);
+h1 {
+  font-size: var(--fz-h1-mob);
 }
-h3{
-    font-size: var(--fz-h3-mob);
-}
-
-h5{
-    font-size: var(--fz-h5-mob);
-    padding-bottom: 5px;
+h3 {
+  font-size: var(--fz-h3-mob);
 }
 
-h6{
-    font-size: var(--fz-h6-mob);
-    padding-top: 5px;
+h5 {
+  font-size: var(--fz-h5-mob);
+  padding-bottom: 5px;
+}
+
+h6 {
+  font-size: var(--fz-h6-mob);
+  padding-top: 5px;
 }
 
 /* Textos */
-p{
-    font-size: var(--fz-p-mob);
-    padding-bottom: 8px;
+p {
+  font-size: var(--fz-p-mob);
+  padding-bottom: 8px;
 }
-
 
 /* -----------------------------------*/
 /* ------------ Header ---------------*/
 /* -----------------------------------*/
-header {
-    background-color: var(--color-header-back);
-    height: auto;
-}
-div.top-header{
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-    justify-content: space-around;
-} 
 
+header.container {
+  background-color: var(--color-header-back);
+  padding: 10px 0;
+  position: relative;
+  height: 190px;
+}
+header div.container-header-box {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+}
 /* -------------------------------*/
 /* ----------- logo --------------*/
 /* -------------------------------*/
 
+img.header-logo {
+  max-width: 100%;
+}
+header div.container-header-logo {
+  width: 60%;
+  margin-bottom: 0.3rem;
+}
 
 /* -------------------------------*/
 /* --------- Search Bar  ---------*/
 /* -------------------------------*/
-form.form-search{
-    width: 100%;
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    padding: 1%;
+
+header div.header-search {
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+header div.header-search form {
+  display: flex;
+  margin: 0;
+  align-items: center;
+}
+header div.header-search input {
+  padding: 11px 8px 11px 15px;
+  width: 100%;
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 4px 0px 0px 4px;
+}
+header button.search-button {
+  height: 40px;
+  background-color: #f5f5f5;
+  border: none;
+  margin: 0;
+  padding: 9px;
+  cursor: pointer;
+  border-radius: 0px 4px 4px 0px;
+}
+header button i {
+  color: rgb(21, 152, 195);
+  font-size: 18px;
 }
 
+/* -------------------------------*/
+/* --------- Social Media  ---------*/
+/* -------------------------------*/
 
-header .form-search .submit-search{
-    display: flex;
-    flex-direction: row;
-    border-radius: 12px;
-    padding: 3px 3px 3px 5px;
-    font-size: 16px;
-    background-color: var(--color-search-back);
-    border: solid 1px var(--color-select-border);
-    color: var(--color-input-item);
+header div.container-header-social-users-buy {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+header div.container-header-socialNetworks {
+  align-items: center;
+  display: flex;
+}
+
+header div.socialNetworks-title {
+  color: #fff;
+  font-size: 12px;
+  width: 20%;
+  padding: 0 10px 0 0;
+  display: none;
+}
+
+header div.socialNetworks-btn {
+  padding: 0 0 0 8px;
+  width: 16%;
+}
+header div.socialNetworks-btn img {
+  width: 20px;
+}
+header div.socialNetworks-sep {
+  padding: 0 0 0 20px;
+}
+/* -------------------------------*/
+/* --------- Acces User ----------*/
+/* -------------------------------*/
+
+header div.container-header-users {
+  position: relative;
+}
+header div img.user-images {
+    max-width: 18px;
+  }
+
+header div ul.users-link {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+header div ul li:first-child {
+  border-top: 0;
+}
+
+header div ul.users-link li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+
+header div ul li {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* -------------------------------*/
+/* ---------- Acces Truck --------*/
+/* -------------------------------*/
+
+
+header div.number {
+  align-items: center;
+  background-color: #00b7e6;
+  border-radius: 100%;
+  color: #fff;
+  display: flex;
+  font-size: 8px;
+  height: 18px;
+  justify-content: center;
+  position: absolute;
+  right: -5px;
+  text-align: center;
+  top: -5px;
+  width: 18px;
+}
+
+/* -------------------------------*/
+/* ---- Acces User and Truck -----*/
+/* -------------------------------*/
+
+header button.users-dropdown-opener {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+    margin: 0 18px 0 0px; 
+    outline: 0;
+    position: relative;
+  }
+  
+  header div .users-dropdown {
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: var(--area-shadow);
+    display: none;
+    right: 0;
+    padding: 10px;
+    position: absolute;
+    top: 50px;
     width: auto;
-}
+    z-index: 15;
+  }
 
-header .form .submit{
-    padding: 0px 0px 0px 5px;
-    font-size: 16px;
-    color: var(--color-input-item);
-    width: 10%;
-}
+
+  header .users-menu, .users-truck{
+
+  display:none;
+  }
+  header  .users-menu:checked + .users-dropdown,.users-truck:checked + .users-dropdown{
+   
+    display: block;
+   
+    
+  }
+ 
+
 
 
 
 /* ----------------------------*/
 /* --------- Top Nav ----------*/
 /* ----------------------------*/
+header div.navbar {
+  display:none;
+  
+}
+#navbar .icons .item a {
+    
+  color: #c9c9c9;
+  font-size: 14px;
+  padding: 5px;
+  text-decoration: none;
+  --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
 
+}
 
+#navbar .icons .item a::after{
+content: "";
+display: block;
+background: #48b118;
+width: 90%;
+height: 3px;
+margin-top: 3px;
+clip-path: var(--clippy);
+transition: all ease .3s;
 
+}
+#navbar .icons .item a:hover{
+--clippy:polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
 /* ----------------------------*/
 /* ------- Burguer Menu -------*/
 /* ----------------------------*/
-
-
-
-
-/* ---------------*/
-/* --- Banners ---*/
-/* ---------------*/
-
-
-
-
-/* ----------------------------*/
-/* ------ Form Registro -------*/
-/* ----------------------------*/
-
-
-
-
-/* ------------------------------*/
-/* -- Form Login y otros Forms --*/
-/* ------------------------------*/
-
-
-
-/* --------------------------------*/
-/* -- Vistas de Varios Productos --*/
-/* --------------------------------*/
-main{
-    width: 90%;
-    margin: 0 auto;
-    height: 25rem;
+.burger-menu  {
+  align-items: center;
+  display: flex;
+ justify-content: space-around;
+ padding: 0px 115px;
+}
+.burger-menu i {
+  color: #ffffff;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: #12aec3d8;
+  margin: 5px 0px 5px 0px;
+  padding: 7px;
+  
+}
+header input.navbar-burger{
+   
+  display:none;
+ 
+  
+}
+header .navbar-burger:checked + .navbar{
+  align-items: center;
+  display: flex;
+  margin-top: 470px;
+  margin-left: -1px;
+  background-color:  var(--color-header-back);
+  margin-bottom:50px;
+  width:100%;
+  flex-direction:column;
+  position: fixed;
+  
+}
+header .navbar{
+  position: absolute;
 }
 
-main section h3{
-    margin: 20px 0px;
+main {
+  width: 90%;
+  margin: 0 auto;
+  height: 50rem;
 }
-
-main section article{
-    background-color: var(--color-section-article-back);    
-    margin: 10px 0px;
-}
-
-main section article img{
-    width: 100%;
-}
-
-/* section.offers, y todas las */
-/* sections vista de producto  */
-section.offers{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
-
-
 
 /* -------------------------------*/
 /* ---- Detalles del Artículo ----*/
 /* -------------------------------*/
 
-
-
-
-/* ----------------*/
-/* ---- Precio ----*/
-/* ----------------*/
-
-
-
-
-/* -------------------*/
-/* ---- Descuemto ----*/
-/* -------------------*/
-
-
-
-
-/* -------------------*/
-/* ---- Favoritos ----*/
-/* -------------------*/
-
-
-
-
 /* -------------------------------*/
 /* ------- Pie de Página ---------*/
 /* -------------------------------*/
-footer{
-    padding: 5%;
-    background-color: var(--color-footer-back);
-    margin-top: 15px;
+footer {
+  padding: 5%;
+  background-color: var(--color-footer-back);
+  margin-top: 15px;
 }
 
-h6{
-    color: var(--color-discount);
+h6 {
+  color: var(--color-discount);
 }
-
 
 /* -------------------------------*/
 /* ------- Media Querys ----------*/
 /* -------------------------------*/
 
-/* -------------------------------*/
-/* ------- Media Querys ----------*/
-/* -------------------------------*/
-/* ----------- -250 --------------*/
-/* -------------------------------*/
-@media (min-width: 250px){
-    /* Modo mobile, mínima expresión */
+@media (min-width: 250px) {
+  /* Modo mobile, mínima expresión */
+  img {
+    width: initial;
+  }
+ 
 }
 
+@media (min-width: 360px) {
+  /* Para la vista de productos modo mobile  */
+  /* mostrando 1 producto por fila           */
+  header.container {
+    height: 200px;
+  }
+  header div.header-search {
+    width: 90%;
+  }
+  header div.socialNetworks-btn img {
+    width: 27px;
+  }
+  header div.socialNetworks-btn {
+    padding: 0 0 0 16px;
+    width: 17%;
+  }
+  header div img.user-images {
+    max-width: 23px;
+  }
+  .burger-menu  {
+    
+  
+   padding: 0px 170px;
+   
+  }
 
-/* -------------------------------*/
-/* ------- Media Querys ----------*/
-/* -------------------------------*/
-/* ----------- +360 --------------*/
-/* -------------------------------*/
-@media (min-width: 361px){
-    /* Para la vista de productos modo mobile  */
-    /* mostrando 1 producto por fila           */
+  header .navbar-burger:checked + .navbar{
+    margin-top: 461px;
+  }
+
 }
 
+@media (min-width: 500px) {
+  /* Aquí pasamos los fonts a tamaño dsk     */
+  /* También podría expandirse algún flex    */
+  /*   También un control extra en flexs     */
+  /*   de vista de varios productos          */
 
-/* -------------------------------*/
-/* ------- Media Querys ----------*/
-/* -------------------------------*/
-/* ----------- +500 --------------*/
-/* -------------------------------*/
-@media (min-width: 500px){
-    /* Aquí pasamos los fonts a tamaño dsk     */
-    /* También podría expandirse algún flex    */
-    /*   También un control extra en flexs     */
-    /*   de vista de varios productos          */
-    h1{
-        font-size: var(--fz-h1-dsk);
-    }
-    h3{
-        font-size: var(--fz-h3-dsk);
-    }
-    h5{
-        font-size: var(--fz-h5-dsk);
-        padding-bottom: 5px;
-    }
-    h6{
-        font-size: var(--fz-h6-dsk);
-    }
-    p{
-        font-size: var(--fz-p-dsk);
-        padding-bottom: 8px;
-    }
+  header.container {
+    height: 150px;
+  }
+  header div.container-header {
+    margin: 0 auto;
+    max-width: 680px;
+    padding: 0 20px;
+  }
+  header div.container-header-box {
+    justify-content: space-around;
+    flex-direction: inherit;
+  }
+  header div.container-header-logo {
+    width: 40%;
+    margin-bottom: 0rem;
+  }
+  header div.header-search {
+    width: 60%;
+    margin-bottom: 0rem;
+  }
+  header div.container-header-social-users-buy {
+    margin-top: 0.5rem;
+  }
+
+  .burger-menu  {
+   padding: 0px 230px;
+  }
+
+
+
 }
 
+@media (min-width: 768px) {
+  /* Aquí controlamos que algunos elementos, */
+  /*   ej. inputs no crezcan tanto,          */
+  /*   También un control extra en flexs     */
+  /*   de vista de varios productos          */
 
-/* -------------------------------*/
-/* ------- Media Querys ----------*/
-/* -------------------------------*/
-/* ----------- +769 --------------*/
-/* -------------------------------*/
-@media (min-width: 769px){
-    /* Aquí controlamos que algunos elementos, */
-    /*   ej. inputs no crezcan tanto,          */
-    /*   También un control extra en flexs     */
-    /*   de vista de varios productos          */
+  img {
+    width: 100%;
+  }
+  header.container {
+    height: inherit;
+  }
+  header div.container-header {
+    max-width: 980px;
+  }
+  header div.container-header-box {
+    justify-content: space-between;
+    flex-direction: initial;
+  }
+
+  header div.container-header-logo {
+    width: 20%;
+  }
+
+  header div.header-search {
+    width: 40%;
+  }
+
+  header button i {
+    color: rgb(21, 152, 195);
+    font-size: 18px;
+  }
+
+  header div.container-header-social-users-buy {
+    width: 35%;
+    margin-top: 0rem;
+  }
+
+  header div.socialNetworks-title {
+    display: block;
+  }
+  header div.socialNetworks-btn {
+    padding: 0 0 0 10px;
+    width: 15%;
+  }
+  header div.socialNetworks-sep {
+    padding: 0 0 0 8px;
+    max-width: 100%;
+  }
+  header div.socialNetworks-btn img {
+    max-width: 100%;
+  }
+
+  header button.users-dropdown-opener {
+    margin: 0 0 0 5px;
+  }
+  header div img.user-images {
+    max-width: 100%;
+  }
+
+/* ----------------------------*/
+/* --------- Top Nav ----------*/
+/* ----------------------------*/
+
+.burger-menu  {
+  position:relative;
+  padding: 0;
+  
+ }
+header div.navbar {
+  display:block;
+  position:relative;
 }
 
+header div.container-navbar {
+    max-width: 658px;
+    padding: 0 20px;
+    margin: 0 auto;
+   
+}
+.navbar{
+  height: 40px;
+  
+}
+  #navbar .icons {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+     
+}
+#navbar .icons .item  {
+  padding: 0 18px;
+}
+#navbar .icons .item a {
+    padding: 20px 10px;
+}
 
-/* -------------------------------*/
-/* ------- Media Querys ----------*/
-/* -------------------------------*/
-/* ----------- +1010 -------------*/
-/* -------------------------------*/
-@media (min-width: 1010px){
-    /* Aquí algunos flex column pasan a row */
-    /* para un modo desktop total           */
+/* ----------------------------*/
+/* ------- Burguer Menu -------*/
+/* ----------------------------*/
+.burger-menu i{
+  display:none
+}
+
+}
+
+@media (min-width: 1024px) {
+  /* Aquí algunos flex column pasan a row */
+  /* para un modo desktop total           */
+
+  header div.container-header {
+    max-width: 1180px;
+  }
+  header div.container-header-social-users-buy {
+    justify-content: normal;
+  }
+  header div.socialNetworks-title {
+    font-size: 15px;
+  }
+
+/* ----------------------------*/
+/* --------- Top Nav ----------*/
+/* ----------------------------*/
+  
+ header div.container-navbar {
+    max-width: 980px;
+   
+}
+#navbar .icons .item  {
+  padding: 0 45px;
+}
+
 }
