@@ -39,6 +39,8 @@ header .form .submit{
     width: 10%;
 }
 
+/* Comentar la siguiente línea cambia el comportamiento de las tarjetitas */
+:root{ --fz-desc-mob: 18px; --fz-desc-dsk: 18px; }
 
 /* --------------------------------*/
 /* -- Vistas de Varios Productos --*/
@@ -49,6 +51,16 @@ main.main-index {
     height: auto;
 }
 
+/* section.offers, y todas las */
+/* sections vista de producto  */
+main.main-index section.sec-last-tec,
+main.main-index section.sec-offers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* align-items: flex-start; */
+}
+
 main.main-index  section article{
     margin: 10px 0px;
 }
@@ -57,19 +69,22 @@ section, main.main-index  section article img{
     width: 100%;
 }
 
-/* section.offers, y todas las */
-/* sections vista de producto  */
-main.main-index section.last-tec,
-main.main-index section.offers{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
 
 /* -------------------------------*/
 /* ---- Detalles del Artículo ----*/
 /* -------------------------------*/
+main.main-index article div.main-article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 15px;
+}
+
+main.main-index section div.products {
+    width: 100%;
+}
+
 main.main-index article div.main-card-img {
     display: flex;
     justify-content: center;
@@ -82,14 +97,8 @@ div.main-card-img img.product_img {
     object-fit: contain;
 }
 
-
-main.main-index article div.main-article {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-items: baseline;
-    padding: 15px;
+.linea-blanca{
+    height: .4rem;
 }
 
 
@@ -108,6 +117,7 @@ main.main-index .price {
 /* -------------------*/
 main.main-index .discount {
     align-self: flex-end;
+    text-align: right;
     font-size: var(--fz-discount-mob);
     color: var(--color-discount);
 }
@@ -118,7 +128,6 @@ main.main-index .discount {
 /* ---------------------*/
 main.main-index .description {
     /* display: "none"; */
-    /* font-size: 0px; */
     font-size: var(--fz-desc-mob);
     color: var(--color-description);
     margin-top: 20px;
@@ -160,40 +169,6 @@ h6{
 }
 
 
-
-
-/* -------------------------------*/
-/* ------- Media Querys ----------*/
-/* -------------------------------*/
-main.main-index section div.products {
-    width: 100%;
-}
-
-main.main-index article div.main-article {
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-.linea-blanca{
-    height: .4rem;
-}
-
-/* -------------------------------*/
-/* ------- Media Querys ----------*/
-/* -------------------------------*/
-/* ----------- -250 --------------*/
-/* -------------------------------*/
-@media (min-width: 250px){
-    /* Modo mobile, mínima expresión */
-    main.main-index .discount{
-        text-align: right;
-    }
-    .linea-blanca{
-        height: .4rem;
-    }
-}
-
-
 /* -------------------------------*/
 /* ------- Media Querys ----------*/
 /* -------------------------------*/
@@ -206,13 +181,10 @@ main.main-index article div.main-article {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        align-items: space-between;;
+        /* align-items: flex-start; */
     }
     main.main-index section div.products article {
         width: 45%;
-    }
-    .linea-blanca{
-        height: .4rem;
     }
 }
 

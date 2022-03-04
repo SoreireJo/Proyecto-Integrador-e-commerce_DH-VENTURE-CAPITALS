@@ -364,14 +364,13 @@ button.buttComprar:hover{
     box-shadow: 0px 2px 4px var(--color-select-option-shdw);
 }
 
-
 main.main-index section article:hover .description{
     display: "block";
     color: var(--color-description-hover);
     font-size: var(--fz-desc-mob);
     margin-top: 20px;
     font-weight: bold;
-    transition: 0.3s;
+    transition: 0.5s;
 }
 
 /* ------------------------*/
