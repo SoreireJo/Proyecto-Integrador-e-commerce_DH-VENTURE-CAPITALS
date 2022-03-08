@@ -1,59 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tecnocom</title>
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/index-styles.css">
-        
-        <style> @font-face { 
-                font-family: BauerRegular; src: url(desing/fonts/BAUERG__.TTF); }
-            @font-face { 
-                font-family: OsakaSansSerif; src: url(desing/fonts/osaka-re.ttf); }
-            @font-face { 
-                font-family: ElgethyBoldOblique; src: url(desing/fonts/Elgethy_Bold_Oblique.ttf); }
-            @font-face { 
-                font-family: HandSean; src: url(desing/fonts/handsean.ttf); }
-            @font-face { 
-                font-family: DanielBK; src: url(desing/fonts/danielbk.ttf); }
-            @font-face { 
-                font-family: Coolvetica; src: url(desing/fonts/coolvetica_rg.ttf); }
-        </style>
-
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link href="/desing/fontawesome6/css/fontawesome.css" rel="stylesheet">
-        <link href="/desing/fontawesome6/css/brands.css" rel="stylesheet">
-        <link href="/desing/fontawesome6/css/solid.css" rel="stylesheet">
+        <!-- head -->
+        <%- include('../partials/head.ejs') %>
     </head>
 
     <body>
         <!-- header -->
-        <header>
-
-            <!-- top-header -->
-            <div class="top-header">
-
-                <!-- Logo-->
-                <div class="logo"> 
-                    <img src="desing/tecnocom_logo.jpg" width="200" aling="center" alt="Tecnocom Insumos Tecnológicos">
-                </div>
-
-                <!-- Barra de búsquedas -->
-                <form class="form-search" action="#" method="post">
-
-                    <div class="submit-search">
-                        <input class="input-search" type="text" name="search" id="search" placeholder="Buscar productos...">
-
-                        <div class="bocadito"></div>
-
-                        <span class="iconito-search">
-                        <i class="fa-solid fa-magnifying-glass  fa-beat" style="--fa-animation-duration: 5s;"></i> 
-                        </span>
-                    </div>
-                </div>
-        </header>
+        <%- include('../partials/header.ejs') %>
 
         <!-- Main (Productos) -->
         <main class="main-index">
@@ -69,28 +23,25 @@
 
                     <!-- Card -->
                     <article class="last-tec">
-                        <div class="linea-blanca"></div>
-                        <div class="main-card-img">
-                            <img src="images/products/monitor_benq.png" alt="Benq Led Monitor 144hz" class="product_img">
-                        </div>
-                        <div class="linea-blanca"></div>
-                        <!-- <div class="bar-rgbs" id"rg-bars"></div> -->
+                        <a href="/product_detail">
+                            <div class="linea-blanca"></div>
+                            <div class="main-card-img">
+                                <img src="images/products/monitor_benq.png" alt="Benq Led Monitor 144hz" class="product_img">
+                            </div>
+                            <div class="linea-blanca"></div>
+                        </a>
                         <div class="bar-ggr" id"gg-bar"></div>
 
                         <div class="main-article">
-                            <span class="i-fv">
-                                <input type="checkbox" id="ossm" name="ossm"> 
-                                <label class="fv" for="ossm"><i class="fa-solid fa-heart"></i></label> 
-                            </span>
                             <p class="discount">5% off</p>
                             <p class="price">$119.999</p>
                             <span class="sell">
                                 <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping id="crtct" style="--fa-animation-duration: 2s; font-size: .8em;"></i> Agregar
+                                    <i class="fa-solid fa-cart-shopping id="crtct" style="font-size: .8em;"></i> Agregar
                                 </button>
                                 <div class="media-linea"></div>
-                                <button class="buttComprar">
-                                    <i class="fa-solid fa-handshake id="crtct" style="--fa-animation-duration: 2s; font-size: 1em;"></i> Comprar
+                                <button class="buttComprar" onclick="window.location.href='/product_detail'">
+                                    Ver mas
                                 </button>
                             </span>
                             <h4 class="description">Benq Led Monitor Ex2780q Metallic 2k 144hz</h4>
@@ -104,23 +55,18 @@
                             <img src="images/products/auriculares-girl.png" alt="Auriculares Cat Ear Cosplay" class="product_img">
                         </div>
                         <div class="linea-blanca"></div>
-                        <!-- <div class="bar-rgbs" id"rg-bars"></div> -->
                         <div class="bar-ggr" id"gg-bar"></div>
 
                         <div class="main-article">
-                            <span class="i-fv">
-                                <input type="checkbox" id="ossm" name="ossu-2"> 
-                                <label class="fv" for="ossu-2"><i class="fa-solid fa-heart"></i></label> 
-                            </span>
                             <p class="discount">20% off</p>
                             <p class="price">$9.809</p>
                             <span class="sell">
                                 <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping id="crtct" style="--fa-animation-duration: 2s; font-size: .8em;"></i> Agregar
+                                    <i class="fa-solid fa-cart-shopping id="crtct" style="font-size: .8em;"></i> Agregar
                                 </button>
                                 <div class="media-linea"></div>
                                 <button class="buttComprar">
-                                    <i class="fa-solid fa-handshake id="crtct" style="--fa-animation-duration: 2s; font-size: 1em;"></i> Comprar
+                                    Ver mas
                                 </button>
                             </span>
                             <h4 class="description">Auriculares Cat Ear Headset Plegable Led Light Cosplay</h4>
@@ -134,23 +80,18 @@
                             <img src="images/products/mouse-cyan.png" alt="Mouse inalámbrico Logitech" class="product_img">
                         </div>
                         <div class="linea-blanca"></div>
-                        <!-- <div class="bar-rgbs" id"rg-bars"></div> -->
                         <div class="bar-ggr" id"gg-bar"></div>
 
                         <div class="main-article">
-                            <span class="i-fv">
-                                <input type="checkbox" id="ossm" name="ossu-3"> 
-                                <label class="fv" for="ossu-3"><i class="fa-solid fa-heart"></i></label> 
-                            </span>
                             <p class="discount">15% off</p>
                             <p class="price">$3.399</p>
                             <span class="sell">
                                 <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping id="crtct" style="--fa-animation-duration: 2s; font-size: .8em;"></i> Agregar
+                                    <i class="fa-solid fa-cart-shopping id="crtct" style="font-size: .8em;"></i> Agregar
                                 </button>
                                 <div class="media-linea"></div>
                                 <button class="buttComprar">
-                                    <i class="fa-solid fa-handshake id="crtct" style="--fa-animation-duration: 2s; font-size: 1em;"></i> Comprar
+                                    Ver mas
                                 </button>
                             </span>
                             <h4 class="description">Mouse inalámbrico Logitech Lightspeed blue"</h4>
@@ -164,23 +105,18 @@
                             <img src="images/products/monitor-omni.png" alt="Monitor Gamer 24" class="product_img">
                         </div>
                         <div class="linea-blanca"></div>
-                        <!-- <div class="bar-rgbs" id"rg-bars"></div> -->
                         <div class="bar-ggr" id"gg-bar"></div>
 
                         <div class="main-article">
-                            <span class="i-fv">
-                                <input type="checkbox" id="ossm" name="ossu-4"> 
-                                <label class="fv" for="ossu-4"><i class="fa-solid fa-heart"></i></label> 
-                            </span>
                             <p class="discount">5% off</p>
                             <p class="price">$83.999</p>
                             <span class="sell">
                                 <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping id="crtct" style="--fa-animation-duration: 2s; font-size: .8em;"></i> Agregar
+                                    <i class="fa-solid fa-cart-shopping id="crtct" style="font-size: .8em;"></i> Agregar
                                 </button>
                                 <div class="media-linea"></div>
                                 <button class="buttComprar">
-                                    <i class="fa-solid fa-handshake id="crtct" style="--fa-animation-duration: 2s; font-size: 1em;"></i> Comprar
+                                    Ver mas
                                 </button>
                             </span>
                             <h4 class="description">Monitor Gamer 24 Viewsonic 240hz"</h4>
@@ -189,6 +125,7 @@
                 </div>
             </section>
 
+            <div class="linea"></div>
             <div class="linea"></div>
             <div class="linea"></div>
             <h3 class="titulo-main-index">Ofertas</h3>
@@ -209,22 +146,15 @@
                         <div class="bar-ggr" id"gg-bar"></div>
 
                         <div class="main-article">
-                            <!-- 
-                            <span class="i-fv">
-                                <input type="checkbox" id="osso-1" name="ossm"> 
-                                <label class="fv" for="osso-1"><i class="fa-solid fa-heart"></i></label> 
-                            </span>
-                            -->
-
                             <p class="discount">5% off</p>
                             <p class="price">$31.999</p>
                             <span class="sell">
                                 <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping id="crtct" style="--fa-animation-duration: 2s; font-size: .8em;"></i> Agregar
+                                    <i class="fa-solid fa-cart-shopping id="crtct" style="font-size: .8em;"></i> Agregar
                                 </button>
                                 <div class="media-linea"></div>
                                 <button class="buttComprar">
-                                    <i class="fa-solid fa-handshake id="crtct" style="--fa-animation-duration: 2s; font-size: 1em;"></i> Comprar
+                                    Ver mas
                                 </button>
                             </span>
                             <h4 class="description">Monitor gamer Gadnic G4D71N-F 27</h4>
@@ -241,22 +171,16 @@
                         <div class="bar-ggr" id"gg-bar"></div>
 
                         <div class="main-article">
-                            <!-- 
-                            <span class="i-fv">
-                                <input type="checkbox" id="ossm" name="osso-2"> 
-                                <label class="fv" for="osso-2"><i class="fa-solid fa-heart"></i></label> 
-                            </span>
-                            -->
 
                             <p class="discount">30% off</p>
                             <p class="price">$35.399</p>
                             <span class="sell">
                                 <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping id="crtct" style="--fa-animation-duration: 2s; font-size: .8em;"></i> Agregar
+                                    <i class="fa-solid fa-cart-shopping id="crtct" style="font-size: .8em;"></i> Agregar
                                 </button>
                                 <div class="media-linea"></div>
                                 <button class="buttComprar">
-                                    <i class="fa-solid fa-handshake id="crtct" style="--fa-animation-duration: 2s; font-size: 1em;"></i> Comprar
+                                    Ver mas
                                 </button>
                             </span>
                             <h4 class="description">Tablet con funda Gadnic Taurus 10.1"</h4>
@@ -273,22 +197,16 @@
                         <div class="bar-ggr" id"gg-bar"></div>
 
                         <div class="main-article">
-                            <!--
-                            <span class="i-fv">
-                                <input type="checkbox" id="ossm" name="osso-3"> 
-                                <label class="fv" for="osso-3"><i class="fa-solid fa-heart"></i></label> 
-                            </span>
-                            -->
                             
                             <p class="discount">5% off</p>
                             <p class="price">$20.278</p>
                             <span class="sell">
                                 <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping id="crtct" style="--fa-animation-duration: 2s; font-size: .8em;"></i> Agregar
+                                    <i class="fa-solid fa-cart-shopping id="crtct" style="font-size: .8em;"></i> Agregar
                                 </button>
                                 <div class="media-linea"></div>
                                 <button class="buttComprar">
-                                    <i class="fa-solid fa-handshake id="crtct" style="--fa-animation-duration: 2s; font-size: 1em;"></i> Comprar
+                                    Ver mas
                                 </button>
                             </span>
                             <h4 class="description">Mouse inalámbrico recargable Razer Basilisk Ultimate</h4>
@@ -305,22 +223,16 @@
                         <div class="bar-ggr" id"gg-bar"></div>
 
                         <div class="main-article">
-                            <!--
-                            <span class="i-fv">
-                                <input type="checkbox" id="ossm" name="osso-4"> 
-                                <label class="fv" for="osso-4"><i class="fa-solid fa-heart"></i></label> 
-                            </span>
-                            -->
                             
                             <p class="discount">30% off</p>
                             <p class="price">$35.399</p>
                             <span class="sell">
                                 <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping id="crtct" style="--fa-animation-duration: 2s; font-size: .8em;"></i> Agregar
+                                    <i class="fa-solid fa-cart-shopping id="crtct" style="font-size: .8em;"></i> Agregar
                                 </button>
                                 <div class="media-linea"></div>
                                 <button class="buttComprar">
-                                    <i class="fa-solid fa-handshake id="crtct" style="--fa-animation-duration: 2s; font-size: 1em;"></i> Comprar
+                                    Ver mas
                                 </button>
                             </span>
                             <h4 class="description">Tablet con funda Gadnic Taurus 10.1"</h4>
@@ -328,9 +240,9 @@
                     </article>
                 </div>  
             </section>
+        </main>
 
-        <footer>
-            <h6>Copyright © 2022 Tecnocom S.R.L.</h6>
-        </footer>
+        <!-- footer -->
+        <%- include('../partials/footer.ejs') %>
     </body>
 </html>

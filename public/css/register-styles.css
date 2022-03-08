@@ -105,31 +105,32 @@ div#button-form,
   {    
       font-size: var(--fz-form-input-dsk);
   }
-    legend{
+  legend{
       font-size: var(--fz-form-legend-dsk);
-    }
-    label {
+  }
+  label {
       font-size: var(--fz-form-label-dsk);
-    }
-    .shop-sales{
-      margin: 0px 71px 0px 0px
-    }
-    p#texto{
-      font-size: var(--fz-form-input-dsk);
-    }
-    .titulo-registro{
-        font-size: var(--fz-tittle-dsk);
-        text-align: left;
-    }
-    button.container-buttons{
-      font-size: var(--fz-label-dsk);
-    }
-    .container-link a{
-      font-size: var(--fz-form-label-dsk);
-    }
-    #IniSesion{
-      font-size: var(--fz-form-link-dsk);
-    }
+  }
+  .shop-sales{
+    margin: 0px 71px 0px 0px
+  }
+  p#texto{
+    font-size: var(--fz-form-input-dsk);
+  }
+  .titulo-registro{
+    font-size: var(--fz-tittle-dsk);
+    text-align: left;
+  }
+  button.container-buttons{
+    font-size: var(--fz-label-dsk);
+  }
+  .container-link a{
+    font-size: var(--fz-form-label-dsk);
+  }
+  #IniSesion{
+    font-size: var(--fz-form-link-dsk);
+  }
+  .bocadito_nav{ height: .1rem; width: .1rem; }
 }
   
 /*FIN MAIN */

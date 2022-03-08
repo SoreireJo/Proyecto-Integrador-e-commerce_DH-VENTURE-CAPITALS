@@ -11,7 +11,10 @@
     --color-header-back: #3a0346;
     --color-item: black;
     --color-system-button-item: rgb(53, 11, 63);
+    --color-system-button-i: rgb(21, 152, 195);
+    --color-system-button-i: rgb(41, 8, 34);
     --color-system-button:#bab9bd;
+    --color-system-button:#c9c9c9;
     --color-system-button-sel:#431194;
     --color-select-option-shdw: #2d125a;
 
@@ -68,7 +71,7 @@
 
     /* Footer */
     --color-footer-back: rgb(21, 8, 29);
-    --color-footer-item: var(--color-item);
+    --color-footer-item: rgb(16, 156, 39);
     --color-footer-item-select: var(--color-select-option);
 
 
@@ -92,6 +95,10 @@
     --fz-tittle-dsk: 30px;
 
     /* Mobile / Desktop font sizes Form */
+    --fz-form-searchV-mob: 30px;
+    --fz-form-searchV-dsk: 35px;
+    --fz-form-search-butt-mob: 16px;
+    --fz-form-search-butt-dsk: 18px;
     --fz-form-search-mob: 14px;
     --fz-form-search-dsk: 16px;
     --fz-form-input-mob: 16px;
@@ -127,7 +134,7 @@
     padding: 0px;
     text-decoration: none;
     list-style: none;
-    font-size: 20px;
+    font-size: 14px;
     box-sizing: border-box;
 }
 
@@ -174,12 +181,17 @@ p{
 }
 
 
-/* -------- Header  ----------*/
-header {
-    background: #8e9eab;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+/* -----------------------------------*/
+/* ------------ Header ---------------*/
+/* -----------------------------------*/
+.container-header{
+    background: #8e9eab;
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
+    background: linear-gradient(to right, #eef2f3, #8e9eab);
 }
+
+/* --------- Search Bar  ---------*/
+
 
 /* -----------------------------------------*/
 /* -------- Forms Login / Register  --------*/
@@ -376,13 +388,17 @@ main.main-index section article:hover .description{
 /* ------------------------*/
 /* --- Layouts elements ---*/
 /* ------------------------*/
-.linea{ height: .8rem; }
+.linea{ height: .1rem; }
 
-.media-linea{ height: .4rem; }
+.media-linea{ height: .5rem; }
+
+.linea-blanca{ height: .1rem; background-color: white; }
 
 .bocadito{ height: .1rem; width: .5rem; }
 
-.linea-blanca{ height: .8rem; background-color: white; }
+.linea_nav{ height: .1rem; }
+
+.bocadito_nav{ height: .1rem; width: 1.5rem; }
 
 
 /* -----------------------------------*/
@@ -392,13 +408,17 @@ main.main-index section article:hover .description{
     background: #ff0059;
     background: -webkit-linear-gradient(
 45deg
-,rgba(255,0,0,1) 0%,rgba(255,0,255,1) 18%,rgba(0,0,255,1) 30%,rgba(0,240,255,1) 45%,rgba(0,255,0,1) 63%,rgba(255,255,0,1) 80%,rgba(255,120,0,1) 90%,rgba(255,0,0,1) 100%);
+,rgb(37, 3, 158) 0%,rgb(20, 142, 199) 18%,rgb(34, 3, 172) 30%,rgba(0,240,255,1) 45%,rgba(0,255,0,1) 63%,rgba(255,255,0,1) 80%,rgba(255,120,0,1) 90%,rgba(255,0,0,1) 100%);
+background: -webkit-linear-gradient(
+    45deg
+    ,rgb(37, 3, 158) 0%,rgb(193, 20, 199) 18%,rgb(57, 22, 214) 30%,rgba(0,240,255,1) 45%,rgba(0,255,0,1) 63%,rgba(255,255,0,1) 80%,rgba(255,120,0,1) 90%,rgba(255,0,0,1) 100%);
     background-size: 400% 400%;
     height: 2px;
     position: relative;
 }
 
 .bar-ggr{
+    z-index: 1;
     background: #707070;
     background: -webkit-linear-gradient(
 45deg
@@ -432,6 +452,7 @@ main.main-index section article:hover .description{
 
 
 .bar-ccb{
+    z-index: 1;
     background: var(--color-bar-i);
     background: -webkit-linear-gradient(
 45deg
