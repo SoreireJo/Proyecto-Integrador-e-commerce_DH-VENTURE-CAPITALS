@@ -1,0 +1,18 @@
+{
+  "name": "ecode-commerce",
+  "version": "1.0.1",
+  "description": "Plataforma E-Comerce hecha a medida para DH VENTURE CAPITALS",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon ./src/app.js -e js,ejs,json,mjs",
+    "start": "nodemon ./src/app.js"
+  },
+  "keywords": [],
+  "author": "Ecode-Team: Chanampe / Montero / Soreire / Vera Gomez",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
+  }
+}
