@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<<<<<<< HEAD:src/views/web/home_1.html
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TecnoCom</title>
+        <link rel="stylesheet" href="css/styles.css">
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tecnocom</title>
+    <link rel="stylesheet" href="css/styles.css" />
+>>>>>>> html_header:src/views/web/home.html
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link href="/desing/fontawesome6/css/fontawesome.css" rel="stylesheet" />
+    <link href="/desing/fontawesome6/css/brands.css" rel="stylesheet" />
+    <link href="/desing/fontawesome6/css/solid.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- header -->
+    <header class="container" id="main-header">
+      <div class="container-header">
+        <div class="container-header-box">
+          <div class="container-header-logo">
+            <img
+              class="header-logo"
+              src="desing/tecnocom_logo2.png"
+              alt="Logo"
+            />
+          </div>
+          <div class="header-search" id="header-serch">
+            <form action="#" method="get" target="_self">
+              <input
+                type="search"
+                name="search"
+                id="search"
+                placeholder="Buscar productos,marcas "
+              />
+
+              <button class="search-button" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
+          <div class="container-header-social-users-buy">
+            <div class="container-header-socialNetworks">
+              <div class="socialNetworks-title">Nuestras Redes</div>
+
+              <div class="socialNetworks-btn">
+                <a
+                  href="https://api.whatsapp.com"
+                  target="_blank"
+                  title="Whatsapp"
+                  ><img src="/images/icn-nav-whatsapp.png" alt="Whatsapp"
+                /></a>
+              </div>
+              <div class="socialNetworks-btn">
+                <a href="https://twitter.com/" target="_blank" title="Twitter"
+                  ><img src="/images/icn-nav-twitter.png" alt="Twitter"
+                /></a>
+              </div>
+              <div class="socialNetworks-btn">
+                <a
+                  href="https://www.facebook.com/"
+                  target="_blank"
+                  title="Facebook"
+                  ><img src="/images/icn-nav-facebook.png" alt="Facebook"
+                /></a>
+              </div>
+              <div class="socialNetworks-btn">
+                <a
+                  href="https://instagram.com/"
+                  target="_blank"
+                  title="Instagram"
+                  ><img src="/images/icn-nav-instagram.png" alt="Instagram"
+                /></a>
+              </div>
+              <div class="socialNetworks-btn">
+                <a
+                  href="https://www.youtube.com/"
+                  target="_blank"
+                  title="Youtube"
+                  ><img src="/images/icn-nav-youtube.png" alt="Youtube"
+                /></a>
+              </div>
+              <div class="socialNetworks-sep">
+                <img src="/images/icn-nav-separador.png" alt="separador" />
+              </div>
+            </div>
+            <div class="container-header-users">
+              <button class="users-dropdown-opener">
+                <label for="menu-users">
+                  <img
+                    class="user-images"
+                    src="/images/icn-nav-user.png"
+                    alt="Mi cuenta"
+                    title="Mi cuenta"
+                  />
+                </label>
+                <input type="checkbox" id="menu-users" class="users-menu" />
+
+                <div class="users-dropdown">
+                  <ul class="users-link">
+                    <li><a href="/register">Registrarse</a></li>
+                    <li><a href="/login">Ingresar</a></li>
+                    <li>
+                      <a href="#" data-modal="#verpedido" name="modal"
+                        >Ver mi pedido</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </button>
+            </div>
+            <div class="container-header-cart" id="minicart">
+              <button class="users-dropdown-opener">
+                <label for="menu-minicart">
+                  <div class="number">0</div>
+                  <img
+                    src="/images/icn-nav-cart.png"
+                    alt="Carrito"
+                    title="Mis Compras"
+                  />
+                </label>
+                <input type="checkbox" id="menu-minicart" class="users-truck" />
+                <div class="users-dropdown">
+                  <div class="mini-cart-footer">No hay elementos</div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <label for="navbar-burger-menu" class="burger-menu">
+        <i class="fas fa-bars"></i>
+        <input type="checkbox" id="navbar-burger-menu" class="navbar-burger" />
+        <div class="navbar" id="navbar">
+          <div class="container-navbar">
+            <div class="icons">
+              <div class="item">
+                <a href="/armatupc">
+                  <div class="icon"></div>
+                  <div class="text">Armá tu PC</div>
+                </a>
+              </div>
+              <div class="item">
+                <a href="/pcarmada">
+                  <div class="icon"></div>
+                  <div class="text">PC Armadas</div>
+                </a>
+              </div>
+
+              <div class="item">
+                <a href="/cat/perifericos">
+                  <div class="icon"></div>
+                  <div class="text">Periféricos</div>
+                </a>
+              </div>
+
+              <div class="item">
+                <a href="/cat/notebooks" title="Notebooks">
+                  <div class="icon"></div>
+                  <div class="text">Notebooks</div>
+                </a>
+              </div>
+
+              <div class="item">
+                <a href="/cat/monitores">
+                  <div class="icon"></div>
+                  <div class="text">Monitores</div>
+                </a>
+              </div>
+
+              <div class="item">
+                <a href="/cat/all">
+                  <div class="icon"></div>
+                  <div class="text">Ver todo</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </label>
+    
+    </header>
+
+    <main></main>
+
+    <footer>
+      <h6>Copyright © 2022 Tecnocom S.R.L.</h6>
+    </footer>
+  </body>
+</html>
