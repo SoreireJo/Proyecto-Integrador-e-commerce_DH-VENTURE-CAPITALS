@@ -38,7 +38,7 @@
     --fz-h1-mob: 21px;
     --fz-h1-dsk: 25px;
     --fz-h3-mob: 20px;
-    --fz-h3-dsk: 24px;
+    --fz-h3-dsk: 25px;
     --fz-h5-mob: 16px;
     --fz-h5-dsk: 20px;
     --fz-h6-mob: 15px;
@@ -344,11 +344,7 @@ main.main-index section article:hover i {
 /* -------------------------------*/
 /* ------- Pie de Página ---------*/
 /* -------------------------------*/
-footer{
-    padding: 5%;
-    background-color: var(--color-footer-back);
-    margin-top: 15px;
-}
+
 
 h6{
     color: var(--color-discount);
@@ -390,7 +386,11 @@ h6{
   }
   
   legend{
+<<<<<<< HEAD
     font-size: 22.4px;
+=======
+    font-size: 16px;
+>>>>>>> register
     color: rgba(34, 33, 33, 0.63);  
   }
   
@@ -400,6 +400,14 @@ h6{
     display: block; 
     cursor: pointer;
   } 
+<<<<<<< HEAD
+=======
+
+  .titulo-registro{
+      font-size: var(--fz-h3-mob);
+      text-align: center;
+  }
+>>>>>>> register
   
   /* Deselecciona un elemento en espesifico para no aplicar estilos */
    input:not([type="submit"],[type="search"],[type="radio"],[type="checkbox"])
@@ -494,6 +502,13 @@ h6{
     p#texto{
       font-size: 20px;
     }
+<<<<<<< HEAD
+=======
+    .titulo-registro{
+        font-size: var(--fz-h3-dsk);
+        text-align: center;
+    }
+>>>>>>> register
   }
   
   /*FIN MAIN */

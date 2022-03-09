@@ -39,6 +39,7 @@ app.get("/product_cart", (req, res) => {
     res.sendFile(path.join(__dirname, "./views/web/home.html"));
 });
 
+<<<<<<< HEAD
 app.get("/login", (req, res) => {
     res.sendFile(path.join(__dirname, "./views/web/login.html"));
   });
@@ -47,3 +48,8 @@ app.get("/login", (req, res) => {
     res.sendFile(path.join(__dirname, "./views/register.html"));
   });
 >>>>>>> login
+=======
+app.get("/register", (req, res) => {
+    res.sendFile(path.join(__dirname, "./views/web/register.html"));
+  });
+>>>>>>> register
