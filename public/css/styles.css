@@ -229,46 +229,51 @@ section.offers{
 /* ---- Detalles del Artículo ----*/
 /* -------------------------------*/
 /*====== Product Detail ======*/
-
-.products-wrapper {
-    margin-top: 30px;
-    margin-bottom: 30px;
-  }
-
-.products-title {
-    font-size: 2.4em;
-    font-weight: 400;
-    color: var(--gray);
+.container{
+   
 }
-.product-detail {
-    background-color: var(--color-article-back);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-.product-detail-img {
-    flex-direction: column;
+
+
+.product-detail{
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.product-detail-img{
     width: 70%;
     display: block;
     margin: auto;
-  }
-  
-  .product-detail-info {
+}
+.row{
+    display: flex;
+    align-items: center;
+}
+
+.product-detail-info{
     border-left: 1px solid var(--light-gray);
     padding: 15px;
     height: 100%;
-  }
-  
-  .product-detail-title {
+}
+
+.product-detail-price{
+    margin: 10px 0;
+}
+
+.product-detail-price span{
+    text-decoration:line-through;
+}
+
+.product-detail-title{
     font-weight: 400;
     font-size: 2.8em;
-  }
-  
-  .product-detail-description {
+}
+
+.product-detail-description {
     padding: 15px;
     font-size: 1.8em;
     line-height: 1.5;
   }
-  
+
   .product-detail-price {
     font-size: 5.5em;
     margin: 10px 0;
@@ -276,67 +281,75 @@ section.offers{
   
   .small {
     font-size: 1.8em;
-    color: var(--green);
+    color:  #39b54a;
   }
-  
-  .small span {
-    text-decoration: line-through;
-  }
-  
+
   .actions-list {
-    margin-bottom: 50px;
+    margin: 5px;
   }
   
   .actions-list li {
     display: flex;
     align-items: center;
-    margin: 20px 0;
+    margin: 15px 0;
     padding: 20px 0;
   }
-  
   .actions-list i {
-    color: var(--green);
-    font-size: 2em;
+    color:  #39b54a;
+    font-size: 25px;
     margin-right: 15px;
   }
-  
-  .actions-list p {
-    color: var(--gray);
-    font-size: 1.7em;
-    margin: 0;
-  }
-  
-  .buy-now-button {
-    background-color: lightblue;
-    font-size: 1.6em;
-    color: #ffffff;
+
+  .buy-now-button{
+    border: rgb(207, 205, 205) 1px solid;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    background-color: #3987fc;
+    color: white;
+    font-size: 1em;
+    padding: 5px;
+    margin: 1.5em;
+}
+
+.butons{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    border-radius: 8px;
-    border: none;
-    margin-bottom: 15px;
-  }
-  
-  .action-button {
-    border: none;
-    border-radius: 8px;
-    font-size: 1.2em;
-    color: #ffffff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 30px;
-    margin-top: 15px;
-  }
-  
-  .action-button.edit {
-    background-color: chocolate;
-  }
-  .action-button.delete {
-    background-color: rgb(248, 69, 37);
-  }
+    flex-direction: row;
+    margin: 5px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+}
+.action-button{
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.7em;
+    padding: 10px;
+    margin: 5px;
+}
+
+.edit{
+    background-color: rgb(194, 78, 0);
+
+}
+
+.delete{
+    background-color: orange;
+}
+
+@media (max-width: 361px){
+    .row{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .product-detail-img{
+        width: 100%;
+        display: block;
+        margin: auto;
+    }
+}
+
 
 /* ----------------*/
 /* ---- Precio ----*/
