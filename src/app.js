@@ -6,8 +6,8 @@ const app = express();
 app.use(express.static("public"));
 
 //   Arranca el Servidor
-app.listen(3000, () => {
-    console.log("Tecnocom e-commerce inició en el puerto 3000");
+app.listen(3001, () => {
+    console.log("Tecnocom e-commerce inició en el puerto 3001");
 });
 
 app.get("/", (req, res) => {
@@ -18,4 +18,9 @@ app.get("/", (req, res) => {
 app.get("/product-detail", (req, res) => {
     // Va a la Home
     res.sendFile(path.join(__dirname, "./views/product/product_detail.html"));
+});
+
+app.get("/product-create-form", (req, res) => {
+    // Va a la Home
+    res.sendFile(path.join(__dirname, "./views/product/product-create-form.html"));
 });
