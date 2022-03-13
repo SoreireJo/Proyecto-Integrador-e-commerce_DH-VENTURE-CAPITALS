@@ -1,6 +1,6 @@
-/* ---------------------------------*/
-/* -- Estilos visuales estáticos  --*/
-/* ---------------------------------*/
+/* -----------------------------------*/
+/* -- Normalizando Estilos visuales --*/
+/* -----------------------------------*/
 :root{
     /* ------------------------ */
     /* -- Paletas de colores -- */
@@ -23,7 +23,7 @@
 
     /* Forms */
     --color-legend: #261042;
-    --color-label: #453679;
+    --color-label: #453679af;
     --color-input-back: #ffffff;
     --color-input-border: rgba(99, 12, 240, 0.322);
     --color-input-border: rgba(92, 90, 95, 0.322);
@@ -44,6 +44,7 @@
     --color-article-title-shdw: rgb(100,100,100);
     --color-discount: #54754a;
     --color-discount-hover: #208108;
+    --color-discount-high: #39b54a;
     --color-price: #453679;
     --color-price-hover: #380ec0;
     --color-description: #18171f;
@@ -58,6 +59,16 @@
     --color-button-comp-sel: #ffffff;
     --color-button-comp-sel-bck: rgb(27, 19, 146);
 
+    /* Product Detail */
+    --color-cat: rgb(94, 75, 129);
+    --color-prod: rgb(75, 75, 122);
+    --color-desc: #1f011f;
+    --color-iconitos: #4e4452;
+    --color-iconitos: #2a3066;
+    --color-price-sell: rgb(71, 30, 148);
+    --color-price-tach: rgba(47, 10, 102, 0.322);
+    --color-price-list: rgb(19, 143, 40);
+
     /* CC Bar */
     --color-bar-i: #cc98ce;
     --color-bar-0: rgb(96, 110, 170) 0%;
@@ -70,10 +81,12 @@
     --color-bar-100: rgb(155, 111, 145) 100%;
 
     /* Footer */
-    --color-footer-back: rgb(21, 8, 29);
-    --color-footer-item: rgb(16, 156, 39);
-    --color-footer-item-select: var(--color-select-option);
-
+    --color-footer-submit: #5900ff5b;
+    --color-footer-item: #4c20c7;
+    --color-footer-subitem: #0e1d27;
+    --color-footer-subitem-hover: #c01e9d;
+    --color-footer-mailbox-bk: rgb(225, 230, 230);
+    --color-footer-bottom: #130124;
 
     /* ------------------------------------------ */
     /* -- Mobile / Desktop font sizes Elements -- */
@@ -93,6 +106,12 @@
     --fz-top-span-mob: 16px;
     --fz-tittle-mob: 22px;
     --fz-tittle-dsk: 30px;
+    --fz-footer-h4-box-mob: 16px;
+    --fz-footer-h4-box-dsk: 17px;
+    --fz-footer-li-box-mob: 14px;
+    --fz-footer-li-box-dsk: 13px;
+    --fz-footer-mail-box-mob: 13px;
+    --fz-footer-mail-box-dsk: 15px;
 
     /* Mobile / Desktop font sizes Form */
     --fz-form-searchV-mob: 30px;
@@ -105,15 +124,15 @@
     --fz-form-input-dsk: 19px;
     --fz-form-legend-mob: 17px;
     --fz-form-legend-dsk: 19px;
-    --fz-form-label-mob: 16px;
-    --fz-form-label-dsk: 19px;
+    --fz-form-label-mob: 14px;
+    --fz-form-label-dsk: 16px;
     --fz-form-link-mob: 18px;
     --fz-form-link-dsk: 20px;
     --fz-form-option-mob: 13px;
     --fz-form-option-dsk: 14px;
 
     /* Mobile / Desktop font sizes Tarjeta Producto */
-    --fz-price-mob: 26px;
+    --fz-price-mob: 27px;
     --fz-price-dsk: 32px;
     --fz-discount-mob: 22px;
     --fz-discount-dsk: 23px;
@@ -121,6 +140,26 @@
     --fz-crtbtt-dsk: 18px;
     --fz-desc-mob: 18px;
     --fz-desc-dsk: 18px;
+
+    /* Mobile / Desktop font sizes Detalle Producto */
+    --fz-dp-price-mob: 32px;
+    --fz-dp-price-dsk: 36px;
+    --fz-dp-pricelst-mob: 22px;
+    --fz-dp-pricelst-dsk: 25px;
+    --fz-dp-discount-mob: 18px;
+    --fz-dp-discount-dsk: 20px;
+    --fz-dp-crtbtt-mob: 16px;
+    --fz-dp-crtbtt-dsk: 18px;
+    --fz-dp-desc-mob: 14px;
+    --fz-dp-desc-dsk: 15px;
+    --fz-dp-cat-mob: 16px;
+    --fz-dp-cat-dsk: 18px;
+    --fz-dp-prod-mob: 24px;
+    --fz-dp-prod-dsk: 28px;
+    --fz-dp-icns-mob: 21px;
+    --fz-dp-icns-dsk: 25px;
+    --fz-dp-icnst-mob: 13px;
+    --fz-dp-icnst-dsk: 15px;
 }
 
 
@@ -138,10 +177,11 @@
     box-sizing: border-box;
 }
 
+
 /* Mains */
 [class^="main-"],
 [class*="-main"]{
-    max-width: 1010px;;
+    max-width: 1010px;
 }
 
 
@@ -163,7 +203,6 @@ h1{
     color: var(--color-article-title);
 }
 
-
 h5{
     font-size: var(--fz-h5-mob);
     padding-bottom: 5px;
@@ -180,7 +219,6 @@ p{
     padding-bottom: 8px;
 }
 
-
 /* -----------------------------------*/
 /* ------------ Header ---------------*/
 /* -----------------------------------*/
@@ -190,8 +228,49 @@ p{
     background: linear-gradient(to right, #eef2f3, #8e9eab);
 }
 
-/* --------- Search Bar  ---------*/
-
+/* -----------------------------------*/
+/*--------- Product Detail -----------*/
+/* -----------------------------------*/
+.container-products-wrapper{
+    background: #d6d6d6;
+    background: -webkit-linear-gradient(to right, #f3f3f3, #d6d6d6);
+    background: linear-gradient(to right, #f3f3f3, #d6d6d6);
+    margin: 45px 0px 0px 0px;
+    color: val(--color-desc);
+}
+/* Categoría */
+.products-title{
+    padding: 8px 5px 5px 10px;
+    color: var(--color-cat);
+    font-family: BauerRegular, 'Roboto', sans-serif;
+    font-size: var(--fz-dp-cat-mob);
+}
+/* Producto */
+.product-detail-title{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 200;
+    font-size: var(--fz-dp-prod-mob);
+    color: var(--color-prod);
+}
+/* Precio */
+.product-detail-price{
+    margin: 10px 0;
+    font-family: HandSean, 'Roboto', sans-serif;
+    text-align: center;
+    font-size: var(--fz-dp-price-mob);
+    margin: 10px 0px 30px;
+    color: var(--color-price-sell);
+}
+p.product-detail-description{
+    background: #e2f7f8b4;
+    background: -webkit-linear-gradient(to left, #f3f3f3, #e2f7f8b4);
+    background: linear-gradient(to left, #ffffff, #e7e7e7b4);
+    font-size: var(--fz-dp-desc-mob);
+    line-height: 1.5;
+    padding: 25px 20px 15px 25px;
+    font-family: 'Roboto', sans-serif;
+    color: var(--color-input-itemr);
+}
 
 /* -----------------------------------------*/
 /* -------- Forms Login / Register  --------*/
@@ -216,11 +295,15 @@ legend{
     font-family: BauerRegular, 'Roboto', sans-serif;
 }
 label{
-    font-family: DanielBK, BauerRegular, 'Roboto', sans-serif;
+    font-family: BauerRegular, DanielBK, BauerRegular, 'Roboto', sans-serif;
 } 
 .container-link a{
     font-family: DanielBK, 'Roboto', sans-serif;
+    font-size: var(--fz-form-link-mob);
     color: var(--color-price);
+}
+p#link a{
+    font-size: var(--fz-form-search-butt-mob);
 }
 #IniSesion{
     font-family: BauerRegular, 'Roboto', sans-serif;
@@ -232,6 +315,7 @@ label{
 #FrgtPass{
     font-family: DanielBK, 'Roboto', sans-serif;
     color: var(--color-input-link);
+    font-size: var(--fz-form-link-mob);
 }
 #FrgtPass:hover{
     color: var(--color-input-ok-hover);
@@ -239,8 +323,8 @@ label{
 #button-in,
 #button-reset,
 #button-register{
-    font-family: HandSean, 'Roboto', sans-serif;
-    font-size: var(--fz-label-mob);
+    font-family: BauerRegular, HandSean, 'Roboto', sans-serif;
+    font-size: var(--fz-link-mob);
     color: var(--color-system-button-item);
     width: 45%;
     padding: 2px 0px;
@@ -284,7 +368,6 @@ input:not([type="submit"],[type="search"],[type="radio"],[type="checkbox"]):focu
 /* ---------- Buttons ----------*/
 /* -----------------------------*/
 button{
-    background-color: #fff;
     font-family: Bitsumishi, 'Roboto', sans-serif;
     background-color: rgb(236, 236, 248);
     color: var(--color-button-plus);
@@ -294,7 +377,6 @@ button{
     cursor: pointer;
     display: block;
     font-size: 14px;
-    padding: 15px;
     padding: 3px 9px;
     margin-top: 5px;
     align-self: center;
@@ -388,13 +470,13 @@ main.main-index section article:hover .description{
 /* ------------------------*/
 /* --- Layouts elements ---*/
 /* ------------------------*/
-.linea{ height: .1rem; }
+.linea{ height: 1.15rem; }
 
-.media-linea{ height: .5rem; }
+.media-linea{ height: .6rem; }
 
-.linea-blanca{ height: .1rem; background-color: white; }
+.linea-blanca{ height: 1.15rem; background-color: white; }
 
-.bocadito{ height: .1rem; width: .5rem; }
+.bocadito{ height: .1rem; width: .6rem; }
 
 .linea_nav{ height: .1rem; }
 

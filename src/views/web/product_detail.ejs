@@ -5,23 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Tecnocom</title>
+        
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/index-styles.css">
+        <link rel="stylesheet" href="css/register-styles.css">
+        <link rel="stylesheet" href="css/header-styles.css">
         <link rel="stylesheet" href="css/product-styles.css">
-        
-        <style> @font-face { 
-                font-family: BauerRegular; src: url(desing/fonts/BAUERG__.TTF); }
-            @font-face { 
-                font-family: OsakaSansSerif; src: url(desing/fonts/osaka-re.ttf); }
-            @font-face { 
-                font-family: ElgethyBoldOblique; src: url(desing/fonts/Elgethy_Bold_Oblique.ttf); }
-            @font-face { 
-                font-family: HandSean; src: url(desing/fonts/handsean.ttf); }
-            @font-face { 
-                font-family: DanielBK; src: url(desing/fonts/danielbk.ttf); }
-            @font-face { 
-                font-family: Coolvetica; src: url(desing/fonts/coolvetica_rg.ttf); }
-        </style>
 
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
         <link href="/desing/fontawesome6/css/fontawesome.css" rel="stylesheet">
@@ -29,62 +18,39 @@
         <link href="/desing/fontawesome6/css/solid.css" rel="stylesheet">
     </head>
 
-    <header>
-
-        <!-- top-header -->
-        <div class="top-header">
-
-            <!-- Logo-->
-            <div class="logo"> 
-                <img src="desing/tecnocom_logo.jpg" width="200" aling="center" alt="Tecnocom Insumos Tecnológicos">
-            </div>
-
-            <!-- Barra de búsquedas -->
-            <form class="form-search" action="#" method="post">
-
-                <div class="submit-search">
-                    <input class="input-search" type="text" name="search" id="search" placeholder="Buscar productos...">
-
-                    <div class="bocadito"></div>
-
-                    <span class="iconito-search">
-                    <i class="fa-solid fa-magnifying-glass  fa-beat" style="--fa-animation-duration: 5s;"></i> 
-                    </span>
-                </div>
-            </div>
-    </header>
     <body>
+        <!-- header -->
 
         <!-- Main (Producto Detail) -->
-        <main class="main-p-detail">
-            <div class="container products-wrapper">
+        <main class="main-productDetail">
+            <div class="container-products-wrapper">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="products-title">Detalle del producto: NOMBRE DEL PRODUCTO</h2>
+                        <h2 class="products-title">Categoría: Monitores</h2>
                     </div>
                 </div>
                 <div class="product-detail">
+                    <div class="bar-ccb" id"cc-bar"></div>
                     <div class="row">
                         <div class="col-12 col-lg-8">
                             <img src="/images/products/monitor_benq.png" alt="product image" class="product-detail-img">
                             <p class="product-detail-description">
-                                PRODUCT DESCRIPTION
+                                <b>Descripción:</b> IMPRESIONANTE PANTALLA QHD 2K Disfrute de una calidad de imagen inmaculada 16 9 con resolución 2K QHD 2560x1440 en un panel de ángulo de visión IPS amplio con 95% de espacio de color DCI-P3.<br><br>- EYE CARE:
+                                El producto posee tecnologías de cuidado ocular lideres en la industria de BenQ.
+                                Reduce la fatiga ocular ototgandole una mayor comodidad al usuario luego de un tiempo prolongado de uso.<br><br>-RECORDATORIO DE OJO:
+                                Sensor infrarrojo para detectar la presencia del usuario, y realizar el seguimiento de tiempo de escritorio para sugerir un descanso.
                             </p>
                         </div>
                         <div class="col-12 col-lg-4">
                             <article class="product-detail-info">
-                                <h2 class="product-detail-title">PRODUCT NAME</h2>
+                                <h2 class="product-detail-title">Benq Led Monitor Ex2780q Metallic 2k 144hz</h2>
                                 
                                     <p class="product-detail-price small">
-                                        <span>$PRICE</span>
-                                        /
-                                        <b>DISCOUNT% OFF</b>
+                                        <span class="tach">$119.999</span>
+                                        <b class="off">/  5% Off</b>
                                     </p>
                                     <p class="product-detail-price">
-                                        $FINAL PRICE
-                                    </p>
-                                    <p class="product-detail-price">
-                                        $PRICE
+                                        $113.999
                                     </p>
         
                                 <ul class="actions-list">
@@ -93,23 +59,26 @@
                                         <p>Pagá en 12 cuotas sin interes</p>
                                     </li>
                                     <li>
-                                        <i class="fas fa-store"></i>
-                                        <p>Retiro gratis en locales del vendedor</p>
+                                        <i class="fa-solid fa-truck-fast"></i>
+                                        <p>Envíos a todo el país</p>
                                     </li>
                                 </ul>
         
                                 <a href="#" class="buy-now-button">COMPRAR AHORA</a>
                                 <hr>
-        
-                                <a href="/products/edit/¿?" class="action-button edit">EDITAR PRODUCTO</a>
-                                <form action="/products/delete/¿¿" method="POST" style="display: inline-flex">
-                                    <button type="submit" class="action-button delete">ELIMINAR</button>
-                                </form>
+                                <div class="butons">
+                                    <a href="/products/edit/¿?" class="action-button edit">Editar</a>
+                                    <form action="/products/delete/¿¿" method="POST" style="display: inline-flex">
+                                        <button type="submit" class="action-button delete">Eliminar</button>
+                                    </form>
+                                </div>
+                                
                             </article>
                         </div>
                     </div>
                 </div>
             </div>
+        </main>
         <!-- Footer -->
             
     </body>
