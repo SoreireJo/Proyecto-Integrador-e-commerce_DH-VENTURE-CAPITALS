@@ -9,9 +9,8 @@ img {
 /* -----------------------------------*/
 
 header.container {
-  /* padding: 10px 0; */
   position: relative;
-  height: 200px;
+  height: auto;
 }
 header div.container-header-box {
   align-items: center;
@@ -272,15 +271,13 @@ header .navbar-burger:checked + .navbar{
 
 
 
-
-  margin-bottom:45px;
+  margin-bottom:75px;
   width:100%;
   flex-direction:column;
   position: fixed;
   margin-top: 470px;
 
   
-
   margin-top: 461px;
 }
 header .navbar{
@@ -342,11 +339,12 @@ header .navbar{
   header.container {
     height: inherit;
     height: 180px;
+
+
+    height: auto;
   }
 
   
-
-
 
   header div.container-header {
     max-width: 980px;
@@ -408,6 +406,8 @@ header .navbar{
   }
   .navbar{
     height: 40px;
+
+    height: auto;
   }
   #navbar .icons {
     align-items: center;
@@ -419,6 +419,9 @@ header .navbar{
   }
   #navbar .icons .item a {
     padding: 20px 10px;
+
+
+    padding: 0px 10px;
   }
   .bocadito_nav{ height: .1rem; width: .5rem; }
   .linea_nav{ height: .2rem; }
@@ -429,10 +432,25 @@ header .navbar{
 
   div.container-navbar{
     height: 20px;
+
+
+    height: auto;
   }
 
   div.item{
     height: 20px;
+
+
+    height: auto;
+  }
+  .container-link a{
+    font-size: var(--fz-form-link-dsk);
+  }
+  p#link a{
+    font-size: var(--fz-form-search-butt-dsk);
+  }
+  #FrgtPass{
+    font-size: var(--fz-form-link-dsk);
   }
 }
 
