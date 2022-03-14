@@ -1,0 +1,217 @@
+/* --------------------------------*/
+/* -- Vistas de Varios Productos --*/
+/* --------------------------------*/
+main.main-index {
+    width: 90%;
+    margin: auto;
+    height: auto;
+}
+
+/* section.offers, y todas las */
+/* sections vista de producto  */
+main.main-index section.sec-last-tec,
+main.main-index section.sec-offers{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* align-items: flex-start; */
+}
+
+main.main-index  section article{
+    margin: 10px 0px;
+}
+
+section, main.main-index  section article img{
+    width: 100%;
+}
+
+
+/* -------------------------------*/
+/* ---- Detalles del Artículo ----*/
+/* -------------------------------*/
+main.main-index article div.main-article {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    padding: 15px;
+}
+
+main.main-index section div.products {
+    width: 100%;
+}
+
+main.main-index article div.main-card-img {
+    display: flex;
+    justify-content: center;
+    height: 220px;
+    width: 100%;
+}
+
+div.main-card-img img.product_img {
+    padding: 1px;
+    object-fit: contain;
+}
+
+.linea-blanca{
+    height: .5rem;
+}
+
+
+/* ----------------*/
+/* ---- Precio ----*/
+/* ----------------*/
+main.main-index .price {
+    font-size: var(--fz-price-mob);
+    color: var(--color-price);
+    align-self: center;
+}
+
+
+/* -------------------*/
+/* ---- Descuemto ----*/
+/* -------------------*/
+main.main-index .discount {
+    align-self: flex-end;
+    text-align: right;
+    font-size: var(--fz-discount-mob);
+    color: var(--color-discount);
+}
+
+
+/* ---------------------*/
+/* ---- Descripción ----*/
+/* ---------------------*/
+main.main-index .description {
+    /* display: "none"; */
+    font-size: var(--fz-desc-mob);
+    color: var(--color-description);
+    margin-top: 20px;
+    width: 90%;
+}
+
+
+/* --------------*/
+/* ---- Sell ----*/
+/* --------------*/
+
+span.sell{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+button.buttAgregar,
+button.buttComprar{
+    font-size: var(--fz-crtbtt-mob);
+    width: 95%;
+}
+
+
+
+/* -------------------------------*/
+/* ------- Media Querys ----------*/
+/* -------------------------------*/
+/* ----------- +440 --------------*/
+/* -------------------------------*/
+@media (min-width: 441px){
+    /* Para la vista de productos modo mobile  */
+    /* mostrando 1 producto por fila           */
+    main.main-index section div.products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        /* align-items: flex-start; */
+    }
+    main.main-index section div.products article {
+        width: 45%;
+    }
+}
+
+
+/* -------------------------------*/
+/* ------- Media Querys ----------*/
+/* -------------------------------*/
+/* ----------- +640 --------------*/
+/* -------------------------------*/
+@media (min-width: 640px){
+    /* Aquí pasamos los fonts a tamaño dsk     */
+    /* También podría expandirse algún flex    */
+    /*   También un control extra en flexs     */
+    /*   de vista de varios productos          */
+    .linea-blanca{
+        height: 1rem;
+    }
+    h1{
+        font-size: var(--fz-h1-dsk);
+    }
+    h5{
+        font-size: var(--fz-h5-dsk);
+        padding-bottom: 5px;
+    }
+    h6{
+        font-size: var(--fz-h6-dsk);
+    }
+    [class^="titulo-"]{
+        font-size: var(--fz-tittle-dsk);
+    }
+    p{
+        font-size: var(--fz-p-dsk);
+        padding-bottom: 8px;
+    }
+    .price {
+        font-size: var(--fz-price-dsk);
+    }
+    .discount{
+        font-size: var(--fz-discount-dsk);
+    }
+    main.main-index section article .description{
+        font-size: var(--fz-desc-dsk);
+    }
+    main.main-index section article:hover .description{
+        font-size: var(--fz-desc-dsk);
+        font-weight: bold;
+    }
+    main.main-index section article button.buttAgregar,
+    main.main-index section article button.buttComprar{
+        font-size: var(--fz-crtbtt-dsk);
+    }
+}
+
+
+/* -------------------------------*/
+/* ------- Media Querys ----------*/
+/* -------------------------------*/
+/* ----------- +769 --------------*/
+/* -------------------------------*/
+@media (min-width: 769px){
+    /* Aquí controlamos que algunos elementos, */
+    /*   ej. inputs no crezcan tanto,          */
+    /*   También un control extra en flexs     */
+    /*   de vista de varios productos          */
+    main.main-index section div.products article {
+        width: 22%;
+    }
+    main.main-index section div.products p.discount, .price{
+        width: auto;
+    }
+    .linea-blanca{
+        height: 0rem;
+    }
+}
+
+
+/* -------------------------------*/
+/* ------- Media Querys ----------*/
+/* -------------------------------*/
+/* ----------- +1010 -------------*/
+/* -------------------------------*/
+@media (min-width: 1010px){
+    /* Aquí algunos flex column pasan a row */
+    /* para un modo desktop total           */
+    .linea-blanca{
+        height: 1.25rem;
+    }
+}

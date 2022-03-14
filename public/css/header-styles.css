@@ -1,0 +1,477 @@
+
+img {
+  width: initial;
+  width: 90%;
+}
+
+/* -----------------------------------*/
+/* ------------ Header ---------------*/
+/* -----------------------------------*/
+
+header.container {
+  position: relative;
+  height: auto;
+}
+header div.container-header-box {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: column;
+}
+/* -------------------------------*/
+/* ----------- logo --------------*/
+/* -------------------------------*/
+
+img.header-logo {
+  max-width: 100%;
+}
+header div.container-header-logo {
+  width: 60%;
+  margin-bottom: 0.3rem;
+}
+
+/* -------------------------------*/
+/* --------- Search Bar  ---------*/
+/* -------------------------------*/
+
+header div.header-search {
+  margin-bottom: 0.8rem;
+  position: relative;
+  width: 90%;
+}
+header div.header-search form {
+  display: flex;
+  margin: 0;
+  align-items: center;
+}
+header div.header-search input {
+  padding: 11px 8px 11px 15px;
+  width: 100%;
+  height: var(--fz-form-searchV-mob);
+  border: none;
+  outline: none;
+  border-radius: 6px 0px 0px 6px;
+  box-shadow: 0px 1px 2px var(--color-select-option-shdw);
+}
+header button.search-button {
+  height: var(--fz-form-searchV-mob);
+  background-color: #f5f5f5;
+  background-color: (--color-system-button);
+  border: none;
+  margin: 0;
+  padding: 9px;
+  cursor: pointer;
+  border-radius: 0px 6px 6px 0px;
+}
+header button i {
+  color: var(--color-system-button-i);
+  font-size: var(--fz-form-search-butt-mob);
+}
+
+/* -----------------------------*/
+/* ------- Social Media --------*/
+/* -----------------------------*/
+
+header div.container-header-social-users-buy {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+}
+
+header div.container-header-socialNetworks {
+  align-items: center;
+  display: flex;
+}
+
+header div.socialNetworks-title {
+  color: #fff;
+  font-size: 12px;
+  width: 20%;
+  padding: 0 10px 0 0;
+  display: none;
+}
+
+header div.socialNetworks-btn {
+  padding: 0 0 0 8px;
+  width: 16%;
+
+
+  padding: 0 0 0 16px;
+    width: 17%;
+}
+header div.socialNetworks-btn img {
+  width: 20px;
+
+
+  width: 27px;
+}
+header div.socialNetworks-sep {
+  padding: 0 0 0 20px;
+}
+/* -------------------------------*/
+/* --------- Acces User ----------*/
+/* -------------------------------*/
+
+header div.container-header-users {
+  position: relative;
+}
+header div img.user-images {
+    max-width: 18px;
+
+
+    max-width: 23px;
+  }
+
+header div ul.users-link {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+header div ul li:first-child {
+  border-top: 0;
+}
+
+header div ul.users-link li a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+}
+
+header div ul li {
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* -------------------------------*/
+/* ---------- Acces Truck --------*/
+/* -------------------------------*/
+
+
+header div.number {
+  align-items: center;
+  background-color: #00b7e6;
+  border-radius: 100%;
+  color: #fff;
+  display: flex;
+  font-size: 8px;
+  height: 18px;
+  justify-content: center;
+  position: absolute;
+  right: -5px;
+  text-align: center;
+  top: -5px;
+  width: 18px;
+}
+
+/* -------------------------------*/
+/* ---- Acces User and Truck -----*/
+/* -------------------------------*/
+
+header button.users-dropdown-opener {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  margin: 0 18px 0 0px; 
+  outline: 0;
+  position: relative;
+}
+  
+header div .users-dropdown {
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: var(--area-shadow);
+  display: none;
+  right: 0;
+  padding: 10px;
+  position: absolute;
+  top: 50px;
+  width: auto;
+  z-index: 15;
+}
+
+header .users-menu, .users-truck{
+  display:none;
+}
+header  .users-menu:checked + .users-dropdown,.users-truck:checked + .users-dropdown{
+  display: block;
+}
+
+
+
+/* ----------------------------*/
+/* --------- Top Nav ----------*/
+/* ----------------------------*/
+header div.navbar {
+  display:none;
+  
+}
+#navbar .icons .item a {
+  font-family: 'Roboto', sans-serif;  
+  color: var(--color-system-button);
+  color: #2a1074;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+  text-decoration: none;
+  --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
+
+
+
+}
+
+#navbar .icons .item a::after{
+content: "";
+display: block;
+background: #48b118;
+width: 90%;
+height: 3px;
+margin-top: 3px;
+clip-path: var(--clippy);
+transition: all ease .3s;
+
+}
+#navbar .icons .item a:hover{
+--clippy:polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+/* ----------------------------*/
+/* ------- Burguer Menu -------*/
+/* ----------------------------*/
+.burger-menu  {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  padding: 0px 115px;
+
+
+  padding: 0px 150px;
+}
+.burger-menu i {
+  color: var(--color-system-button);
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: #12aec3d8;
+  margin: 5px 0px 5px 0px;
+  padding: 7px;
+}
+header input.navbar-burger{
+  display:none;
+}
+header .navbar-burger:checked + .navbar{
+  z-index: 2;
+  align-items: center;
+  display: flex;
+  margin-left: -1px;
+  background: #8e9eab;
+    background: -webkit-linear-gradient(to bottom, #ebe5dd, #8e9eab);
+    background: linear-gradient(to bottom, #ebe5dd, #8e9eab);
+
+
+
+  margin-bottom:75px;
+  width:100%;
+  flex-direction:column;
+  position: fixed;
+  margin-top: 470px;
+
+  
+  margin-top: 461px;
+}
+header .navbar{
+  position: absolute;
+}
+
+
+
+/* -------------------------------*/
+/* ------- Media Querys ----------*/
+/* -------------------------------*/
+@media (min-width: 400px) {
+  /* Aquí pasamos los fonts a tamaño dsk     */
+  /* También podría expandirse algún flex    */
+  /*   También un control extra en flexs     */
+  /*   de vista de varios productos          */
+
+  header.container {
+    height: 150px;
+
+
+
+    height: 180px;
+  }
+  header div.container-header {
+    margin: 0 auto;
+    max-width: 680px;
+    padding: 0 20px;
+  }
+  header div.container-header-box {
+    justify-content: space-around;
+    flex-direction: inherit;
+  }
+  header div.container-header-logo {
+    width: 40%;
+    margin-bottom: 0rem;
+  }
+  header div.header-search {
+    width: 60%;
+    margin-bottom: 0rem;
+  }
+  header div.container-header-social-users-buy {
+    margin-top: 0.5rem;
+  }
+  .burger-menu  {
+    padding: 0px 230px;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Aquí controlamos que algunos elementos, */
+  /*   ej. inputs no crezcan tanto,          */
+  /*   También un control extra en flexs     */
+  /*   de vista de varios productos          */
+
+  img {
+    width: 100%;
+  }
+  header.container {
+    height: inherit;
+    height: 180px;
+
+
+    height: auto;
+  }
+
+  
+
+  header div.container-header {
+    max-width: 980px;
+  }
+  header div.container-header-box {
+    justify-content: space-between;
+    flex-direction: initial;
+  }
+  header div.container-header-logo {
+    width: 20%;
+  }
+  header div.header-search {
+    width: 40%;
+  }
+  header button i {
+    font-size: var(--fz-form-search-butt-dsk);
+  }
+  header div.container-header-social-users-buy {
+    width: 35%;
+    margin-top: 0rem;
+  }
+  header div.socialNetworks-title {
+    display: block;
+  }
+  header div.socialNetworks-btn {
+    padding: 0 0 0 10px;
+    width: 15%;
+  }
+  header div.socialNetworks-sep {
+    padding: 0 0 0 8px;
+    max-width: 100%;
+  }
+  header div.socialNetworks-btn img {
+    max-width: 100%;
+  }
+  header button.users-dropdown-opener {
+    margin: 0 0 0 5px;
+  }
+  header div img.user-images {
+    max-width: 100%;
+  }
+  header div.header-search input,
+  header button.search-button {
+    height: var(--fz-form-searchV-dsk);
+  }
+  /* --------- Top Nav ----------*/
+  .burger-menu  {
+    position:relative;
+    padding: 0;
+  }
+  header div.navbar {
+    display:block;
+    position:relative;
+  }
+  header div.container-navbar {
+    max-width: 658px;
+    padding: 0 20px;
+    margin: 0 auto;
+  }
+  .navbar{
+    height: 40px;
+
+    height: auto;
+  }
+  #navbar .icons {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+  #navbar .icons .item  {
+    padding: 0 18px;
+  }
+  #navbar .icons .item a {
+    padding: 20px 10px;
+
+
+    padding: 0px 10px;
+  }
+  .bocadito_nav{ height: .1rem; width: .5rem; }
+  .linea_nav{ height: .2rem; }
+  /* ------- Burguer Menu -------*/
+  .burger-menu i{
+    display:none
+  }
+
+  div.container-navbar{
+    height: 20px;
+
+
+    height: auto;
+  }
+
+  div.item{
+    height: 20px;
+
+
+    height: auto;
+  }
+  .container-link a{
+    font-size: var(--fz-form-link-dsk);
+  }
+  p#link a{
+    font-size: var(--fz-form-search-butt-dsk);
+  }
+  #FrgtPass{
+    font-size: var(--fz-form-link-dsk);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Aquí algunos flex column pasan a row */
+  /* para un modo desktop total           */
+
+  header div.container-header {
+    max-width: 1180px;
+  }
+  header div.container-header-social-users-buy {
+    justify-content: normal;
+  }
+  header div.socialNetworks-title {
+    font-size: 15px;
+  }
+  /* --------- Top Nav ----------*/
+  header div.container-navbar {
+    max-width: 980px;
+  }
+  #navbar .icons .item  {
+    padding: 0 45px;
+  }
+}
