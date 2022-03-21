@@ -4,87 +4,87 @@
         "name": "Benq Led Monitor Ex2780q Metallic 2k 144hz",
         "price": 119999,
         "discount": 5,
+        "stock": 8,
+        "promo": "last",
         "category": "Monitores",
         "description": "IMPRESIONANTE PANTALLA QHD 2K Disfrute de una calidad de imagen inmaculada 16 9 con resolución 2K QHD 2560x1440 en un panel de ángulo de visión IPS amplio con 95% de espacio de color DCI-P3.",
-        "image": "monitor_benq.png",
-        "stock": 8,
-        "visited": true
+        "image": "monitor_benq.png"
     },
     {
         "id": 2,
         "name": "Auriculares Cat Ear Headset Plegable Led Light Cosplay",
         "price": 9809,
         "discount": 20,
+        "stock": 11,
+        "promo": "offer",
         "category": "Audio",
         "description": "IMPRESIONANTE PANTALLA QHD 2K Disfrute de una calidad de imagen inmaculada 16 9 con resolución 2K QHD 2560x1440 en un panel de ángulo de visión IPS amplio con 95% de espacio de color DCI-P3",
-        "image": "auriculares-girl.png",
-        "stock": 11,
-        "visited": true
+        "image": "auriculares-girl.png"
     },
     {
         "id": 3,
         "name": "Mouse inalámbrico Logitech Lightspeed blue",
         "price": 3399,
         "discount": 15,
+        "stock": 18,
+        "promo": "offer",
         "category": "Periféricos",
         "description": "Los dispositivos Logitech cuentan con un diseño ergonómico pensado para tu confort. Lightspeed es una tecnología ultrarrápida y confiable con desempeño probado en competencias por profesionales. No vuelvas a preocuparte por la duración de la batería. Simplemente, el mouse se mantiene cargado.",
-        "image": "mouse-cyan.png",
-        "stock": 18,
-        "visited": true
+        "image": "mouse-cyan.png"
     },
     {
         "id": 4,
         "name": "Monitor Gamer 24 Viewsonic 240hz",
         "price": 83999,
         "discount": 5,
+        "stock": 1,
+        "promo": "offer",
         "category": "Monitores",
         "description": "La tecnología AMD FreeSync™ Premium sincroniza el monitor con la salida GPU, que elimina fragmentaciones y retraso en la pantalla. La tecnología Fast-IPS combina colores intensos, un contraste sorprendente y amplios ángulos de visión, y, a su vez, ofrece tiempos de respuesta hasta 4 veces más rápidos que las pantallas tradicionales.",
-        "image": "monitor-omni",
-        "stock": 1,
-        "visited": true
+        "image": "monitor-omni.png"
     },
     {
         "id": 5,
         "name": "Monitor gamer Gadnic G4D71N-F 27",
         "price": 31999,
         "discount": 5,
+        "stock": 4,
+        "promo": "last",
         "category": "Monitores",
         "description": "Este monitor de 27 te va a resultar cómodo para estudiar, trabajar o ver una película en tus tiempos de ocio. Asimismo, su resolución de 1920 x 1080 te permite disfrutar de momentos únicos gracias a una imagen de alta fidelidad.",
-        "image": "monitor_gadnig.png",
-        "stock": 4,
-        "visited": false
+        "image": "monitor_gadnig.png"
     },
     {
         "id": 6,
         "name": "Tablet con funda Gadnic Taurus 10.1",
         "price": 35399,
         "discount": 10,
-        "category": "Tablets",
-        "description": "Esta tablet es ideal para cada una de tus actividades: editar fotos, documentos, navegar por internet y ¡mucho más! Su diseño delgado, compacto y portátil es la combinación perfecta de rendimiento y versatilidad.",
-        "image": "tablet_blanca.png",
         "stock": 2,
-        "visited": false
+        "promo": "offer",
+        "category": "Notebooks",
+        "description": "Esta tablet es ideal para cada una de tus actividades: editar fotos, documentos, navegar por internet y ¡mucho más! Su diseño delgado, compacto y portátil es la combinación perfecta de rendimiento y versatilidad.",
+        "image": "tablet_blanca.png"
     },
     {
         "id": 7,
         "name": "Mouse inalámbrico recargable Razer Basilisk Ultimate",
         "price": 20278,
         "discount": 5,
+        "stock": 25,
+        "promo": "offer",
         "category": "Periféricos",
         "description": "La funcionalidad al alcance de tu mano: El sistema de detección de movimiento óptico te permitirá mover el cursor de una manera más precisa y sensible que en los sistemas tradicionales. Rapidez y confiabilidad de los botones. Con sus 11 botones podrás tener mayor control e independencia para ejecutar.",
-        "image": "mouse-razer-basilik.png",
-        "stock": 25,
-        "visited": false
+        "image": "mouse-razer-basilik.png"
     },
     {
         "id": 8,
         "name": "Auriculares gamer HyperX Cloud Stinger negro",
         "price": 17999,
         "discount": 15,
+        "promo": "offer",
+        "stock": 20,
         "category": "Audio",
         "description": "¡Experimentá la adrenalina de sumergirte en la escena de otra manera! Tener auriculares específicos para jugar cambia completamente tu experiencia en cada partida. Con los HyperX Stinger no te perdés ningún detalle y escuchás el audio tal y como fue diseñado por los creadores.",
-        "image": "auricular-hiper-x.png",
-        "stock": 20,
-        "visited": false
+        "image": "auricular-hiper-x.png"
     }
 ]
