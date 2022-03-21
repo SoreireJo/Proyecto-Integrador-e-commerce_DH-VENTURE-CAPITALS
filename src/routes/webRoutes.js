@@ -9,6 +9,4 @@ router.get('/login', webControllers.login);
 
 router.get('/register', webControllers.register);
 
-router.get('/product_detail', webControllers.product_detail);
-
 module.exports = router;

@@ -14,7 +14,4 @@ module.exports = {
     register: (req, res) => {
         res.render('register');
     },
-    product_detail: (req, res) => {
-        res.render('product_detail');
-    }  
 }
