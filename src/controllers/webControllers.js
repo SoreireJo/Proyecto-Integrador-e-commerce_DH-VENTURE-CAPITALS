@@ -1,11 +1,11 @@
+const fs = require('fs');
 const path = require('path');
+
+const productsFilePath = path.join(__dirname, '../data/productsDB.json');
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 module.exports = {
     index: (req, res) => {
-        //return res.send('como vamos hasta aqui');
-        //res.sendFile(path.resolve(__dirname,'../views/web/home.html'));
-        //res.render(path.resolve(__dirname,'../views/web/home'),{familia: miFamilia});
-        //  res.render(path.resolve(__dirname,'../views/web/index'));
         res.render('index');
     },
     login: (req, res) => {
@@ -19,5 +19,15 @@ module.exports = {
     },
     productCreateForm: (req, res) => {
         res.render('productCreateForm');
-    }  
+    },
+    store: (req, res) => {
+		let newProduct = {
+			id: products[products.length - 1].id + 1,
+			...req.body,
+            image: req.file.filename
+		};
+		products.push(newProduct);
+		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
+		res.redirect('/');
+	}
 }
