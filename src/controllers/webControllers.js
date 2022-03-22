@@ -1,11 +1,11 @@
+const fs = require('fs');
 const path = require('path');
+
+const productsFilePath = path.join(__dirname, '../data/productsDB.json');
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 module.exports = {
     index: (req, res) => {
-        //return res.send('como vamos hasta aqui');
-        //res.sendFile(path.resolve(__dirname,'../views/web/home.html'));
-        //res.render(path.resolve(__dirname,'../views/web/home'),{familia: miFamilia});
-        //  res.render(path.resolve(__dirname,'../views/web/index'));
         res.render('index');
     },
     login: (req, res) => {
@@ -13,5 +13,5 @@ module.exports = {
     },    
     register: (req, res) => {
         res.render('register');
-    },
+    }
 }
