@@ -1,0 +1,10 @@
+El usuario ingreso a: /products/detail/
+El usuario ingreso a: /products/detail
+El usuario ingreso a: /products/detail
+El usuario ingreso a: /products/detail
+El usuario ingreso a: /products/detail
+El usuario ingreso a: /products/detail
+El usuario ingreso a: /products/detail
+El usuario ingreso a: /products/detail
+El usuario ingreso a: /products/detail
+El usuario ingreso a: /
