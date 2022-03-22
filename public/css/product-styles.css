@@ -78,7 +78,7 @@ main{
     display: block;
     text-align: center;
     padding: 10px;
-    width: 100%;
+    width: 80%;
     background-color: #3987fc;
     color: white;
     margin-bottom: 15px;
@@ -86,17 +86,17 @@ main{
 
 .butons{
     display: flex;
-    flex-direction: row;
-    margin: 5px;
+    flex-direction: column;
+    margin: 5px 5px 20px;
     padding: 10px;
     flex-wrap: wrap;
     justify-content: space-around;
-    width: 100%;
+    width: 80%;
 }
 
 
-.edit{
-    background-color: rgb(11, 93, 141);
+.create{
+    background-color: rgb(36, 102, 42);
     color: var(--color-button-plus-sel);
     border-radius: 7px;
     border: solid 1px #bfc2c2b4;
@@ -105,11 +105,22 @@ main{
     margin-top: 5px;
     font-family: 'Roboto', sans-serif;
     font-size: var(--fz-crtbtt-mob);
+}
 
+.edit{
+    background-color: rgb(155, 98, 34);
+    color: var(--color-button-plus-sel);
+    border-radius: 7px;
+    border: solid 1px #bfc2c2b4;
+    text-align: center;
+    padding: 10px 30px;
+    margin-top: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: var(--fz-crtbtt-mob);
 }
 
 .delete{
-    background-color: rgb(58, 5, 5);
+    background-color: rgb(114, 46, 46);
     color: var(--color-button-plus-sel);
     border-radius: 7px;
     border: solid 1px #bfc2c2b4;
@@ -118,6 +129,7 @@ main{
     padding: 8px 20px;
     font-family: 'Roboto', sans-serif;
     font-size: var(--fz-crtbtt-mob);
+    width: 100%;
 }
 
 @media (max-width: 361px){
@@ -131,6 +143,157 @@ main{
         margin: auto;
     }
 }
+
+
+/* -----------------------------*/
+/* ---- Formulario de Carga ----*/
+/* -----------------------------*/
+.row,
+.container-products-wrapper{
+    margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.form-crud-wrap{
+    margin: 0 auto;
+}
+
+div.form-crud h3 form,
+legend {
+    margin: 15px 15px;
+}
+fieldset {
+    border-radius: 12px;
+}
+
+.form-label{
+    font-family: DanielBK, sans-serif;
+}
+
+.row-product-detail{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    height: auto;
+    width: 90%;
+}
+
+.form-crud-md{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 0 auto;
+    height: auto;
+}
+
+div.form-crud,
+div.form-crud-oth {
+    display: inline-block;
+    font-size: var(--fz-form-label-mob);
+    color: var(--color-label);
+    padding-bottom: 5px;
+}
+
+div.form-crud-oth{
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    color: var(--color-input-item);
+    width: 90%;
+}
+
+
+div.form-crud .form-input
+{
+    display: block;
+    height: 45px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    color: var(--color-input-item);
+}
+
+div.form-crud-oth textarea {
+    min-height: 12em;
+    resize: vertical;
+    padding: 15px;
+    width: 100%;
+}
+
+.form-crud-m1{
+    width: 70%;
+}
+.form-crud-m2,
+.form-crud-m3{
+    width: 100%;
+    padding: 15px;
+}
+
+select {
+    width: 100%;
+}
+
+.form-crud {
+    flex: 0 0 70%;
+    padding: 15px;
+}
+
+div.form-crud-oth{
+    padding: 15px;
+}
+
+.form-crud-md {
+    width: 100%;
+}
+
+.img-detail{
+    width: 100%;
+}
+
+#but {
+    justify-content: space-around;
+}
+
+div.buttons-block {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.button-form {
+    width: auto;
+    margin: 3px;
+    padding: 8px 30px 8px 30px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: var(--color-button-form);
+    font-family: DanielBK, sans-serif;
+}
+
+#cancel {
+    color: rgb(70, 70, 70);
+}
+
+#ok {
+    color: #0f095c;
+}
+
+#ok:hover {
+    color: #1507df;
+    background-color: rgb(188, 188, 189);
+}
+
+#cancel:hover {
+    color: rgb(15, 15, 15);
+    background-color: rgb(188, 188, 189);
+}
+
+
 
 /* -------------------------------*/
 /* ------- Media Querys ----------*/
@@ -165,4 +328,48 @@ main{
     .actions-list li p{
         font-size: var(--fz-dp-icnst-dsk);
     }
+}
+
+/* -------------------------------*/
+/* ------- Media Querys ----------*/
+/* -------------------------------*/
+/* ----------- +960 --------------*/
+/* -------------------------------*/
+@media (min-width: 960px){
+    .row-product-detail{
+        flex-direction: row;
+        width: 100%;
+    }
+    div.form-crud h3 form{
+        margin: 15px 0px 5px;
+    }
+    legend{
+        margin: 15px 30px;
+    }
+    div.form-crud .form-input {
+        display: block;
+        width: 100%;
+        height: 35px;
+        margin-bottom: 8px;
+        border-radius: 7px;
+        padding: 0 15px;
+    }
+    div.form-crud textarea.form-input {
+        min-height: 12em;
+        padding: 10px;
+        width: 100%;
+    }
+    .form-crud-m1 {
+        min-width: 70%;
+    }
+    .form-crud-m2 {
+        max-width: 30%;
+    }
+    .form-crud-m3 {
+        max-width: 25%;
+    }
+    .img-detail{
+        width: 95%;
+    }
+    
 }
