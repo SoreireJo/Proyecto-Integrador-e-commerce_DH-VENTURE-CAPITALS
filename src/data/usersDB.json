@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "firstName": "José Luis",
+        "lastName": "Soreire",
+        "userName": "SoreireJo",
+        "eMail": "soreirejoseluis@yahoo.com.ar",
+        "password": "123",
+        "category": "admin",
+        "image": "jose.png"
+    },
+    {
+        "id": 2,
+        "firstName": "Juán",
+        "lastName": "Perez",
+        "userName": "JPerez",
+        "eMail": "perezjuan@yahoo.com.ar",
+        "password": "1234",
+        "category": "user",
+        "image": "juan.png"
+    }
+]

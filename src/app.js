@@ -14,7 +14,6 @@ app.use(logMiddleware);
 app.set('views', path.join(__dirname, './views/web/'));
 app.set('view engine', 'ejs')
 
-
 app.use('/', webRoutes);
 app.use('/products', productsRoute)
 
@@ -22,43 +21,3 @@ app.use('/products', productsRoute)
 app.listen(3001, () => {
     console.log("Tecnocom e-commerce inició en el puerto 3001");
 });
-
-/* 
-
-app.get("/", (req, res) => {
-    // Va a la Home
-    res.sendFile(path.join(__dirname, "./views/web/index.html"));
-});
-
-app.get("/login", (req, res) => {
-    // Login
-    res.sendFile(path.join(__dirname, "./views/web/login.html"));
-});
-
-app.get("/register", (req, res) => {
-    // Registro
-    res.sendFile(path.join(__dirname, "./views/web/register.html"));
-});
-
-app.get("/product", (req, res) => {
-    // Detalle de Producto
-    res.sendFile(path.join(__dirname, "./views/web/productDetail.html"));
-});
-
-app.get("/product_cart", (req, res) => {
-    // Carrito de Compras
-    res.sendFile(path.join(__dirname, "./views/web/productCart.html"));
-});
-
-*/
-
-app.get("/product-detail", (req, res) => {
-    // Va a la Home
-    res.sendFile(path.join(__dirname, "./views/product/product_detail.html"));
-});
-
-app.get("/product-create-form", (req, res) => {
-    // Va a la Home
-    res.sendFile(path.join(__dirname, "./views/product/product-create-form.html"));
-});
-

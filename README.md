@@ -41,7 +41,6 @@ Usamos [Github](http://github.org/) para el versionado. Para todas las versiones
 
 
 * **Chanampe, Nerea** - *Desarrollador* - [NereaChanampe](https://github.com/NereaChanampe)
-* **Grasselli, Julian** - *Desarrollador* - [juliangrasselli](https://github.com/juliangrasselli)
 * **Montero, Luciano** - *Desarrollador* -  [lgmontero](https://github.com/lgmontero)
 * **Soreire, Jose Luis** - *Desarrollador* -  [SoreireJo](https://github.com/SoreireJo)
 * **Vera Gomez, Sigrid** - *Desarrollador* -  [sigridvg](https://github.com/sigridvg)
@@ -58,6 +57,8 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 * [Likely](https://likely.es/account/register) - Diseño de pagina web.
 * [fullh4rd](https://www.fullh4rd.com.ar/) - Estética vistosa, funcionalidad amigable y tipo de producto similar.
 
+### Trello 📋
+* [Trello - TecnoCom](https://trello.com/b/PhOrSyRC/tecnocom-project)
 
 ---
 ⌨️ con ❤️ por [TecnoCom](url de nuestra futura pagina) 😊

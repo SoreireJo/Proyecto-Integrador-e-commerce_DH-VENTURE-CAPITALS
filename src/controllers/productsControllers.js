@@ -5,9 +5,7 @@ module.exports = {
      
     },
     detail: (req, res) => {
-        res.render('product_detail');
-    },    
-    create: (req, res) => {
-        res.render('product-create-form');
-    }  
+        res.render('product/product_detail');
+    }
+
 }
