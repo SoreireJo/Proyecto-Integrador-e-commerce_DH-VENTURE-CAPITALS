@@ -60,5 +60,8 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 ### Trello 📋
 * [Trello - TecnoCom](https://trello.com/b/PhOrSyRC/tecnocom-project)
 
+### Board de la Retrospectiva
+* [Boldare - TecnoCom](https://boards.boldare.com/board/4eb4d5eb83774cbe8276c41191bce2dd)
+
 ---
 ⌨️ con ❤️ por [TecnoCom](url de nuestra futura pagina) 😊
