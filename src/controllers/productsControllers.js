@@ -1,11 +1,16 @@
+const fs = require('fs');
 const path = require('path');
+
+const productsFilePath = path.join(__dirname, '../data/productsDB.json');
+const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 module.exports = {   
     productDetail: (req, res) => {
-        res.render('productDetail');
+        res.render(path.join(__dirname, '../views/products/productDetail'));
     },
     productCreateForm: (req, res) => {
         res.render('productCreateForm');
+        res.render(path.join(__dirname, '../views/products/productCreateForm'));
     },
     store: (req, res) => {
 		let newProduct = {
@@ -15,7 +20,6 @@ module.exports = {
 		};
 		products.push(newProduct);
 		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
-		res.redirect('/');
+        res.render(path.join(__dirname, '../views/products/productsList'));
 	},
-
 }
