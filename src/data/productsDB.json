@@ -97,5 +97,16 @@
   "promo": "last",
   "description": "Excelente monitor!",
   "image": "product-1647957715875.png"
+ },
+ {
+  "id": 10,
+  "name": "Auriculares Inalámbricos Sony Wh-1000xm3 Black",
+  "price": "54900",
+  "discount": "5",
+  "stock": "4",
+  "category": "Audio",
+  "promo": "last",
+  "description": "Estos auriculares han sido diseñados para acompañarnos allá donde vayamos, y esto conlleva que no tenemos necesariamente que tratarlos con mimo. En su construcción Sony ha utilizado un policarbonato de muy buena calidad que les da una gran ligereza (pesan 255 g) y bastante robustez",
+  "image": "product-1647969429655.png"
  }
 ]

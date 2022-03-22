@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+    <!--
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +18,11 @@
         <link href="/desing/fontawesome6/css/brands.css" rel="stylesheet">
         <link href="/desing/fontawesome6/css/solid.css" rel="stylesheet">
     </head>
+    -->
+
+    <!-- Head -->
+    <%- include('../partials/head.ejs') %>
+    <!-- /Head -->
 
     <body>
         <!-- header -->
@@ -68,7 +74,8 @@
                                 <a href="#" class="buy-now-button">COMPRAR AHORA</a>
                                 <hr>
                                 <div class="butons">
-                                    <a href="/productCreateForm" class="action-button edit">Editar</a>
+                                    <a href="/products/productCreateForm" class="action-button create">Agregar</a>
+                                    <a href="¿?" class="action-button edit">Editar</a>
                                     <form action="/products/delete/¿¿" method="POST" style="display: inline-flex">
                                         <button type="submit" class="action-button delete">Eliminar</button>
                                     </form>
