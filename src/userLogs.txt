@@ -43,3 +43,7 @@ El usuario ingreso a: /products/productsList
 El usuario ingreso a: /
 El usuario ingreso a: /products/productDetail
 El usuario ingreso a: /
+El usuario ingreso a: /
+El usuario ingreso a: /products/productDetail
+El usuario ingreso a: /
+El usuario ingreso a: /products/productDetail
