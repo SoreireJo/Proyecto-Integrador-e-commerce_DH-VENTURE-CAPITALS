@@ -44,6 +44,7 @@ El usuario ingreso a: /
 El usuario ingreso a: /products/productDetail
 El usuario ingreso a: /
 El usuario ingreso a: /
+<<<<<<< HEAD
 El usuario ingreso a: /
 El usuario ingreso a: /1/productDetail
 El usuario ingreso a: /1/productDetail/
@@ -104,3 +105,8 @@ El usuario ingreso a: /
 El usuario ingreso a: /
 El usuario ingreso a: /
 El usuario ingreso a: /
+=======
+El usuario ingreso a: /products/productDetail
+El usuario ingreso a: /
+El usuario ingreso a: /products/productDetail
+>>>>>>> origin/develop
