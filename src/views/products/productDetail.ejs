@@ -40,24 +40,20 @@
                     <div class="bar-ccb" id"cc-bar"></div>
                     <div class="row">
                         <div class="col-12 col-lg-8">
-                            <img src="/images/products/monitor_benq.png" alt="product image" class="product-detail-img">
+                            <img src="/images/products/<%=product.image%>" alt="product image" class="product-detail-img">
                             <p class="product-detail-description">
-                                <b>Descripción:</b> IMPRESIONANTE PANTALLA QHD 2K Disfrute de una calidad de imagen inmaculada 16 9 con resolución 2K QHD 2560x1440 en un panel de ángulo de visión IPS amplio con 95% de espacio de color DCI-P3.<br><br>- EYE CARE:
-                                El producto posee tecnologías de cuidado ocular lideres en la industria de BenQ.
-                                Reduce la fatiga ocular ototgandole una mayor comodidad al usuario luego de un tiempo prolongado de uso.<br><br>-RECORDATORIO DE OJO:
-                                Sensor infrarrojo para detectar la presencia del usuario, y realizar el seguimiento de tiempo de escritorio para sugerir un descanso.
-                            </p>
+                                <b>Descripción:</b><%=product.description%></p>
                         </div>
                         <div class="col-12 col-lg-4">
                             <article class="product-detail-info">
-                                <h2 class="product-detail-title">Benq Led Monitor Ex2780q Metallic 2k 144hz</h2>
+                                <h2 class="product-detail-title"><%=product.name%></h2>
                                 
                                     <p class="product-detail-price small">
-                                        <span class="tach">$119.999</span>
-                                        <b class="off">/  5% Off</b>
+                                        <span class="tach">$<%=product.price%></span>
+                                        <b class="off">/ <%=product.discount%>% Off</b>
                                     </p>
                                     <p class="product-detail-price">
-                                        $113.999
+                                        $<%=precioConDescuento%>
                                     </p>
         
                                 <ul class="actions-list">
@@ -74,9 +70,8 @@
                                 <a href="#" class="buy-now-button">COMPRAR AHORA</a>
                                 <hr>
                                 <div class="butons">
-                                    <a href="/products/productCreateForm" class="action-button create">Agregar</a>
                                     <a href="¿?" class="action-button edit">Editar</a>
-                                    <form action="/products/delete/¿¿" method="POST" style="display: inline-flex">
+                                    <form action="/products/productDelete/<%=product.id%>?_method=DELETE" method="POST" style="display: inline-flex">
                                         <button type="submit" class="action-button delete">Eliminar</button>
                                     </form>
                                 </div>
