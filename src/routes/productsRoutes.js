@@ -23,4 +23,8 @@ router.get('/productCreateForm', productsControllers.productCreateForm);
 
 router.post('/productsList', fileUpload.single('image'), productsControllers.store); 
 
+
+router.get('/productUpdate/:id', productsControllers.edit); 
+router.put('/productUpdate/:id', productsControllers.update); 
+
 module.exports = router;
