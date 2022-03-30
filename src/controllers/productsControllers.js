@@ -5,12 +5,11 @@ const productsFilePath = path.join(__dirname, '../data/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 module.exports = {   
-    productDetail: (req, res) => {
+    detail: (req, res) => {
         let id = req.params.id;
         let productFilter = products[id]
         let descuento =  (productFilter.price*productFilter.discount)/100;
         let precioConDescuento = productFilter.price - descuento; 
-        //let productFilter = products.filter(p => p.id == id)
         res.render('products/productDetail', {product: productFilter, precioConDescuento});
     },
     productCreateForm: (req, res) => {
@@ -27,7 +26,7 @@ module.exports = {
 		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
         res.render('products/productsList');
 	},
-    productDelete:(req, res) => {
+    delete:(req, res) => {
         let id = req.params.id; 
 
         let ad = products.filter(products => products.id != id);
