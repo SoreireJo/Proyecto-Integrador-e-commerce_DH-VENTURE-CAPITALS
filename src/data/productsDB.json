@@ -1,13 +1,6 @@
 [
  {
   "id": 1,
-  "name": "Benq Led Monitor Ex2780q Metallic 2k 144hz",
-  "price": 119999,
-  "discount": 5,
-  "stock": 8,
-  "promo": "last",
-  "category": "Monitores",
-  "description": "IMPRESIONANTE PANTALLA QHD 2K Disfrute de una calidad de imagen inmaculada 16 9 con resolución 2K QHD 2560x1440 en un panel de ángulo de visión IPS amplio con 95% de espacio de color DCI-P3.",
   "image": "monitor_benq.png"
  },
  {

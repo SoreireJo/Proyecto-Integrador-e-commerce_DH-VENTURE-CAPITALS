@@ -3,10 +3,13 @@ const path = require('path');
 
 const productsFilePath = path.join(__dirname, '../data/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 module.exports = {   
     productDetail: (req, res) => {
-        res.render(path.join(__dirname, '../views/products/productDetail'));
+        let id = req.params.id;
+        let product = products.find(product => product.id == id);
+            res.render(path.join(__dirname, '../views/products/productDetail'), { product, toThousand });
     },
     productCreateForm: (req, res) => {
         res.render('productCreateForm');
@@ -21,37 +24,31 @@ module.exports = {
 		products.push(newProduct);
 		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
         res.render(path.join(__dirname, '../views/products/productsList'));
-	},
-
-        
+	},   
     edit: (req, res) => {
-     
-        const id = req.params.id;
-        if (!id) {
-        return res.status(400).send('NO ENVIASTE UN ID');
-        }
-
-        const product = getProductById(id);
-        if (!product) {
-        return res.status(404).send('EL PRODUCTO NO EXISTE');
-        }
-
-        res.render(path.resolve(__dirname, '../views/products/productEdit'),{product:product});
+        let id = req.params.id
+        let productDatos = products.find(product => product.id == id)
+        res.redirect(path.join(__dirname, '../views/products/productEditForm/', {productDatos}));
     },
-   
     update: (req, res) => {
-        const id = req.params.id;
-        const productOrig = getProductById(id);
-        const input = req.body;
-
-        const newProduct = {
-        ...input,
-        id: productOrig.id,
-        image: productOrig.image
+        let id = req.params.id;
+        let productToChange = products.find(product => product.id == id)
+    
+        productToChange = {
+            id: productToChange.id,
+            ...req.body,
+            image: productToChange.image,
         };
-
-        updateProduct(newProduct);
-
-        res.redirect(`/products/productDetails/${newProduct.id}`);
-    }
+            
+        let newProducts = products.map(product => {
+            if (product.id == productToChange.id) {
+                return product = {...productToChange};
+            }
+            return product;
+        })
+    
+        fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
+        res.redirect(path.join(__dirname, '../views/products/productDetail/', productToChange.id));
+    },
+    
 }

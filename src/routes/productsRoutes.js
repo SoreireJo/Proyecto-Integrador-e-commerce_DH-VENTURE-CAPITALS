@@ -17,14 +17,17 @@ let storage = multer.diskStorage( {
 });
 let fileUpload = multer({ storage });
 
-router.get('/productDetail', productsControllers.productDetail);
+router.get('/productDetail/:id?', productsControllers.productDetail);
 
 router.get('/productCreateForm', productsControllers.productCreateForm);
 
 router.post('/productsList', fileUpload.single('image'), productsControllers.store); 
 
 
-router.get('/productUpdate/:id', productsControllers.edit); 
-router.put('/productUpdate/:id', productsControllers.update); 
+
+router.get('/productEditForm/:id', productsControllers.edit);
+
+router.post('/productEditForm/:id', productsControllers.update);
+
 
 module.exports = router;
