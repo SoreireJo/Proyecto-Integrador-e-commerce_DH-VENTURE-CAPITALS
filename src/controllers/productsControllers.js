@@ -30,9 +30,8 @@ module.exports = {
         let id = req.params.id; 
 
         let ad = products.filter(products => products.id != id);
-        let deletedItem = ad.find(item => item.itemId ==id);
-        products.splice(ad.indexOf(deletedItem), 1);
-
+        console.log(ad)
+        fs.writeFileSync(productsFilePath, JSON.stringify(ad))
         res.render('products/productsList');
     },
 }

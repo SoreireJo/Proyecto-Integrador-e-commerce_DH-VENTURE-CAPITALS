@@ -154,3 +154,15 @@ El usuario ingreso a: /products/productDetail/2
 El usuario ingreso a: /products/detail/2
 El usuario ingreso a: /products/3/delete?_method=DELETE
 El usuario ingreso a: /products/3/delete?_method=DELETE
+El usuario ingreso a: /products/3/delete?_method=DELETE
+El usuario ingreso a: /products/3/delete?_method=DELETE
+El usuario ingreso a: /products/3/delete?_method=DELETE
+El usuario ingreso a: /products/3/delete?_method=DELETE
+El usuario ingreso a: /products/3/delete?_method=DELETE
+El usuario ingreso a: /
+El usuario ingreso a: /
+El usuario ingreso a: /products/detail/%C2%BF?
+El usuario ingreso a: /
+El usuario ingreso a: /products/productDetail/2
+El usuario ingreso a: /
+El usuario ingreso a: /index
