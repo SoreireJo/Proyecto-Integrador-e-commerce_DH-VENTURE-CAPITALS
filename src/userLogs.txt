@@ -175,3 +175,16 @@ El usuario ingreso a: /desing/fonts/bitsumis.ttf
 El usuario ingreso a: /products/productEditForm/1
 El usuario ingreso a: /desing/fonts/bitsumis.ttf
 El usuario ingreso a: /products/productEditForm/1
+El usuario ingreso a: /index
+El usuario ingreso a: /favicon.ico
+El usuario ingreso a: /
+El usuario ingreso a: /products/productDetail
+El usuario ingreso a: /products/productCreateForm
+El usuario ingreso a: /products/productEditForm/1
+El usuario ingreso a: /products/productEditForm/1
+El usuario ingreso a: /products/productEditForm/1
+El usuario ingreso a: /products/productEditForm/1
+El usuario ingreso a: /products/productEditForm/1
+El usuario ingreso a: /products/productEditForm/1
+El usuario ingreso a: /
+El usuario ingreso a: /%C2%BF?
