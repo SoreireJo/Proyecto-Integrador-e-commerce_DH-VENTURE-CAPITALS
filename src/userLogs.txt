@@ -167,3 +167,16 @@ El usuario ingreso a: /products/productDetail/2
 El usuario ingreso a: /
 El usuario ingreso a: /index
 El usuario ingreso a: /
+El usuario ingreso a: /
+El usuario ingreso a: /
+El usuario ingreso a: /
+El usuario ingreso a: /
+El usuario ingreso a: /
+El usuario ingreso a: /
+El usuario ingreso a: /
+El usuario ingreso a: /products/productDetail/7
+El usuario ingreso a: /products/productDetail/7
+El usuario ingreso a: /products/productDetail/1
+El usuario ingreso a: /products/productDetail/1
+El usuario ingreso a: /
+El usuario ingreso a: /products/productDetail/1
