@@ -25,4 +25,9 @@ router.post('/productsList', fileUpload.single('image'), productsControllers.sto
 
 router.delete('/:id/delete', productsControllers.delete); 
 
+router.get('/productEditForm/:id', productsControllers.edit);
+
+router.post('/productEditForm/:id', productsControllers.update);
+
+
 module.exports = router;

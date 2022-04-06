@@ -3,6 +3,7 @@ const path = require('path');
 
 const productsFilePath = path.join(__dirname, '../data/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 module.exports = {   
     detail: (req, res) => {
@@ -33,5 +34,31 @@ module.exports = {
         console.log(ad)
         fs.writeFileSync(productsFilePath, JSON.stringify(ad))
         res.render('products/productsList');
+	},   
+    edit: (req, res) => {
+        let id = req.params.id
+            let productDatos = products.find(product => product.id == id)
+            res.render(path.join(__dirname, '../views/products/productEditForm'), {productDatos});
+    },
+    update: (req, res) => {
+        let id = req.params.id;
+            let productToChange = products.find(product => product.id == id)
+        
+            productToChange = {
+                id: productToChange.id,
+                ...req.body,
+                image: productToChange.image,
+            };
+                
+            let newProducts = products.map(product => {
+                if (product.id == productToChange.id) {
+                    return product = {...productToChange};
+                }
+                return product;
+            })
+        
+            fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
+            // res.render(path.join(__dirname, '../views/products/productDetail/'+ productToChange.id));
+            res.render(path.join(__dirname, '../views/products/productDetail'));
     },
 }
