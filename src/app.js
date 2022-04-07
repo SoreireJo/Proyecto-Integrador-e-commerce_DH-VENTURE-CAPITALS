@@ -4,6 +4,8 @@ const cookieParser = require('cookie-parser');
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
+const webRoutes = require('./routes/webRoutes');
+const productsRoutes = require('./routes/productsRoutes');
 const methodOverride =  require('method-override');
 const logMiddleware = require('./middleware/urlMiddleware');
 
@@ -22,16 +24,13 @@ app.use(cookieParser());
 app.use(methodOverride('_method'));
 app.use(logMiddleware);
 
+
 // ********* Template Engine *********
 // view engine setup
-app.set('views', path.join(__dirname, './views/web'));
-app.set('view engine', 'ejs')
+app.set('views', path.join(__dirname, './views'));
+app.set('view engine', 'ejs');
 
-
-// ******* Route System require and use() *******
-const webRoutes = require('./routes/webRoutes');
-const productsRoutes = require('./routes/productsRoutes');
-
+//Routes
 app.use('/', webRoutes);
 app.use('/products', productsRoutes);
 
@@ -48,7 +47,7 @@ app.use((err, req, res, next) => {
 
     // render the error page
     res.status(err.status || 500);
-    res.render('error');
+    res.render('web/error');
 });
 
 // ********** exports app ************
