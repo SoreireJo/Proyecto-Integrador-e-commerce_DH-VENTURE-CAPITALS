@@ -8,15 +8,17 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 module.exports = {   
     detail: (req, res) => {
         let id = req.params.id;
-        let productFilter = products[id]
-        let descuento =  (productFilter.price*productFilter.discount)/100;
-        let precioConDescuento = productFilter.price - descuento; 
-        res.render('products/productDetail', {product: productFilter, precioConDescuento});
+        let product = products.find(products => products.id == id);
+        let descuento =  (products.price*products.discount)/100;
+        let precioConDescuento = products.price - descuento; 
+
+        console.log(product)
+        res.render('products/productDetail', {product, precioConDescuento});
     },
     productCreateForm: (req, res) => {
-        res.render('productCreateForm');
         res.render('products/productCreateForm');
     },
+
     store: (req, res) => {
 		let newProduct = {
 			id: products[products.length - 1].id + 1,

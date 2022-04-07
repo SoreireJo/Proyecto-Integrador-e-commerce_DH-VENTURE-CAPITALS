@@ -7,12 +7,13 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 module.exports = {
     index: (req, res) => {
+        let precioConDescuento = 0; 
         products.forEach(element => { 
             let descuento =  (products.price*products.discount)/100;   
-            let precioConDescuento = products.price - descuento; 
-       
-        res.render('web/index', {products, precioConDescuento});
+            precioConDescuento = products.price - descuento; 
         });
+
+        res.render('web/index', {products, precioConDescuento});
         
     },
     login: (req, res) => {
