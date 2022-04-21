@@ -12,7 +12,6 @@ module.exports = {
         let descuento =  (products.price*products.discount)/100;
         let precioConDescuento = products.price - descuento; 
 
-        console.log(product)
         res.render('products/productDetail', {product, precioConDescuento});
     },
     productCreateForm: (req, res) => {

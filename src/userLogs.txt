@@ -259,3 +259,5 @@ El usuario ingreso a: /products/detail/1
 El usuario ingreso a: /images/products/
 El usuario ingreso a: /
 El usuario ingreso a: /products/detail/1
+El usuario ingreso a: /
+El usuario ingreso a: /products/detail/1
