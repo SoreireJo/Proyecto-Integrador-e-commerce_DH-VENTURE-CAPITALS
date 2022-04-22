@@ -4,14 +4,15 @@
   "description": "Plataforma E-Comerce hecha a medida para DH VENTURE CAPITALS",
   "main": "./src/bin/www",
   "scripts": {
-    "start": "nodemon ./src/bin/www"
+    "start": "nodemon ./src/bin/www -e js,ejs,json,mjs,mjson",
+    "run": "nodemon ./src/bin/www"
   },
   "keywords": [],
   "author": "Ecode-Team: Chanampe / Montero / Soreire / Vera Gomez",
   "license": "ISC",
   "dependencies": {
     "cookie-parser": "^1.4.6",
-    "debug": "^4.3.4",
+    "debug": "^4.3.3",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "express-validator": "^6.14.0",

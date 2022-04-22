@@ -14,7 +14,7 @@ main{
 .product-detail{
     background-color: white;
     border-radius: 0px 0px 10px 10px;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .product-detail-img{
@@ -42,11 +42,12 @@ main{
 }
 
 .tach {
-    font-family: HandSean, 'Roboto', sans-serif;
+    font-family: HandSean, sans-serif;
     font-size: var(--fz-dp-pricelst-mob);
     color: var(--color-price-tach);
     font-weight: bold;
     text-decoration:line-through;
+    align-self: center;
 }
 
 .off {
@@ -144,7 +145,6 @@ main{
     }
 }
 
-
 /* -----------------------------*/
 /* ---- Formulario de Carga ----*/
 /* -----------------------------*/
@@ -179,28 +179,17 @@ fieldset {
     width: 90%;
 }
 
-.form-crud-md{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+.form-crud-mt{
     margin: 0 auto;
     height: auto;
+    width: 100%;
 }
 
-div.form-crud,
-div.form-crud-oth {
+div.form-crud {
     display: inline-block;
     font-size: var(--fz-form-label-mob);
     color: var(--color-label);
     padding-bottom: 5px;
-}
-
-div.form-crud-oth{
-    margin-bottom: 15px;
-    font-size: 1.2em;
-    border-radius: 8px;
-    color: var(--color-input-item);
-    width: 90%;
 }
 
 
@@ -214,36 +203,25 @@ div.form-crud .form-input
     color: var(--color-input-item);
 }
 
-div.form-crud-oth textarea {
+div.form-crud textarea.form-input {
     min-height: 12em;
     resize: vertical;
     padding: 15px;
-    width: 100%;
 }
 
-.form-crud-m1{
-    width: 70%;
-}
+.form-crud-m1,
 .form-crud-m2,
-.form-crud-m3{
+.form-crud-m3  {
     width: 100%;
     padding: 15px;
-}
-
-select {
-    width: 100%;
 }
 
 .form-crud {
-    flex: 0 0 70%;
+    flex: 0 0 50%;
     padding: 15px;
 }
 
-div.form-crud-oth{
-    padding: 15px;
-}
-
-.form-crud-md {
+.form-crud-mt {
     width: 100%;
 }
 
@@ -292,6 +270,8 @@ div.buttons-block {
     color: rgb(15, 15, 15);
     background-color: rgb(188, 188, 189);
 }
+
+
 
 
 
@@ -355,9 +335,8 @@ div.buttons-block {
         padding: 0 15px;
     }
     div.form-crud textarea.form-input {
-        min-height: 12em;
+        min-height: 14em;
         padding: 10px;
-        width: 100%;
     }
     .form-crud-m1 {
         min-width: 70%;
@@ -366,7 +345,7 @@ div.buttons-block {
         max-width: 30%;
     }
     .form-crud-m3 {
-        max-width: 25%;
+        max-width: 33.3%;
     }
     .img-detail{
         width: 95%;

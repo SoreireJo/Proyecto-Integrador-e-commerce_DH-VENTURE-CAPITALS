@@ -1,59 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
-    <!--
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Tecnocom</title>
-        
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/index-styles.css">
-        <link rel="stylesheet" href="css/register-styles.css">
-        <link rel="stylesheet" href="css/header-styles.css">
-        <link rel="stylesheet" href="css/product-styles.css">
-
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link href="/desing/fontawesome6/css/fontawesome.css" rel="stylesheet">
-        <link href="/desing/fontawesome6/css/brands.css" rel="stylesheet">
-        <link href="/desing/fontawesome6/css/solid.css" rel="stylesheet">
-    </head>
-    -->
-
     <!-- Head -->
-    <%- include('../partials/head.ejs') %>
+    <%- include('../partials/head.ejs', {title: 'Detalle del producto'}) %>
     <!-- /Head -->
 
     <body>
-        <!-- header -->
+        <!-- Actualizar la vista!!! -->
+        <% if (actualizada = false) { %>
+            <script> window.location.reload(true); window.location.reload(true); </script>
+            <style> body {background-color:red} </style>
+            <% if (actualizada != undefined) {actualizada = true;} } %>
+
+        <!-- Header -->
         <%- include('../partials/header.ejs') %>
+        <!-- /Header -->
 
         <!-- Main (Producto Detail) -->
         <main class="main-productDetail">
             <div class="container-products-wrapper">
                 <div class="row">
                     <div class="col-12">
-                        <h2 class="products-title">Categoría: Monitores</h2>
+                        <h2 class="products-title">Categoría: <%= product.category %></h2>
                     </div>
                 </div>
                 <div class="product-detail">
-                    <div class="bar-ccb" id"cc-bar"></div>
+                    <div class="bar-ccb" id="cc-bar"></div>
                     <div class="row">
                         <div class="col-12 col-lg-8">
-                            <img src="/images/products/<%=product.image%>" alt="product image" class="product-detail-img">
+                            <img src="/images/products/<%= product.image %>" alt="Imagen del producto" class="product-detail-img">
                             <p class="product-detail-description">
-                                <b>Descripción:</b><%=product.description%></p>
+                                <b>Descripción:</b> <%= product.description %>
+                            </p>
                         </div>
+
+                        
                         <div class="col-12 col-lg-4">
                             <article class="product-detail-info">
-                                <h2 class="product-detail-title"><%=product.name%></h2>
+                                <h2 class="product-detail-title"><%= product.name %></h2>
+
+                                <% let finalPrice = (product.price * ((100 - product.discount) / 100)).toFixed(0)
+                                %>
                                 
-                                    <p class="product-detail-price small">
-                                        <span class="tach">$<%=product.price%></span>
-                                        <b class="off">/ <%=product.discount%>% Off</b>
+                                <p class="product-detail-price small">
+                                    <span class="tach">$<%= toThousand(product.price) %></span>
+                                        <b class="off">/  <%= product.discount %>% Off</b>
+    
+
+
                                     </p>
                                     <p class="product-detail-price">
-                                        $<%=precioConDescuento%>
+                                        $<%= toThousand(finalPrice) %>
                                     </p>
         
                                 <ul class="actions-list">
@@ -67,23 +63,25 @@
                                     </li>
                                 </ul>
         
-                                <a href="#" class="buy-now-button">COMPRAR AHORA</a>
+                                <a href="#" class="buy-now-button">Comprar</a>
                                 <hr>
                                 <div class="butons">
-
-                                    <form action="/products/<%=product.id%>/delete?_method=DELETE" method="POST" style="display: inline-flex">
                                     <a href="/products/productCreateForm" class="action-button create">Agregar</a>
-                                    <a href="/products/productEditForm/1" class="action-button edit">Editar</a>
+                                    <a href="/products/productEditForm/<%= product.id %>" class="action-button edit">Editar</a>
+                                    <form action="/products/productsList/<%= product.id %>?_method=DELETE" method="POST" style="display: inline-flex">
                                         <button type="submit" class="action-button delete">Eliminar</button>
                                     </form>
                                 </div>
+                                
                             </article>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
+
         <!-- Footer -->
-        <%- include('../partials/footer.ejs') %>    
+        <%- include('../partials/footer.ejs') %>
+        <!-- /Footer -->
     </body>
 </html>

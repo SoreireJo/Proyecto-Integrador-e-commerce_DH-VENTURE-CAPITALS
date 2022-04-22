@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head -->
+    <%- include('../partials/head.ejs', {title: 'Resultados de tu búsqueda '}) %>
+    <!-- /Head -->
+
+    <body>
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+    <!-- /Header -->
+
+    <!-- Main (Search) -->
+    <main class="main-index">
+            <div class="linea"></div>
+            <h3 class="titulo-main-index">Resultados de buscar: <%= search %></h3>
+            <div class="bar-ccb" id="cc-bar"></div>
+            <div class="linea"></div>
+            
+            <!-- Sección: Productos encontrados -->
+            <section class="sec-products">
+
+                <div class="products-rows">
+
+                    <% if (productsRemix.length > 0) {
+                        productsRemix.forEach(function(product){ 
+			        	let finalPrice = (product.price * ((100 - product.discount) / 100)).toFixed(0)
+                    %>
+
+                        <!-- Card -->
+                        <article class="last-search">
+                            <div class="image-row">
+                                <a href="/products/productDetail/<%= product.id %>">
+                                
+                                    <div class="linea-blanca"></div>
+                                    <div class="main-card-img">
+                                        <img src="/images/products/<%= product.image %>" alt="Imagen del producto" class="product_img">
+                                    </div>
+                                    <div class="linea-blanca"></div>
+                                </a>
+                            </div>
+
+                            <div class="bar-ggrv" id="gg-barv"></div>
+
+                            <div class="row-article">
+                                <a href="/products/productDetail/<%= product.id %>">
+                                <h4 class="description"><%= product.name %></h4>
+                                </a>
+                                <p class="discount"><%= product.discount %>% off</p>
+                                <p class="priceRow">$<%= toThousand(finalPrice) %></p>
+                                <p class="priceRow">
+                                <button class="buttAgregarRow">
+                                        <i class="fa-solid fa-cart-plus" id="crtct" style="font-size: 1.2em;"></i>
+                                </button>
+                                </p>
+                            </div>
+                        </article>
+
+                    <% })} else {%>    
+
+                        <div class="msg bad-search">
+                            <img src="/desing/iconos/sad-icon.png" alt="carita triste" />
+                            <h4>No se encontraron resultados</h4>
+                        </div>
+                    <% } %>
+                </div>
+            </section>
+
+            <div class="linea"></div>
+    </main>
+
+
+
+    <!-- Footer -->
+    <%- include('../partials/footer.ejs') %>
+    <!-- /Footer -->
+</body>
+</html>

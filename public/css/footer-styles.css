@@ -22,7 +22,7 @@ footer {
 }
 
 .footer__content-box h4 {
-  font-family: HandSean, 'Roboto', sans-serif;
+  font-family: HandSean, sans-serif;
   color: var(--color-footer-item);
   font-size: var(--fz-footer-h4-box-mob);
   line-height: 17px;

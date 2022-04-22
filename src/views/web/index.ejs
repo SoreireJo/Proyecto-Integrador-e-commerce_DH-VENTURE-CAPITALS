@@ -20,10 +20,10 @@
             <section class="sec-last-tec">
 
                 <div class="products">
-            <% products.forEach(function(products){%>
+            <% productsRemix.forEach(function(products){%>
                     <!-- Card -->
                     <article class="last-tec">
-                        <a href="/products/detail/<%=products.id%>">
+                        <a href="/products/productDetail/<%=products.id%>">
                             <div class="linea-blanca"></div>
                             <div class="main-card-img">
                                 <img src="images/products/<%=products.image%>" alt="Benq Led Monitor 144hz" class="product_img">
@@ -31,20 +31,18 @@
                             <div class="linea-blanca"></div>
                         </a>
                         <div class="bar-ggr" id="gg-bar"></div>
-                        <div class="main-article">
-                            <p class="discount"><%=products.discount%>% off</p>
-                            <p class="price">$<%=products.price%></p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar">
-                                    <a href="/products/detail/<%=products.id%>" class=" button buttComprar">Ver producto</a>
-                                </button>
 
-                            </span>
-                            <h4 class="description"><%=products.name%></h4>
+                        <div class="main-article">
+                            <div class="min-row">
+                                 <button class="buttAgregar2">
+                                        <i class="fa-solid fa-cart-plus" id="crtct" style="font-size: 1.2em;"></i>
+                                    </button>
+                                    <p class="discount"><%=products.discount%>% off</p>
+                                    <p class="price">$<%=products.price%></p>
+                                
+
+                            </div>
+                            <h4 class="description2"><%=products.name%></h4>
                         </div>
                     </article>
                     <% } )%>
@@ -56,7 +54,7 @@
             <div class="linea"></div>
             <div class="linea"></div>
             <h3 class="titulo-main-index">Ofertas</h3>
-            <div class="bar-ccb" id"cc-bar"></div>
+            <div class="bar-ccb" id="cc-bar"></div>
             <div class="linea"></div>
             
             <!-- Sección de Ofertas -->
@@ -64,11 +62,11 @@
 
                 <div class="products">
                     <!-- Card -->
-                    <% products.forEach(function(products){%>
+                    <% productsRemix.forEach(function(products){%>
                         <% if(products.discount > 0) { %>
                             <!-- Card -->
                             <article class="last-tec">
-                                <a href="/products/detail/<%=products.id%>">
+                                <a href="/products/productDetail/<%=products.id%>">
                                     <div class="linea-blanca"></div>
                                     <div class="main-card-img">
                                         <img src="images/products/<%=products.image%>" alt="Benq Led Monitor 144hz" class="product_img">
@@ -85,7 +83,7 @@
                                         </button>
                                         <div class="media-linea"></div>
                                         <button class="buttComprar">
-                                            <a href="/products/detail/<%=products.id%>" class=" button buttComprar">Ver producto</a>
+                                            <a href="/products/productDetail/<%=products.id%>" class=" button buttComprar">Ver producto</a>
                                         </button>
         
                                     </span>
