@@ -8,7 +8,6 @@
         <!-- Actualizar la vista!!! -->
         <% if (actualizada = false) { %>
             <script> window.location.reload(true); window.location.reload(true); </script>
-            <style> body {background-color:red} </style>
             <% if (actualizada != undefined) {actualizada = true;} } %>
 
         <!-- Header -->
@@ -33,25 +32,25 @@
                             </p>
                         </div>
 
-                        
+
                         <div class="col-12 col-lg-4">
                             <article class="product-detail-info">
                                 <h2 class="product-detail-title"><%= product.name %></h2>
 
                                 <% let finalPrice = (product.price * ((100 - product.discount) / 100)).toFixed(0)
                                 %>
-                                
+
                                 <p class="product-detail-price small">
                                     <span class="tach">$<%= toThousand(product.price) %></span>
                                         <b class="off">/  <%= product.discount %>% Off</b>
-    
+
 
 
                                     </p>
                                     <p class="product-detail-price">
                                         $<%= toThousand(finalPrice) %>
                                     </p>
-        
+
                                 <ul class="actions-list">
                                     <li>
                                         <i class="fas fa-credit-card"></i>
@@ -62,7 +61,7 @@
                                         <p>Envíos a todo el país</p>
                                     </li>
                                 </ul>
-        
+
                                 <a href="#" class="buy-now-button">Comprar</a>
                                 <hr>
                                 <div class="butons">
@@ -72,7 +71,7 @@
                                         <button type="submit" class="action-button delete">Eliminar</button>
                                     </form>
                                 </div>
-                                
+
                             </article>
                         </div>
                     </div>

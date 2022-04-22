@@ -17,7 +17,7 @@ let storage = multer.diskStorage( {
     },
     //*  nombre que le damos al archivo
     filename: function(req, file, callback) {
-        let imageName = 'user-' + Date.now() + path.extname(file.originalname);
+        let imageName = 'user-' + Date.now() + '-' + file.originalname;
         callback(null, imageName);
     }
 });

@@ -3372,3 +3372,17 @@ El usuario ingresó en: /
 El usuario ingresó en: /
 El usuario ingresó en: /products/productsList
 El usuario ingresó en: /products/productDetail/22
+El usuario ingresó en: /
+El usuario ingresó en: /products/productDetail/32
+El usuario ingresó en: /products/productEditForm/32
+El usuario ingresó en: /
+El usuario ingresó en: /products/productDetail/22
+El usuario ingresó en: /products/productCreateForm
+El usuario ingresó en: /products/productsCategory/PC
+El usuario ingresó en: /products/productSearch?search=mouse
+El usuario ingresó en: /
+El usuario ingresó en: /users/userLogin
+El usuario ingresó en: /users/userRegister
+El usuario ingresó en: /users/userLogin
+El usuario ingresó en: /users/userRegister
+El usuario ingresó en: /
