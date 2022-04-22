@@ -17,231 +17,38 @@
             <div class="linea"></div>
             
             <!-- Sección: Equipate con lo último en tecnología -->
-            <section class="sec-last-tec"> 
-
-                <div class="products">
-
-                    <!-- Card -->
-                    <article class="last-tec">
-                        <a href="/products/productDetail/1">
-                            <div class="linea-blanca"></div>
-                            <div class="main-card-img">
-                                <img src="images/products/monitor_benq.png" alt="Benq Led Monitor 144hz" class="product_img">
-                            </div>
-                            <div class="linea-blanca"></div>
-                        </a>
-                        <div class="bar-ggr" id="gg-bar"></div>
-
-                        <div class="main-article">
-                            <p class="discount">5% off</p>
-                            <p class="price">$119.999</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Benq Led Monitor Ex2780q Metallic 2k 144hz</h4>
-                        </div>
-                    </article>
-
-                    <!-- Card -->
-                    <article class="last-tec">
-                        <div class="linea-blanca"></div>
-                        <div class="main-card-img">
-                            <img src="images/products/auriculares-girl.png" alt="Auriculares Cat Ear Cosplay" class="product_img">
-                        </div>
-                        <div class="linea-blanca"></div>
-                        <div class="bar-ggr" id="gg-bar"></div>
-
-                        <div class="main-article">
-                            <p class="discount">20% off</p>
-                            <p class="price">$9.809</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Auriculares Cat Ear Headset Plegable Led Light Cosplay</h4>
-                        </div>
-                    </article>
-
-                    <!-- Card -->
-                    <article class="last-tec">
-                        <div class="linea-blanca"></div>
-                        <div class="main-card-img">
-                            <img src="images/products/mouse-cyan.png" alt="Mouse inalámbrico Logitech" class="product_img">
-                        </div>
-                        <div class="linea-blanca"></div>
-                        <div class="bar-ggr" id="gg-bar"></div>
-
-                        <div class="main-article">
-                            <p class="discount">15% off</p>
-                            <p class="price">$3.399</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Mouse inalámbrico Logitech Lightspeed blue"</h4>
-                        </div>
-                    </article>
-
-                    <!-- Card -->
-                    <article class="last-tec">
-                        <div class="linea-blanca"></div>
-                        <div class="main-card-img">
-                            <img src="images/products/monitor-omni.png" alt="Monitor Gamer 24" class="product_img">
-                        </div>
-                        <div class="linea-blanca"></div>
-                        <div class="bar-ggr" id="gg-bar"></div>
-
-                        <div class="main-article">
-                            <p class="discount">5% off</p>
-                            <p class="price">$83.999</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Monitor Gamer 24 Viewsonic 240hz"</h4>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-
-            <div class="linea"></div>
-            <div class="linea"></div>
-            <div class="linea"></div>
-            <h3 class="titulo-main-index">Lo último en tecnología</h3>
-            <div class="bar-ccb" id="cc-bar"></div>
-            <div class="linea"></div>
-
-            <!-- Sección: Equipate con lo último en tecnología -->
             <section class="sec-last-tec">
 
                 <div class="products">
-
+            <% productsRemix.forEach(function(products){%>
                     <!-- Card -->
                     <article class="last-tec">
-                        <a href="/productDetail">
+                        <a href="/products/productDetail/<%=products.id%>">
                             <div class="linea-blanca"></div>
                             <div class="main-card-img">
-                                <img src="images/products/monitor_benq.png" alt="Benq Led Monitor 144hz" class="product_img">
+                                <img src="images/products/<%=products.image%>" alt="Benq Led Monitor 144hz" class="product_img">
                             </div>
                             <div class="linea-blanca"></div>
                         </a>
                         <div class="bar-ggr" id="gg-bar"></div>
 
                         <div class="main-article">
-                            <p class="discount">5% off</p>
-                            <p class="price">$119.999</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Benq Led Monitor Ex2780q Metallic 2k 144hz</h4>
+                            <div class="min-row">
+                                 <button class="buttAgregar2">
+                                        <i class="fa-solid fa-cart-plus" id="crtct" style="font-size: 1.2em;"></i>
+                                    </button>
+                                    <p class="discount"><%=products.discount%>% off</p>
+                                    <p class="price">$<%=products.price%></p>
+                                
+
+                            </div>
+                            <h4 class="description2"><%=products.name%></h4>
                         </div>
                     </article>
-
-                    <!-- Card -->
-                    <article class="last-tec">
-                        <div class="linea-blanca"></div>
-                        <div class="main-card-img">
-                            <img src="images/products/auriculares-girl.png" alt="Auriculares Cat Ear Cosplay" class="product_img">
-                        </div>
-                        <div class="linea-blanca"></div>
-                        <div class="bar-ggr" id="gg-bar"></div>
-
-                        <div class="main-article">
-                            <p class="discount">20% off</p>
-                            <p class="price">$9.809</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Auriculares Cat Ear Headset Plegable Led Light Cosplay</h4>
-                        </div>
-                    </article>
-
-                    <!-- Card -->
-                    <article class="last-tec">
-                        <div class="linea-blanca"></div>
-                        <div class="main-card-img">
-                            <img src="images/products/mouse-cyan.png" alt="Mouse inalámbrico Logitech" class="product_img">
-                        </div>
-                        <div class="linea-blanca"></div>
-                        <div class="bar-ggr" id="gg-bar"></div>
-
-                        <div class="main-article">
-                            <p class="discount">15% off</p>
-                            <p class="price">$3.399</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Mouse inalámbrico Logitech Lightspeed blue"</h4>
-                        </div>
-                    </article>
-
-                    <!-- Card -->
-                    <article class="last-tec">
-                        <div class="linea-blanca"></div>
-                        <div class="main-card-img">
-                            <img src="images/products/monitor-omni.png" alt="Monitor Gamer 24" class="product_img">
-                        </div>
-                        <div class="linea-blanca"></div>
-                        <div class="bar-ggr" id="gg-bar"></div>
-
-                        <div class="main-article">
-                            <p class="discount">5% off</p>
-                            <p class="price">$83.999</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Monitor Gamer 24 Viewsonic 240hz"</h4>
-                        </div>
-                    </article>
+                    <% } )%>
                 </div>
             </section>
-
+            
 
             <div class="linea"></div>
             <div class="linea"></div>
@@ -255,107 +62,35 @@
 
                 <div class="products">
                     <!-- Card -->
-                    <article class="offers">
-                        <div class="linea-blanca"></div>
-                        <div class="main-card-img">
-                            <img src="images/products/monitor_gadnig.png" alt="Monitor gamer Gadnic" class="product_img">
-                        </div>
-                        <div class="linea-blanca"></div>
-                        <div class="bar-ggr" id="gg-bar"></div>
-
-                        <div class="main-article">
-                            <p class="discount">5% off</p>
-                            <p class="price">$31.999</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Monitor gamer Gadnic G4D71N-F 27</h4>
-                        </div>
-                    </article>
-
-                    <!-- Card -->
-                    <article class="offers">
-                        <div class="linea-blanca"></div>
-                        <div class="main-card-img">
-                            <img src="images/products/tablet_blanca.png" alt="Tablet con funda Gadnic Taurus 10.1" class="product_img">
-                        </div>
-                        <div class="linea-blanca"></div>
-                        <div class="bar-ggr" id="gg-bar"></div>
-
-                        <div class="main-article">
-
-                            <p class="discount">30% off</p>
-                            <p class="price">$35.399</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Tablet con funda Gadnic Taurus 10.1"</h4>
-                        </div>
-                    </article>
-
-                    <!-- Card -->
-                    <article class="offers">
-                        <div class="linea-blanca"></div>
-                        <div class="main-card-img">
-                            <img src="images/products/mouse-razer-basilik.png" alt="Mouse inalámbrico recargable Razer Basilisk Ultimate" class="product_img">
-                        </div>
-                        <div class="linea-blanca"></div>
-                        <div class="bar-ggr" id="gg-bar"></div>
-
-                        <div class="main-article">
-                            
-                            <p class="discount">5% off</p>
-                            <p class="price">$20.278</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Mouse inalámbrico recargable Razer Basilisk Ultimate</h4>
-                        </div>
-                    </article>
-
-                    <!-- Card -->
-                    <article class="offers">
-                        <div class="linea-blanca"></div>
-                        <div class="main-card-img">
-                            <img src="images/products/auricular-hiper-x.png" alt="Auricular Hiper X" class="product_img">
-                        </div>
-                        <div class="linea-blanca"></div>
-                        <div class="bar-ggr" id="gg-bar"></div>
-
-                        <div class="main-article">
-                            
-                            <p class="discount">15% off</p>
-                            <p class="price">$17.999</p>
-                            <span class="sell">
-                                <button class="buttAgregar">
-                                    <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
-                                </button>
-                                <div class="media-linea"></div>
-                                <button class="buttComprar" onclick="window.location.href='/products/productDetail'">
-                                    Ver mas
-                                </button>
-                            </span>
-                            <h4 class="description">Auriculares gamer HyperX Cloud Stinger negro"</h4>
-                        </div>
-                    </article>
+                    <% productsRemix.forEach(function(products){%>
+                        <% if(products.discount > 0) { %>
+                            <!-- Card -->
+                            <article class="last-tec">
+                                <a href="/products/productDetail/<%=products.id%>">
+                                    <div class="linea-blanca"></div>
+                                    <div class="main-card-img">
+                                        <img src="images/products/<%=products.image%>" alt="Benq Led Monitor 144hz" class="product_img">
+                                    </div>
+                                    <div class="linea-blanca"></div>
+                                </a>
+                                <div class="bar-ggr" id="gg-bar"></div>
+                                <div class="main-article">
+                                    <p class="discount"><%=products.discount%>% off</p>
+                                    <p class="price">$<%=products.price%></p>
+                                    <span class="sell">
+                                        <button class="buttAgregar">
+                                            <i class="fa-solid fa-cart-shopping" id="crtct" style="font-size: .8em;"></i> Agregar
+                                        </button>
+                                        <div class="media-linea"></div>
+                                        <button class="buttComprar">
+                                            <a href="/products/productDetail/<%=products.id%>" class=" button buttComprar">Ver producto</a>
+                                        </button>
+        
+                                    </span>
+                                    <h4 class="description"><%=products.name%></h4>
+                                </div>
+                            </article>
+                            <% } })%>
                 </div>  
             </section>
         </main>

@@ -1,16 +1,5 @@
 [
  {
-  "id": 1,
-  "name": "Benq Led Monitor Ex2780q Metallic 4k 144hz",
-  "price": 2,
-  "discount": 25,
-  "stock": 100,
-  "category": "Monitores",
-  "promo": "last",
-  "description": "IMPRESIONANTE PANTALLA QHD 2K Disfrute de una calidad de imagen inmaculada 16 9 con resolución 2K QHD 2560x1440 en un panel de ángulo de visión IPS amplio con 95% de espacio de color DCI-P3.",
-  "image": "product-1650582412256-LM.jpg"
- },
- {
   "id": 2,
   "name": "Auriculares Cat Ear Headset Plegable Led Light Cosplay",
   "price": 9809,
@@ -374,28 +363,6 @@
   "image": "monitor_gamer_curvo_34_ultrawide_lg.png"
  },
  {
-  "id": 37,
-  "name": "Mouse inalámbrico Logitech Triathlon M720 negro",
-  "price": 49900,
-  "discount": 5,
-  "stock": 7,
-  "category": "Periféricos",
-  "promo": "last",
-  "description": "Triunfa en un mundo multidispositivo con M720 Triathlon Mouse. Pasarás fácilmente de una tarea a otra alternando entre tres computadoras, y recorrerás rápidamente documentos y páginas Web gracias al desplazamiento superrápido. Con eficiencia mejorada, este mouse Bluetooth® y Unifying dura hasta 24 meses con una sola batería AA. Todo eso con un tamaño mediano y una forma cómodamente adaptable a la mano.",
-  "image": "product-1647954072223.png"
- },
- {
-  "id": 38,
-  "name": "Auriculares Inalámbricos Sony Wh-1000xm3 Black",
-  "price": 54900,
-  "discount": 5,
-  "stock": 4,
-  "category": "Audio",
-  "promo": "last",
-  "description": "Estos auriculares han sido diseñados para acompañarnos allá donde vayamos, y esto conlleva que no tenemos necesariamente que tratarlos con mimo. En su construcción Sony ha utilizado un policarbonato de muy buena calidad que les da una gran ligereza (pesan 255 g) y bastante robustez",
-  "image": "product-1647954378437.png"
- },
- {
   "id": 39,
   "name": "Monitor 27 Hp Elitedisplay E273q Hdmi",
   "price": 68738,
@@ -405,16 +372,5 @@
   "promo": "last",
   "description": "El estilo se une a la sustancia en el monitor Quad HD HP EliteDisplay HP E273q QHD de 27 pulgadas; tiene un bisel de microborde de 3 lados para un mosaico de múltiples pantallas sin interrupciones, conectividad USB-C ™ y comodidad ajustable en 4 direcciones. Ideal para usuarios que necesitan más comodidad durante largas horas frente a la computadora.",
   "image": "monitor-omni.png"
- },
- {
-  "id": 40,
-  "name": "Nuevo Pais",
-  "price": 5678,
-  "discount": 15,
-  "stock": 14234532453,
-  "category": "PC Componentes",
-  "promo": "last",
-  "description": "5343434354343",
-  "image": "product-1650582519938-LM.jpg"
  }
 ]

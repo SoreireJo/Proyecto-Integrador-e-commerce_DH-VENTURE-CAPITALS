@@ -24,7 +24,7 @@ const controller = {
         let productsRemix = [...products];
         // let productsRemix = reMix(products);
         productsRemix = reMix(productsRemix);
-		res.render('./web/index', {
+		res.render('web/index', {
             productsRemix,
 			visited,
 			inSale,
