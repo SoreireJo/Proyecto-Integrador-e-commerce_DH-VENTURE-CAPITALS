@@ -227,6 +227,8 @@ div.form-crud textarea.form-input {
 
 .img-detail{
     width: 100%;
+    background-color: white;
+    border-radius: 11px;
 }
 
 #but {
