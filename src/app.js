@@ -6,7 +6,8 @@ const logger = require('morgan');
 const path = require('path');
 const methodOverride =  require('method-override'); // Para poder usar los métodos PUT y DELETE
 // ***** Yo Cargando Middlewares ******
-const logMiddleware = require('./middlewares/userLogs');
+const logMiddleware = require('./middleware/userLogs');
+
 
 // ******** express() ***********
 const app = express();
