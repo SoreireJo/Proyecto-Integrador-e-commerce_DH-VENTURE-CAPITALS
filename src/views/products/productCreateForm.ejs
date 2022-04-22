@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Head -->
-<%- include('../partials/head.ejs') %>
+<%- include('../partials/head.ejs', {title: 'Alta de productos'}) %>
 <!-- /Head -->
 
 <body>
@@ -16,52 +16,52 @@
 
 		<!-- Form (Create) -->
 		<div class="form-crud-wrap">
-			<form action="/products/productsList" method="POST" enctype="multipart/form-data">
+			<form action="/products/productCreateForm" method="POST" enctype="multipart/form-data">
 				<fieldset>
 					<legend> Carga de Productos: </legend>
 					<div class="media-linea"></div>
 					<div class="row-product-detail">
 						<div class="form-crud form-crud-m1">
 							<label for="name" class="form-label">Nombre del producto:</label>
-							<input type="text" id="name" name="name" placeholder="Ej: Monitor Samsung 27' 4k" class="form-input">
+							<input type="text" id="name" name="name" placeholder="Ej: Monitor..." class="form-input">
 						</div>
 						<div class="form-crud form-crud-m2">
 							<label for="price" class="form-label">Precio:</label>
-							<input type="number" id="price" name="price" placeholder="Ej: 59999" class="form-input">
+							<input type="number" id="price" name="price" placeholder="Ej: 9999..." class="form-input">
 						</div>
 					</div>	
 					<div class="row-product-detail">
 						<div class="form-crud form-crud-m3">
 							<label for="discount" class="form-label">Descuento:</label>
-							<input type="number" id="discount" name="discount" placeholder="Ej: 5" class="form-input">
+							<input type="number" id="discount" name="discount" placeholder="Ej: 5..." class="form-input">
 						</div>
 						<div class="form-crud form-crud-m3">
 							<label for="stock" class="form-label">Stock:</label>
-							<input type="number" id="stock" name="stock" placeholder="Ej: 10" class="form-input">
+							<input type="number" id="stock" name="stock" placeholder="Ej: 10..." class="form-input">
 						</div>
 						<div class="form-crud form-crud-m3">
 							<label for="category" class="form-label">Categoría:</label>
 							<select name="category" id="category" class="form-input">
 								<option value="">Elegir...</option>
 								<option value="PC Componentes">PC Componentes</option>
-								<option value=">Periféricos">Periféricos</option>
+								<option value="Periféricos">Periféricos</option>
 								<option value="Notebooks">Notebooks</option>
 								<option value="Monitores">Monitores</option>
 								<option value="Audio">Audio</option>
-							</select>
-                        </div>
-                        <div class="form-crud form-crud-m3">
-                            <label for="promo" class="form-label">En Promoción?</label>
-							<select name="promo" id="promo" class="form-input">
-								<option value="last">Elegir... (o va Últimos agregados)</option>
-								<option value="offer">Ofertas</option>
-								<option value="last">Últimos agregados</option>
 							</select>
 						</div>
 					</div>
 					<div class="linea"></div>
 					<div class="row-product-detail">
-						<div class="form-crud-oth form-crud-md">
+						<div class="form-crud form-crud-md">
+							<label for="promo" class="form-label">En Promoción?</label>
+							<select name="promo" id="promo" class="form-input">
+								<option value="last">Elegir... (o va Últimos agregados)</option>
+								<option value="offer">Ofertas</option>
+								<option value="last">Últimos agregados</option>
+							</select>
+							<div class="linea"></div>
+							<div class="linea"></div>
 							<label for="description" class="form-label">Descripción:</label>
 							<textarea name="description" id="description" class="form-input"></textarea>
 							<div class="linea"></div>
@@ -69,6 +69,14 @@
 							<label for="image" class="form-label">Foto del producto:</label>
 							<input type="file" name="image" id="image" accept="image/*">
 						</div>
+						<div class="form-crud form-crud-md">
+                            <div class="img-detail">
+                                <img src="/desing/iconos/default-placeholder.png" alt="Imagen" class="product_img">
+                            </div>
+							
+						
+						</div>
+						
 					</div>
 				</fieldset>	
 
@@ -82,8 +90,8 @@
 
                     <div class="linea"></div>
 
-					<!-- ■ Botón de borrar todos los datos del formulario -->
-                    <button class="button-form" type="reset" id="cancel">Cancelar</button>
+					<!-- ■ Cancelar, y volver a Detalle de Producto -->
+					<button class="button-form" type="button" onclick="window.history.go(-1)" id="cancel">Cancelar</button>
                     
                 </div>
 				<div class="linea"></div>
@@ -94,5 +102,3 @@
 	<!-- Footer -->
 	<%- include('../partials/footer.ejs') %>
 	<!-- /Footer -->
-</body>	
-</html>

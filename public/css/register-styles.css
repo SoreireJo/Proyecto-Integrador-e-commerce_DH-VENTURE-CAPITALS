@@ -18,7 +18,8 @@
 }
 
 .register-profile,
-.login-access{
+.login-access,
+.form-crud-wrap{
     padding: 16px;
     margin:15px auto;
     border-radius: 8px;
@@ -45,7 +46,8 @@ label{
 }
 
 /* Deselecciona un elemento en específico para no aplicar estilos */
-input:not([type="submit"],[type="search"],[type="radio"],[type="checkbox"])
+input:not([type="submit"],[type="search"],[type="radio"],[type="checkbox"]),
+select, textarea
 {    
     font-size: var(--fz-form-input-mob);
     padding: 8px;

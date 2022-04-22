@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+    <!-- Head -->
+    <%- include('../partials/head.ejs', {title: 'Registro de usuario'}) %>
+    <!-- /Head -->
+
+    <body>
+        <!-- Header -->
+        <%- include('../partials/header.ejs') %>
+        <!-- /Header -->
+
+        <!-- Main (Registro) -->
+        <main class="container-main">
+            <section class="container-users">
+
+                <!-- Form (Registro) -->
+                <form class="register" action="/users/userRegister" method="POST" enctype="multipart/form-data">  
+                    <fieldset class="register-profile">
+                        <legend> Registro de Usuarios: </legend>
+                        <div class="linea"></div>
+                        <label for="name">Apellido *</label>
+                        <input type="text" name="surname" id="surname" placeholder="Tu apellido" pattern="[a-z,A-Z,À-ÿ,\s,\S]{5,40}" required  title=" Debes ingresar tu apellido, por ejemplo:  Montero">   
+                        <label for="name">Nombre *</label>
+                        <input type="text" name="name" id="name" placeholder="Tu nombre" pattern="[a-z,A-Z,À-ÿ,\s,\S]{5,40}" required  title=" Debes ingresar tu nombre, por ejemplo: Juan ">    
+                        <label for="user">Nombre de usuario *</label>
+                        <input type="text" name="user" id="user" 
+                        pattern="[a-z,A-Z,À-ÿ,\s,\S,\d,\-]{7,60}"placeholder="Nombre de usuario" required title="Debes ingresar un nombre de usuario, por ejemplo: sleep_q. No se aceptan caracteres especiales (@,*´+)" >         
+                        <label for="direction">Correo electrónico * </label>
+                        <input type="email" name="mail" id="mail" placeholder="Tu correo" pattern="[a-z,A-Z,À-ÿ,\s,\S,\d,\-,@,.]{7,60}" required title="Debes ingresar tu correo electrónico, por ejemplo: nchanampe@gmail.com (,*´+)"> 
+                        <label for="date">Fecha de nacimiento *</label>
+                        <input type="date" id="date" placeholder="Tu fecha de nacimiento" required >
+                        <label for="direction">Documento *</label>
+                        <input type="number" name="document" id="document" placeholder="Tu DNI" required>  
+                        <label for="direction">Domicilio *</label>
+                        <input type="text" name="address" id="address" placeholder="Tu domicilio" pattern="[a-z,A-Z,À-ÿ,\s,\S,\d,\-]{7,60}" required title="Debes ingresar tu domicilio, por ejemplo: Casa 4 Calle los Naranjos Barrio Parque Salta. No se aceptan caracteres especiales (@,*´+)">  
+                        <label for="city">Ciudad *</label>
+                        <input type="text" name="city" id="city" placeholder="Tu ciudad" pattern="[a-z,A-Z,À-ÿ,\s,\S]{5,40}" required  title=" Debes ingresar tu apellido, por ejemplo:  Córdoba">
+                        <label for="prov">Provincia *</label>
+						<select name="prov" id="prov" class="form-input">
+							<option value="">Seleccioná tu provincia...</option>
+							<option value="Buenos_Aires">Buenos Aires</option>
+							<option value="Ciudad_Autónoma_de_Buenos_Aires">Ciudad Autónoma de Buenos Aires</option>
+							<option value="Catamarca">Catamarca</option>
+							<option value="Chaco">Chaco</option>
+							<option value="Chubut">Chubut</option>
+                            <option value="Córdoba">Córdoba</option>
+							<option value="Corrientes">Corrientes</option>
+							<option value="Entre_Ríos">Entre Ríos</option>
+							<option value="Formosa">Formosa</option>
+							<option value="Jujuy">Jujuy</option>
+                            <option value="La_Pampa">La Pampa</option>
+							<option value="La_Rioja">La Rioja</option>
+							<option value="Mendoza">Mendoza</option>
+							<option value="Misiones">Misiones</option>
+							<option value="Neuquén">Neuquén</option>
+                            <option value="Río_Negro">Río Negro</option>
+							<option value="Salta">Salta</option>
+							<option value="San_Juan">San Juan</option>
+							<option value="San_Luis">San Luis</option>
+							<option value="Santa_Cruz">Santa Cruz</option>
+                            <option value="Santa_Fe">Santa Fe</option>
+							<option value="Santiago_del_Estero">Santiago del Estero</option>
+							<option value="Tierra_del_Fuego,_Antártida_e_Islas_del_Atlántico_Sur">Tierra del Fuego, Antártida e Islas del Atlántico Sur</option>
+							<option value="Tucumán">Tucumán</option>
+						</select>
+                        <label for="cp">Código Postal *</label>
+                        <input type="text" name="cp" id="cp" placeholder="Tu código postal" required  title=" Debes ingresar tu código postal, por ejemplo: 5000 ">    
+                        <label for="direction">Teléfono * </label>
+                        <input type="tel" name="phone" id="phone" placeholder="Tu teléfono" required>
+                        <label for="avatar">Foto de perfil </label>
+                        <input type="file" name="avatar" id="avatar" accept="image/*">
+                        <label for="password">Contraseña *</label>
+                        <input type="password" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])\w\S{6,}"  placeholder="Ingresar contraseña" title="Requisitos mínimos:
+                        6 caracteres, una mayúscula y una minúscula.
+                        Puede usar caracteres especiales (*/.}{¿'=, etc..)." required>
+                        <label for="repeat-password"> Confirmar contraseña * </label>
+                        <input type="password" name="repeat-password" id="repeat-password" placeholder="Confirmar contraseña" title="Requisitos mínimos:
+                        6 caracteres, una mayúscula y una minúscula.
+                        Puede usar caracteres especiales (*/.}{¿'=, etc..)." required>
+                    </fieldset>
+
+                    <div class="linea"></div>
+
+                    <div class="container-buttons">
+                        <button class="container-buttons" type="submit" id="button-register">Crear cuenta</button>
+                        <button class="container-buttons" type="button" onclick="window.history.go(-1)" id="button-reset">Cancelar</button>
+                    </div>
+
+                    <div class="linea"></div>
+                    <div class="media-linea"></div>
+
+                    <div class="container-link">
+                        <p id="link"><a href="./userLogin"> ¿Ya tenés una cuenta?<span id="IniSesion"> Iniciar Sesión</span></a></p>
+                    </div>
+                </form>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <%- include('../partials/footer.ejs') %>
+        <!-- /Footer -->
+    </body>
+</html>
