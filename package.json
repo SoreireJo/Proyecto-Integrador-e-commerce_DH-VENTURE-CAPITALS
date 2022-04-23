@@ -4,6 +4,7 @@
   "description": "Plataforma E-Comerce hecha a medida para DH VENTURE CAPITALS",
   "main": "./src/bin/www",
   "scripts": {
+    "test": "nodemon ./src/app.js -e js,ejs,json,mjs",
     "start": "nodemon ./src/bin/www"
   },
   "keywords": [],

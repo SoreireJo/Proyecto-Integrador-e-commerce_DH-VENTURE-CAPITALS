@@ -13,7 +13,7 @@ module.exports = {
             precioConDescuento = products.price - descuento; 
         });
 
-        res.render('web/index', {products, precioConDescuento});
+        res.render('./web/index', {products, precioConDescuento});
         
     },
     login: (req, res) => {

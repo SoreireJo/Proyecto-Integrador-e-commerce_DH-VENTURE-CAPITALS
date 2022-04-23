@@ -259,3 +259,16 @@ El usuario ingreso a: /products/detail/1
 El usuario ingreso a: /images/products/
 El usuario ingreso a: /
 El usuario ingreso a: /products/detail/1
+El usuario ingreso a: /
+El usuario ingreso a: /products/detail/1
+El usuario ingreso a: /products/productCreateForm
+El usuario ingreso a: /products/productsList
+El usuario ingreso a: /favicon.ico
+El usuario ingreso a: /
+El usuario ingreso a: /products/detail/1
+El usuario ingreso a: /products/productCreateForm
+El usuario ingreso a: /products/productsList
+El usuario ingreso a: /
+El usuario ingreso a: /%C2%BF?
+El usuario ingreso a: /%C2%BF?
+El usuario ingreso a: /%C2%BF?
