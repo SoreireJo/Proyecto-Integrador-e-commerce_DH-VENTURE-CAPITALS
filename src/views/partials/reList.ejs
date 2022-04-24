@@ -1,0 +1,19 @@
+<!-- Refresh! (productsList x delete) -->
+<% if (tik == 'reList') { %>
+    <script>
+        window.location.href = "/products/productslist/reList2";
+    </script>
+<% } %>
+
+<% if (tik == 'reList2') { %>
+    <script>
+        window.location.href = "/products/productslist/0";
+    </script>
+<% } %>
+
+<!-- Pin-Ball Refresh! (productDetail x update) -->
+<% if (tik > 0) { %>
+<script>
+    window.location.href = "/products/productDetail/<%= tik %>";
+</script>
+<% } %>

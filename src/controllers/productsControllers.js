@@ -9,28 +9,22 @@ const productsFilePath = path.join(__dirname, '../data/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 
-/*
-const visited = products.filter(function(product){
-	return product.visited;
-})
-const inSale = products.filter(function(product){
-	return !product.visited;
-})
-*/
-
 const controller = {
     // Root - Show all products
 	productsList: (req, res) => {
 		let productsRemix = [...products];
         productsRemix = reMix(productsRemix);
+		let tik;
+		let esta = typeof(req.params.tik) != undefined;
+		if (esta) { tik = req.params.tik; } else { tik = '0'; }
 		res.render('./products/productsList', {
 		productsRemix,
+		tik,
 		toThousand
 		});
 	},
 
 	// Category - Show products x category
-
 	productsCategory: (req, res) => {
 		let cat = req.params.cat;
 		if (cat == "PC") { cat = "PC Componentes"; }
@@ -52,7 +46,6 @@ const controller = {
 		let productsRemix = products.filter(product => product.name.toLowerCase().includes(search));
         productsRemix.reverse();
 		res.render('./products/productsSearch', { 
-			// productsRemix: productsToSearch, 
             productsRemix,
 			search,
 			toThousand,
@@ -63,24 +56,23 @@ const controller = {
 	productDetail: (req, res) => {
 		let id = req.params.id;
 		let product = products.find(product => product.id == id);
-		let actualizada = false;
+		let tok;
+		let esta = typeof(req.params.tok) != undefined;
+		if (esta) { tok = req.params.tok; }
 		res.render('./products/productDetail', {
 			product,
-			actualizada,
+			tok,
 			toThousand
 		});
 	},
 
 	// Create one product
 	productCreateForm: (req, res) => {
-	
 		res.render('./products/productCreateForm');
 	},
 
 	// Create -  Method to store
 	store: (req, res) => {
-		if (req.file) {
-// req.file ? req.file.filename : "default-image.png",
 		let newProduct = {
 			id: products[products.length - 1].id + 1,
 			...req.body,
@@ -94,23 +86,7 @@ const controller = {
 		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
 		products.reverse();
 		res.redirect('/products/productDetail/'+ newProduct.id);
-	}else{
-		let newProduct = {
-			id: products[products.length - 1].id + 1,
-			...req.body,
-			stock: parseInt(req.body.stock),
-			discount: parseInt(req.body.discount),
-			price: parseInt(req.body.price),
-			image: "default-image.png"
-		};
-		products.push(newProduct);
-		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
-		products.reverse();
-		res.redirect('/products/productDetail/'+ newProduct.id);
-
-	}
-},
-
+	},
 
 	// Edit - Form to edit
 	productEditForm: (req, res) => {
@@ -123,17 +99,15 @@ const controller = {
 	update: (req, res) => {
 		let id = req.params.id;
 		let productToChange = products.find(product => product.id == id);
-	// req.file ? req.file.filename : productToChange.image,
-   if(req.file){
 		
-	productToChange = {
+		productToChange = {
 			id: productToChange.id,
 			...req.body,
 			stock: parseInt(req.body.stock),
 			discount: parseInt(req.body.discount),
 			price: parseInt(req.body.price),
 			description: req.body.description,
-			image: req.file.filename
+			image: req.file ? req.file.filename : productToChange.image,
 		};
 
 		
@@ -146,45 +120,15 @@ const controller = {
 		});
 		
 		fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
-		res.redirect('/products/productDetail/'+ productToChange.id);
-	}else{
-		productToChange = {
-			id: productToChange.id,
-			...req.body,
-			stock: parseInt(req.body.stock),
-			discount: parseInt(req.body.discount),
-			price: parseInt(req.body.price),
-			description: req.body.description,
-			image: productToChange.image
-		};
-
-		
-		let newProducts = products.map(product => {
-			if (product.id == productToChange.id) {
-				return product = {...productToChange};
-			}
-			return product;
-		})
-
-		fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
-		res.redirect('/products/productDetail/'+ productToChange.id);
-	}
-},
+		res.redirect('/products/productDetail/'+ productToChange.id + '/1');
+	},
 
 	// Delete - Delete one product from DB
 	delete: (req, res) => {
 		let id = req.params.id;
 		let nowProducts = products.filter(product => product.id != id);
-
-		// * dev pins
-		// res.send(nowProducts); // mirando que hay en nowProducts
-		// for (let i in nowProducts) { nowProducts[i].id = i + 1 } // iterando un array de objetos
-		// ...
-		// res.send(typeof(req.file));
-
-
 		fs.writeFileSync(productsFilePath, JSON.stringify(nowProducts, null, ' '));
-		res.redirect('/products/productsList');
+		res.redirect('/products/productsList/reList');
 	}
 	
 };

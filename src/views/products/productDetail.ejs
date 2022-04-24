@@ -5,10 +5,9 @@
     <!-- /Head -->
 
     <body>
-        <!-- Actualizar la vista!!! -->
-        <% if (actualizada = false) { %>
-            <script> window.location.reload(true); window.location.reload(true); </script>
-            <% if (actualizada != undefined) {actualizada = true;} } %>
+        <!-- refresh productDetail -->
+        <%- include('../partials/reDetail.ejs') %>
+        <!-- /refresh productDetail -->
 
         <!-- Header -->
         <%- include('../partials/header.ejs') %>

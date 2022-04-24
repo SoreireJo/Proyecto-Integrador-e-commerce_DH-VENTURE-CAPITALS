@@ -9,27 +9,26 @@ const productsFilePath = path.join(__dirname, '../data/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 
-
-const visited = products.filter(function(product){
-	return product.visited;
-})
-
-const inSale = products.filter(function(product){
-	return !product.visited;
-})
-
-
 const controller = {
 	index: (req, res) => {
-        let productsRemix = [...products];
-        // let productsRemix = reMix(products);
-        productsRemix = reMix(productsRemix);
-		res.render('web/index', {
-            productsRemix,
-			visited,
-			inSale,
-			toThousand
-		});
+        // let productsRemix = [...products];
+        // // let productsRemix = reMix(products);
+        // productsRemix = products.filter(product => product.promo == "offer");
+		// res.render('web/index', {
+        //     productsRemix,
+		// 	toThousand
+		// });
+
+		index: (req, res) => {
+			let productsRemix = [...products];
+	
+			productsRemix = reMix(productsRemix);
+			res.render('web/index', {
+				productsRemix,		
+				toThousand
+			});
+		}
+	
 	},
 	testPruebas: (req, res) => {
 			let productsRemix = [...products];

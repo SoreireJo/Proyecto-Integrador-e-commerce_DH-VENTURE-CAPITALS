@@ -18,7 +18,7 @@ let storage = multer.diskStorage( {
     },
     //*  nombre que le damos al archivo
     filename: function(req, file, callback) {
-        let imageName = 'product-' + Date.now()+ '-'+file.originalname;
+        let imageName = 'product-' + Date.now()+ '-' + file.originalname;
         callback(null, imageName);
     }
 });
@@ -30,7 +30,7 @@ let fileUpload = multer({ storage });
 
 
 /*** GET ALL PRODUCTS ***/ 
-router.get('/productsList', productsControllers.productsList);
+router.get('/productsList/:tik?', productsControllers.productsList);
 
 
 /*** GET PRODUCTS x CATEGORY/: cat ***/ 
@@ -42,7 +42,7 @@ router.get('/productSearch', productsControllers.productSearch);
 
 
 /*** GET ONE PRODUCT /:id ***/ 
-router.get('/productDetail/:id', productsControllers.productDetail);
+router.get('/productDetail/:id/:tok?', productsControllers.productDetail);
 
 
 /*** CREATE ONE PRODUCT ***/ 
@@ -54,7 +54,6 @@ router.post('/productCreateForm', fileUpload.single('image'), productsController
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/productEditForm/:id', productsControllers.productEditForm);
 router.post('/productEditForm/:id', fileUpload.single('image'), productsControllers.update);
-//router.post('/update/:id?', productsControllers.update);
 
 
 /*** DELETE ONE PRODUCT***/
