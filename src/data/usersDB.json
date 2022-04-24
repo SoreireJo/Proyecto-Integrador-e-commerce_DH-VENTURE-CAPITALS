@@ -12,7 +12,7 @@
   "cp": "5300",
   "phone": "3804561903",
   "password": "A123456Aa",
-  "repeat-password": "A123456Aa",
+  "rol": "admin",
   "image": "product-1648916112364.png"
  },
  {
@@ -28,7 +28,23 @@
   "cp": "5300",
   "phone": "3804340120",
   "password": "Josefina8",
-  "repeat-password": "Josefina8",
+  "rol": "data",
   "image": "user-1650578200093.jpg"
- }
+ },
+ {
+    "id": 3,
+    "surname": "Chanampe",
+    "name": "Nerea",
+    "user": "Nere22",
+    "mail": "nerec22@gmail.com",
+    "document": "32.444.888",
+    "address": "Los Caudillos",
+    "city": "La Rioja",
+    "prov": "La_Rioja",
+    "cp": "5300",
+    "phone": "3804340122",
+    "password": "Nerea22",
+    "rol": "user",
+    "image": "user-1650578200094.jpg"
+   }
 ]
