@@ -3629,3 +3629,15 @@ El usuario ingresó en: /products/productsList/reList
 El usuario ingresó en: /products/productslist/reList2
 El usuario ingresó en: /products/productslist/0
 El usuario ingresó en: /products/productslist/0
+El usuario ingresó en: /
+El usuario ingresó en: /
+El usuario ingresó en: /
+El usuario ingresó en: /
+El usuario ingresó en: /
+El usuario ingresó en: /products/productsList
+El usuario ingresó en: /
+El usuario ingresó en: /products/productDetail/21
+El usuario ingresó en: /
+El usuario ingresó en: /products/productsList
+El usuario ingresó en: /products/productsCategory/Monitores
+El usuario ingresó en: /products/productsCategory/Audio

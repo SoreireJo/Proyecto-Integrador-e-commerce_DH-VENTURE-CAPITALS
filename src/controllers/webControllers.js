@@ -10,34 +10,12 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 
 const controller = {
-	index: (req, res) => {
-        // let productsRemix = [...products];
-        // // let productsRemix = reMix(products);
-        // productsRemix = products.filter(product => product.promo == "offer");
-		// res.render('web/index', {
-        //     productsRemix,
-		// 	toThousand
-		// });
-
-		index: (req, res) => {
-			let productsRemix = [...products];
-	
-			productsRemix = reMix(productsRemix);
-			res.render('web/index', {
-				productsRemix,		
-				toThousand
-			});
-		}
-	
-	},
-	testPruebas: (req, res) => {
+    index: (req, res) => {
 			let productsRemix = [...products];
 			// let productsRemix = reMix(products);
 			productsRemix = reMix(productsRemix);
-			res.render('./web/testPruebas', {
+			res.render('./web/index', {
 				productsRemix,
-				visited,
-				inSale,
 				toThousand
 			});
 	}
