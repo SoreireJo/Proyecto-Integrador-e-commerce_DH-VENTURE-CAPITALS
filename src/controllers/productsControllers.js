@@ -14,9 +14,7 @@ const controller = {
 	productsList: (req, res) => {
 		let productsRemix = [...products];
         productsRemix = reMix(productsRemix);
-		let tik;
-		let esta = typeof(req.params.tik) != undefined;
-		if (esta) { tik = req.params.tik; } else { tik = '0'; }
+		let tik = (typeof(req.params.tik) != undefined) ? req.params.tik : '0';
 		res.render('./products/productsList', {
 		productsRemix,
 		tik,
@@ -57,8 +55,7 @@ const controller = {
 		let id = req.params.id;
 		let product = products.find(product => product.id == id);
 		let tok;
-		let esta = typeof(req.params.tok) != undefined;
-		if (esta) { tok = req.params.tok; }
+		if (typeof(req.params.tok) != undefined) { tok = req.params.tok };
 		res.render('./products/productDetail', {
 			product,
 			tok,
@@ -109,7 +106,6 @@ const controller = {
 			description: req.body.description,
 			image: req.file ? req.file.filename : productToChange.image,
 		};
-
 		
 		let newProducts = products.map(product => {
 			if (product.id == productToChange.id) {
@@ -130,7 +126,6 @@ const controller = {
 		fs.writeFileSync(productsFilePath, JSON.stringify(nowProducts, null, ' '));
 		res.redirect('/products/productsList/reList');
 	}
-	
 };
 
 module.exports = controller;

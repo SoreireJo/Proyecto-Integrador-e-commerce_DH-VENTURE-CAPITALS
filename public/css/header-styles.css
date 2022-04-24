@@ -269,8 +269,6 @@ header .navbar-burger:checked + .navbar{
     background: -webkit-linear-gradient(to bottom, #ebe5dd, #8e9eab);
     background: linear-gradient(to bottom, #ebe5dd, #8e9eab);
 
-
-
   margin-bottom:75px;
   width:100%;
   flex-direction:column;
@@ -278,7 +276,8 @@ header .navbar-burger:checked + .navbar{
   margin-top: 470px;
 
   
-  margin-top: 461px;
+  /* margin-top: 461px; */
+  margin-top: 150px;
 }
 header .navbar{
   position: absolute;

@@ -8,7 +8,7 @@ const path = require('path');
 const usersControllers = require('../controllers/usersControllers');
 
 
-// ********* Multer ***********
+// ********* Configurando el Multer ***********
 let storage = multer.diskStorage( {    
     // * Lugar donde guardamos el archivo
     destination: (req, file, callback) => {
@@ -22,6 +22,7 @@ let storage = multer.diskStorage( {
     }
 });
 let fileUpload = multer({ storage });
+
 
 /*** LOGIN USER ***/ 
 router.get('/userLogin', usersControllers.userLogin);
