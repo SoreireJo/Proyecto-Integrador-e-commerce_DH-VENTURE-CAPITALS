@@ -11,11 +11,17 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 const controller = {
     index: (req, res) => {
-			let productsRemix = [...products];
-			// let productsRemix = reMix(products);
-			productsRemix = reMix(productsRemix);
+		let filaOffer = 1;
+		let filaLast = 1;
+			let productsLast = products.filter(product => product.promo == "last");
+			let productsOffer = products.filter(product => product.promo == "offer");
+			productsLast = reMix(productsLast);
+			productsOffer = reMix(productsOffer);
 			res.render('./web/index', {
-				productsRemix,
+				productsOffer,
+				productsLast,
+				filaOffer,
+				filaLast,
 				toThousand
 			});
 	}
