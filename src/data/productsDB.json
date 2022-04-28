@@ -431,12 +431,12 @@
  {
   "id": 40,
   "name": "Mouse inalámbrico recargable Logitech Master Series MX Master 3 gris medio",
-  "price": "32239",
-  "discount": "5",
-  "stock": "4",
+  "price": 32239,
+  "discount": 5,
+  "stock": 4,
   "category": "Periféricos",
   "promo": "last",
   "description": "Su diseño eficaz hace de este mouse un elemento cómodo, con una gran experiencia de uso para aquellas personas que buscan seguridad en cada click. Su sensor Darkfield te permitirá accionar con gran detalle y exactitud, gracias a su tecnología de seguimiento.",
-  "image": "product-1648514052506.png"
+  "image": "product-1651136858846-mouse_logitech_master.png"
  }
 ]
