@@ -253,3 +253,10 @@ El usuario ingreso a: /
 El usuario ingreso a: /products/productDetail/1
 El usuario ingreso a: /products/productEditForm/1
 El usuario ingreso a: /products/productEditForm/1
+El usuario ingresó en: /
+El usuario ingresó en: /favicon.ico
+El usuario ingresó en: /
+El usuario ingresó en: /
+El usuario ingresó en: /products/productsList
+El usuario ingresó en: /
+El usuario ingresó en: /
