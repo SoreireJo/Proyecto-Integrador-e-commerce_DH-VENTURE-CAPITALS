@@ -10,21 +10,76 @@ main.main-index {
 /* section.offers, y todas las */
 /* sections vista de producto  */
 main.main-index section.sec-last-tec,
-main.main-index section.sec-offers{
+main.main-index section.sec-offers,
+div.products{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    /* align-items: flex-start; */
+    /* align-items: baseline; */
+    align-items: flex-start;
+}
+
+products-rows{
+    display: flex;
+    /* flex-wrap: wrap; */
+    /* flex-direction: column; */
+}
+
+.last-search{
+    display: flex;
+    padding: 0px;
+    
+}
+
+.image-row{
+    width: 280px;
+}
+
+.row-article{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    padding: 15px;
+}
+
+.row-article h4{
+    font-size: 32px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: normal;
+}
+
+.row-article p.discount,
+.row-article p.priceRow,
+.row-article p.buttAgregarRow{
+    align-self: flex-end;
+}
+
+.row-article p.priceRow{
+    font-family: HandSean, sans-serif;
+    font-size: var(--fz-dp-price-mob);
+    color: var(--color-price-sell);
+    font-weight: bolder;
 }
 
 main.main-index  section article{
     margin: 10px 0px;
 }
 
-section, main.main-index  section article img{
+section, 
+main.main-index  section article img{
     width: 100%;
 }
 
+.product-box {
+    height: 50px;
+    background-color: white;
+    margin-bottom: 40px;
+}
+
+img.product_img{
+    padding: 0px 5px;
+}
 
 /* -------------------------------*/
 /* ---- Detalles del Artículo ----*/
@@ -33,7 +88,8 @@ main.main-index article div.main-article {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: baseline;
+    /* align-items: baseline; */
+    align-items: flex-start;
     padding: 15px;
 }
 
@@ -49,22 +105,16 @@ main.main-index article div.main-card-img {
 }
 
 div.main-card-img img.product_img {
-    padding: 1px;
     object-fit: contain;
+}
+
+#imagenPrevisualizacion{
+    object-fit: contain;
+    height: 33rem;
 }
 
 .linea-blanca{
     height: .5rem;
-}
-
-
-/* ----------------*/
-/* ---- Precio ----*/
-/* ----------------*/
-main.main-index .price {
-    font-size: var(--fz-price-mob);
-    color: var(--color-price);
-    align-self: center;
 }
 
 
@@ -79,6 +129,19 @@ main.main-index .discount {
 }
 
 
+/* ----------------*/
+/* ---- Precio ----*/
+/* ----------------*/
+main.main-index .price {
+    font-size: var(--fz-price-mob);
+    color: var(--color-price);
+    align-self: center;
+}
+main.main-index .priceRow {
+    color: var(--color-price);
+}
+
+
 /* ---------------------*/
 /* ---- Descripción ----*/
 /* ---------------------*/
@@ -89,6 +152,13 @@ main.main-index .description {
     margin-top: 20px;
     width: 90%;
 }
+main.main-index .description2 {
+    display: "none";
+    font-size: 0px;
+    color: var(--color-description);
+    width: 90%;
+}
+
 
 
 /* --------------*/
@@ -110,6 +180,13 @@ button.buttComprar{
 }
 
 
+/* -------------------------------*/
+/* ------- Media Querys ----------*/
+/* -------------------------------*/
+.bocadito-ghostcard,
+    main.main-index section div.products article {
+        width: 90%;
+}
 
 /* -------------------------------*/
 /* ------- Media Querys ----------*/
@@ -125,6 +202,7 @@ button.buttComprar{
         justify-content: space-between;
         /* align-items: flex-start; */
     }
+    .bocadito-ghostcard,
     main.main-index section div.products article {
         width: 45%;
     }
@@ -174,7 +252,12 @@ button.buttComprar{
         font-size: var(--fz-desc-dsk);
         font-weight: bold;
     }
+    main.main-index section article:hover .description2{
+        font-size: var(--fz-desc-dsk);
+        font-weight: bold;
+    }
     main.main-index section article button.buttAgregar,
+    main.main-index section article button.buttAgregar2,
     main.main-index section article button.buttComprar{
         font-size: var(--fz-crtbtt-dsk);
     }
@@ -191,6 +274,7 @@ button.buttComprar{
     /*   ej. inputs no crezcan tanto,          */
     /*   También un control extra en flexs     */
     /*   de vista de varios productos          */
+    .bocadito-ghostcard,
     main.main-index section div.products article {
         width: 22%;
     }
@@ -213,5 +297,9 @@ button.buttComprar{
     /* para un modo desktop total           */
     .linea-blanca{
         height: 1.25rem;
+    }
+    .product-box {
+        height: 100px;
+        margin-bottom: 90px;
     }
 }

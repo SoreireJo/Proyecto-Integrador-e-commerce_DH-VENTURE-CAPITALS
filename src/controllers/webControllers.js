@@ -1,25 +1,30 @@
 const fs = require('fs');
 const path = require('path');
+const { send } = require('process');
+const reMix = require('../modules/reSort');
 
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const productsFilePath = path.join(__dirname, '../data/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
-module.exports = {
-    index: (req, res) => {
-        let precioConDescuento = 0; 
-        products.forEach(element => { 
-            let descuento =  (products.price*products.discount)/100;   
-            precioConDescuento = products.price - descuento; 
-        });
 
-        res.render('./web/index', {products, precioConDescuento});
-        
-    },
-    login: (req, res) => {
-        res.render('web/login');
-    },    
-    register: (req, res) => {
-        res.render('web/register');
-    }
-}
+const controller = {
+    index: (req, res) => {
+		let filaOffer = 1;
+		let filaLast = 1;
+			let productsLast = products.filter(product => product.promo == "last");
+			let productsOffer = products.filter(product => product.promo == "offer");
+			productsLast = reMix(productsLast);
+			productsOffer = reMix(productsOffer);
+			res.render('./web/index', {
+				productsOffer,
+				productsLast,
+				filaOffer,
+				filaLast,
+				toThousand
+			});
+	}
+};
+
+module.exports = controller;
