@@ -49,37 +49,13 @@
                                 <h4 class="description2"><%= product.name %></h4>
                             </div>
                         </article>
-
                         
                         <% }); %>
                         <%  let u = 4 - (productsRemix.length % 4);
                             for(let i = 0; i < u && u != 4 ; i++) {
-			        	    let finalPrice = (productsNotMatch[i].price * ((100 - productsNotMatch[i].discount) / 100)).toFixed(0);
                         %>
-
-                        <!-- Card (Completando la fila de 4)-->
-                        <article class="last-tec">
-                            <a href="/products/productDetail/<%= productsNotMatch[i].id %>">
-                                
-                                <div class="linea-blanca"></div>
-                                <div class="main-card-img">
-                                    <img src="/images/products/<%= productsNotMatch[i].image %>" alt="Imagen del producto" class="product_img">
-                                </div>
-                                <div class="linea-blanca"></div>
-                            </a>
-                            <div class="bar-ggr" id="gg-bar"></div>
-
-                            <div class="main-article">
-                                <div class="min-row">
-                                    <button class="buttAgregar2">
-                                        <i class="fa-solid fa-cart-plus" id="crtct" style="font-size: 1.2em;"></i>
-                                    </button>
-                                    <p class="discount"><%= productsNotMatch[i].discount %>% off</p>
-                                </div>
-                                <p class="price">$<%= toThousand(finalPrice) %></p>
-                                <h4 class="description2"><%= productsNotMatch[i].name %></h4>
-                            </div>
-                        </article>
+                            <!-- GhostCard (Completando la fila de 4)-->
+                            <div class="bocadito-ghostcard"><img src="/desing/iconos/ghostcard.png"/></div>
                         <% } %>
 
                     <% } else { %>   
@@ -91,8 +67,6 @@
                 </div>
             </section>
     </main>
-
-
 
     <!-- Footer -->
     <%- include('../partials/footer.ejs') %>
