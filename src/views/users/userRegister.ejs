@@ -21,7 +21,12 @@
         <% } %>
 
         <!-- Form (Registro) -->
-        <form class="register" action="/users/userRegister" method="POST" enctype="multipart/form-data">  
+        <% if (locals.old && image) { %>
+            <form class="register" action="/users/userRegister/<%= image %>" method="POST" enctype="multipart/form-data">
+        <% } else { let image = 'image'; %>
+            <form class="register" action="/users/userRegister/<%= image %>" method="POST" enctype="multipart/form-data">
+        <% } %>
+
             <fieldset class="register-profile">
                 <legend> Registro de Usuarios: </legend>
                 <!-- row 1 -->
@@ -56,14 +61,18 @@
                     </div>
                     <div class="row-pill-form p40">
                         <label for="birth">Fecha de nacimiento *</label>
-                        <input type="date" id="birth" class="form-input2"
-                            value="<%= locals.old && old.birth ? old.birth : '' %>" 
+                        <input type="date" name="birth" id="birth" class="form-input2"
+                        value="<%= locals.old && old.birth ? old.birth : '' %>"
                             placeholder="Tu fecha de nacimiento..." required>
+                        <% if (locals.old && old.prov) { %>
+                            <!-- <script> document.getElementById('birth').format('DD-MM-YYYY') = old.birth </script> -->
+                        <% } %>
                     </div>
                     <div class="row-pill-form p40">
                         <label for="document">Documento *</label>
-                        <input type="number" name="document" id="document" class="form-input2"
+                        <input type="text" name="document" id="document" class="form-input2"
                             value="<%= locals.old && old.document ? old.document : '' %>" 
+                            pattern="[0-9]{7,8}" title="Revisá que sea correcto el número de DNI y que vaya sin signos de puntación" 
                             placeholder="Tu DNI..." required>  
                     </div>
                 </div>
@@ -84,9 +93,9 @@
                     </div>
                     <div class="row-pill-form p25">
                         <label for="prov">Provincia *</label>
-						<select name="prov" id="prov" class="form-input" 
-                            value="<%= locals.old && old.prov ? old.prov : '' %>" required>
-							<option value="">Seleccioná tu provincia...</option>
+						<select name="prov" id="prov" class="form-input">
+                            <option value="<%= locals.old && old.prov ? old.prov : '' %>">
+                            <%= locals.old && old.prov ? old.prov.replace('_', ' ') : 'Seleccioná tu provincia...'%></option>
 							<option value="Buenos_Aires">Buenos Aires</option>
 							<option value="Ciudad_Autónoma_de_Buenos_Aires">Ciudad Autónoma de Buenos Aires</option>
 							<option value="Catamarca">Catamarca</option>
@@ -139,8 +148,8 @@
 
                             <!-- La imagen que vamos a usar para previsualizar -->
                             <img id="userPrevisualizacion" alt="Imagen" class="user_img"
-                            <% if (locals.old && old.image) { %>
-                                src="/images/users/<%= old.image %>"
+                            <% if (locals.old) { %>
+                                src="/images/users/<%= image %>"
                             <% } else { %>
                                 src="/desing/iconos/user.png"
                             <% } %> >
@@ -157,8 +166,8 @@
                         <input type="password" name="password" id="password" class="form-input2"
                             placeholder="Ingresar contraseña" required>
 
-                        <label for="repeat-password"> Confirmar contraseña * </label>
-                        <input type="password" name="repeat-password" id="repeat-password" class="form-input2"
+                        <label for="repeatPassword"> Confirmar contraseña * </label>
+                        <input type="password" name="repeatPassword" id="repeatPassword" class="form-input2"
                             placeholder="Confirmar contraseña" required>
 
                         <button class="container-buttons" type="submit" id="button-register">Crear cuenta</button>

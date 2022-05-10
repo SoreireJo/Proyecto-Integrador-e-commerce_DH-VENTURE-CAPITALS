@@ -32,19 +32,19 @@
   "image": "user-1650578200093.jpg"
  },
  {
-    "id": 3,
-    "surname": "Chanampe",
-    "name": "Nerea",
-    "user": "Nere22",
-    "mail": "nerec22@gmail.com",
-    "birth": "19/09/1995",
-    "document": "32.444.888",
-    "address": "Los Caudillos",
-    "city": "La Rioja",
-    "prov": "La_Rioja",
-    "cp": "5300",
-    "phone": "3804340122",
-    "password": "Nerea22",
-    "image": "user-1650578200094.jpg"
-   }
+  "id": 3,
+  "surname": "Chanampe",
+  "name": "Nerea",
+  "user": "Nere22",
+  "mail": "nerec22@gmail.com",
+  "birth": "19/09/1995",
+  "document": "32.444.888",
+  "address": "Los Caudillos",
+  "city": "La Rioja",
+  "prov": "La_Rioja",
+  "cp": "5300",
+  "phone": "3804340122",
+  "password": "Nerea22",
+  "image": "user-1650578200094.jpg"
+ }
 ]

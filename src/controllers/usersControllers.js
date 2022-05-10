@@ -16,16 +16,19 @@ const controller = {
 
 	store: (req, res) => {
 		let errores =  validationResult(req);
+		let image = req.file ? req.file.filename : 
+			(req.params.tac != '-1') ? req.params.tac : "default-image.png";
 		if (!errores.isEmpty()) {
 			return res.render ('./users/userRegister', {
 				errores: errores.array(),
-				old: req.body
+				old: req.body,
+				image
 			});
 		}
 		let newUser = {
 			id: users[users.length - 1].id + 1,
 			...req.body,
-			image: req.file ? req.file.filename : "default-image.png",
+			image: image,
 		};
 		users.push(newUser);
 		fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
