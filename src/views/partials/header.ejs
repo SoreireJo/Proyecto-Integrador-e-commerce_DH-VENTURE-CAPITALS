@@ -82,6 +82,8 @@
 
                         <!-- user -->
                         <div class="container-header-users">
+                           
+                            
                             <button class="users-dropdown-opener">
                                 <label for="menu-users">
                                     <img
@@ -89,22 +91,35 @@
                                         src="/desing/iconos/icn-nav-user.png"
                                         alt="Mi cuenta"
                                         title="Mi cuenta"
-                                    />
+                                    />   
+                                                                    
                                 </label>
+                                
+                                                              
                                 <input type="checkbox" id="menu-users" class="users-menu" />
 
                                 <div class="users-dropdown">
                                     <ul class="users-link">
-                                        <li><a href="/users/userRegister">Registrarse</a></li>
-                                        <li><a href="/users/userLogin">Iniciar sesión</a></li>
-                                        <li>
-                                            <a href="/testPruebas" data-modal="#verpedido" name="modal"
-                                            >Ver mi pedido</a
-                                            >
-                                        </li>
+                                        <% if(locals.isLogged){ %>
+                                            <li>
+                                                <a href="/testPruebas" data-modal="#verpedido" name="modal"
+                                                >Ver mi pedido</a>
+                                            </li> 
+                                            <li>
+                                                <a href="/users/logout" data-modal="#verpedido" name="modal"
+                                                >Cerrar sesion</a>
+                                            </li> 
+                                        
+                                        <%}else{%> 
+                                            <li><a href="/users/userRegister">Registrarse</a></li>
+                                            <li><a href="/users/userLogin">Iniciar sesión</a></li>
+                                        <%}%> 
                                     </ul>
                                 </div>
                             </button>
+                            <% if(locals.user){ %>  
+                                <p class="users-link"><%= locals.user %></p>
+                            <%}%> 
                         </div>
 
                         <div class="bocadito"></div>

@@ -51,6 +51,6 @@ router.post('/productEditForm/:id', fileUpload.single('image'), productsControll
 
 
 /*** DELETE ONE PRODUCT***/
-router.delete('/productsList/:id', productsControllers.delete);
+router.delete('/productsList/:id',  productsControllers.delete);
 
 module.exports = router;

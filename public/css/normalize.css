@@ -367,6 +367,13 @@ select:focus, textarea:focus
     border: 3px solid var(--color-input-border-item);
 }
 
+.text-danger{
+    margin: 7px;
+    color:red;
+    size: 2px;
+    height: 10px;
+}
+
 /* -----------------------------*/
 /* ---------- Buttons ----------*/
 /* -----------------------------*/

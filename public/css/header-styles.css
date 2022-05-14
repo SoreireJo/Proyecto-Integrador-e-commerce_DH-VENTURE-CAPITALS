@@ -122,7 +122,6 @@ header div.container-header-users {
 header div img.user-images {
     max-width: 18px;
 
-
     max-width: 23px;
   }
 
@@ -130,7 +129,7 @@ header div ul.users-link {
   list-style: none;
   margin: 0;
   padding: 0;
-  text-align: left;
+  text-align: center;
 }
 
 header div ul li:first-child {
