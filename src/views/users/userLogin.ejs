@@ -32,8 +32,12 @@
                       for(let oneError in errors){ 
                         if(errors[oneError].param == "password"){%>
                           <p  class="text-danger"><%= errors[oneError].msg %></p>
-                    <% }}} %>                 
+                    <% }}} %> 
+                    <div class="linea"></div>
+                      <input type="checkbox" name="recordame">Recordarme
+                    <div class="media-linea"></div>                
                 </fieldset>
+                
                 <div class="linea"></div>
                 
                 <div class="container-buttons">

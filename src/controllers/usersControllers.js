@@ -19,6 +19,9 @@ const controller = {
 				if(users[i].user == req.body.user){
 					if(users[i].password == req.body.password){
 						usuarioLogueado = users[i].user;
+						if(req.body.recordame){
+							res.cookie('user', req.body.user,{maxAge: (1000*60)*2})
+						}
 						break
 					}
 				}
@@ -53,6 +56,8 @@ const controller = {
 		res.redirect('/');
 	},
 	logout:(req,res) => {
+			res.clearCookie('user')
+			res.locals.isLogged = false;
 			req.session.destroy();
 			res.redirect('/');
 		
