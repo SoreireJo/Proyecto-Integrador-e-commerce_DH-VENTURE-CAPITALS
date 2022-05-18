@@ -20,7 +20,7 @@ const controller = {
 					if(users[i].password == req.body.password){
 						usuarioLogueado = users[i].user;
 						if(req.body.recordame){
-							res.cookie('user', req.body.user,{maxAge: (1000*60)*2})
+							res.cookie('user', req.body.user,{maxAge: (1000*60)*15})
 						}
 						break
 					}
