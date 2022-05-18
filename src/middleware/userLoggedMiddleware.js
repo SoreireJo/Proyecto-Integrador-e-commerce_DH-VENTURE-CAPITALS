@@ -12,15 +12,13 @@ function userLoggedMiddleware(req, res, next){
     if(userFromCookie){
         req.session.usuario = userInCookie
     }
-
-    if(req.session && req.session.usuario != ""){
+    console.log(req.session)
+    if(req.session && req.session.usuario != undefined){
         
         res.locals.isLogged = true;
         res.locals.user = req.session.usuario;
 
     }
-   
-     
 
     next();
 }
