@@ -133,6 +133,8 @@
     --fz-form-label-dsk: 16px;
     --fz-form-link-mob: 18px;
     --fz-form-link-dsk: 20px;
+    --fz-form-link-mob: 22px;
+    --fz-form-link-dsk: 24px;
     --fz-form-option-mob: 13px;
     --fz-form-option-dsk: 14px;
 
@@ -280,7 +282,7 @@ p.product-detail-description{
 .register-profile{
     background: #abbaab;
     background: -webkit-linear-gradient(to right, #ffffff, #b0abba);
-    background: linear-gradient(to right, #ffffff, #b0abba);
+    background: linear-gradient(to right, #c6e6f5, #b0abba);
 }
 .login-access{
     max-width: 450px;
@@ -288,7 +290,7 @@ p.product-detail-description{
     margin-right: auto;
 }
 .container-users{
-    max-width: 600px;
+    max-width: 1200px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -327,8 +329,10 @@ p#link a{
     font-family: BauerRegular, sans-serif;
     font-size: var(--fz-link-mob);
     color: var(--color-system-button-item);
-    width: 45%;
-    padding: 2px 0px;
+    width: 75%;
+    max-width: 250px;
+    padding: 6px 0px;
+    margin: 5px auto;
 }
 #button-in{
     color: var(--color-input-ok);
@@ -564,6 +568,26 @@ main.main-index section article:hover .description2{
 .bocadito_nav{ height: .1rem; width: 1.5rem; }
 
 .bocadito-ghostcard{ height: .1rem; width: 20%; }
+
+.msg_errors{
+    color: red;
+    font-size: 16px;
+}
+
+.p10 { width: 10%; }
+.p20 { width: 20%; }
+.p25 { width: 25%; }
+.p30 { width: 30%; }
+.p33 { width: 33.33%; }
+.p40 { width: 40%; }
+.p45 { width: 45%; }
+.p50 { width: 50%; }
+.p60 { width: 60%; }
+.p70 { width: 70%; }
+.p80 { width: 80%; }
+.p90 { width: 90%; }
+.p95 { width: 95%; }
+.p100 { width: 100%; }
 
 
 /* -----------------------------------*/

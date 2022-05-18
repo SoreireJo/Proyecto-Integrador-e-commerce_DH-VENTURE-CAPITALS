@@ -16,7 +16,7 @@ const userLoggedMiddleware = require('../middleware/userLoggedMiddleware');
 let storage = multer.diskStorage( {    
     // * Lugar donde guardamos el archivo
     destination: (req, file, callback) => {
-        let folder = path.join(__dirname, '../../public/images/products');
+        let folder = path.join(__dirname, '../../public/images/users');
         callback(null, folder);
     },
     //*  nombre que le damos al archivo
@@ -41,7 +41,18 @@ router.get('/userLogin', usersControllers.userLogin);
 router.post('/userLogin', userLoggedMiddleware, validateLogin,  usersControllers.proccessLogin);
 router.get('/logout', usersControllers.logout);
 /*** REGISTER USER ***/ 
+// ** Validaciones **
+let validUserRegister = [
+    body('document')
+        .isLength({min: 7, max: 8} )
+        .withMessage('El campo Documento debe tener 8 dígitos'),
+    body('password')
+        .isLength({ min: 6 })
+        .withMessage('La contraseña debe tener mínimo 6 dígitos')
+        .equals('repeatPassword')
+        .withMessage('Las password no coinciden'),
+];
 router.get('/userRegister', usersControllers.userRegister);
-router.post('/userRegister', fileUpload.single('avatar'), usersControllers.store);
+router.post('/userRegister/:tac?', fileUpload.single('avatar'), validUserRegister, usersControllers.store);
 
 module.exports = router;

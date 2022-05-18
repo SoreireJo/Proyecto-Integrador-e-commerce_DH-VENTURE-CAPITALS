@@ -171,6 +171,22 @@ fieldset {
     font-family: DanielBK, sans-serif;
 }
 
+.row-form{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: space-between;
+    margin: 0 auto;
+    height: auto;
+    width: 100%;
+}
+
+.row-pill-form{
+    display: flex;
+    flex-direction: column;
+    margin: 0 1%;
+}
+
 .row-product-detail{
     display: flex;
     flex-direction: column;
@@ -194,6 +210,16 @@ div.form-crud {
 
 
 div.form-crud .form-input
+{
+    display: block;
+    height: 45px;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    border-radius: 8px;
+    color: var(--color-input-item);
+}
+
+.form-input2
 {
     display: block;
     height: 45px;
@@ -272,9 +298,6 @@ div.buttons-block {
     color: rgb(15, 15, 15);
     background-color: rgb(188, 188, 189);
 }
-
-
-
 
 
 /* -------------------------------*/
