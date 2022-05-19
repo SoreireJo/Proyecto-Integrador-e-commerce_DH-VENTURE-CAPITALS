@@ -5,8 +5,10 @@ const express = require('express');
 const logger = require('morgan');
 const path = require('path');
 const methodOverride =  require('method-override'); // Para poder usar los métodos PUT y DELETE
+const session = require('express-session');
 // ***** Yo Cargando Middlewares ******
 const logMiddleware = require('./middleware/userLogs');
+const userLoggedMiddleware = require('./middleware/userLoggedMiddleware');
 
 
 // ******** express() ***********
@@ -21,8 +23,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(cookieParser());
 app.use(methodOverride('_method')); // Para poder usar los métodos PUT y DELETE
+
+
 // ***** Yo Usando Middlewares ******
 app.use(logMiddleware);
+app.use(session({
+    secret: "session secret",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(userLoggedMiddleware)
 
 // ********* Template Engine *********
 // view engine setup
@@ -35,6 +45,7 @@ app.set('view engine', 'ejs')
 const webRouter = require('./routes/webRoutes'); // Rutas web
 const usersRouter = require('./routes/usersRoutes'); // Rutas users
 const productsRouter = require('./routes/productsRoutes'); // Rutas products */
+
 
 app.use('/', webRouter);
 app.use('/users', usersRouter);

@@ -17,6 +17,7 @@ const controller = {
 			let productsOffer = products.filter(product => product.promo == "offer");
 			productsLast = reMix(productsLast);
 			productsOffer = reMix(productsOffer);
+			
 			res.render('./web/index', {
 				productsOffer,
 				productsLast,
