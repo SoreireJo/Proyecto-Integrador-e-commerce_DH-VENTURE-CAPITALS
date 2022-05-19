@@ -38,7 +38,7 @@ let validateLogin = [
 
 /*** LOGIN USER ***/ 
 router.get('/userLogin', usersControllers.userLogin);
-router.post('/userLogin', userLoggedMiddleware, validateLogin,  usersControllers.proccessLogin);
+router.post('/userLogin', validateLogin,  usersControllers.proccessLogin);
 router.get('/logout', usersControllers.logout);
 /*** REGISTER USER ***/ 
 // ** Validaciones **
@@ -48,9 +48,7 @@ let validUserRegister = [
         .withMessage('El campo Documento debe tener 8 dígitos'),
     body('password')
         .isLength({ min: 6 })
-        .withMessage('La contraseña debe tener mínimo 6 dígitos')
-        .equals('repeatPassword')
-        .withMessage('Las password no coinciden'),
+        .withMessage('La contraseña debe tener mínimo 6 dígitos'),
 ];
 router.get('/userRegister', usersControllers.userRegister);
 router.post('/userRegister/:tac?', fileUpload.single('avatar'), validUserRegister, usersControllers.store);

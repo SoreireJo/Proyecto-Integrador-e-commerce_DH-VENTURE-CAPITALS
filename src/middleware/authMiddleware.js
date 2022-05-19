@@ -1,8 +1,13 @@
 function authMiddleware(req, res, next){
-    if(req.session.usuarioLogueado != undefined){
+    if(req.session.usuario != []){
+        
+        console.log("usuario encontrado")
         next()
     }else{
-        res.send('Esta pagina es solo para usuarios')
+
+        console.log("usuario no encontrado")
+        next()
+        
     }
 }
 
