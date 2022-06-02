@@ -2,24 +2,38 @@ const fs = require('fs');
 const path = require('path');
 const { send } = require('process');
 const reMix = require('../modules/reSort');
+const db = require('../database/models');
+const  Producto = db.Productos;
+const  Categoria = db.Categorias;
+const sequelize = db.sequelize;
+const { Op } = require("sequelize");
+const moment = require('moment');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
+/// esto sale ///
 const productsFilePath = path.join(__dirname, '../data/productsDB.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
+////Listo/////
 
 const controller = {
     // Root - Show all products
 	productsList: (req, res) => {
 		let productsRemix = [...products];
-        productsRemix = reMix(productsRemix);
-		let tik = (typeof(req.params.tik) != undefined) ? req.params.tik : '0';
-		res.render('./products/productsList', {
-		productsRemix,
-		tik,
-		toThousand
-		});
+        // productsRemix = reMix(productsRemix);
+		// let tik = (typeof(req.params.tik) != undefined) ? req.params.tik : '0';
+		// res.render('./products/productsList', {
+		// productsRemix,
+		// tik,
+		// toThousand
+		// });
+		
+			Producto.findAll()			
+			.then((resultados)=>{
+				res.send(resultados)
+			}).catch(error => res.send(error))
+		
+	
 	},
 
 	// Category - Show products x category

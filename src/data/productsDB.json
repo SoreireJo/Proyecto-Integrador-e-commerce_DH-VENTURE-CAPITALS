@@ -438,5 +438,16 @@
   "promo": "last",
   "description": "Su diseño eficaz hace de este mouse un elemento cómodo, con una gran experiencia de uso para aquellas personas que buscan seguridad en cada click. Su sensor Darkfield te permitirá accionar con gran detalle y exactitud, gracias a su tecnología de seguimiento.",
   "image": "product-1651136858846-mouse_logitech_master.png"
+ },
+ {
+  "id": 41,
+  "name": "",
+  "price": null,
+  "discount": null,
+  "stock": null,
+  "category": "",
+  "promo": "last",
+  "description": "",
+  "image": "default-image.png"
  }
 ]
