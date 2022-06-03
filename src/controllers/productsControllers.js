@@ -19,7 +19,7 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 const controller = {
     // Root - Show all products
 	productsList: (req, res) => {
-		let productsRemix = [...products];
+		// let productsRemix = [...products];
         // productsRemix = reMix(productsRemix);
 		// let tik = (typeof(req.params.tik) != undefined) ? req.params.tik : '0';
 		// res.render('./products/productsList', {
@@ -27,11 +27,28 @@ const controller = {
 		// tik,
 		// toThousand
 		// });
+
+		Producto.findAll({
+			include:[
+				{association: "categoria"},
+				{association: "promo"}
+			],	
+		}).then((product)=>{
+			let productsRemix = [...product];
+        productsRemix = reMix(productsRemix);
+		let tik = (typeof(req.params.tik) != undefined) ? req.params.tik : '0';
+		res.render('./products/productsList', {
+		productsRemix,
+		tik,
+		toThousand})
+			 	// res.send(product)
+			 }).catch(error => res.send(error))
 		
-			Producto.findAll()			
-			.then((resultados)=>{
-				res.send(resultados)
-			}).catch(error => res.send(error))
+		
+			// Producto.findAll()			
+			// .then((resultados)=>{
+			// 	res.send(resultados)
+			// }).catch(error => res.send(error))
 		
 	
 	},
