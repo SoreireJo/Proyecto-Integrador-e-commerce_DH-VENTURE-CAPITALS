@@ -449,5 +449,38 @@
   "promo": "last",
   "description": "",
   "image": "default-image.png"
+ },
+ {
+  "id": 42,
+  "name": "dsfsaddsfsaf",
+  "price": 32131321,
+  "discount": 5,
+  "stock": 12,
+  "category": "PC Componentes",
+  "promo": "last",
+  "description": "fdsfsafsdsafsafsadfdsafsdfsdafsd",
+  "image": "product-1654315619470-34235sddA.jpg"
+ },
+ {
+  "id": 43,
+  "name": "dsfsaddsfsaf",
+  "price": 32131321,
+  "discount": 5,
+  "stock": 12,
+  "category": "PC Componentes",
+  "promo": "last",
+  "description": "fdsfsafsdsafsafsadfdsafsdfsdafsd",
+  "image": "product-1654315702804-34235sddA.jpg"
+ },
+ {
+  "id": 44,
+  "name": "",
+  "price": null,
+  "discount": null,
+  "stock": null,
+  "category": "",
+  "promo": "last",
+  "description": "",
+  "image": "default-image.png"
  }
 ]

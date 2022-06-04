@@ -3,11 +3,13 @@ const path = require('path');
 const { send } = require('process');
 const reMix = require('../modules/reSort');
 const db = require('../database/models');
-const  Producto = db.Productos;
-const  Categoria = db.Categorias;
+const Producto = db.Productos;
+const Categoria = db.Categorias;
 const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 const moment = require('moment');
+const { load } = require('nodemon/lib/config');
+const Logger = require('nodemon/lib/utils/log');
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -17,55 +19,65 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 ////Listo/////
 
 const controller = {
-    // Root - Show all products
+	// Root - Show all products
 	productsList: (req, res) => {
-		// let productsRemix = [...products];
-        // productsRemix = reMix(productsRemix);
-		// let tik = (typeof(req.params.tik) != undefined) ? req.params.tik : '0';
-		// res.render('./products/productsList', {
-		// productsRemix,
-		// tik,
-		// toThousand
-		// });
-
 		Producto.findAll({
-			include:[
-				{association: "categoria"},
-				{association: "promo"}
-			],	
-		}).then((product)=>{
+			include: [
+				{ association: "categoria" },
+				{ association: "promo" }
+			],
+		}).then((product) => {
+
 			let productsRemix = [...product];
-        productsRemix = reMix(productsRemix);
-		let tik = (typeof(req.params.tik) != undefined) ? req.params.tik : '0';
-		res.render('./products/productsList', {
-		productsRemix,
-		tik,
-		toThousand})
-			 	// res.send(product)
-			 }).catch(error => res.send(error))
-		
-		
-			// Producto.findAll()			
-			// .then((resultados)=>{
-			// 	res.send(resultados)
-			// }).catch(error => res.send(error))
-		
-	
+			productsRemix = reMix(productsRemix);
+			let tik = (typeof (req.params.tik) != undefined) ? req.params.tik : '0';
+			res.render('./products/productsList', {
+				productsRemix,
+				tik,
+				toThousand
+			})
+
+		}).catch(error => res.send(error))
+
+
+	},
+
+	// Detail - Detail from one product
+	productDetail: (req, res) => {
+		Producto.findByPk(req.params.id, { include: ["categoria", "promo"] })
+
+			.then((product) => {
+				// console.log(product);			
+				let categoria = product.categoria.filter(item => item.nombre);
+				let tok;
+				if (typeof (req.params.tok) != undefined) { tok = req.params.tok };
+				res.render('./products/productDetail', {
+					product,
+					categoria,
+					tok,
+					toThousand
+				})
+			}).catch(error => res.send(error))
 	},
 
 	// Category - Show products x category
 	productsCategory: (req, res) => {
-		let cat = req.params.cat;
-		if (cat == "PC") { cat = "PC Componentes"; }
-		if (cat == "Perifericos") { cat = "Periféricos"; }
-		let productsRemix = products.filter(product => product.category == cat);
-		let productsNotMatch = products.filter(product => product.category != cat);
-		productsRemix.reverse();
-		res.render('./products/productsCategory', {
-			productsRemix,
-			productsNotMatch,
-			cat,
-			toThousand
+		
+		Producto.findAll({
+			include: ["categoria"],
+		}).then((product) => {
+			let id = req.params.id;
+		
+		      
+			
+			res.render('./products/productsCategory', {
+				// productsRemix,
+				// productsNotMatch,
+				product,
+				id,
+		
+				toThousand
+			});
 		});
 	},
 
@@ -73,26 +85,14 @@ const controller = {
 	productSearch: (req, res) => {
 		let search = req.query.search;
 		let productsRemix = products.filter(product => product.name.toLowerCase().includes(search));
-        productsRemix.reverse();
-		res.render('./products/productsSearch', { 
-            productsRemix,
+		productsRemix.reverse();
+		res.render('./products/productsSearch', {
+			productsRemix,
 			search,
 			toThousand,
 		});
 	},
 
-	// Detail - Detail from one product
-	productDetail: (req, res) => {
-		let id = req.params.id;
-		let product = products.find(product => product.id == id);
-		let tok;
-		if (typeof(req.params.tok) != undefined) { tok = req.params.tok };
-		res.render('./products/productDetail', {
-			product,
-			tok,
-			toThousand
-		});
-	},
 
 	// Create one product
 	productCreateForm: (req, res) => {
@@ -109,45 +109,52 @@ const controller = {
 			price: parseInt(req.body.price),
 			image: req.file ? req.file.filename : "default-image.png",
 		};
-		
+
 		products.push(newProduct);
 		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
 		products.reverse();
-		res.redirect('/products/productDetail/'+ newProduct.id);
+		res.redirect('/products/productDetail/' + newProduct.id);
 	},
 
 	// Edit - Form to edit
 	productEditForm: (req, res) => {
-		let id = req.params.id
-		let productDatos = products.find(product => product.id == id);
-		res.render('./products/productEditForm', {productDatos})
+
+		Producto.findByPk(req.params.id, { include: ["categoria", "promo"] })
+
+			.then((productDatos) => {
+				let categoria = productDatos.categoria.filter(item => item.nombre);
+				let promo = productDatos.promo.filter(item => item.nombre);
+				res.render('./products/productEditForm', { productDatos, categoria, promo, toThousand })
+			})
 	},
 
 	// Update - Method to update
 	update: (req, res) => {
 		let id = req.params.id;
 		let productToChange = products.find(product => product.id == id);
-		
+
 		productToChange = {
 			id: productToChange.id,
 			...req.body,
 			stock: parseInt(req.body.stock),
 			discount: parseInt(req.body.discount),
-			price: parseInt(req.body.price),
+			price: req.body.price,
 			description: req.body.description,
 			image: req.file ? req.file.filename : productToChange.image,
 		};
-		
+
 		let newProducts = products.map(product => {
 			if (product.id == productToChange.id) {
-				return product = {...productToChange,
-					image: productToChange.image};
+				return product = {
+					...productToChange,
+					image: productToChange.image
+				};
 			}
 			return product;
 		});
-		
+
 		fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
-		res.redirect('/products/productDetail/'+ productToChange.id + '/1');
+		res.redirect('/products/productDetail/' + productToChange.id + '/1');
 	},
 
 	// Delete - Delete one product from DB

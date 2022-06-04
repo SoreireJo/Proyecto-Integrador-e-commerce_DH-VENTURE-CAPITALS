@@ -29,7 +29,7 @@ router.get('/productsList/:tik?', productsControllers.productsList);
 
 
 /*** GET PRODUCTS x CATEGORY/: cat ***/ 
-router.get('/productsCategory/:cat', productsControllers.productsCategory);
+router.get('/productsCategory/:id', productsControllers.productsCategory);
 
 
 /*** SEARCH ***/ 

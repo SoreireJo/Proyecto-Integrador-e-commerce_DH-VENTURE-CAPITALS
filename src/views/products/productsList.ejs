@@ -32,7 +32,7 @@
 
                         <!-- Card -->
                         <article class="last-tec">
-                            <a href="/products/productDetail/<%= product.id %>">
+                            <a href="/products/productDetail/<%= product.productoId %>">
                                 
                                 <div class="linea-blanca"></div>
                                 <div class="main-card-img">
@@ -49,8 +49,8 @@
                                     </button>
                                     <p class="discount"><%= product.descuento %>% off</p>
                                 </div>
-                                <p class="price">$<%= toThousand(finalPrice) %></p>
-                                <h4 class="description2"><%= product.nombre %></h4>
+                                <p class="price">$<%= toThousand(product.precio) %></p>
+                                <h4 class="description2"><%= product.categoria.nombre %></h4>
                             </div>
                         </article>
                         <% }); %>   
