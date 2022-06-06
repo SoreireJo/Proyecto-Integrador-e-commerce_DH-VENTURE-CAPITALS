@@ -9,7 +9,7 @@ const productsControllers = require('../controllers/productsControllers');
 
 
 // ********* Configurando el Multer ***********
-let storage = multer.diskStorage( {    
+const storage = multer.diskStorage( {    
     // * Lugar donde guardamos el archivo
     destination: (req, file, callback) => {
         let folder = path.join(__dirname, '../../public/images/products');
@@ -21,7 +21,7 @@ let storage = multer.diskStorage( {
         callback(null, imageName);
     }
 });
-let fileUpload = multer({ storage });
+const fileUpload = multer({ storage });
 
 
 /*** GET ALL PRODUCTS ***/ 

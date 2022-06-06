@@ -5,11 +5,15 @@ const reMix = require('../modules/reSort');
 const db = require('../database/models');
 const Producto = db.Productos;
 const Categoria = db.Categorias;
+const Promo = db.Promos;
+
+// NO LA ESTAMOS USANDO POR EL MOMENTO
 const sequelize = db.sequelize;
 const { Op } = require("sequelize");
 const moment = require('moment');
 const { load } = require('nodemon/lib/config');
 const Logger = require('nodemon/lib/utils/log');
+// ********************************************* //
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -19,11 +23,12 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 ////Listo/////
 
 const controller = {
+
 	// Root - Show all products
 	productsList: (req, res) => {
 		Producto.findAll({
 			include: [
-				{ association: "categoria" },
+				{ association: "categorias" },
 				{ association: "promo" }
 			],
 		}).then((product) => {
@@ -36,51 +41,21 @@ const controller = {
 				tik,
 				toThousand
 			})
-
 		}).catch(error => res.send(error))
 
 
 	},
-
-	// Detail - Detail from one product
-	productDetail: (req, res) => {
-		Producto.findByPk(req.params.id, { include: ["categoria", "promo"] })
-
-			.then((product) => {
-				// console.log(product);			
-				let categoria = product.categoria.filter(item => item.nombre);
-				let tok;
-				if (typeof (req.params.tok) != undefined) { tok = req.params.tok };
-				res.render('./products/productDetail', {
-					product,
-					categoria,
-					tok,
-					toThousand
-				})
-			}).catch(error => res.send(error))
-	},
-
 	// Category - Show products x category
 	productsCategory: (req, res) => {
 		
-		Producto.findAll({
-			include: ["categoria"],
-		}).then((product) => {
-			let id = req.params.id;
-		
-		      
-			
-			res.render('./products/productsCategory', {
-				// productsRemix,
-				// productsNotMatch,
-				product,
-				id,
-		
-				toThousand
-			});
-		});
+		Producto.findAll({ include: ["categorias"], })
+			.then((product) => {
+				let id = req.params.id;
+				let products = product.filter(product =>product.categorias[0].categoriaId == id );				
+				res.render('./products/productsCategory', { product, products, id, toThousand })
+			})
+			.catch(error => res.send(error))
 	},
-
 	// Search product/s
 	productSearch: (req, res) => {
 		let search = req.query.search;
@@ -92,6 +67,26 @@ const controller = {
 			toThousand,
 		});
 	},
+
+	// Detail - Detail from one product
+	productDetail: (req, res) => {
+		Producto.findByPk(req.params.id, { include: ["categorias", "promo"] })
+
+			.then((product) => {
+				
+				let categoria = product.categorias.filter(item => item.nombre);
+				
+				res.render('./products/productDetail', {
+					product,
+					categoria,
+					toThousand
+				})
+			}).catch(error => res.send(error))
+	},
+
+
+
+
 
 
 	// Create one product
@@ -119,43 +114,48 @@ const controller = {
 	// Edit - Form to edit
 	productEditForm: (req, res) => {
 
-		Producto.findByPk(req.params.id, { include: ["categoria", "promo"] })
+		Producto.findByPk(req.params.id, { include: ["categorias", "promo"] })
 
-			.then((productDatos) => {
-				let categoria = productDatos.categoria.filter(item => item.nombre);
-				let promo = productDatos.promo.filter(item => item.nombre);
-				res.render('./products/productEditForm', { productDatos, categoria, promo, toThousand })
-			})
+			.then((product) => {
+				
+				let categoria = product.categorias.filter(item => item.nombre);
+
+				let promo = product.promo.filter(item => item.nombre);
+
+				Categoria.findAll().then((produc) => {
+					let categorias = produc.filter(e => e.nombre);
+					Promo.findAll().then((produc) => {
+						let promos = produc.filter(e => e.nombre);
+						res.render('./products/productEditForm', { product, categoria, promo, categorias, promos, toThousand })
+					})
+				})
+			}).catch(error => res.send(error))
 	},
 
 	// Update - Method to update
 	update: (req, res) => {
-		let id = req.params.id;
-		let productToChange = products.find(product => product.id == id);
+		let ld=req.params.id
+		console.log(req.body);
+		Producto.update({
+			
+			nombre:req.body.name,
+			descripcion: req.body.description,
+			precio: req.body.price,
+			stock: req.body.stock,
+			imagen: req.file ? req.file.filename: req.body.Imagen,
+			descuento: req.body.discount,
+			promoId:'5',
+			categoriaId:'6'
 
-		productToChange = {
-			id: productToChange.id,
-			...req.body,
-			stock: parseInt(req.body.stock),
-			discount: parseInt(req.body.discount),
-			price: req.body.price,
-			description: req.body.description,
-			image: req.file ? req.file.filename : productToChange.image,
-		};
+	},{where:{productoId: req.params.id}
+	
+	}).then((product)=>{
+		res.redirect('/products/productDetail/'+ld);
 
-		let newProducts = products.map(product => {
-			if (product.id == productToChange.id) {
-				return product = {
-					...productToChange,
-					image: productToChange.image
-				};
-			}
-			return product;
-		});
-
-		fs.writeFileSync(productsFilePath, JSON.stringify(newProducts, null, ' '));
-		res.redirect('/products/productDetail/' + productToChange.id + '/1');
+	}).catch(error => res.send(error));
 	},
+		
+	
 
 	// Delete - Delete one product from DB
 	delete: (req, res) => {

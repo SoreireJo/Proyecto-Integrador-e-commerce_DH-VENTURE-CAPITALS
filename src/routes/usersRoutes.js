@@ -13,7 +13,7 @@ const userLoggedMiddleware = require('../middleware/userLoggedMiddleware');
 
 
 // ********* Configurando el Multer ***********
-let storage = multer.diskStorage( {    
+const storage = multer.diskStorage( {    
     // * Lugar donde guardamos el archivo
     destination: (req, file, callback) => {
         let folder = path.join(__dirname, '../../public/images/users');
@@ -25,7 +25,7 @@ let storage = multer.diskStorage( {
         callback(null, imageName);
     }
 });
-let fileUpload = multer({ storage });
+const fileUpload = multer({ storage });
 
 
 //VALIDACIONES

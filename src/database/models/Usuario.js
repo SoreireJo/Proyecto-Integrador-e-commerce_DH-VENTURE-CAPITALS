@@ -1,7 +1,7 @@
 module.exports = (sequelize, dataTypes) => {
     let alias = 'Usuarios';
     let cols = {
-        usuarioId: {
+        id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -13,7 +13,11 @@ module.exports = (sequelize, dataTypes) => {
         activo: dataTypes.INTEGER,
         nombreUsuario: dataTypes.INTEGER,
         claveIngreso:dataTypes.INTEGER,
-        ultimaActualizacion: dataTypes.DATE
+        telefono:dataTypes.STRING,
+        codigoPostal:dataTypes.STRING,
+        direccion:dataTypes.STRING,
+        dni:dataTypes.INTEGER,
+        fechaCreacion: dataTypes.DATE
     };
     let config = {
         tableName: 'usuarios',
@@ -26,20 +30,24 @@ module.exports = (sequelize, dataTypes) => {
     Usuario.associate = function(models) {
 
 Usuario.belongsTo(models.Compras, {
-    as : 'compra',
-    foreignKey: 'comprasId',
+    as : 'compras',
+    foreignKey: 'usuarioId',
     timestamps: false
 });
         Usuario.hasMany(models.Localidad, {
             as : 'localidad',
-            foreignKey: 'localidadId',
+            foreignKey: 'id',
             timestamps: false
     });
-    Usuario.belongsToMany(models.Productos, {
-        as : 'producto',
-        through: 'usuariosProductos',
+    Usuario.belongsTo(models.Productos, {
+        as : 'productos',
         foreignKey: 'productoId',
         timestamps: false
+});
+Usuario.hasMany(models.Roles, {
+    as : 'roles',
+    foreignKey: 'id',
+    timestamps: false
 });
 };
     return Usuario;

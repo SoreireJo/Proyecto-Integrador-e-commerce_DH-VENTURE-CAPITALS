@@ -1,16 +1,13 @@
 module.exports = (sequelize, dataTypes) => {
     let alias = 'Provincia';
     let cols = {
-        provinciaId: {
+        id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
         provincia: {
             type: dataTypes.STRING
-        },
-        paisId: {
-            type: dataTypes.INTEGER
         },
         ultimaActualizacion: {
             type: dataTypes.DATE
@@ -25,12 +22,12 @@ module.exports = (sequelize, dataTypes) => {
     Provincia.associate = function(models) {
         Provincia.belongsTo(models.Localidad, { 
             as: "localidad",
-            foreignKey: "localidadId"
+            foreignKey: "provinciaId"
         })
     //Provincia a Pais N:1
         Provincia.hasMany(models.Pais,{
             as: "pais",
-            foreignKey: "paisId"
+            foreignKey: "id"
         })
     
 }

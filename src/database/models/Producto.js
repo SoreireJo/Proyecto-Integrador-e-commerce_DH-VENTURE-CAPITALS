@@ -1,7 +1,7 @@
 module.exports = (sequelize, dataTypes) => {
     let alias = 'Productos';
     let cols = {
-        productoId: {
+        id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -23,29 +23,24 @@ module.exports = (sequelize, dataTypes) => {
     const Producto = sequelize.define(alias, cols, config)
 
     Producto.associate = function(models) {
-        Producto.belongsToMany(models.Categorias, {
-                as : 'categoria',
-                through: 'categoriasproductos',
-                foreignKey: 'productoId',
-                otherKey: 'categoriaId',
+        Producto.hasMany(models.Categorias, {
+                as : 'categorias',
+                foreignKey: 'id',
                 timestamps: false
         });
-        Producto.belongsToMany(models.Promos, {
-            as : 'promo',
-            through: 'productospromos',
-            foreignKey: 'productoId',
-            otherKey: 'promoId',
+        Producto.hasMany(models.Promos, {
+            as : 'promos',
+            foreignKey:'id',
             timestamps: false
     });
-        Producto.hasMany(models.Compras, {
+        Producto.belongsTo(models.Compras, {
             as : 'compras',
-            foreignKey: 'comprasId',
+            foreignKey: 'productoId',
             timestamps: false
     });
-    Producto.belongsToMany(models.Usuarios, {
-        as : 'usuario',
-        through: 'usuariosProductos',
-        foreignKey: 'usuarioId',
+    Producto.hasMany(models.Usuarios, {
+        as : 'usuarios',
+        foreignKey: 'id',
         timestamps: false
 });
 };

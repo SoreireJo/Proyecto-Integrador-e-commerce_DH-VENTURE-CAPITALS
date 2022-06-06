@@ -1,7 +1,7 @@
 module.exports = (sequelize, dataTypes) => {
     let alias = 'Categorias';
     let cols = {
-        categoriaId: {
+        id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -20,11 +20,9 @@ module.exports = (sequelize, dataTypes) => {
     const Categoria = sequelize.define(alias, cols, config)
 
     Categoria.associate = function(models) {
-        Categoria.belongsToMany(models.Productos, {
+        Categoria.belongsTo(models.Productos, {
                 as : 'productos',
-                through: 'categoriasproductos',
                 foreignKey: 'categoriaId',
-                otherKey:'productoId',
                 timestamps: false
         });
 };

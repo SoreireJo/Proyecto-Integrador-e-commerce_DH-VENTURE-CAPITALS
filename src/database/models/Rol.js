@@ -1,29 +1,29 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Promos';
+    let alias = 'Roles';
     let cols = {
         id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        nombre: {
+        descripcion: {
             type: dataTypes.STRING
         },
-        ultimaActualizacion: {
+        create_time: {
             type: dataTypes.DATE
         }
     };
     let config = {
-        tableName: 'promos',
+        tableName: 'roles',
         timestamps: false
     };
-    const Promo = sequelize.define(alias, cols, config)
-    Promo.associate = function(models) {
-        Promo.belongsTo(models.Productos, {
-                as : 'productos',                
-                foreignKey: 'promoId',
+    const Rol = sequelize.define(alias, cols, config)
+    Rol.associate = function(models) {
+        Rol.belongsTo(models.Usuarios, {
+                as : 'usuarios',                
+                foreignKey: 'rolesId',
                 timestamps: false
         });
 };
-    return Promo
+    return Rol
 }

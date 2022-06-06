@@ -1,7 +1,7 @@
 module.exports = (sequelize, dataTypes) => {
     let alias = 'Localidad';
     let cols = {
-        localidadId: {
+        id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -9,9 +9,7 @@ module.exports = (sequelize, dataTypes) => {
         localidad: {
             type: dataTypes.STRING
         },
-        provinciaId: {
-            type: dataTypes.INTEGER
-        },
+        
         ultimaActualizacion: {
             type: dataTypes.DATE
         }
@@ -22,15 +20,15 @@ module.exports = (sequelize, dataTypes) => {
     };
     const Localidad = sequelize.define(alias, cols, config)
     Localidad.associate = function (models) {
-        //Localidad a Direccion 1:N
+        
         Localidad.belongsTo(models.Usuarios, { 
-            as: "usuario",
-            foreignKey: "usuarioId"
+            as: "usuarios",
+            foreignKey: "localidadId"
         })
-        //Localidad a Provincia N:1
+        
         Localidad.hasMany(models.Provincia,{
             as: "provincia",
-            foreignKey: "provinciaId"
+            foreignKey: "id"
         })
     
 }

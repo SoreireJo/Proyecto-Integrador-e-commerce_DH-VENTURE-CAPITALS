@@ -1,7 +1,7 @@
 module.exports = (sequelize, dataTypes) => {
     let alias = 'Pais';
     let cols = {
-        paisId: {
+        id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
@@ -21,8 +21,8 @@ module.exports = (sequelize, dataTypes) => {
     Pais.associate = function(models) {
          //Pais a Provincia 1:N
         Pais.belongsTo(models.Provincia, { 
-            as: "provincia",
-            foreignKey: "provinciaId"
+            as: "provincias",
+            foreignKey: "paisId"
         })   
 }
     
