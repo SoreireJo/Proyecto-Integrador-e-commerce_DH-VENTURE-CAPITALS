@@ -41,16 +41,16 @@ app.set('view engine', 'ejs')
 
 
 // ******* Route System require and use() *******
-
 const webRouter = require('./routes/webRoutes'); // Rutas web
 const usersRouter = require('./routes/usersRoutes'); // Rutas users
 const productsRouter = require('./routes/productsRoutes'); // Rutas products */
+const direccionRouter = require('./routes/direccionRoutes'); // Rutas direccion*/
 
 
 app.use('/', webRouter);
 app.use('/users', usersRouter);
 app.use('/products', productsRouter);
-
+app.use('/direccion', direccionRouter);
 
 // ************ catch 404 and forward to error handler ************
 app.use((req, res, next) => next(createError(404)));

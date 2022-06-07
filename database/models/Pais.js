@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = 'Pais';
+    let alias = 'Paises';
     let cols = {
         paisId: {
             type: dataTypes.INTEGER,
@@ -18,13 +18,13 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: false
     };
     const Pais = sequelize.define(alias, cols, config)
-    Pais.associate = function(models) {
+   /*  Pais.associate = function(models) {
          //Pais a Provincia 1:N
         Pais.belongTo(models.Provincia, { 
             as: "provincia",
             foreignKey: "provinciaId"
         })   
-}
+} */
     
     return Pais
 }
