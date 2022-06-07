@@ -27,7 +27,7 @@ module.exports = (sequelize, dataTypes) => {
     //Provincia a Pais N:1
         Provincia.hasMany(models.Pais,{
             as: "pais",
-            foreignKey: "id"
+            foreignKey: "paisId"
         })
     
 }

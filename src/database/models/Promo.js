@@ -19,7 +19,7 @@ module.exports = (sequelize, dataTypes) => {
     };
     const Promo = sequelize.define(alias, cols, config)
     Promo.associate = function(models) {
-        Promo.belongsTo(models.Productos, {
+        Promo.hasMany(models.Productos, {
                 as : 'productos',                
                 foreignKey: 'promoId',
                 timestamps: false

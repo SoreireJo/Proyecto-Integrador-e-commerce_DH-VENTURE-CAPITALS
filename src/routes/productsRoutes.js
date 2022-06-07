@@ -25,32 +25,32 @@ const fileUpload = multer({ storage });
 
 
 /*** GET ALL PRODUCTS ***/ 
-router.get('/productsList/:tik?', productsControllers.productsList);
-
+router.get('/list/:tik?', productsControllers.List);
+// router.get('/list/', productsControllers.list);
 
 /*** GET PRODUCTS x CATEGORY/: cat ***/ 
-router.get('/productsCategory/:id', productsControllers.productsCategory);
+router.get('/category/:id', productsControllers.Category);
 
 
 /*** SEARCH ***/ 
-router.get('/productSearch', productsControllers.productSearch); 
+router.get('/search', productsControllers.Search); 
 
 
 /*** GET ONE PRODUCT /:id ***/ 
-router.get('/productDetail/:id/:tok?', productsControllers.productDetail);
+router.get('/detail/:id', productsControllers.Detail);
 
 
 /*** CREATE ONE PRODUCT ***/ 
-router.get('/productCreateForm', productsControllers.productCreateForm);
-router.post('/productCreateForm', fileUpload.single('image'), productsControllers.store);
+router.get('/create', productsControllers.Create);
+router.post('/create', fileUpload.single('image'), productsControllers.store);
 
 
 /*** EDIT ONE PRODUCT ***/ 
-router.get('/productEditForm/:id', productsControllers.productEditForm);
-router.post('/productEditForm/:id', fileUpload.single('image'), productsControllers.update);
+router.get('/edit/:id', productsControllers.Edit);
+router.post('/edit/:id', fileUpload.single('image'), productsControllers.update);
 
 
 /*** DELETE ONE PRODUCT***/
-router.delete('/productsList/:id',  productsControllers.delete);
+router.delete('/list/:id',  productsControllers.delete);
 
 module.exports = router;

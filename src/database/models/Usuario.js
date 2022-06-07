@@ -29,26 +29,27 @@ module.exports = (sequelize, dataTypes) => {
    
     Usuario.associate = function(models) {
 
-Usuario.belongsTo(models.Compras, {
+Usuario.hasMany(models.Compras, {
     as : 'compras',
     foreignKey: 'usuarioId',
     timestamps: false
 });
-        Usuario.hasMany(models.Localidad, {
-            as : 'localidad',
-            foreignKey: 'id',
-            timestamps: false
-    });
-    Usuario.belongsTo(models.Productos, {
-        as : 'productos',
-        foreignKey: 'productoId',
-        timestamps: false
-});
-Usuario.hasMany(models.Roles, {
+Usuario.belongsTo(models.Roles, {
     as : 'roles',
-    foreignKey: 'id',
+    foreignKey: 'rolesId',
     timestamps: false
 });
+        Usuario.belongsTo(models.Localidad, {
+            as : 'localidad',
+            foreignKey: 'localidadId',
+            timestamps: false
+    });
+    Usuario.hasMany(models.Productos, {
+        as : 'productos',
+        foreignKey: 'usuarioId',
+        timestamps: false
+});
+
 };
     return Usuario;
 }

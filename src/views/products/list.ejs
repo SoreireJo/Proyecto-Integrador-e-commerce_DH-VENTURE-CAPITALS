@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Head -->
-<%- include('../partials/head.ejs', {title: 'Productos por categoría '}) %>
+<%- include('../partials/head.ejs', {title: 'Ver todo '}) %>
 <!-- /Head -->
 
 <body>
+ 
+
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
     <!-- /Header -->
@@ -12,32 +14,23 @@
     <!-- Main (Productos) -->
     <main class="main-index">
             <div class="linea"></div>
-            <% if (products.length > 0) {%>
-            <h3 class="titulo-main-index"><%=products[0].categorias[0].nombre%></h3>
-            <%}else{%><h2><%=id%></h2>
+            <h3 class="titulo-main-index">Todos los productos</h3>
             <div class="bar-ccb" id="cc-bar"></div>
             <div class="linea"></div>
-            <div class="msg bad-search">
-                <img src="/desing/iconos/sad-icon.png" alt="carita triste" />
-                <h4>Nos quedamos sin productos en esta categoría</h4>
-            </div> <%}%>
-            <div class="bar-ccb" id="cc-bar"></div>
-            <div class="linea"></div>
-            <!-- Sección: Productos por categoría -->
+            
+            <!-- Sección: Todos los productos -->
             <section class="sec-products">
 
                 <div class="products">
 
-                    <% if (product.length > 0) {
-                        product.forEach(product => {
-                            if (product.categorias[0].categoriaId == id) {
-                                
-			        	let finalPrice = (product.precio * ((100 - product.descuento) / 100)).toFixed(0);
+                    <% if (productsRemix.length > 0) {
+                        productsRemix.forEach(function(product){ 
+			        	let finalPrice = (product.precio * ((100 - product.descuento) / 100)).toFixed(0)
                     %>
 
                         <!-- Card -->
                         <article class="last-tec">
-                            <a href="/products/productDetail/<%= product.productoId %> %>">
+                            <a href="/products/detail/<%= product.id %>">
                                 
                                 <div class="linea-blanca"></div>
                                 <div class="main-card-img">
@@ -52,15 +45,15 @@
                                     <button class="buttAgregar2">
                                         <i class="fa-solid fa-cart-plus" id="crtct" style="font-size: 1.2em;"></i>
                                     </button>
-                                    <p class="discount"><%= product.descuento%>% off</p>
+                                    <p class="discount"><%= product.descuento %>% off</p>
                                 </div>
-                                <p class="price">$<%= toThousand(finalPrice) %></p>
+                                <p class="price">$<%= toThousand(product.precio) %></p>
                                 <h4 class="description2"><%= product.nombre %></h4>
                             </div>
                         </article>
-                        
-                        <% }}); %>
-                        <%  let u = 4 - (products.length % 4);
+                        <% }); %>   
+                    
+                        <%  let u = 4 - (productsRemix.length % 4);
                             for(let i = 0; i < u && u != 4 ; i++) {
                         %>
                             <!-- GhostCard (Completando la fila de 4)-->
@@ -70,11 +63,13 @@
                     <% } else { %>   
                         <div class="msg bad-search">
                             <img src="/desing/iconos/sad-icon.png" alt="carita triste" />
-                            <h4>Nos quedamos sin productos en esta categoría</h4>
+                             <h4>No existen productos cargados</h4>
                         </div> 
-                    <% } %>
+                    <% } %>    
                 </div>
             </section>
+
+            <div class="linea"></div>
     </main>
 
     <!-- Footer -->

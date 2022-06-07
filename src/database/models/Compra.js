@@ -1,14 +1,16 @@
 module.exports = (sequelize, dataTypes) => {
     let alias = 'Compras';
     let cols = {
-        comprasId: {
+        id: {
             type: dataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
+    
         precio: dataTypes.INTEGER,
-        total: dataTypes.INTEGER,
+        descuento: dataTypes.INTEGER,
         cantidad: dataTypes.INTEGER,
+        total: dataTypes.INTEGER,
         fechaCreacion: dataTypes.DATE
     };
     let config = {
@@ -21,14 +23,14 @@ module.exports = (sequelize, dataTypes) => {
     
     Compra.associate = function (models) {
        
-        Compra.hasMany(models.Usuarios, {
+        Compra.belongsTo(models.Usuarios, {
             as: 'usuarios',
-            foreignKey: 'id',
+            foreignKey: 'usuarioId',
             timestamps: false
         });
-        Compra.hasMany(models.Productos, {
+        Compra.belongsTo(models.Productos, {
             as: 'productos',
-            foreignKey: 'id',
+            foreignKey: 'productoId',
             timestamps: false
         });
     };

@@ -16,7 +16,7 @@
 
 		<!-- Form (Edit) enctype="multipart/form-data" -->
 		<div class="form-crud-wrap">
-			<form action="/products/productEditForm/<%= product.productoId %>" method="POST"  enctype="multipart/form-data">
+			<form action="/products/edit/<%= product.id %>" method="POST"  enctype="multipart/form-data">
 				<fieldset>
 					<legend> Modificar Producto: </legend>
 					<div class="media-linea"></div>
@@ -26,27 +26,34 @@
 							<input type="text" id="name" name="name" value="<%= product.nombre %>" class="form-input">
 						</div>
 						
-						<div class="form-crud form-crud-m2">
+						<div class="form-crud form-crud-m2" >
 							<label for="price" class="form-label">Precio:</label>
 							<input type="number" id="price" name="price" value= "<%= product.precio %>" class="form-input">
 						</div>
+					 <!-- este div esta oculto pera cuando se realice la validacion de usuario si sirve ya este disponible y no se nos pase -->
+						<div class="form-crud form-crud-m2" style="display: none" >
+							<label for="price" class="form-label">user:</label>
+							<input  type="number" id="user" name="user" value= "<%= product.precio %>" class="form-input">
+						</div>
+						<!-- ******************************************************************************************* -->
 					</div>	
 					<div class="row-product-detail">
 						<div class="form-crud form-crud-m3">
 							<label for="discount" class="form-label">Descuento:</label>
-							<input type="number" id="discount" name="discount" value="<%= parseInt(product.descuento) %>" class="form-input">
+							<input type="number" id="discount" name="discount" value="<%= product.descuento %>" class="form-input">
 						</div>
 						<div class="form-crud form-crud-m3">
 							<label for="stock" class="form-label">Stock:</label>
-							<input type="number" id="stock" name="stock" value="<%= parseInt(product.stock) %>" class="form-input">
+							<input type="number" id="stock" name="stock" value="<%= product.stock%>" class="form-input">
 						</div>
 						<div class="form-crud form-crud-m3">
 							<label for="category" class="form-label">Categoría:</label>
 							
 							<select name="category" id="category" class="form-input">
-								<option value="<%= categoria[0].categoriaId%>" hidden>  <%= categoria[0].nombre%></option>
+								<option value="<%= product.categorias.id%>" hidden>  <%= product.categorias.nombre%></option>
 								<% for (const categoria of categorias){ %>
-									<option value="<%= categoria.categoriaId%>"><%= categoria.nombre %></option>
+
+									<option value="<%= categoria.id%>"><%= categoria.nombre%></option>
 										
 								<% } %>
 							</select>
@@ -57,9 +64,10 @@
 						<div class="form-crud form-crud-md">
 							<label for="promo" class="form-label">Elegí una Promoción</label>
 							<select name="promo" id="promo" class="form-input">
-								<option value="" hidden><%= promo[0].nombre%></option>
+								<option value="<%= product.promos.id%>" hidden><%= product.promos.nombre%></option>
 								<% for (const promo of promos){ %>
-									<option value="<%= promo.promoId%>"><%= promo.nombre %></option>
+
+									<option value="<%=promo.id%>"><%= promo.nombre %></option>
 										
 								<% } %>
 							</select>
@@ -81,7 +89,8 @@
                                     <!-- script -->
                                     <%- include('../partials/preview_ed.ejs') %>
                                     <!-- /script -->
-									<input type="hidden"  name="Imagen"  value="<%= product.imagen%>">
+
+									<!-- <input type="hidden"  name="Imagen"  value="<%= product.imagen%>"> -->
                                     
                                 </div>
                                 <div class="media-linea"></div>
@@ -101,7 +110,7 @@
                     <div class="linea"></div>
 
 					<!-- ■ Botón de borrar todos los datos del formulario -->
-                    <button class="button-form" type="button" onclick="window.location.href='/products/productDetail/<%= product.productoId %>'" id="cancel">Cancelar</button>
+                    <button class="button-form" type="button" onclick="window.location.href='/products/detail/<%= product.id %>'" id="cancel">Cancelar</button>
                     
                 </div>
 				<div class="linea"></div>
