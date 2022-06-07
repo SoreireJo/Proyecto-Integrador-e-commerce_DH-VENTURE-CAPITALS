@@ -12,7 +12,16 @@
     <!-- Main (Productos) -->
     <main class="main-index">
             <div class="linea"></div>
-            <h3 class="titulo-main-index"><%= cat %></h3>
+            <% if (product.length == 0) {%>
+            <h3 class="titulo-main-index">PPPPPPPPPP</h3>
+            <div class="bar-ccb" id="cc-bar"></div>
+            <div class="linea"></div>
+            <div class="msg bad-search">
+                <img src="/desing/iconos/sad-icon.png" alt="carita triste" />
+                <h4>Nos quedamos sin productos en esta categoría</h4>
+            </div> 
+            <%}else {%>
+                <h3 class="titulo-main-index"><%=product[0].categorias.nombre%></h3>
             <div class="bar-ccb" id="cc-bar"></div>
             <div class="linea"></div>
             
@@ -20,19 +29,18 @@
             <section class="sec-products">
 
                 <div class="products">
-
-                    <% if (productsRemix.length > 0) {
-                        productsRemix.forEach(function(product){ 
-			        	let finalPrice = (product.price * ((100 - product.discount) / 100)).toFixed(0);
+                    <% if (product.length > 0) {
+                        product.forEach(product => {
+			        	let finalPrice = (product.precio * ((100 - product.descuento) / 100)).toFixed(0);
                     %>
 
                         <!-- Card -->
                         <article class="last-tec">
-                            <a href="/products/productDetail/<%= product.id %>">
+                            <a href="/products/productDetail/<%= product.id %> %>">
                                 
                                 <div class="linea-blanca"></div>
                                 <div class="main-card-img">
-                                    <img src="/images/products/<%= product.image %>" alt="Imagen del producto" class="product_img">
+                                    <img src="/images/products/<%= product.imagen %>" alt="Imagen del producto" class="product_img">
                                 </div>
                                 <div class="linea-blanca"></div>
                             </a>
@@ -43,15 +51,15 @@
                                     <button class="buttAgregar2">
                                         <i class="fa-solid fa-cart-plus" id="crtct" style="font-size: 1.2em;"></i>
                                     </button>
-                                    <p class="discount"><%= product.discount %>% off</p>
+                                    <p class="discount"><%= product.descuento%>% off</p>
                                 </div>
                                 <p class="price">$<%= toThousand(finalPrice) %></p>
-                                <h4 class="description2"><%= product.name %></h4>
+                                <h4 class="description2"><%= product.nombre %></h4>
                             </div>
                         </article>
                         
                         <% }); %>
-                        <%  let u = 4 - (productsRemix.length % 4);
+                        <%  let u = 4 - (product.length % 4);
                             for(let i = 0; i < u && u != 4 ; i++) {
                         %>
                             <!-- GhostCard (Completando la fila de 4)-->
@@ -63,7 +71,7 @@
                             <img src="/desing/iconos/sad-icon.png" alt="carita triste" />
                             <h4>Nos quedamos sin productos en esta categoría</h4>
                         </div> 
-                    <% } %>
+                    <% } }%>
                 </div>
             </section>
     </main>

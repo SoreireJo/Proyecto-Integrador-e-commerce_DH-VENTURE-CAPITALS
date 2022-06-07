@@ -48,15 +48,14 @@ const controller = {
 		Producto.findAll({ include: ["categorias"] })
 		.then((categoria) => {
 				// res.send(product);
-				
+				// console.log(categoria[0].categorias.id);
 				let id = req.params.id;
 				let product = categoria.filter(product =>product.categorias.id == id );
+				
 
-				///aqui otro then por categoria y que sea igual al id
-				// let products = categoria.filter(product => product.categorias.id !== id )
-                //   console.log(categoria);
+				// console.log(product.id);
 				res.render('./products/category.ejs/', { product, toThousand })
-			}).catch(error => res.send(error))
+			})
 	},
 
 	// Search product/s

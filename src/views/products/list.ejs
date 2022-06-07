@@ -5,9 +5,7 @@
 <!-- /Head -->
 
 <body>
-    <!-- refresh productsList -->
-    <%- include('../partials/reList.ejs') %>
-    <!-- /refresh productsList -->
+ 
 
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
@@ -27,16 +25,16 @@
 
                     <% if (productsRemix.length > 0) {
                         productsRemix.forEach(function(product){ 
-			        	let finalPrice = (product.price * ((100 - product.discount) / 100)).toFixed(0)
+			        	let finalPrice = (product.precio * ((100 - product.descuento) / 100)).toFixed(0)
                     %>
 
                         <!-- Card -->
                         <article class="last-tec">
-                            <a href="/products/productDetail/<%= product.id %>">
+                            <a href="/products/detail/<%= product.id %>">
                                 
                                 <div class="linea-blanca"></div>
                                 <div class="main-card-img">
-                                    <img src="/images/products/<%= product.image %>" alt="Imagen del producto" class="product_img">
+                                    <img src="/images/products/<%= product.imagen %>" alt="Imagen del producto" class="product_img">
                                 </div>
                                 <div class="linea-blanca"></div>
                             </a>
@@ -47,10 +45,10 @@
                                     <button class="buttAgregar2">
                                         <i class="fa-solid fa-cart-plus" id="crtct" style="font-size: 1.2em;"></i>
                                     </button>
-                                    <p class="discount"><%= product.discount %>% off</p>
+                                    <p class="discount"><%= product.descuento %>% off</p>
                                 </div>
-                                <p class="price">$<%= toThousand(finalPrice) %></p>
-                                <h4 class="description2"><%= product.name %></h4>
+                                <p class="price">$<%= toThousand(product.precio) %></p>
+                                <h4 class="description2"><%= product.nombre %></h4>
                             </div>
                         </article>
                         <% }); %>   
