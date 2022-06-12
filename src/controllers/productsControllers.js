@@ -84,12 +84,6 @@ const controller = {
 				res.render('./products/detail.ejs/', {product,toThousand})
 			})
 	},
-
-
-
-
-
-
 	// Create one product
 	Create: (req, res) => {
 		res.render('./products/create');

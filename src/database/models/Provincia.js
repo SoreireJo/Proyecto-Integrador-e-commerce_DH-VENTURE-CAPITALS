@@ -18,18 +18,17 @@ module.exports = (sequelize, dataTypes) => {
         timestamps: false
     };
     const Provincia = sequelize.define(alias, cols, config)
-    //Provincia a localidad 1:N
     Provincia.associate = function(models) {
-        Provincia.belongsTo(models.Localidad, { 
+         //Provincia a localidad 1:N
+        Provincia.hasMany(models.Localidad, { 
             as: "localidad",
             foreignKey: "provinciaId"
         })
-    //Provincia a Pais N:1
-        Provincia.hasMany(models.Pais,{
+        //Provincia a Pais N:1
+        Provincia.belongsTo(models.Pais,{
             as: "pais",
             foreignKey: "paisId"
         })
-    
 }
     
     return Provincia
