@@ -3,170 +3,165 @@ const path = require('path');
 const { send } = require('process');
 const reMix = require('../modules/reSort');
 const db = require('../database/models');
+const { Op } = require("sequelize");
 const Producto = db.Productos;
 const Categoria = db.Categorias;
 const Promo = db.Promos;
 
 // NO LA ESTAMOS USANDO POR EL MOMENTO
 const sequelize = db.sequelize;
-const { Op } = require("sequelize");
-const moment = require('moment');
-const { load } = require('nodemon/lib/config');
-const Logger = require('nodemon/lib/utils/log');
+
+// const moment = require('moment');
+// const { load } = require('nodemon/lib/config');
+// const Logger = require('nodemon/lib/utils/log');
 // ********************************************* //
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-/// esto sale ///
-const productsFilePath = path.join(__dirname, '../data/productsDB.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-////Listo/////
 
 const controller = {
 
 	// Root - Show all products
 	List: (req, res) => {
-		Producto.findAll({ include: ["categorias", "promos", "usuarios","compras"] }).then((product) => {
-			// res.send(product);
-
-			let productsRemix = [...product];
-			productsRemix = reMix(productsRemix);
-			let tik = (typeof (req.params.tik) != undefined) ? req.params.tik : '0';
-			res.render('./products/list', {
-				productsRemix,
-				tik,
-				toThousand
-
-			})
-		}).catch(error => res.send(error))
-
-
-	},
-	// Category - Show products x category
-	Category: (req, res) => {
 		
-		Producto.findAll({ include: ["categorias"] })
-		.then((categoria) => {
-				// res.send(product);
-				// console.log(categoria[0].categorias.id);
-				let id = req.params.id;
-				let product = categoria.filter(product =>product.categorias.id == id );
-				
-
-				// console.log(product.id);
-				res.render('./products/category.ejs/', { product, toThousand })
-			})
+		Producto.findAll().then((result) => {
+			result.sort(() => { return (Math.random() - 0.5) });
+			res.render('./products/list', { result, toThousand })
+		}).catch(error => res.send(error))
 	},
 
 	// Search product/s
 	Search: (req, res) => {
 		let search = req.query.search;
-		let productsRemix = products.filter(product => product.name.toLowerCase().includes(search));
-		productsRemix.reverse();
-		res.render('./products/productsSearch', {
-			productsRemix,
-			search,
-			toThousand,
-		});
+		Producto.findAll({
+			where: {
+				[Op.or]: [
+					{ nombre: { [Op.like]: '%' + search + '%' } },
+					{ descripcion: { [Op.like]: '%' + search + '%' } }
+				]
+			}
+		}).then((product) => {
+			
+			product.reverse();
+			res.render('./products/search', { search, product, toThousand })
+		})
 	},
+
+	// Category - Show products x category
+	Category: (req, res) => {
+		let id = req.params.id;
+		Categoria.findAll({
+			include: ["productos"],
+			where: { id: { [Op.eq]: id }, },
+			categoriaId: { [Op.ne]: id }
+		}).then((result) => {
+			let products = result[0].productos;
+			let categories = result;
+			
+			res.render('./products/category', { categories, products, toThousand })
+		})
+	},
+
 
 	// Detail - Detail from one product
 	Detail: (req, res) => {
-		
 		Producto.findByPk(req.params.id, { include: ["categorias", "promos"] })
-		
 			.then((product) => {
-				// console.log(product);
-				
-				// res.send(product);
-				// res.render(path.join(__dirname, "../views/products/detail"), {producto, toThousand})
-				res.render('./products/detail.ejs/', {product,toThousand})
+				res.render('./products/detail.ejs/', { product, toThousand })
 			})
 	},
 
-
-
-
-
-
 	// Create one product
 	Create: (req, res) => {
-		res.render('./products/create');
+		Categoria.findAll().then((result) => {
+     			let categorias = result.filter(e => e.nombre);
+				Promo.findAll().then((result) => {
+				let promos = result.filter(e => e.nombre);
+				res.render('./products/create', { categorias, promos, toThousand })
+			})
+	
+		})
+
 	},
 
 	// Create -  Method to store
-	store: (req, res) => {
-		let newProduct = {
-			id: products[products.length - 1].id + 1,
-			...req.body,
-			stock: parseInt(req.body.stock),
-			discount: parseInt(req.body.discount),
-			price: parseInt(req.body.price),
-			image: req.file ? req.file.filename : "default-image.png",
-		};
+	Store: (req, res) => {
+		Producto.create({
+			categoriaId: req.body.category,
+			promoId: req.body.promo,
+			usuarioId: req.body.user, // aqui tenemos que colocar una comprobacion del usuario
+			nombre: req.body.name,
+			descripcion: req.body.description,
+			precio: req.body.price,
+			stock: req.body.stock,
+			imagen: req.file ? req.file.filename : req.body.Imagen,
+			descuento: req.body.discount,
+		}).then((product) => {
+			console.log(product);
+			// console.alert("Creaste el usuario");
+			
+			res.redirect('/products/List/');
 
-		products.push(newProduct);
-		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, ' '));
-		products.reverse();
-		res.redirect('/products/detail/' + newProduct.id);
+		}).catch(error => res.send(error))
 	},
+
 
 	// Edit - Form to edit
 	Edit: (req, res) => {
 
-		Producto.findByPk(req.params.id, { include: ["categorias", "promos"] })
+		Producto.findByPk(req.params.id, { include: ["categorias", "promos", "usuarios"] })
 
 			.then((product) => {
-				// res.send(product);
-			
-				Categoria.findAll().then((categoria) => {					
-					let categorias = categoria.filter(e => e.nombre); // aqui debe hacerse el if para que solo printee las 4 categorias distintas al valor por defecto que mostramos por findByPk
-                 
-					Promo.findAll().then((promo) => {						
-						let promos = promo.filter(e => e.nombre);// aqui debe hacerse el if para que solo printee las 4 categorias distintas al valor por defecto que mostramos por findByPk
-						res.render('./products/edit.ejs', {
-							 product, 
-							 categorias, 
-							 promos, 
-							
-							 toThousand })
+				
+				Categoria.findAll().then((result) => {
+					let categorias = result.filter(e => e.nombre);
+
+					Promo.findAll().then((result) => {
+						let promos = result.filter(e => e.nombre);
+						res.render('./products/edit.ejs', { product, categorias, promos, toThousand })
 					})
 				})
 			}).catch(error => res.send(error))
 	},
 
 	// Update - Method to update
-	update: (req, res) => {
-		let ld=req.params.id
-		console.log(req.body);
+	Update: (req, res) => {
+		let ld = req.params.id
 		Producto.update({
-			
-			categoriaId:req.body.category,
-			promoId:req.body.promo,
-			nombre:req.body.name,
+			categoriaId: req.body.category,
+			promoId: req.body.promo,
+			usuarioId: req.body.user,
+			nombre: req.body.name,
 			descripcion: req.body.description,
 			precio: req.body.price,
 			stock: req.body.stock,
-			imagen: req.file ? req.file.filename: req.body.Imagen,
-			descuento: req.body.discount,
-			
+			imagen: req.file.filename,
+			descuento: req.body.discount
+		}, {
+			where: { id: req.params.id }
 
-	},{where:{id: req.params.id}
-	
-	}).then((product)=>{
-		res.redirect('/products/detail/'+ld);
+		}).then((product) => {
+			res.redirect('/products/detail/' + ld);
 
-	}).catch(error => res.send(error));
+		}).catch(error => res.send(error));
 	},
-		
-	
+
+
 
 	// Delete - Delete one product from DB
-	delete: (req, res) => {
-		let id = req.params.id;
-		let nowProducts = products.filter(product => product.id != id);
-		fs.writeFileSync(productsFilePath, JSON.stringify(nowProducts, null, ' '));
-		res.redirect('/products/list/reList');
+	Delete: (req, res) => {
+
+		Producto.destroy({
+			where: {
+				id: req.params.id
+			}
+		})
+			.then((product) => {
+				let id = req.params.id;
+				console.log(id);
+				res.redirect('/products/list/')
+			})
+
 	}
 };
 

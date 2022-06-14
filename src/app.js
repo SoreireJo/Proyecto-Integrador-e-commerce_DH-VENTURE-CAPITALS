@@ -36,8 +36,9 @@ app.use(userLoggedMiddleware)
 
 // ********* Template Engine *********
 // view engine setup
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
-app.set('view engine', 'ejs')
+
 
 
 // ******* Route System require and use() *******

@@ -32,8 +32,8 @@
 						</div>
 					 <!-- este div esta oculto pera cuando se realice la validacion de usuario si sirve ya este disponible y no se nos pase -->
 						<div class="form-crud form-crud-m2" style="display: none" >
-							<label for="price" class="form-label">user:</label>
-							<input  type="number" id="user" name="user" value= "<%= product.precio %>" class="form-input">
+							<label for="user" class="form-label">user:</label>
+							<input  type="number" id="user" name="user" value= "<%= product.usuarioId %>" class="form-input">
 						</div>
 						<!-- ******************************************************************************************* -->
 					</div>	
@@ -50,11 +50,11 @@
 							<label for="category" class="form-label">Categoría:</label>
 							
 							<select name="category" id="category" class="form-input">
-								<option value="<%= product.categorias.id%>" hidden>  <%= product.categorias.nombre%></option>
+								<option value="<%= product.categorias.id%>"hidden>  <%= product.categorias.nombre%></option>
 								<% for (const categoria of categorias){ %>
-
+									<%if(product.categorias.nombre !== categoria.nombre){%>
 									<option value="<%= categoria.id%>"><%= categoria.nombre%></option>
-										
+									<%}%>
 								<% } %>
 							</select>
 						</div>
@@ -64,11 +64,11 @@
 						<div class="form-crud form-crud-md">
 							<label for="promo" class="form-label">Elegí una Promoción</label>
 							<select name="promo" id="promo" class="form-input">
-								<option value="<%= product.promos.id%>" hidden><%= product.promos.nombre%></option>
+								<option value="<%= product.promos.id%>"hidden ><%= product.promos.nombre%></option>
 								<% for (const promo of promos){ %>
-
+                                    <%if(product.promos.nombre !== promo.nombre){%>
 									<option value="<%=promo.id%>"><%= promo.nombre %></option>
-										
+										<%}%>
 								<% } %>
 							</select>
 							<div class="linea"></div>
@@ -89,10 +89,7 @@
                                     <!-- script -->
                                     <%- include('../partials/preview_ed.ejs') %>
                                     <!-- /script -->
-
-									<!-- <input type="hidden"  name="Imagen"  value="<%= product.imagen%>"> -->
-                                    
-                                </div>
+									                                
                                 <div class="media-linea"></div>
 							</div>	
 						</div>

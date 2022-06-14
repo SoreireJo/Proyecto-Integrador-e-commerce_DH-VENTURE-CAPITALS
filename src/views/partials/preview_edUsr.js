@@ -1,4 +1,4 @@
-<script>
+
     // Obtener referencia al input y a la imagen
     const $seleccionArchivos = document.querySelector("#seleccionArchivos"),
     $imagenPrevisualizacion = document.querySelector("#imagenPrevisualizacion");
@@ -8,7 +8,7 @@
         const archivos = $seleccionArchivos.files;
         // Si no hay archivos salimos de la función y quitamos la imagen
         if (!archivos || !archivos.length) {
-            $imagenPrevisualizacion.src = "/images/users/<%= productDatos.image %>";
+            $imagenPrevisualizacion.src = "/images/users/<%= product.imagen %>";
             return;
         }
         // Ahora tomamos el primer archivo, el cual vamos a previsualizar
@@ -18,4 +18,3 @@
         // Y a la fuente de la imagen le ponemos el objectURL
         $imagenPrevisualizacion.src = objectURL;
     });
-</script>

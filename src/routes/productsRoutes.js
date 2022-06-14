@@ -25,7 +25,7 @@ const fileUpload = multer({ storage });
 
 
 /*** GET ALL PRODUCTS ***/ 
-router.get('/list/:tik?', productsControllers.List);
+router.get('/list/:id?', productsControllers.List);
 // router.get('/list/', productsControllers.list);
 
 /*** GET PRODUCTS x CATEGORY/: cat ***/ 
@@ -42,15 +42,15 @@ router.get('/detail/:id', productsControllers.Detail);
 
 /*** CREATE ONE PRODUCT ***/ 
 router.get('/create', productsControllers.Create);
-router.post('/create', fileUpload.single('image'), productsControllers.store);
+router.post('/create', fileUpload.single('image'), productsControllers.Store);
 
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', productsControllers.Edit);
-router.post('/edit/:id', fileUpload.single('image'), productsControllers.update);
+router.post('/edit/:id', fileUpload.single('image'), productsControllers.Update);
 
 
 /*** DELETE ONE PRODUCT***/
-router.delete('/list/:id',  productsControllers.delete);
+router.delete('/list/:id?',  productsControllers.Delete);
 
 module.exports = router;

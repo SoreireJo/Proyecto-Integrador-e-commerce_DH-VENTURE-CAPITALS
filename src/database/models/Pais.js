@@ -20,7 +20,7 @@ module.exports = (sequelize, dataTypes) => {
     const Pais = sequelize.define(alias, cols, config)
     Pais.associate = function(models) {
          //Pais a Provincia 1:N
-        Pais.belongsTo(models.Provincia, { 
+        Pais.hasMany(models.Provincia, { 
             as: "provincias",
             foreignKey: "paisId"
         })   

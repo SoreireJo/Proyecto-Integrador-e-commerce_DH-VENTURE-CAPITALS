@@ -11,17 +11,10 @@
 
     <!-- Main (Productos) -->
     <main class="main-index">
-            <div class="linea"></div>
-            <% if (product.length == 0) {%>
-            <h3 class="titulo-main-index">PPPPPPPPPP</h3>
-            <div class="bar-ccb" id="cc-bar"></div>
-            <div class="linea"></div>
-            <div class="msg bad-search">
-                <img src="/desing/iconos/sad-icon.png" alt="carita triste" />
-                <h4>Nos quedamos sin productos en esta categoría</h4>
-            </div> 
-            <%}else {%>
-                <h3 class="titulo-main-index"><%=product[0].categorias.nombre%></h3>
+  
+       <% categories.forEach(category => {%>
+                <h3 class="titulo-main-index"><%=category.nombre%></h3>
+       <%})%>
             <div class="bar-ccb" id="cc-bar"></div>
             <div class="linea"></div>
             
@@ -29,14 +22,14 @@
             <section class="sec-products">
 
                 <div class="products">
-                    <% if (product.length > 0) {
-                        product.forEach(product => {
-			        	let finalPrice = (product.precio * ((100 - product.descuento) / 100)).toFixed(0);
+                    <% if (products.length >0 ) {
+                        products.forEach(product => {
+			       
                     %>
 
                         <!-- Card -->
                         <article class="last-tec">
-                            <a href="/products/productDetail/<%= product.id %> %>">
+                            <a href="/products/detail/<%= product.id %>">
                                 
                                 <div class="linea-blanca"></div>
                                 <div class="main-card-img">
@@ -53,25 +46,25 @@
                                     </button>
                                     <p class="discount"><%= product.descuento%>% off</p>
                                 </div>
-                                <p class="price">$<%= toThousand(finalPrice) %></p>
+                                <p type="number" class="price">$ <%= toThousand(product.precio) %></p>
                                 <h4 class="description2"><%= product.nombre %></h4>
                             </div>
                         </article>
                         
                         <% }); %>
-                        <%  let u = 4 - (product.length % 4);
-                            for(let i = 0; i < u && u != 4 ; i++) {
-                        %>
+                        <%  let u = 4 - (products.length % 4);
+                            for(let i = 0; i < u && u != 4 ; i++) { %>
                             <!-- GhostCard (Completando la fila de 4)-->
                             <div class="bocadito-ghostcard"><img src="/desing/iconos/ghostcard.png"/></div>
-                        <% } %>
-
-                    <% } else { %>   
-                        <div class="msg bad-search">
-                            <img src="/desing/iconos/sad-icon.png" alt="carita triste" />
-                            <h4>Nos quedamos sin productos en esta categoría</h4>
-                        </div> 
-                    <% } }%>
+                        <% }%>
+                
+                <% } else { %>
+                                       
+                    <div class="msg bad-search">
+                        <img src="/desing/iconos/sad-icon.png" alt="carita triste" />
+                        <h4>No disponemos de productos para esta categoria</h4>
+                    </div> 
+                    <% }%>
                 </div>
             </section>
     </main>
