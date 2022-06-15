@@ -33,6 +33,6 @@ router.post('/login', validUserLogin,  usersControllers.proccessLogin);
 router.get('/logout', usersControllers.logout);
 
 router.get('/register', usersControllers.register);
-router.post('/register/:id?', fileUpload.single('avatar'), validUserRegister, usersControllers.store);
+router.post('/register', fileUpload.single('avatar'), validUserRegister, usersControllers.store);
 
 module.exports = router;

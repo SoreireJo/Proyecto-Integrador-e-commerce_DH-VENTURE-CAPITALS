@@ -52,67 +52,49 @@ const controller = {
 
 	},
     register: (req, res) => {	
-		/* const pais=  Pais.findAll();
-
-
-		const provincia = Provincia.findAll({
-			where:{
-				paisId: req.query.pais
-			},
-			include:['pais']
-		})Promise.all([pais, provincia]).then([pais, provincia]=>{res.send(provincia)});
-			
-		 */
-			//return res.send(req.query.categoria);
-			const paises = Pais.findAll();
-			const provincia = Provincia
-			.findAll({
-				where: {paisId : 1},
-				include: ['pais']
+		Provincia.findAll().then((resultadoProv)=>{
+			Localidad.findAll({
+				were:{
+					provinciaId:resultadoProv.id
+				}
+			}).then((resultadoLoc)=>{
+				res.render('./users/register',{provincias:resultadoProv, localidades:resultadoLoc})	
 			})
-			Promise.all([provincia,paises])
-			.then(([provincia,paises]) =>
-				//return res.send(platoComida);
-				res.send({provincia,paises})
-			)
-	 },
- 
-			/* Provincia.findAll().then((provincia)=>{
-				let provincias = provincia.filter(e => pais.id = e.paisId);
-				res.send(paises);
-				Localidad.findAll().then(localidad=>{
-					let localidades = localidad.filter(e => e.provinciaId== provincia.id);
-					res.render('./user/register', {paises, provincias, localidades});
-				})
-			}) */
-		//}).catch(error => res.send(error)) 	
-
+		}).catch(error => res.send(error)) 
+	},
 	store: (req, res) => {
 		let errores =  validationResult(req);
 		let image = req.file ? req.file.filename : 
 			(req.params.id != '-1') ? req.params.id : "default-image.png";
-		if (!errores.isEmpty()) {
-			return res.render ('./register', {
-				errores: errores.array(),
-				old: req.body,
-				image
-			});
-		}else{
+		
 			let user = {
-				firstName:req.body.first_name,
-				lastName: req.body.last_name,
-				email:req.body.email,
-				password: bcrypt.hashSync(req.body.password, 10),
-				provincia: Number(req.body.provincia),
-				avatar: req.file ? req.file.filename : '',
-				role: 1
+				nombres: req.body.nombre,
+				apellidos: req.body.apellido,
+				imagen: req.file ? req.file.filename : req.body.avatar,
+				email:req.body.mail,
+				activo: 1,
+				nombreUsuario: req.body.usuario,
+				claveIngreso: req.body.contrasenia,
+				telefono: req.body.telefono,
+				codigoPostal: req.body.cp,
+				direccion:req.body.direccion,
+				dni:req.body.dni,
+				fechaCreacion: Date.now(),
+				localidadId: req.body.localidad,
+				rolesid:req.body.provincia,
 			};
 			User
 			.create(user)
 			.then((storedUser) => {
-				return  res.redirect('/login');
+				return  res.redirect('./login');
 			}).catch(error => console.log(error));
-		}
+			/* if (!errores.isEmpty()) {
+				return res.redirect('./users/register', {
+					errores: errores.array(),
+					old: req.body,
+					image
+				});
+			}else{} */
 	},
 	logout:(req,res) => {
 			res.clearCookie('user')

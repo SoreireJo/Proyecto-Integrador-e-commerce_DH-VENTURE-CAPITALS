@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Head -->
+<%- include('../partials/head.ejs', {title: 'Registro de usuario'}) %>
+<!-- /Head -->
+
+<body>
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+    <!-- /Header -->
+
+    <!-- Main (Registro) -->
+    <main class="container-main">
+        <section class="container-users">
+        <!-- Si llegan variables, y dentro de ellas está errores -->
+        <% if (locals && locals.errores) { %>
+            <!-- Se muestran los errores (Registro) -->
+            <% errores.forEach(error => { %>
+                <p class="msg_errors"> <%= error.msg %> </p>
+            <% }); %>
+        <% } %>
+
+        <!-- Form (Registro) 
+        <% if (locals.old && image) { %>
+            <form class="register" action="/users/register/<%= image %>" method="POST" enctype="multipart/form-data">
+        <% } else { let image = 'image'; %>
+            <form class="register" action="/users/register/<%= image %>" method="POST" enctype="multipart/form-data">
+        <% } %>
+        -->
+        <form class="register" action="/users/register" method="POST" enctype="multipart/form-data">
+            <fieldset class="register-profile">
+                <legend> Registro de Usuarios: </legend>
+                <!-- row 1 -->
+                <div class="row-form">
+                    <div class="row-pill-form p40">
+                        <label for="surname">Apellido</label>
+                        <input type="text" name="apellido" id="apellido" class="form-input2"
+                            value="<%= locals.old && old.surname ? old.surname : '' %>" 
+                            placeholder="Tu apellido..." required>
+                    </div>
+                    <div class="row-pill-form p100">
+                        <label for="name">Nombre *</label>
+                        <input type="text" name="nombre" id="nombre" class="form-input2"
+                            value="<%= locals.old && old.name ? old.name : '' %>" 
+                            placeholder="Tu nombre..." required>    
+                    </div>
+                    <div class="row-pill-form p40">
+                        <label for="user">Nombre de usuario</label>
+                        <input type="text" name="usuario" id="usuario" class="form-input2"
+                            value="<%= locals.old && old.user ? old.user : '' %>" 
+                            placeholder="Nombre de usuario..." required> 
+                    </div>
+                </div>
+
+                <!-- row 2 -->
+                <div class="row-form">
+                    <div class="row-pill-form p40">
+                        <label for="mail">Correo electrónico</label>
+                        <input type="email" name="mail" id="mail" class="form-input2"
+                            value="<%= locals.old && old.mail ? old.mail : '' %>" 
+                            placeholder="Tu e-mail..." required> 
+                    </div>
+                    <div class="row-pill-form p40">
+                        <label for="document">D.N.I.</label>
+                        <input type="text" name="dni" id="dni" class="form-input2"
+                            value="<%= locals.old && old.document ? old.document : '' %>" 
+                            pattern="[0-9]{7,8}" title="Revisá que sea correcto el número de DNI y que vaya sin signos de puntación" 
+                            placeholder="Tu DNI..." required>  
+                    </div>
+                </div>
+
+                <!-- row 3 -->
+                <div class="row-form">
+                    <div class="row-pill-form p50">
+                        <label for="address">Direccion</label>
+                        <input type="text" name="direccion" id="direccion" class="form-input2"
+                            value="<%= locals.old && old.address ? old.address : '' %>" 
+                            placeholder="Tu domicilio" required>  
+                    </div>
+                    <div class="row-pill-form p25">
+                        <label for="city">Provincia</label>
+                        <select name="provincia" id="provincia" class="form-input">
+                            <option value="<%= locals.old && old.prov ? old.prov : '' %>">
+                            <%= locals.old && old.prov ? old.prov.replace('_', ' ') : 'Seleccioná tu provincia...'%></option>
+							<% for (const provincia of provincias){ %>
+                                <option value="<%= provincia.id%>"><%= provincia.provincia%></option>
+                            <% } %>
+						</select>
+                    </div>
+                    <div class="row-pill-form p25">
+                        <label for="prov">Localidad</label>
+						<select name="localidad" id="localidad" class="form-input">
+                            <option value="<%= locals.old && old.prov ? old.prov : '' %>">
+                            <%= locals.old && old.prov ? old.prov.replace('_', ' ') : 'Seleccioná tu localidad...'%></option>
+							<% for (const localidad of localidades){ %>
+                                <option value="<%= localidad.id%>"><%= localidad.localidad%></option>
+                            <% } %>
+						</select>
+                    </div>
+                </div>
+
+                <!-- row 4 -->
+                <div class="row-form">
+                    <div class="row-pill-form p50">
+                        <label for="cp">Código Postal </label>
+                        <input type="text" name="cp" id="cp" class="form-input2"
+                            value="<%= locals.old && old.cp ? old.cp : '' %>" 
+                            placeholder="Tu código postal" required>
+
+                        <label for="phone">Teléfono </label>
+                        <input type="tel" name="telefono" id="telefono" class="form-input2"
+                            value="<%= locals.old && old.phone ? old.phone : '' %>" 
+                            placeholder="Tu teléfono" required>
+
+                        <label for="avatar">Foto de perfil </label>
+                        <input type="file" name="avatar" id="seleccionArchivos" accept="image/*">
+                    </div>
+
+                    <div class="row-pill-form p50">
+
+                        <div class="img-detail">
+                            <div class="media-linea"></div>
+
+                            <!-- La imagen que vamos a usar para previsualizar -->
+                            <img id="userPrevisualizacion" alt="Imagen" class="user_img"
+                            <% if (locals.old) { %>
+                                src="/images/users/<%= image %>"
+                            <% } else { %>
+                                src="/desing/iconos/user.png"
+                            <% } %> >
+                                <!-- script -->
+                                <%- include('../partials/previewUsr.ejs') %>
+                                <!-- /script -->
+
+                            <div class="media-linea"></div>
+                        </div>
+                    </div>        
+
+                    <div class="row-pill-form p50">    
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="contrasenia" id="contrasenia" class="form-input2"
+                            placeholder="Ingresar contraseña" required>
+
+                        <label for="repeatPassword"> Confirmar contraseña</label>
+                        <input type="password" name="repeatContrasenia" id="repeatContrasenia" class="form-input2"
+                            placeholder="Confirmar contraseña" required>
+
+                        <button class="container-buttons" type="submit" id="button-register">Crear cuenta</button>
+                        <button class="container-buttons" type="button" onclick="window.history.go(-1)" id="button-reset">Cancelar</button>
+                    </div>
+                </div>    
+            </fieldset>
+
+            <div class="media-linea"></div>
+            <div class="container-link">
+                <p id="link"><a href="./login"> ¿Ya tenés una cuenta?<span id="IniSesion"> Iniciar Sesión</span></a></p>
+            </div>
+        </form>
+    </section>
+</main>
+
+<!-- Footer -->
+<%- include('../partials/footer.ejs') %>
+<!-- /Footer -->
+</body>
+</html>
