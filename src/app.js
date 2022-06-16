@@ -9,7 +9,7 @@ const session = require('express-session');
 // ***** Yo Cargando Middlewares ******
 const logMiddleware = require('./middleware/userLogs');
 const userLoggedMiddleware = require('./middleware/userLoggedMiddleware');
-
+const navbarMiddleware = require('./middleware/navbarMiddleware');
 
 // ******** express() ***********
 const app = express();
@@ -32,24 +32,27 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
+app.use(navbarMiddleware)
 app.use(userLoggedMiddleware)
 
 // ********* Template Engine *********
 // view engine setup
+app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
-app.set('view engine', 'ejs')
+
 
 
 // ******* Route System require and use() *******
-
 const webRouter = require('./routes/webRoutes'); // Rutas web
 const usersRouter = require('./routes/usersRoutes'); // Rutas users
 const productsRouter = require('./routes/productsRoutes'); // Rutas products */
 
 
+
 app.use('/', webRouter);
-app.use('/users', usersRouter);
 app.use('/products', productsRouter);
+app.use('/users', usersRouter);
+
 
 
 // ************ catch 404 and forward to error handler ************
@@ -69,20 +72,3 @@ app.use((err, req, res, next) => {
 
 // ************ exports app - dont'touch ************
 module.exports = app;
-
-
-
-// ************ Método viejo ****************
-/*
-//   Arranca el Servidor
-app.listen(3000, () => {
-    console.log("Tecnocom e-commerce inició en el puerto 3000");
-});
-*/
-
-/* 
-app.get("/", (req, res) => {
-    // Va a la Home
-    res.sendFile(path.join(__dirname, "./views/web/index.html"));
-});
-*/

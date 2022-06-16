@@ -1,212 +1,154 @@
 <!-- header -->
+<!-- header -->
 <header class="container" id="main-header">
     
-            <div class="container-header">
+    <div class="container-header">
 
-                <div class="container-header-box">
-                    <!-- logo -->
-                    <div class="container-header-logo">
-                        <a href="/">
-                        <img
-                            class="header-logo"
-                            src="/desing/logo/tecnocom_logo.png"
-                            alt="Logo" />
-                        </a>  
-                    </div>
-
-                    <!-- search bar -->
-                    <div class="header-search" id="header-serch">
-                        <form action="/products/productSearch" method="get" target="_self">
-                            <input
-                                type="search"
-                                name="search"
-                                id="search"
-                                placeholder="Buscar productos..."
-                            />
-                            <button class="search-button" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-
-                    <!-- nuestras redes -->
-                    <div class="container-header-social-users-buy">
-                        <div class="container-header-socialNetworks">
-                            <div class="socialNetworks-title">Nuestras Redes</div>
-
-                            <div class="bocadito"></div>
-
-                            <div class="socialNetworks-btn">
-                                <a
-                                    href="https://api.whatsapp.com"
-                                    target="_blank"
-                                    title="Whatsapp"
-                                    ><img src="/desing/iconos/whatsapp.png" alt="Whatsapp"
-                                /></a>
-                            </div>
-                            <div class="socialNetworks-btn">
-                                <a href="https://twitter.com/" target="_blank" title="Twitter"
-                                    ><img src="/desing/iconos/icn-nav-twitter.png" alt="Twitter"
-                                /></a>
-                            </div>
-                            <div class="socialNetworks-btn">
-                                <a
-                                    href="https://www.facebook.com/"
-                                    target="_blank"
-                                    title="Facebook"
-                                    ><img src="/desing/iconos/facebook.png" alt="Facebook"
-                                /></a>
-                            </div>
-                            <div class="socialNetworks-btn">
-                                <a
-                                    href="https://instagram.com/"
-                                    target="_blank"
-                                    title="Instagram"
-                                    ><img src="/desing/iconos/instagram.png" alt="Instagram"
-                                /></a>
-                            </div>
-                            <div class="socialNetworks-btn">
-                                <a
-                                    href="https://www.youtube.com/"
-                                    target="_blank"
-                                    title="Youtube"
-                                    ><img src="/desing/iconos/youtube2.png" alt="Youtube"
-                                /></a>
-                            </div>
-                            <div class="socialNetworks-sep">
-                                <img src="/desing/iconos/icn-nav-separador_2.png" alt="separador" />
-                            </div>
-
-                            <div class="bocadito_nav"></div>
-                        </div>
-
-                        <!-- user -->
-                        <div class="container-header-users">
-                           
-                            
-                            <button class="users-dropdown-opener">
-                                <label for="menu-users">
-                                    <img
-                                        class="user-images"
-                                        src="/desing/iconos/icn-nav-user.png"
-                                        alt="Mi cuenta"
-                                        title="Mi cuenta"
-                                    />   
-                                                                    
-                                </label>
-                                
-                                                              
-                                <input type="checkbox" id="menu-users" class="users-menu" />
-
-                                <div class="users-dropdown">
-                                    <ul class="users-link">
-                                        <% if(locals.isLogged){ %>
-                                            <li>
-                                                <a href="/testPruebas" data-modal="#verpedido" name="modal"
-                                                >Ver mi pedido</a>
-                                            </li> 
-                                            <li>
-                                                <a href="/users/logout" data-modal="#verpedido" name="modal"
-                                                >Cerrar sesion</a>
-                                            </li> 
-                                        
-                                        <%}else{%> 
-                                            <li><a href="/users/userRegister">Registrarse</a></li>
-                                            <li><a href="/users/userLogin">Iniciar sesión</a></li>
-                                        <%}%> 
-                                    </ul>
-                                </div>
-                            </button>
-                            <% if(locals.user){ %>  
-                                <p class="users-link"><%= locals.user %></p>
-                            <%}%> 
-                        </div>
-
-                        <div class="bocadito"></div>
-                        
-                        <!-- carrito -->
-                        <div class="container-header-cart" id="minicart">
-                            <button class="users-dropdown-opener">
-                                <label for="menu-minicart">
-                                    <div class="number">0</div>
-                                    <img
-                                        src="/desing/iconos/icn-nav-cart.png"
-                                        alt="Carrito"
-                                        title="Mis Compras"
-                                    />
-                                </label>
-                                <input type="checkbox" id="menu-minicart" class="users-truck" />
-                                <div class="users-dropdown">
-                                    <div class="mini-cart-footer">No hay elementos</div>
-                                </div>
-                            </button>
-                        </div>
-
-                        <div class="bocadito"></div>
-                    </div>
-                </div>
-
-                <div class="linea_nav"></div>
-                <div class="bar-rgbs" id"gg-bar"></div>
-                <div class="linea_nav"></div>
+        <div class="container-header-box">
+            <!-- logo -->
+            <div class="container-header-logo"><a href="/">
+                <img class="header-logo" src="/desing/logo/tecnocom_logo.png" alt="Logo" /> </a>  
             </div>
 
+            <!-- search bar -->
+            <div class="header-search" id="header-serch">
+                <form action="/products/search" method="get" target="_self">
+                    <input type="search" name="search"  id="search" placeholder="Buscar productos..."/>
+                    <button class="search-button" type="submit">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </form>
+            </div>
 
-            <!-- el querido topnav -->
-            <label for="navbar-burger-menu" class="burger-menu">
+            <!-- nuestras redes -->
+            <div class="container-header-social-users-buy">
+                <div class="container-header-socialNetworks">
+                    <div class="socialNetworks-title">Nuestras Redes</div>
 
-                <!-- hamburguesa / menu -->
-                <i class="fas fa-bars"></i>
-                <input type="checkbox" id="navbar-burger-menu" class="navbar-burger" />
+                    <div class="bocadito"></div>
 
-                
+                    <div class="socialNetworks-btn">
+                        <a href="https://api.whatsapp.com" target="_blank"  title="Whatsapp">
+                            <img src="/desing/iconos/whatsapp.png" alt="Whatsapp"/>
+                        </a>
+                    </div>
+                    <div class="socialNetworks-btn">
+                        <a href="https://twitter.com/" target="_blank" title="Twitter"
+                            ><img src="/desing/iconos/icn-nav-twitter.png" alt="Twitter"/>
+                        </a>
+                    </div>
+                    <div class="socialNetworks-btn">
+                        <a href="https://www.facebook.com/" target="_blank" title="Facebook">
+                            <img src="/desing/iconos/facebook.png" alt="Facebook"/>
+                        </a>
+                    </div>
+                    <div class="socialNetworks-btn">
+                        <a href="https://instagram.com/" target="_blank"  title="Instagram" >
+                            <img src="/desing/iconos/instagram.png" alt="Instagram" />
+                        </a>
+                    </div>
+                    <div class="socialNetworks-btn">
+                        <a href="https://www.youtube.com/" target="_blank" title="Youtube">
+                            <img src="/desing/iconos/youtube2.png" alt="Youtube"/>
+                        </a>
+                    </div>
+                    <div class="socialNetworks-sep">
+                        <img src="/desing/iconos/icn-nav-separador_2.png" alt="separador"/>
+                    </div>
 
-                <!-- navbar -->
-                <div class="navbar" id="navbar">
-                    <div class="container-navbar">
-                        <div class="icons">
-                            <div class="item">
-                                <a href="/products/productsCategory/PC">
-                                    <div class="icon"></div>
-                                    <div class="text">PC Componentes</div>
-                                </a>
-                            </div>
-                            <div class="item">
-                                <a href="/products/productsCategory/Perifericos">
-                                    <div class="icon"></div>
-                                    <div class="text">Periféricos</div>
-                                </a>
-                            </div>
+                    <div class="bocadito_nav"></div>
+                </div>
 
-                            <div class="item">
-                                <a href="/products/productsCategory/Notebooks">
-                                    <div class="icon"></div>
-                                    <div class="text">Notebooks</div>
-                                </a>
-                            </div>
+                <!-- user -->
+                <div class="container-header-users">
+                   
+                    
+                    <button class="users-dropdown-opener">
+                        <label for="menu-users">
+                            <img class="user-images" src="/desing/iconos/icn-nav-user.png" alt="Mi cuenta" title="Mi cuenta"/> 
+                        </label>
+                        
+                                                      
+                        <input type="checkbox" id="menu-users" class="users-menu" />
 
-                            <div class="item">
-                                <a href="/products/productsCategory/Monitores">
-                                    <div class="icon"></div>
-                                    <div class="text">Monitores</div>
-                                </a>
-                            </div>
-
-                            <div class="item">
-                                <a href="/products/productsCategory/Audio">
-                                    <div class="icon"></div>
-                                    <div class="text">Audio</div>
-                                </a>
-                            </div>
-
-                            <div class="item">
-                                <a href="/products/productsList/reList2">
-                                    <div class="icon"></div>
-                                    <div class="text">Ver todo</div>
-                                </a>
-                            </div>
+                        <div class="users-dropdown">
+                            <ul class="users-link">
+                                <% if(locals.isLogged){ %>
+                                    <li>
+                                        <a href="/testPruebas" data-modal="#verpedido" name="modal">Ver mi pedido</a>
+                                    </li> 
+                                    <li>
+                                        <a href="/users/logout" data-modal="#verpedido" name="modal">Cerrar sesion</a>
+                                    </li> 
+                                
+                                <%}else{%> 
+                                    <li><a href="/users/register">Registrarse</a></li>
+                                    <li><a href="/users/login">Iniciar sesión</a></li>
+                                <%}%> 
+                            </ul>
                         </div>
+                    </button>
+                    <% if(locals.user){ %>  
+                        <p class="users-link"><%= locals.user %></p>
+                    <%}%> 
+                </div>
+
+                <div class="bocadito"></div>
+                
+                <!-- carrito -->
+                <div class="container-header-cart" id="minicart">
+                    <button class="users-dropdown-opener">
+                        <label for="menu-minicart">
+                            <div class="number">0</div>
+                            <img src="/desing/iconos/icn-nav-cart.png" alt="Carrito" title="Mis Compras"/>
+                        </label>
+                        <input type="checkbox" id="menu-minicart" class="users-truck" />
+                        <div class="users-dropdown">
+                            <div class="mini-cart-footer">No hay elementos</div>
+                        </div>
+                    </button>
+                </div>
+
+                <div class="bocadito"></div>
+            </div>
+        </div>
+
+        <div class="linea_nav"></div>
+        <div class="bar-rgbs" id="gg-bar"></div>
+        <div class="linea_nav"></div>
+    </div>
+
+
+    <!-- el querido topnav -->
+    <label for="navbar-burger-menu" class="burger-menu">
+
+        <!-- hamburguesa / menu -->
+        <i class="fas fa-bars"></i>
+        <input type="checkbox" id="navbar-burger-menu" class="navbar-burger" />
+
+        
+
+        <!-- navbar -->
+       <div class="navbar" id="navbar">
+            <div class="container-navbar">
+                <div class="icons">
+                    <% for (category of locals.categorias) {%>  
+                    <div class="item">
+                        <a href="/products/category/<%=category.id%>">
+                            <div class="icon"></div>
+                            <div class="text"><%=category.nombre%></div>
+                            <!-- req.file ? req.file.filename : req.body.Imagen -->
+                        </a>
+                    </div>
+                    <%}%>
+                    <div class="item">
+                        <a href="/products/list/">
+                            <div class="icon"></div>
+                            <div class="text">Ver todo</div>
+                        </a>
                     </div>
                 </div>
-            </label>
+            </div>
+        </div> 
+    </label>
 </header>

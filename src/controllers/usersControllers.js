@@ -1,69 +1,96 @@
-const fs = require('fs');
-const path = require('path');
 const { validationResult } = require('express-validator');
+const db = require('../database/models');
+const Pais = db.Pais;
+const Provincia = db.Provincia;
+const Localidad = db.Localidad;
+const User = db.Usuarios;
 
-const usersFilePath = path.join(__dirname, '../data/usersDB.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+// NO LA ESTAMOS USANDO POR EL MOMENTO
+
+const { Op } = require("sequelize");
+const moment = require('moment');
+const { load } = require('nodemon/lib/config');
+const Logger = require('nodemon/lib/utils/log');
+const res = require('express/lib/response');
+// ********************************************* //
+//Aqui tienen otra forma de llamar a cada uno de los modelos
+
+
 
 const controller = {
-    userLogin: (req, res) => {
+    login: (req, res) => {
 
-        res.render('./users/userLogin', {user:req.session.usuarioLogueado});
+        res.render('./users/login', {user:req.session.usuarioLogueado});
 		
     },    
 	proccessLogin: (req, res) =>{
-		let usuarioLogueado = '';
 		let resultValidation = validationResult(req);
+
 		if (resultValidation.isEmpty()) {
-			for(let i=0; i<users.length; i++){
-				if(users[i].user == req.body.user){
-					if(users[i].password == req.body.password){
-						usuarioLogueado = users[i].user;
-						if(req.body.recordame){
-							res.cookie('user', req.body.user,{maxAge: (1000*60)*15})
-						}
-						break
-					}
+			User.findOne({
+				where:{
+					nombreUsuario: req.body.user,
+					claveIngreso: req.body.password
 				}
-			}
-			if(usuarioLogueado == undefined){
-				return res.render('./users/userLogin', {errors: [{
-					msg: 'Credenciales Invalidas'
-				}]});
-			} else{
-				req.session.usuario = usuarioLogueado;
-				res.redirect('../');
-	
-			}
-			
+			})
+			.then((resultado)=>{
+					if(req.body.recordame){
+						res.cookie('user', req.body.user,{maxAge: (1000*60)*15})
+					}
+					req.session.usuario = resultado.nombreUsuario;
+					res.redirect('../');
+			});	
+
 		} else {
-			res.render('./users/userLogin', {errors: resultValidation.array()});
-		}
+			res.render('./users/login', {errors: resultValidation.array()});
+		} 
+	
 
 	},
-    userRegister: (req, res) => {
-        res.render('./users/userRegister', {users});
-    },
-
+    register: (req, res) => {	
+		Provincia.findAll().then((resultadoProv)=>{
+			Localidad.findAll({
+				were:{
+					provinciaId:resultadoProv.id
+				}
+			}).then((resultadoLoc)=>{
+				res.render('./users/register',{provincias:resultadoProv, localidades:resultadoLoc})	
+			})
+		}).catch(error => res.send(error)) 
+	},
 	store: (req, res) => {
 		let errores =  validationResult(req);
 		let image = req.file ? req.file.filename : 
-			(req.params.tac != '-1') ? req.params.tac : "default-image.png";
-		if (!errores.isEmpty()) {
-			return res.render ('./users/userRegister', {
-				errores: errores.array(),
-				old: req.body,
-				image
-			});
-		}
-		let newUser = {
-			id: users[users.length - 1].id + 1,
-			...req.body,
-			image: image,
-		};
-		users.push(newUser);
-		fs.writeFileSync(usersFilePath, JSON.stringify(users, null, ' '));
-		res.redirect('/');
+			(req.params.id != '-1') ? req.params.id : "default-image.png";
+		
+			let user = {
+				nombres: req.body.nombre,
+				apellidos: req.body.apellido,
+				imagen: req.file ? req.file.filename : req.body.avatar,
+				email:req.body.mail,
+				activo: 1,
+				nombreUsuario: req.body.usuario,
+				claveIngreso: req.body.contrasenia,
+				telefono: req.body.telefono,
+				codigoPostal: req.body.cp,
+				direccion:req.body.direccion,
+				dni:req.body.dni,
+				fechaCreacion: Date.now(),
+				localidadId: req.body.localidad,
+				rolesid:req.body.provincia,
+			};
+			User
+			.create(user)
+			.then((storedUser) => {
+				return  res.redirect('./login');
+			}).catch(error => console.log(error));
+			/* if (!errores.isEmpty()) {
+				return res.redirect('./users/register', {
+					errores: errores.array(),
+					old: req.body,
+					image
+				});
+			}else{} */
 	},
 	logout:(req,res) => {
 			res.clearCookie('user')

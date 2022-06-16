@@ -21,19 +21,19 @@
 
                 <div class="products-rows">
 
-                    <% if (productsRemix.length > 0) {
-                        productsRemix.forEach(function(product){ 
-			        	let finalPrice = (product.price * ((100 - product.discount) / 100)).toFixed(0)
+                    <% if (product.length > 0) {
+                        product.forEach(function(product){ 
+			        	let finalPrice = (product.precio * ((100 - product.descuento) / 100)).toFixed(0)
                     %>
 
                         <!-- Card -->
                         <article class="last-search">
                             <div class="image-row">
-                                <a href="/products/productDetail/<%= product.id %>">
+                                <a href="/products/detail/<%= product.id %>">
                                 
                                     <div class="linea-blanca"></div>
                                     <div class="main-card-img">
-                                        <img src="/images/products/<%= product.image %>" alt="Imagen del producto" class="product_img">
+                                        <img src="/images/products/<%= product.imagen %>" alt="Imagen del producto" class="product_img">
                                     </div>
                                     <div class="linea-blanca"></div>
                                 </a>
@@ -42,10 +42,10 @@
                             <div class="bar-ggrv" id="gg-barv"></div>
 
                             <div class="row-article">
-                                <a href="/products/productDetail/<%= product.id %>">
-                                <h4 class="description"><%= product.name %></h4>
+                                <a href="/products/detail/<%= product.id %>">
+                                <h4 class="description"><%= product.descripcion %></h4>
                                 </a>
-                                <p class="discount"><%= product.discount %>% off</p>
+                                <p class="discount"><%= product.descuento %>% off</p>
                                 <p class="priceRow">$<%= toThousand(finalPrice) %></p>
                                 <p class="priceRow">
                                 <button class="buttAgregarRow">

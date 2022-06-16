@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <!-- Head -->
-<%- include('../partials/head.ejs', {title: 'Ver todo '}) %>
+<%- include('../partials/head.ejs', {title: 'Productos por categoría '}) %>
 <!-- /Head -->
 
 <body>
-    <!-- refresh productsList -->
-    <%- include('../partials/reList.ejs') %>
-    <!-- /refresh productsList -->
-
     <!-- Header -->
     <%- include('../partials/header.ejs') %>
     <!-- /Header -->
 
     <!-- Main (Productos) -->
     <main class="main-index">
-            <div class="linea"></div>
-            <h3 class="titulo-main-index">Todos los productos</h3>
+  
+       <% categories.forEach(category => {%>
+                <h3 class="titulo-main-index"><%=category.nombre%></h3>
+       <%})%>
             <div class="bar-ccb" id="cc-bar"></div>
             <div class="linea"></div>
             
-            <!-- Sección: Todos los productos -->
+            <!-- Sección: Productos por categoría -->
             <section class="sec-products">
 
                 <div class="products">
-
-                    <% if (productsRemix.length > 0) {
-                        productsRemix.forEach(function(product){ 
-			        	let finalPrice = (product.price * ((100 - product.discount) / 100)).toFixed(0)
+                    <% if (products.length >0 ) {
+                        products.forEach(product => {
+			       
                     %>
 
                         <!-- Card -->
                         <article class="last-tec">
-                            <a href="/products/productDetail/<%= product.id %>">
+                            <a href="/products/detail/<%= product.id %>">
                                 
                                 <div class="linea-blanca"></div>
                                 <div class="main-card-img">
-                                    <img src="/images/products/<%= product.image %>" alt="Imagen del producto" class="product_img">
+                                    <img src="/images/products/<%= product.imagen %>" alt="Imagen del producto" class="product_img">
                                 </div>
                                 <div class="linea-blanca"></div>
                             </a>
@@ -47,31 +44,29 @@
                                     <button class="buttAgregar2">
                                         <i class="fa-solid fa-cart-plus" id="crtct" style="font-size: 1.2em;"></i>
                                     </button>
-                                    <p class="discount"><%= product.discount %>% off</p>
+                                    <p class="discount"><%= product.descuento%>% off</p>
                                 </div>
-                                <p class="price">$<%= toThousand(finalPrice) %></p>
-                                <h4 class="description2"><%= product.name %></h4>
+                                <p type="number" class="price">$ <%= toThousand(product.precio) %></p>
+                                <h4 class="description2"><%= product.nombre %></h4>
                             </div>
                         </article>
-                        <% }); %>   
-                    
-                        <%  let u = 4 - (productsRemix.length % 4);
-                            for(let i = 0; i < u && u != 4 ; i++) {
-                        %>
+                        
+                        <% }); %>
+                        <%  let u = 4 - (products.length % 4);
+                            for(let i = 0; i < u && u != 4 ; i++) { %>
                             <!-- GhostCard (Completando la fila de 4)-->
                             <div class="bocadito-ghostcard"><img src="/desing/iconos/ghostcard.png"/></div>
-                        <% } %>
-
-                    <% } else { %>   
-                        <div class="msg bad-search">
-                            <img src="/desing/iconos/sad-icon.png" alt="carita triste" />
-                             <h4>No existen productos cargados</h4>
-                        </div> 
-                    <% } %>    
+                        <% }%>
+                
+                <% } else { %>
+                                       
+                    <div class="msg bad-search">
+                        <img src="/desing/iconos/sad-icon.png" alt="carita triste" />
+                        <h4>No disponemos de productos para esta categoria</h4>
+                    </div> 
+                    <% }%>
                 </div>
             </section>
-
-            <div class="linea"></div>
     </main>
 
     <!-- Footer -->

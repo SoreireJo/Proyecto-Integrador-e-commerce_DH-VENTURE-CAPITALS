@@ -18,7 +18,7 @@
 
 		<!-- Form (Create) -->
 		<div class="form-crud-wrap">
-			<form action="/products/productCreateForm" method="POST" enctype="multipart/form-data">
+			<form action="/products/create" method="POST" enctype="multipart/form-data">
 				<fieldset>
 					<legend> Carga de Productos: </legend>
 					<div class="media-linea"></div>
@@ -44,12 +44,14 @@
 						<div class="form-crud form-crud-m3">
 							<label for="category" class="form-label">Categoría:</label>
 							<select name="category" id="category" class="form-input">
-								<option value="">Elegir...</option>
-								<option value="PC Componentes">PC Componentes</option>
-								<option value="Periféricos">Periféricos</option>
-								<option value="Notebooks">Notebooks</option>
-								<option value="Monitores">Monitores</option>
-								<option value="Audio">Audio</option>
+								<option value=""hidden>Seleccionar un Categoria</option>
+								
+								<% for (const categoria of categorias){ %>
+
+									<option value="<%= categoria.id%>"><%= categoria.nombre%></option>
+									
+
+								<% } %>
 							</select>
 						</div>
 					</div>
@@ -58,12 +60,19 @@
 						<div class="form-crud form-crud-md">
 							<label for="promo" class="form-label">En Promoción?</label>
 							<select name="promo" id="promo" class="form-input">
-								<option value="last">Elegir... (o va Últimos agregados)</option>
-								<option value="offer">Ofertas</option>
-								<option value="last">Últimos agregados</option>
+								<option value=""hidden>Elegí una Promoción</option>
+								
+								<% for (const promo of promos){ %>
+
+									<option value="<%=promo.id%>"><%= promo.nombre %></option>
+										
+								<% } %>
 							</select>
+							<label for="user" class="form-label" style="display: none">Usuario</label>
+							<input type="number" id="user" name="user"  class="form-input" value= "1"style="display: none">
+							<div class="linea"></div>						
 							<div class="linea"></div>
-							<div class="linea"></div>
+							
 							<label for="description" class="form-label">Descripción:</label>
 							<textarea name="description" id="description" class="form-input"></textarea>
 							<div class="linea"></div>
@@ -77,10 +86,12 @@
                                 <div class="media-linea"></div>
 
                                 <!-- La imagen que vamos a usar para previsualizar -->
-                                <img id="imagenPrevisualizacion" src="/desing/iconos/default-placeholder.png" alt="Imagen" class="product_img">
+                                <img id="imagenPrevisualizacion" src="/images/users/default-placeholder.png" alt="Imagen" class="product_img">
                                     <!-- script -->
                                     <%- include('../partials/preview.ejs') %>
                                     <!-- /script -->
+
+									
 
                                 <div class="media-linea"></div>
                             </div>
