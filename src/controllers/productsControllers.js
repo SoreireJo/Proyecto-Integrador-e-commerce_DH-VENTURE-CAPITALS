@@ -1,5 +1,3 @@
-const fs = require('fs');
-const path = require('path');
 const { send } = require('process');
 const reMix = require('../modules/reSort');
 const db = require('../database/models');
@@ -9,7 +7,6 @@ const Categoria = db.Categorias;
 const Promo = db.Promos;
 
 // NO LA ESTAMOS USANDO POR EL MOMENTO
-const sequelize = db.sequelize;
 
 // const moment = require('moment');
 // const { load } = require('nodemon/lib/config');
@@ -70,7 +67,6 @@ const controller = {
 				res.render('./products/detail.ejs/', { product, toThousand })
 			})
 	},
-
 	// Create one product
 	Create: (req, res) => {
 		Categoria.findAll().then((result) => {

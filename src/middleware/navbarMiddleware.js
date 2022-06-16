@@ -6,7 +6,6 @@ function navbarMiddleware(req, res, next){
 			let nombre = result.filter(e=>e.nombre)
 			// console.log(nombre);
 			res.locals.categorias = nombre
-			console.log(res.locals.categorias[1].nombre);
 		})
 		res.locals.categorias
         next();

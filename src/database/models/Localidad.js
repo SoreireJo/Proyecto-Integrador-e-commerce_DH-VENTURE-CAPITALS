@@ -21,10 +21,6 @@ module.exports = (sequelize, dataTypes) => {
     const Localidad = sequelize.define(alias, cols, config)
     Localidad.associate = function (models) {
         
-        // Localidad.belongsTo(models.Usuarios, { 
-        //     as: "usuarios",
-        //     foreignKey: "localidadId"
-        // })
         Localidad.hasMany(models.Usuarios, { 
             as: "usuarios",
             foreignKey: "localidadId"

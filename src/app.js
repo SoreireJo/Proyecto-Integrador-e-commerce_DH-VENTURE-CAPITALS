@@ -43,10 +43,10 @@ app.set('views', path.join(__dirname, './views'));
 
 
 // ******* Route System require and use() *******
-
 const webRouter = require('./routes/webRoutes'); // Rutas web
 const usersRouter = require('./routes/usersRoutes'); // Rutas users
 const productsRouter = require('./routes/productsRoutes'); // Rutas products */
+
 
 
 app.use('/', webRouter);

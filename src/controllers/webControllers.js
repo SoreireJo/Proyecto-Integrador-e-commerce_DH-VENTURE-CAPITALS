@@ -1,7 +1,4 @@
-const fs = require('fs');
-const path = require('path');
 const { send } = require('process');
-const reMix = require('../modules/reSort');
 const db = require('../database/models');
 const { Op } = require("sequelize");
 const Producto = db.Productos;
@@ -9,10 +6,6 @@ const Categoria = db.Categorias;
 const Promo = db.Promos;
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-const productsFilePath = path.join(__dirname, '../data/productsDB.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
 
 const controller = {
     index: (req, res) => {
