@@ -37,7 +37,16 @@ const controller = {
 	
 		
 			
+	},
+
+	cFooterMediosDePago: (req, res) => {
+		res.render('./web/mediosDePago');
+	},
+
+	cFooterBotonArrepentimiento: (req, res) => {
+		res.render('./web/botonArrepentimiento');
 	}
+	
 };
 
 module.exports = controller;

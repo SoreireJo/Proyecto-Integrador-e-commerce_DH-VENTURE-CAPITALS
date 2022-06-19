@@ -92,6 +92,9 @@
     --color-footer-subitem-hover: #c01e9d;
     --color-footer-mailbox-bk: rgb(225, 230, 230);
     --color-footer-bottom: #130124;
+    --color-footer-title: #1c0e69;
+    --color-footer-paragraph: #13042eef;
+    --color-footer-back-s: #5900ff5b;
 
     /* ------------------------------------------ */
     /* -- Mobile / Desktop font sizes Elements -- */
@@ -100,6 +103,8 @@
     --fz-h1-dsk: 25px;
     --fz-h3-mob: 22px;
     --fz-h3-dsk: 28px;
+    --fz-h4-mob: 26px;
+    --fz-h4-dsk: 32px;
     --fz-h5-mob: 16px;
     --fz-h5-dsk: 20px;
     --fz-h6-mob: 15px;
