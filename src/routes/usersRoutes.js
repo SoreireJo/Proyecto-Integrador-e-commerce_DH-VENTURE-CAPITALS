@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+const { check, validationResult } = require('express-validator');
 const validUserRegister = require('./validations/validationRegister');
 const validUserLogin = require('./validations/validationLogin');
 
@@ -28,7 +29,7 @@ const fileUpload = multer({ storage });
 
 /*** LOGIN USER ***/ 
 router.get('/login', usersControllers.login);
-router.post('/login', validUserLogin,  usersControllers.proccessLogin);
+router.post('/login', validUserLogin, usersControllers.proccessLogin);
 
 router.get('/logout', usersControllers.logout);
 

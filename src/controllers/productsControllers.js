@@ -5,6 +5,7 @@ const { Op } = require("sequelize");
 const Producto = db.Productos;
 const Categoria = db.Categorias;
 const Promo = db.Promos;
+const { validationResult } = require('express-validator');
 
 // NO LA ESTAMOS USANDO POR EL MOMENTO
 
@@ -82,23 +83,35 @@ const controller = {
 
 	// Create -  Method to store
 	Store: (req, res) => {
-		Producto.create({
-			categoriaId: req.body.category,
-			promoId: req.body.promo,
-			usuarioId: req.body.user, // aqui tenemos que colocar una comprobacion del usuario
-			nombre: req.body.name,
-			descripcion: req.body.description,
-			precio: req.body.price,
-			stock: req.body.stock,
-			imagen: req.file ? req.file.filename : req.body.Imagen,
-			descuento: req.body.discount,
-		}).then((product) => {
-			console.log(product);
-			// console.alert("Creaste el usuario");
-			
-			res.redirect('/products/List/');
-
-		}).catch(error => res.send(error))
+		let errores =  validationResult(req);
+		if (!errores.isEmpty()) {
+				Categoria.findAll().then((result) => {
+					let categorias = result.filter(e => e.nombre);
+				Promo.findAll().then((result) => {
+					let promos = result.filter(e => e.nombre);
+					res.render('./products/create', { categorias, promos, toThousand, errores: errores.mapped(), old: req.body })
+				})
+				
+			})
+		}else{
+			Producto.create({
+				categoriaId: req.body.category,
+				promoId: req.body.promo,
+				usuarioId: req.body.user, // aqui tenemos que colocar una comprobacion del usuario
+				nombre: req.body.name,
+				descripcion: req.body.description,
+				precio: req.body.price,
+				stock: req.body.stock,
+				imagen: req.file ? req.file.filename : req.body.Imagen,
+				descuento: req.body.discount,
+			}).then((product) => {
+				console.log(product);
+				// console.alert("Creaste el usuario");
+				
+				res.redirect('/products/List/');
+	
+			}).catch(error => res.send(error))
+		}
 	},
 
 
@@ -114,7 +127,7 @@ const controller = {
 
 					Promo.findAll().then((result) => {
 						let promos = result.filter(e => e.nombre);
-						res.render('./products/edit.ejs', { product, categorias, promos, toThousand })
+						res.render('./products/edit', { product, categorias, promos, toThousand })
 					})
 				})
 			}).catch(error => res.send(error))
@@ -122,24 +135,38 @@ const controller = {
 
 	// Update - Method to update
 	Update: (req, res) => {
-		let ld = req.params.id
-		Producto.update({
-			categoriaId: req.body.category,
-			promoId: req.body.promo,
-			usuarioId: req.body.user,
-			nombre: req.body.name,
-			descripcion: req.body.description,
-			precio: req.body.price,
-			stock: req.body.stock,
-			imagen: req.file ? req.file.filename : req.body.imagen,
-			descuento: req.body.discount
-		}, {
-			where: { id: req.params.id }
+		let errores =  validationResult(req);
+		if (!errores.isEmpty()) {
+			Producto.findByPk(req.params.id, { include: ["categorias", "promos", "usuarios"] })
+			.then((product) => {
+				Categoria.findAll().then((result) => {
+					let categorias = result.filter(e => e.nombre);
+					Promo.findAll().then((result) => {
+						let promos = result.filter(e => e.nombre);
+						res.render('./products/edit', { product, categorias, promos, toThousand, old:req.body, errores:errores.mapped()})
+					})
+				})
+			}).catch(error => res.send(error))
+		}else{
+			let ld = req.params.id
+			Producto.update({
+				categoriaId: req.body.category,
+				promoId: req.body.promo,
+				usuarioId: req.body.user,
+				nombre: req.body.name,
+				descripcion: req.body.description,
+				precio: req.body.price,
+				stock: req.body.stock,
+				imagen: req.file ? req.file.filename : req.body.imagen,
+				descuento: req.body.discount
+			}, {
+				where: { id: req.params.id }
 
-		}).then((product) => {
-			res.redirect('/products/detail/' + ld);
+			}).then((product) => {
+				res.redirect('/products/detail/' + ld);
 
-		}).catch(error => res.send(error));
+			}).catch(error => res.send(error));
+		}
 	},
 
 
