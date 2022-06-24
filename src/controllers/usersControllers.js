@@ -33,17 +33,20 @@ const controller = {
 						}
 					})
 					.then((resultado)=>{
+						console.log(resultado)
+						if(resultado != null){
 							if(req.body.recordame){
 								res.cookie('user', req.body.user,{maxAge: (1000*60)*15})
 							}
 							req.session.usuario = resultado;
 							res.redirect('../');
-					}).catch(
-						e=>res.render('./users/login', {error: "Las credenciales no son validas"})
-						);	
+						}else{
+							res.render('./users/login', {error: "Las credenciales no son validas"})
+						}
+					});	
 
 				} else {
-					res.render('./users/login', {errors: resultValidation.mapped()});
+					res.render('./users/login', {errors: resultValidation.mapped(), old: req.body});
 				} 
 	
 
@@ -57,20 +60,12 @@ const controller = {
 	},
 
 	store: (req, res) => {
-		let error= ""; 
-		User.findAll(
-			{ where: { email: req.body.email } }
-		  ).then((users) => {
-			if(users.length > 0){
-				error = 'El email ya existe en la base de datos';
-			}})
-
 			let errores =  validationResult(req);
 			let image = req.file ? req.file.filename : (req.params.id != '-1') ? req.params.id : "user.png";
-			if (!errores.isEmpty() || error == "") {
+			if (!errores.isEmpty()) {
 				Provincia.findAll().then((resultadoProv)=>{
 					Localidad.findAll().then((resultadoLoc)=>{
-						res.render('./users/register', {errores: errores.mapped(), error, image, old:req.body, provincias:resultadoProv, localidades:resultadoLoc});
+						res.render('./users/register', {errores: errores.mapped(), image, old:req.body, provincias:resultadoProv, localidades:resultadoLoc});
 					})
 				})
 			}else{
@@ -89,8 +84,8 @@ const controller = {
 					fechaCreacion: Date.now(),
 					localidadId: req.body.localidad,
 					rolesId: 3,
-				})
-					.then((storedUser) => {
+				}).then((storedUser) => {
+						console.log(storedUser);
 						return res.redirect('./login');
 					}).catch(error => console.log(error));
 			}

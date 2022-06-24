@@ -24,11 +24,7 @@
                         <input type="text" name="apellido" id="apellido" class="form-label"
                             value="<%= locals.old && old.apellido ? old.apellido : '' %>"  
                             placeholder="Tu apellido..." >
-                         <%  if (locals.errores && errores.apellido) { %>
-							<div class="text-danger">
-						    	<%= errores.apellido.msg %>
-							</div>
-						<% } %>
+                            <h8 id="apellidoError" style= "margin-top: -9%;" class="text-danger" for="apellido"><%= locals.errores && errores.apellido ? errores.apellido.msg:"" %></h8>
                            
                     </div>
                     <div class="row-pill-form p50">
@@ -36,11 +32,7 @@
                         <input type="text" name="nombre" id="nombre" class="form-label"
                             value="<%= locals.old && old.nombre ? old.nombre : '' %>" 
                             placeholder="Tu nombre..." >   
-                            <%  if (locals.errores && errores.nombre) { %>
-								<div class="text-danger">
-									<%= errores.nombre.msg %>
-								</div>
-							<% } %> 
+                            <h8 id="nombreError" style= "margin-top: -9%;" class="text-danger" for="nombre"><%= locals.errores && errores.nombre ? errores.nombre.msg:"" %></h8>
                     </div>
                     <div class="row-pill-form p40">
                         <label for="user">Nombre de usuario</label>
@@ -57,26 +49,14 @@
                         <input type="text" name="email" id="email" class="form-label"
                             value="<%= locals.old && old.email ? old.email : '' %>" 
                             placeholder="Tu e-mail..." >
-                            <%  if (locals.errores && errores.email) { %>
-								<div class="text-danger">
-									<%= errores.email.msg %>
-								</div>
-							<% }else if (locals.error) { %> 
-                                <div class="text-danger">
-									<%= error %>
-								</div>
-                            <% } %> 
+                            <h8 id="emailError" style= "margin-top: -5%;" class="text-danger" for="email"><%= locals.errores && errores.email ? errores.email.msg:"" %></h8>
                     </div>
                     <div class="row-pill-form p50">
                         <label for="document">D.N.I.</label>
                         <input type="text" name="dni" id="dni" class="form-label"
                             value="<%= locals.old && old.dni ? old.dni : '' %>" 
                             placeholder="Tu DNI..." >  
-                            <%  if (locals.errores && errores.dni) { %>
-								<div class="text-danger">
-									<%= errores.dni.msg %>
-								</div>
-							<% } %> 
+                            <h8 id="dniError" style= "margin-top: -5%;" class="text-danger" for="dni"><%= locals.errores && errores.dni ? errores.dni.msg:"" %></h8> 
                     </div>
                 </div>
 
@@ -125,11 +105,8 @@
 
                         <label for="avatar">Foto de perfil </label>
                         <input type="file" name="avatar" id="seleccionArchivos" accept="image/*">
-                        <%  if (locals.errores && errores.avatar) { %>
-                            <div class="text-danger">
-                                <%= errores.avatar.msg %>
-                            </div>
-                        <% } %> 
+                        <h8 id="avatarError" style= "margin-top: -10%;" class="text-danger" for="avatar"><%= locals.errores && errores.avatar ? errores.avatar.msg:"" %></h8> 
+
                     </div>
 
                     <div class="row-pill-form p50">
@@ -156,11 +133,8 @@
                         <label for="contrasenia">Contraseña</label>
                         <input type="password" name="contrasenia" id="contrasenia" class="form-input2"
                             placeholder="Ingresar contraseña" >
-                            <%  if (locals.errores && errores.contrasenia) { %>
-								<div class="text-danger">
-									<%= errores.contrasenia.msg %>
-								</div>
-							<% } %> 
+                            <h8 id="contraseniaError" style= "margin-top: -9%;" class="text-danger" for="contrasenia"><%= locals.errores && errores.contrasenia ? errores.contrasenia.msg:"" %></h8>
+							 
 
                         <label for="repeatContrasenia"> Confirmar contraseña</label>
                         <input type="password" name="repeatContrasenia" id="repeatContrasenia" class="form-input2"
@@ -184,4 +158,5 @@
 <%- include('../partials/footer.ejs') %>
 <!-- /Footer -->
 </body>
+<script src="/js/validationRegister.js"></script>
 </html>

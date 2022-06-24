@@ -27,11 +27,8 @@
 							<label for="name" class="form-label">Nombre del producto:</label>
 							<input type="text" id="name" name="name" placeholder="Ej: Monitor..." class="form-input" 
 							value="<%= locals.old && old.name ? old.name : '' %>">
-							<%  if (locals.errores && errores.name) { %>
-								<div class="text-danger">
-									<%= errores.name.msg %>
-								</div>
-							<% } %>
+							<h8 id="nameError" style= "margin-top: -10%;" class="text-danger" for="name"><%= locals.errores && errores.name ? errores.name.msg:"" %></h8> 
+
 						</div>
 						<div class="form-crud form-crud-m2">
 							<label for="price" class="form-label">Precio:</label>
@@ -82,20 +79,14 @@
 							<label for="description" class="form-label">Descripción:</label>
 							<textarea name="description" id="description" class="form-input" 
 							value="<%= locals.old && old.description ? old.description : '' %>"><%= locals.old && old.description ? old.description : '' %></textarea>
-							<%  if (locals.errores && errores.description) { %>
-								<div class="text-danger">
-									<%= errores.description.msg %>
-								</div>
-							<% } %>
+							<h8 id="descriptionError" style= "margin-top: -10%;" class="text-danger" for="description"><%= locals.errores && errores.description ? errores.description.msg:"" %></h8> 
+
 							<div class="linea"></div>
 							<div class="linea"></div>
 							<label for="image" class="form-label">Foto del producto:</label>
                             <input type="file" name="image" id="seleccionArchivos" accept="image/*">
-							<%  if (locals.errores && errores.image) { %>
-								<div class="text-danger">
-									<%= errores.image.msg %>
-								</div>
-							<% } %>
+							<h8 id="imageError" style= "margin-top: -10%;" class="text-danger" for="image"><%= locals.errores && errores.image ? errores.image.msg:"" %></h8> 
+
 						</div>
 
 						<div class="form-crud form-crud-md">
@@ -137,4 +128,5 @@
     <%- include('../partials/footer.ejs') %>
     <!-- /Footer -->
 </body>
+<script src="/js/validationProducts.js"></script>
 </html>
