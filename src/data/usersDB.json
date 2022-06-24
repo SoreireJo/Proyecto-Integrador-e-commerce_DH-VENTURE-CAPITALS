@@ -1,0 +1,50 @@
+[
+ {
+  "id": 1,
+  "surname": "Soreire",
+  "name": "José Luis",
+  "user": "SoreireJo",
+  "mail": "soreirejoseluis@yahoo.com.ar",
+  "birth": "12/11/1972",
+  "document": "23016643",
+  "address": "Pelagio B. Luna 640 - 2do B",
+  "city": "La Rioja",
+  "prov": "La_Rioja",
+  "cp": "5300",
+  "phone": "3804561903",
+  "password": "A123456Aa",
+  "image": "product-1648916112364.png"
+ },
+ {
+  "id": 2,
+  "surname": "Montero",
+  "name": "Luciano",
+  "user": "lmontorer",
+  "mail": "montero.luciano@gmail.com",
+  "birth": "20/07/1979",
+  "document": "9",
+  "address": "Los Colorados",
+  "city": "La Rioja",
+  "prov": "La_Rioja",
+  "cp": "5300",
+  "phone": "3804340120",
+  "password": "Josefina8",
+  "image": "user-1650578200093.jpg"
+ },
+ {
+  "id": 3,
+  "surname": "Chanampe",
+  "name": "Nerea",
+  "user": "Nere22",
+  "mail": "nerec22@gmail.com",
+  "birth": "19/09/1995",
+  "document": "32.444.888",
+  "address": "Los Caudillos",
+  "city": "La Rioja",
+  "prov": "La_Rioja",
+  "cp": "5300",
+  "phone": "3804340122",
+  "password": "Nerea22",
+  "image": "user-1650578200094.jpg"
+ }
+]

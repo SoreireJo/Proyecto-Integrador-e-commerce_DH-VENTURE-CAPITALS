@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head -->
+    <%- include('../../partials/head.ejs', {title: 'Administracion Roles'}) %>
+    <!-- /Head -->
+
+    <body>
+    <!-- Header -->
+    <%- include('../../partials/header.ejs') %>
+    <!-- /Header -->
+
+    <!-- Main (Search) -->
+    <main class="main-index">
+            
+            <div class="row justify-content-between">
+                <div class="col-xs-12 col-md-6">
+            <h3 class="titulo-main-index" style=" margin-left: -13%">Administración: Roles</h3>
+            
+           </div>
+            <div class="col-md-4 mb-8" style=" margin-right: -30%">
+                <a href="/users/index"  class="btn btn-outline-light" style="background-color: rgb(92, 179, 121)" ">volver</a>
+            </div>
+        </div>
+        
+        <div class="bar-ccb" id="cc-bar"></div>
+        <div class="linea"></div>
+            <!-- Sección: Roles encontrados -->
+            <section class="sec-products">
+
+                
+                
+                    <div style=" margin-left: 91%; margin-bottom:3px">
+                        <a href="/users/roles/create" class="btn btn-outline-light" style="background-color: rgb(92, 168, 179)">Agregar +</a>
+                    </div>
+                    
+              
+                <div id="roles" class="form-group table-responsive " >
+                    <table class="table" id="lista-roles" >
+                        <thead class="table-secondary">
+                            <tr style="text-align: center;">
+                                <th scope="col">Id</th>
+                                <th scope="col ">Roles</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Borrar</th>
+                               
+                            </tr >
+
+                        </thead>
+                        <% result.forEach(function(user){%>
+                        <tbody style="text-align: center;">
+                            <td><a > 
+                                <h6 class="media-heading"> <%= user.id %> </h6>
+                             </a>
+                         </td>
+
+                             <td><a > 
+                                   <h6 class="media-heading"> <%= user.descripcion %> </h6>
+                                </a>
+                            </td>
+                                <td>
+                                    <a href="/users/roles/edit/<%=user.id%>" alt="editar">
+                                     <i class="fa-solid fa-user-pen" style="color: rgb(13, 172, 7);font-size: 18px; padding: 5px;"></i>
+                                   
+                                    </a>
+                                </td>
+                                <% if(user.id !== 1){%>
+                                <td>
+                                    <form action="/users/roles/list/<%= user.id %>?_method=DELETE" method="POST" style="display: inline-flex">
+                                            
+                                        <button  class="fa-solid fa-trash-can" type="submit"  style="color: rgb(172, 7, 40);border:none; padding:none; width: none; background-color: transparent; box-shadow: none; font-size: 18px" ></button>
+                                    
+                                        </form>
+                                </td>
+                               
+                                <% }else{%>
+                                    <td>
+                                    <a href="#" alt="Eliminar">
+                                        <i class="fa-solid fa-user-gear" style="color: rgb(7, 114, 172);font-size: 18px; padding: 5px;"></i>
+                                      
+                                       </a>
+                                    </td>
+                                <% } %>
+                        </tbody>
+                        <% }); %>
+
+                    </table>
+                </div>
+
+                
+                
+
+
+
+            </section>
+
+            <div class="linea"></div>
+    </main>
+
+
+
+    <!-- Footer -->
+    <%- include('../../partials/footer.ejs') %>
+    <!-- /Footer -->
+</body>
+</html>

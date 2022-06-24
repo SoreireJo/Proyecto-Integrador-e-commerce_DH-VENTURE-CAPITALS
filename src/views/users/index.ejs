@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head -->
+    <%- include('../partials/head.ejs', {title: 'Administración '}) %>
+    <!-- /Head -->
+
+    <body>
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+    <!-- /Header -->
+
+    <!-- Main (Administrador) -->
+    <main class="main-index">
+        <!-- Sección: Usuarios -->
+                   
+            
+            <section class="sec-products">
+                <div class="linea"></div>
+                <h3 class="titulo-main-index">Usuarios</h3>
+                <div class="bar-ccb" id="cc-bar"></div>
+                <div class="linea"></div>     
+                <div id="usuarios" class="form-group table-responsive" >
+                    <table class="table " id="lista-usuarios" >
+                    
+                        <tbody style="text-align: center;" >
+                            <td><a href="/users/list">
+                                <h6>Usuarios</h6>
+                                </a>
+                            </td>
+                             <td><a href="/users/roles/list"> 
+                               <h6>Roles</h6>
+                                </a></td>
+                        </tbody>
+                        
+
+                    </table>
+                </div>
+
+            </section>
+
+            <section class="sec-products">
+                <div class="linea"></div>
+            <h3 class="titulo-main-index">Productos</h3>
+            <div class="bar-ccb" id="cc-bar"></div>
+            <div class="linea"></div>     
+
+                 <div id="productos" class="form-group table-responsive" >
+                    <table class="table " id="lista-productos" >
+                    
+                        <tbody style="text-align: center;" >
+                            <td><a href="/products/index">
+                                <h6>Productos</h6>
+                                </a>
+                            </td>
+                             <td><a href="/products/categories/list"> 
+                               <h6>Categorias</h6>
+                                </a></td>
+                                <td><a href="/products/promos/list"> 
+                                    <h6>Promos</h6>
+                                     </a></td>
+                        </tbody>
+                        
+
+                    </table>
+                </div>
+
+            </section>
+            
+            <div class="linea"></div>
+    </main>
+
+
+
+    <!-- Footer -->
+    <%- include('../partials/footer.ejs') %>
+    <!-- /Footer -->
+</body>
+</html>

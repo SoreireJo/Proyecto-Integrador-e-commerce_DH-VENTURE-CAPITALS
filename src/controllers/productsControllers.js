@@ -5,13 +5,7 @@ const { Op } = require("sequelize");
 const Producto = db.Productos;
 const Categoria = db.Categorias;
 const Promo = db.Promos;
-
-// NO LA ESTAMOS USANDO POR EL MOMENTO
-
-// const moment = require('moment');
-// const { load } = require('nodemon/lib/config');
-// const Logger = require('nodemon/lib/utils/log');
-// ********************************************* //
+const Usuario = db.Usuarios;
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -26,7 +20,7 @@ const controller = {
 			res.render('./products/list', { result, toThousand })
 		}).catch(error => res.send(error))
 	},
-
+		
 	// Search product/s
 	Search: (req, res) => {
 		let search = req.query.search;
@@ -108,13 +102,19 @@ const controller = {
 		Producto.findByPk(req.params.id, { include: ["categorias", "promos", "usuarios"] })
 
 			.then((product) => {
-				
+				console.log(product.usuarioId);
 				Categoria.findAll().then((result) => {
 					let categorias = result.filter(e => e.nombre);
 
 					Promo.findAll().then((result) => {
 						let promos = result.filter(e => e.nombre);
-						res.render('./products/edit.ejs', { product, categorias, promos, toThousand })
+
+						Usuario.findAll().then((result) => {
+							
+							let usuario = result.filter(e =>e.nombreUsuario);
+							
+						res.render('./products/edit.ejs', { product, categorias, promos,usuario, toThousand })
+					})
 					})
 				})
 			}).catch(error => res.send(error))
@@ -131,7 +131,7 @@ const controller = {
 			descripcion: req.body.description,
 			precio: req.body.price,
 			stock: req.body.stock,
-			imagen: req.file ? req.file.filename : req.body.imagen,
+			imagen: req.file ? req.file.filename : req.body.Imagen,
 			descuento: req.body.discount
 		}, {
 			where: { id: req.params.id }
@@ -141,9 +141,6 @@ const controller = {
 
 		}).catch(error => res.send(error));
 	},
-
-
-
 	// Delete - Delete one product from DB
 	Delete: (req, res) => {
 
@@ -158,7 +155,160 @@ const controller = {
 				res.redirect('/products/list/')
 			})
 
-	}
+	},
+
+//Anotacion: Menu para el perfil usuarios y administrador
+	Index: (req, res) => {
+		
+		Producto.findAll().then((result) => {
+			
+			res.render('./products/index', { result, toThousand })
+		}).catch(error => res.send(error))
+	},
+//Anotacion: Menu administrador de Categorias
+
+Categories: (req, res) => {
+	
+	Categoria.findAll().then((result) => {
+		res.render('./products/categories/list', { result})
+	})
+},
+// Edit - one category
+Catedit: (req, res) => {
+	
+	Categoria.findByPk(req.params.id, { include: ["productos"] }).then((result) => { 
+		let category = result
+			res.render('./products/categories/edit', { category, toThousand })
+				
+				
+			})
+},
+// Update - Method to update
+Catupdate: (req, res) => {
+	
+		Categoria.update({
+			nombre: req.body.name,
+			
+		}, {
+			where: { id: req.params.id }
+
+		}).then((result) => {
+			
+			res.redirect('/products/categories/list');
+
+		}).catch(error => res.send(error));
+},
+// Create one category
+Catcreate: (req, res) => {
+	
+		res.render('./products/categories/create')
+	
+},
+// Create -  Method to save
+Catsave: (req, res) => {
+	
+	Categoria.create({
+		
+		nombre: req.body.name
+	}).then((product) => {
+	
+		// console.alert("Creaste el usuario");
+		
+		res.redirect('/products/categories/list');
+
+	}).catch(error => res.send(error))
+},
+
+// Delete - Delete one category
+
+Catdelet: (req, res) => {
+	Categoria.destroy({
+		where: {
+			id: req.params.id
+		}
+	})
+		.then((product) => {
+			let id = req.params.id;
+			console.log(id);
+			res.redirect('/products/categories/list');
+		})
+	
+	
+},
+
+//Anotacion: Menu administrador de Promos
+
+Promos: (req, res) => {
+	
+	Promo.findAll().then((result) => {
+		res.render('./products/promos/list', { result})
+	})
+},
+// Edit - one category
+Proedit: (req, res) => {
+	
+	Promo.findByPk(req.params.id, { include: ["productos"] }).then((result) => { 
+		let promo = result
+			res.render('./products/promos/edit', { promo, toThousand })
+				
+				
+			})
+},
+// Update - Method to update
+Proupdate: (req, res) => {
+	
+		Promo.update({
+			nombre: req.body.name,
+			
+		}, {
+			where: { id: req.params.id }
+
+		}).then((result) => {
+			
+			res.redirect('/products/promos/list');
+
+		}).catch(error => res.send(error));
+},
+// Create one category
+Procreate: (req, res) => {
+	
+		res.render('./products/promos/create')
+	
+},
+// Create -  Method to save
+Prosave: (req, res) => {
+	
+	Promo.create({
+		
+		nombre: req.body.name
+	}).then((product) => {
+	
+		// console.alert("Creaste el usuario");
+		
+		res.redirect('/products/promos/list');
+
+	}).catch(error => res.send(error))
+},
+
+// Delete - Delete one category
+
+Prodelet: (req, res) => {
+	Promo.destroy({
+		where: {
+			id: req.params.id
+		}
+	})
+		.then((product) => {
+			let id = req.params.id;
+			console.log(id);
+			res.redirect('/products/promos/list');
+		})
+	
+	
+},
+
+
+
 };
 
 module.exports = controller;

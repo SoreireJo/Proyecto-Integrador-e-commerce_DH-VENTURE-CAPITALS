@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Head -->
+<%- include('../partials/head.ejs', {title: 'Administracion Usuarios' }) %>
+    <!-- /Head -->
+
+    <body>
+        <!-- Header -->
+        <%- include('../partials/header.ejs') %>
+            <!-- /Header -->
+
+            <!-- Main (Search) -->
+            <main class="main-index">
+                <div class="linea"></div>
+                <div class="row justify-content-between">
+                    <div class="col-xs-12 col-md-6">
+                        <h3 class="titulo-main-index" style=" margin-left: -13%">Detalle: Usuarios</h3>
+                        
+                    </div>
+                   
+                    <div class="col-md-4 mb-8" style=" margin-right: -30%">
+                        <a href="/users/index"  class="btn btn-outline-light" style="background-color: rgb(92, 179, 121)" ">volver</a>
+                    </div>
+                    
+
+                </div>
+                <div class="bar-ccb" id="cc-bar"></div>
+                <div class="linea"></div>
+
+                <!-- Sección: Productos encontrados -->
+                <section class="sec-products">
+
+                    <div style=" margin-left: 91%; margin-bottom:3px">
+                        <a href="/users/register" class="btn btn-outline-light" style="background-color: rgb(92, 168, 179)">Agregar +</a>
+                    </div>
+
+                    <div id="usuarios" class="form-group table-responsive">
+                        <table class="table " id="lista-usuarios">
+                            <thead class="table-secondary">
+                                <tr style="text-align: center">
+                                    <th scope="col">Imagen</th>
+                                    <th scope="col">usuario</th>
+                                    <th scope="col">email</th>
+                                    <th scope="col">Rol</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col">contraseña</th>
+                                    <th scope="col">Editar</th>
+                                    <th scope="col">Borrar</th>
+                                </tr>
+
+                            </thead>
+                            <% result.forEach(function(user){%>
+                                <tbody style="text-align: center">
+                                    
+                                    <% if(user.rolesId !== 1){%>
+                                    <td ><a href="/users/edit/<%=user.id%>">
+                                            <img src="../../images/users/<%= user.imagen %>" 
+                                                class="rounded-circle media-object" style="width:35px">
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <h6 class="media-heading">
+                                            <%= user.nombreUsuario %>
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="media-heading">
+                                            <%= user.email %>
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="media-heading">
+                                            <%= user.rolesId %>
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="media-heading">
+                                            <%= user.estadosId %>
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <h6 class="media-heading">
+                                            <%= user.claveIngreso %>
+                                        </h6>
+                                    </td>
+                                    <td>
+                                        <a href="/users/edit/<%=user.id%>" alt="editar">
+                                         <i class="fa-solid fa-user-pen" style="color: rgb(13, 172, 7)"></i>
+                                       
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#">
+                                             <i class="fa-solid fa-trash-can" style="color: rgb(172, 7, 40)"></i>
+                                           
+                                            </a>
+                                        </td>
+                                        <% } %>
+                                </tbody>
+                                <% }); %>
+
+                        </table>
+                    </div>
+
+
+
+
+
+
+                </section>
+
+                <div class="linea"></div>
+            </main>
+
+
+
+            <!-- Footer -->
+            <%- include('../partials/footer.ejs') %>
+                <!-- /Footer -->
+    </body>
+
+</html>
