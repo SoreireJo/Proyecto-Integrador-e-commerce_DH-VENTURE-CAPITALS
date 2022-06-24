@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
+const validUserProducts = require('./validations/validationProducts');
 
 // ********* Controller Require ***********
 const productsControllers = require('../controllers/productsControllers');
@@ -68,13 +69,13 @@ router.get('/search', productsControllers.Search);
 router.get('/detail/:id', productsControllers.Detail);
 
 /*** CREATE ONE PRODUCT ***/ 
-router.get('/create/:id?', productsControllers.Create);
-router.post('/create', fileUpload.single('image'), productsControllers.Store);
+router.get('/create', productsControllers.Create);
+router.post('/create',  fileUpload.single('image'), validUserProducts, productsControllers.Store);
 
 
 /*** EDIT ONE PRODUCT ***/ 
 router.get('/edit/:id', productsControllers.Edit);
-router.post('/edit/:id', fileUpload.single('image'), productsControllers.Update);
+router.post('/edit/:id', fileUpload.single('image'), validUserProducts, productsControllers.Update);
 
 
 /*** DELETE ONE PRODUCT***/

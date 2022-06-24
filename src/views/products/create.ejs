@@ -15,7 +15,7 @@
 
 	<!-- Div (Create) -->
 	<div class="container-products-wrapper">
-
+		
 		<!-- Form (Create) -->
 		<div class="form-crud-wrap">
 			<form action="/products/create" method="POST" enctype="multipart/form-data">
@@ -25,7 +25,13 @@
 					<div class="row-product-detail">
 						<div class="form-crud form-crud-m1">
 							<label for="name" class="form-label">Nombre del producto:</label>
-							<input type="text" id="name" name="name" placeholder="Ej: Monitor..." class="form-input">
+							<input type="text" id="name" name="name" placeholder="Ej: Monitor..." class="form-input" 
+							value="<%= locals.old && old.name ? old.name : '' %>">
+							<%  if (locals.errores && errores.name) { %>
+								<div class="text-danger">
+									<%= errores.name.msg %>
+								</div>
+							<% } %>
 						</div>
 						<div class="form-crud form-crud-m2">
 							<label for="price" class="form-label">Precio:</label>
@@ -74,11 +80,22 @@
 							<div class="linea"></div>
 							
 							<label for="description" class="form-label">Descripción:</label>
-							<textarea name="description" id="description" class="form-input"></textarea>
+							<textarea name="description" id="description" class="form-input" 
+							value="<%= locals.old && old.description ? old.description : '' %>"><%= locals.old && old.description ? old.description : '' %></textarea>
+							<%  if (locals.errores && errores.description) { %>
+								<div class="text-danger">
+									<%= errores.description.msg %>
+								</div>
+							<% } %>
 							<div class="linea"></div>
 							<div class="linea"></div>
 							<label for="image" class="form-label">Foto del producto:</label>
                             <input type="file" name="image" id="seleccionArchivos" accept="image/*">
+							<%  if (locals.errores && errores.image) { %>
+								<div class="text-danger">
+									<%= errores.image.msg %>
+								</div>
+							<% } %>
 						</div>
 
 						<div class="form-crud form-crud-md">
@@ -90,8 +107,6 @@
                                     <!-- script -->
                                     <%- include('../partials/preview.ejs') %>
                                     <!-- /script -->
-
-									
 
                                 <div class="media-linea"></div>
                             </div>

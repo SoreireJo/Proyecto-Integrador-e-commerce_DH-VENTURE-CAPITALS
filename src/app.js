@@ -41,8 +41,6 @@ app.use(userLoggedMiddleware)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 
-
-
 // ******* Route System require and use() *******
 const webRouter = require('./routes/webRoutes'); // Rutas web
 const usersRouter = require('./routes/usersRoutes'); // Rutas users
