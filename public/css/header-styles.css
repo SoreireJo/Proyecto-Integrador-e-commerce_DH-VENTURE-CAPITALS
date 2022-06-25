@@ -183,6 +183,7 @@ header button.users-dropdown-opener {
   
 header div .users-dropdown {
   background-color: #fff;
+  
   border-radius: 4px;
   box-shadow: var(--area-shadow);
   display: none;

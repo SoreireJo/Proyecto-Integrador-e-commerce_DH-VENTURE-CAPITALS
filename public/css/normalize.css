@@ -92,6 +92,9 @@
     --color-footer-subitem-hover: #c01e9d;
     --color-footer-mailbox-bk: rgb(225, 230, 230);
     --color-footer-bottom: #130124;
+    --color-footer-title: #1c0e69;
+    --color-footer-paragraph: #13042eef;
+    --color-footer-back-s: #5900ff5b;
 
     /* ------------------------------------------ */
     /* -- Mobile / Desktop font sizes Elements -- */
@@ -100,6 +103,8 @@
     --fz-h1-dsk: 25px;
     --fz-h3-mob: 22px;
     --fz-h3-dsk: 28px;
+    --fz-h4-mob: 26px;
+    --fz-h4-dsk: 32px;
     --fz-h5-mob: 16px;
     --fz-h5-dsk: 20px;
     --fz-h6-mob: 15px;
@@ -194,6 +199,11 @@ body{
     background-color: var(--color-body-back);
 }
 
+table {
+    caption-side: bottom;
+    border-collapse
+    :inherit;
+}
 
 /* Encabezados */
 h1{
@@ -230,6 +240,7 @@ p{
     background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
     background: linear-gradient(to right, #eef2f3, #8e9eab);
 }
+
 
 /* -----------------------------------*/
 /*--------- Product Detail -----------*/
@@ -283,6 +294,18 @@ p.product-detail-description{
     background: #abbaab;
     background: -webkit-linear-gradient(to right, #ffffff, #b0abba);
     background: linear-gradient(to right, #c6e6f5, #b0abba);
+}
+
+.edit-register{
+    background: #526f87;
+    background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);
+    background: linear-gradient(to bottom, #eef2f3, #8e9eab);
+    padding: 16px;
+    margin: 15px auto;
+    border-radius: 8px;
+    border-color: var(--color-input-border);
+    box-shadow: 4px 4px 8px var(--color-article-title-shdw);
+
 }
 .login-access{
     max-width: 450px;
@@ -535,13 +558,83 @@ main.main-index section article:hover .description2{
     align-items: center;
     max-width: 600px;
     margin: 105px auto 60px;
-
 }
-
 .msg img{
     width: 22%;
     margin: 15px;
 }
+.msg-acces{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('/desing/iconos/fdo4.png') ;
+    color: #226dbd69;
+      
+}
+.msg-acces h4{
+    position: absolute;
+    top:60%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    margin: 15px auto;
+    color:rgb(44 42 43);
+    color:#470727;
+    width: 450px;
+    text-emphasis-color:var(--color-input-item-focus) ;
+}
+.msg-acces2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('/desing/iconos/fdo.png') ;
+    color: #226dbd69;
+      
+}
+.msg-acces2 h4{
+    position: absolute;
+    top:65%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    margin: 15px auto;
+    color:rgb(44 42 43);
+    color:#470727;
+    width: 450px;
+}
+.msg-acces3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('/desing/iconos/fdo.png') ;
+    color: #226dbd69;
+}
+.msg-acces3 h4{
+    position: absolute;
+    top:38%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    margin: 15px auto;
+    color:rgb(189, 171, 180);
+    color:#5c2e6e;
+    width: 450px;
+}
+.msg-acces3 img{
+    width: 30%;
+      margin: 1px;
+  }
+.msg-acces img{
+  width: 100%;
+    margin: 1px;
+}
+.acces {
+    width: 22%;
+      margin: 1px;
+  }
 
 .msg h4{
     font-family: 'Roboto', sans-serif;

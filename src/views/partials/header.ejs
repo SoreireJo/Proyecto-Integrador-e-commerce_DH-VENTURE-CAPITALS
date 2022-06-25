@@ -75,6 +75,9 @@
                             <ul class="users-link">
                                 <% if(locals.isLogged){ %>
                                     <li>
+                                        <a href="/users/edit/<%=locals.user.id%>" data-modal="#verpedido" name="modal">perfil</a>
+                                    </li> 
+                                    <li>
                                         <a href="/testPruebas" data-modal="#verpedido" name="modal">Ver mi pedido</a>
                                     </li> 
                                     <li>
@@ -82,14 +85,16 @@
                                     </li> 
                                 
                                 <%}else{%> 
-                                    <li><a href="/users/register">Registrarse</a></li>
                                     <li><a href="/users/login">Iniciar sesión</a></li>
+                                    <li><a href="/users/register">Registrarse</a></li>
+                                    
                                 <%}%> 
                             </ul>
                         </div>
+                       
                     </button>
                     <% if(locals.user){ %>  
-                        <p class="users-link"><%= locals.user %></p>
+                        <p class="users-link"><%= locals.user.nombreUsuario %></p>
                     <%}%> 
                 </div>
 
@@ -130,6 +135,7 @@
 
         <!-- navbar -->
        <div class="navbar" id="navbar">
+        <% if(locals.categorias ){ %>  
             <div class="container-navbar">
                 <div class="icons">
                     <% for (category of locals.categorias) {%>  
@@ -147,8 +153,23 @@
                             <div class="text">Ver todo</div>
                         </a>
                     </div>
+                    <div class="item">
+                        <a href="/users/index/">
+                            <div class="icon"></div>
+                            <div class="text">users</div>
+                        </a>
+                    </div>
+                    <div class="item">
+                        <a href="/products/index/">
+                            <div class="icon"></div>
+                            <div class="text">productos</div>
+                        </a>
+                    </div>
+                    
                 </div>
+                
             </div>
+            <%}%>
         </div> 
     </label>
 </header>

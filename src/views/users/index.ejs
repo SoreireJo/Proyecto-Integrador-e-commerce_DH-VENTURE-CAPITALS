@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Head -->
+    <%- include('../partials/head.ejs', {title: 'Administración '}) %>
+    <!-- /Head -->
+
+    <body>
+    <!-- Header -->
+    <%- include('../partials/header.ejs') %>
+    <!-- /Header -->
+
+    <!-- Main (Administrador) -->
+    <main class="main-index">
+        <!-- Sección: Usuarios -->
+                   
+            
+            <section class="sec-products">
+                <div class="linea"></div>
+                <h3 class="titulo-main-index">Usuarios</h3>
+                <div class="bar-ccb" id="cc-bar"></div>
+                <div class="linea"></div>     
+                <div id="usuarios" class="form-group table-responsive" >
+                    <table class="table " id="lista-usuarios" >
+                    
+                        <tbody style="text-align: center;" >
+                            <td><a href="/users/list">
+                                <h6>Usuarios</h6>
+                                </a>
+                            </td>
+                             <td><a href="/users/roles/list"> 
+                               <h6>Roles</h6>
+                                </a></td>
+                        </tbody>
+                        
+
+                    </table>
+                </div>
+
+            </section>
+
+            <section class="sec-products">
+                <div class="linea"></div>
+            <h3 class="titulo-main-index">Productos</h3>
+            <div class="bar-ccb" id="cc-bar"></div>
+            <div class="linea"></div>     
+
+                 <div id="productos" class="form-group table-responsive" >
+                    <table class="table " id="lista-productos" >
+                    
+                        <tbody style="text-align: center;" >
+                            <td><a href="/products/index">
+                                <h6>Productos</h6>
+                                </a>
+                            </td>
+                             <td><a href="/products/categories/list"> 
+                               <h6>Categorias</h6>
+                                </a></td>
+                                <td><a href="/products/promos/list"> 
+                                    <h6>Promos</h6>
+                                     </a></td>
+                        </tbody>
+                        
+
+                    </table>
+                </div>
+
+            </section>
+            
+            <div class="linea"></div>
+
+            <div class="container">
+               
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-info " data-toggle="modal" data-target="#myModal">Open Modal</button>
+              
+                <!-- Modal -->
+                <div >
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered">
+                        
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title">Modal Header</h4>
+                                            <button type="button" class="btn-close" data-dismiss="modal">&times;</button>
+                                            
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Some text in the modal.</p>
+                                    </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary"><span> changes</span>
+                                            
+                                    </button>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+              </div>
+    </main>
+
+
+
+    <!-- Footer -->
+    <%- include('../partials/footer.ejs') %>
+    <!-- /Footer -->
+</body>
+</html>

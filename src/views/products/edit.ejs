@@ -13,7 +13,7 @@
 
 	<!-- Div (Edit) -->
 	<div class="container-products-wrapper">
-
+	
 		<!-- Form (Edit) enctype="multipart/form-data" -->
 		<div class="form-crud-wrap">
 			<form action="/products/edit/<%= product.id %>" method="POST"  enctype="multipart/form-data">
@@ -24,12 +24,22 @@
 						<div class="form-crud form-crud-m1">
 							<label for="name" class="form-label">Nombre del producto:</label>
 							<input type="text" id="name" name="name" value="<%= product.nombre %>" class="form-input">
+							<h8 id="nameError" style= "margin-top: -10%;" class="text-danger" for="name"><%= locals.errores && errores.name ? errores.name.msg:"" %></h8> 
+
 						</div>
 						
 						<div class="form-crud form-crud-m2" >
 							<label for="price" class="form-label">Precio:</label>
 							<input type="number" id="price" name="price" value= "<%= product.precio %>" class="form-input">
 						</div>
+
+
+						
+							<!-- usuario.forEach(function(users){
+								if(req.locals.users == users.nombreUsuario ){
+												users.id
+							}
+						}); -->
 					 <!-- este div esta oculto pera cuando se realice la validacion de usuario si sirve ya este disponible y no se nos pase -->
 						<div class="form-crud form-crud-m2" style="display: none" >
 							<label for="user" class="form-label">user:</label>
@@ -75,20 +85,23 @@
 							<div class="linea"></div>
 							<label for="description" class="form-label">Descripción:</label>
 							<textarea name="description" id="description" class="form-input" value="<%= product.description %>"><%= product.descripcion %></textarea>
+							<h8 id="descriptionError" style= "margin-top: -10%;" class="text-danger" for="description"><%= locals.errores && errores.description ? errores.description.msg:"" %></h8> 
+
 							<div class="linea"></div>
 							<div class="linea"></div>
+							
 							<label for="image" class="form-label">Foto del producto:</label>
 							<input type="file" name="image" id="seleccionArchivos" class="form-control" accept="image/*">
+							<h8 id="imageError" style= "margin-top: -10%;" class="text-danger" for="image"><%= locals.errores && errores.image ? errores.image.msg:"" %></h8> 
+
 						</div>
 						<div class="form-crud form-crud-md">
 							<div class="img-detail">
 								<div class="media-linea"></div>
 
                                 <!-- La imagen que vamos a usar para previsualizar -->
-                                <img id="imagenPrevisualizacion" src="/images/products/<%= product.imagen %>" alt="Imagen" class="product_img" >
-                                    <!-- script -->
-                                    <%- include('../partials/preview_ed.ejs') %>
-                                    <!-- /script -->
+                                <img id="editProduct" src="/images/products/<%= product.imagen %>" name="imagen" class="product_img">
+                                 
 									                                
                                 <div class="media-linea"></div>
 							</div>	
@@ -119,4 +132,5 @@
 	<%- include('../partials/footer.ejs') %>
 	<!-- /Footer -->
 </body>	
+<script src="/js/validationProducts.js"></script>
 </html>

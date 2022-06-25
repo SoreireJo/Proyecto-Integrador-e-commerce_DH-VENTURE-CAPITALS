@@ -1,6 +1,6 @@
 const { body } = require('express-validator');
 //VALIDACIONES
-let validateLogin = [
+const validateLogin = [
     body('user')
         .notEmpty().withMessage('Debes completar el campo usuario').bail(),
     body('password')

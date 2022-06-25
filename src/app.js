@@ -11,6 +11,7 @@ const logMiddleware = require('./middleware/userLogs');
 const userLoggedMiddleware = require('./middleware/userLoggedMiddleware');
 const navbarMiddleware = require('./middleware/navbarMiddleware');
 
+
 // ******** express() ***********
 const app = express();
 
@@ -26,13 +27,13 @@ app.use(methodOverride('_method')); // Para poder usar los métodos PUT y DELETE
 
 
 // ***** Yo Usando Middlewares ******
-app.use(logMiddleware);
+app.use(navbarMiddleware)
 app.use(session({
     secret: "session secret",
     resave: false,
     saveUninitialized: false
 }));
-app.use(navbarMiddleware)
+
 app.use(userLoggedMiddleware)
 
 // ********* Template Engine *********
@@ -40,19 +41,17 @@ app.use(userLoggedMiddleware)
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'));
 
-
-
 // ******* Route System require and use() *******
 const webRouter = require('./routes/webRoutes'); // Rutas web
 const usersRouter = require('./routes/usersRoutes'); // Rutas users
 const productsRouter = require('./routes/productsRoutes'); // Rutas products */
-
+// const carritoRoutes = require("./routes/carritoRoutes"); // Rutas para el carrito
 
 
 app.use('/', webRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
-
+// app.use("/carrito", carritoRoutes);
 
 
 // ************ catch 404 and forward to error handler ************
@@ -66,8 +65,9 @@ app.use((err, req, res, next) => {
     res.locals.error = req.app.get('env') === 'development' ? err : {};
 
     // render the error page
-    res.status(err.status || 500);
+    res.status(err.status || 500 || 404);
     res.render('error');
+   
 });
 
 // ************ exports app - dont'touch ************
