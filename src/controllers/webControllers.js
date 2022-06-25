@@ -19,7 +19,28 @@ const controller = {
 	
 		
 			
+	},
+
+	cFooterMediosDePago: (req, res) => {
+		res.render('./web/mediosDePago');
+	},
+
+	cFooterBotonArrepentimiento: (req, res) => {
+		res.render('./web/botonArrepentimiento');
+	},
+	
+	cFooterQuienesSomos: (req, res) => {
+		res.render('./web/quienesSomos');
+	},
+
+	cFooterContacto: (req, res) => {
+		res.render('./web/contacto');
+	},
+	
+	cFooterPreguntasFrecuentes: (req, res) => {
+		res.render('./web/preguntasFrecuentes');
 	}
+
 };
 
 module.exports = controller;
