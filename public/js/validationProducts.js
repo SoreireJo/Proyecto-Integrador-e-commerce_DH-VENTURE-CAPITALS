@@ -3,7 +3,7 @@ window.addEventListener("load", function(){
     let textNombreError = this.document.querySelector("#nameError")
     let inpDescripcion = document.querySelector("#description");
     let textDescripcionError = this.document.querySelector("#descriptionError")
-    let inpImage = this.document.querySelector("#seleccionArchivos")
+    let inpImage = this.document.querySelector("#seleccion")
     let textImageError = this.document.querySelector("#imageError")
 
     //VALIDATIONS

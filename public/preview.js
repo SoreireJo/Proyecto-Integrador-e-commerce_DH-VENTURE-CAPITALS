@@ -19,7 +19,7 @@ window.addEventListener('load', function () {
 })
 
 window.addEventListener('load', function () {
-    let createUser = document.getElementById('seleccionCuser');
+    let createUser = document.getElementById('seleccionArchivos');
     let userCreatePrevisualizacion = document.getElementById("userCreate");
     createUser.addEventListener('change', function () {
 
