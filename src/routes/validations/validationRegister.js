@@ -19,7 +19,6 @@ const validUserRegister = [
             return User.findAll(
                 { where: { email: req.body.email } }
               ).then((users) => {
-                console.log(users)
                 if(users.length > 0){
                    throw new Error('Email ya registrado');
                 }})
