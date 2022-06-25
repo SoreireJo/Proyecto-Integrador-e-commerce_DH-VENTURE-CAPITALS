@@ -553,13 +553,83 @@ main.main-index section article:hover .description2{
     align-items: center;
     max-width: 600px;
     margin: 105px auto 60px;
-
 }
-
 .msg img{
     width: 22%;
     margin: 15px;
 }
+.msg-acces{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('/desing/iconos/fdo4.png') ;
+    color: #226dbd69;
+      
+}
+.msg-acces h4{
+    position: absolute;
+    top:60%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    margin: 15px auto;
+    color:rgb(44 42 43);
+    color:#470727;
+    width: 450px;
+    text-emphasis-color:var(--color-input-item-focus) ;
+}
+.msg-acces2{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('/desing/iconos/fdo.png') ;
+    color: #226dbd69;
+      
+}
+.msg-acces2 h4{
+    position: absolute;
+    top:65%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    margin: 15px auto;
+    color:rgb(44 42 43);
+    color:#470727;
+    width: 450px;
+}
+.msg-acces3{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-image: url('/desing/iconos/fdo.png') ;
+    color: #226dbd69;
+}
+.msg-acces3 h4{
+    position: absolute;
+    top:38%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    text-align: center;
+    margin: 15px auto;
+    color:rgb(189, 171, 180);
+    color:#5c2e6e;
+    width: 450px;
+}
+.msg-acces3 img{
+    width: 30%;
+      margin: 1px;
+  }
+.msg-acces img{
+  width: 100%;
+    margin: 1px;
+}
+.acces {
+    width: 22%;
+      margin: 1px;
+  }
 
 .msg h4{
     font-family: 'Roboto', sans-serif;

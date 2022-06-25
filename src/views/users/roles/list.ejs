@@ -11,7 +11,7 @@
 
     <!-- Main (Search) -->
     <main class="main-index">
-            
+        <div><% if(locals.isLogged){ if(locals.user.rolesId==1 && locals.user.estadosId==1){%>
             <div class="row justify-content-between">
                 <div class="col-xs-12 col-md-6">
             <h3 class="titulo-main-index" style=" margin-left: -13%">Administración: Roles</h3>
@@ -26,14 +26,11 @@
         <div class="linea"></div>
             <!-- Sección: Roles encontrados -->
             <section class="sec-products">
-
-                
-                
+   
                     <div style=" margin-left: 91%; margin-bottom:3px">
                         <a href="/users/roles/create" class="btn btn-outline-light" style="background-color: rgb(92, 168, 179)">Agregar +</a>
                     </div>
                     
-              
                 <div id="roles" class="form-group table-responsive " >
                     <table class="table" id="lista-roles" >
                         <thead class="table-secondary">
@@ -86,12 +83,77 @@
                     </table>
                 </div>
 
-                
-                
-
-
-
             </section>
+        <% } else if((locals.user.rolesId!==1 && locals.user.estadosId==1)){%>
+      <fieldset class="edit-register">
+                
+        <!-- row 1 -->
+        <div class="row justify-content-between">
+          <div class="col-xs-12 col-md-6">
+              <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: Sin privilegio</h3>
+          </div>
+  </div>
+    <div class="bar-ccb" id="cc-bar"></div>
+      
+    <div class="msg-acces">
+        <div class="media-linea"></div>  
+            <div class="container-link">
+            
+            <p id="link">
+                <a href="/users/logout"><br>
+                No dispones de privilegios para esta seccion <br> <span id="IniSesion">
+                    Iniciar Sesión</span></a>
+            </p>
+            </div>
+            
+            
+    </div>     
+      </fieldset>
+      
+         <% } else if(locals.user.rolesId==2 || locals.user.rolesId==1 || locals.user.rolesId==3 && locals.user.estadosId==2){%>
+
+        <fieldset class="edit-register">
+          <div class="row justify-content-between">
+            <div class="col-xs-12 col-md-6">
+                <h3 class="titulo-main-index" style=" margin-left: -13%">Usuarios: Restringido</h3>
+            </div>
+    </div>
+    <div class="bar-ccb" id="cc-bar"></div>
+                                            
+    <div class="msg-acces3">
+      <img src="/desing/iconos/fdo2.png" alt="not acces" />
+          <h4>Actualmente tu usuario se encuentra con restricciones en el acceso. Contactanos a soporte@tecnocom.com</h4>
+       
+        </fieldset>
+
+      <%}%>
+    </div>
+    <%}else{%>
+        <fieldset class="edit-register">
+                
+            <!-- row 1 -->
+            <div class="row justify-content-between">
+              <div class="col-xs-12 col-md-6">
+                  <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: Personal Autorizado</h3>
+              </div>
+      </div>
+        <div class="bar-ccb" id="cc-bar"></div>
+          
+        <div class="msg-acces">
+            <div class="media-linea"></div>  
+                <div class="container-link">
+                
+                <p id="link">
+                    <a href="/users/logout"><br>
+                    No dispones de privilegios para esta seccion <br> <span id="IniSesion">
+                        Iniciar Sesión</span></a>
+                </p>
+                </div>
+                
+                
+        </div>     
+          </fieldset>
+    <%}%>
 
             <div class="linea"></div>
     </main>

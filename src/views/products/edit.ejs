@@ -97,7 +97,7 @@
 							<div class="linea"></div>
 							
 							<label for="image" class="form-label">Foto del producto:</label>
-							<input type="file" name="image" id="seleccionArchivos" class="form-control" accept="image/*">
+							<input type="file" name="image" id="seleccionEp" class="form-control" accept="image/*">
 							<%  if (locals.errores && errores.image) { %>
 								<div class="text-danger">
 									<%= errores.image.msg %>
@@ -109,10 +109,8 @@
 								<div class="media-linea"></div>
 
                                 <!-- La imagen que vamos a usar para previsualizar -->
-                                <img id="imagenPrevisualizacion" src="/images/products/<%= product.imagen %>" name="Imagen" class="product_img" >
-                                    <!-- script -->
-                                    <script src="/preview_ed.js"></script>
-                                    <!-- /script -->
+                                <img id="editProduct" src="/images/products/<%= product.imagen %>" name="imagen" class="product_img">
+                                 
 									                                
                                 <div class="media-linea"></div>
 							</div>	

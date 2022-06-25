@@ -12,9 +12,11 @@
       <!-- Main (Edicion de Usuario) -->
       <main class="container-main">
         <section class="container-users ">
+          <%if(locals.isLogged){%>
+            
           <form class="register" action="/users/edit/<%= userRoles.id%>" method="POST" enctype="multipart/form-data"
             style="font-family:'Trebuchet MS'">
-
+            <%if(locals.user.rolesId==1 && locals.user.estadosId==1){%>
             <fieldset class="edit-register">
               <legend>Editar Usuario:</legend>
               <!-- row 1 -->
@@ -23,7 +25,7 @@
                   <label for="surname">Apellido</label>
                   <input type="text" name="surname" id="surname" class="form-input edit" value="<%= userRoles.apellidos %>" required disabled />
                   <label for="email">Correo electrónico</label>
-                  <input type="email" name="email" id="mail" class="form-input edit" value="<%= userRoles.email %>" required disabled />
+                  <input type="email" name="email" id="email" class="form-input edit" value="<%= userRoles.email %>" required disabled />
                   <label for="city">Provincia</label>
                     <select name="city" id="city" class="form-input edit " disabled>
                         <%provi.forEach(function(provincia){
@@ -123,7 +125,10 @@
               </div>
             
             </fieldset>
-
+            
+                  <!-- *************************** -->
+            
+            <%}else if((locals.user.rolesId==2 && locals.user.estadosId==1)|| (locals.user.rolesId==3 && locals.user.estadosId==1)){%>
             <fieldset class="edit-register">
               <legend>Editar Usuario:</legend>
               <!-- row 1 -->
@@ -159,8 +164,8 @@
                   <input type="text" name="document" id="document" class="form-input admin" value="<%= userRoles.dni %>" required/>
                   <label for="address">Direccion</label>
                   <input type="text" name="address" id="address" class="form-input admin" value="<%= userRoles.direccion %>" required />
-                  <label for="password">Cambiar Contraseña</label>
-                  <input type="password" name="password" id="password" class="form-input admin" value="<%=userRoles.claveIngreso%>"required />
+                  <label for="resetPassword">Cambiar Contraseña</label>
+                  <input type="password" name="resetPassword" id="resetPassword" class="form-input admin" value="<%=userRoles.claveIngreso%>"required />
                 </div>
                 
                 <div class="row-pill-form p40">
@@ -170,18 +175,18 @@
                   <input type="tel" name="phone" id="phone" class="form-input admin" value="<%= userRoles.telefono %>" required />
                   <label for="cp">CP </label>
                   <input type="text" name="cp" id="cp" class="form-input admin" value="<%=userRoles.codigoPostal%>" required  />
+                  <label for="password">Contraseña</label>
+                  <input type="password" name="password" id="password" class="form-input edit" value="<%=userRoles.claveIngreso%>"required disabled />
                 </div>
                 
                 <div>
                     <!-- La imagen que vamos a usar para previsualizar -->
-                    <label for="seleccionArchivos" >Foto de perfil
+                    <label for="seleccionEuser" >Foto de perfil
                       <div class="media-linea"></div>
-                      <img class="img-detail edit_img"  id="userPrevisualizacion" alt="Imagen"  src="/images/users/<%= userRoles.imagen %>" name="Imagen" /></label>
-                    <input type="file" class="editFile" name="avatar" id="seleccionArchivos" accept="image/* " />
+                      <img class="img-detail edit_img"  id="userEdit"   src="/images/users/<%= userRoles.imagen %>" alt="Imagen" name="Imagen" /></label>
+                    <input type="file" class="editFile" name="avatar" id="seleccionEuser" accept="image/* " />
                   
-                    <!-- script -->
-                    <%- include('../partials/previewUsr.ejs') %>
-                    <!-- /script -->
+                  
                       
                 </div>
               </div>
@@ -196,26 +201,65 @@
               <div class="media-linea"></div>
               <div class="row-form p50">
                 <div class="row-form p50">
-                  <button class="container-buttons" type="submit" id="button-reset"> Guardar </button>
+                  <button class="container-buttons" type="submit"  id="button-reset"> Guardar </button>
                 </div>
                 <div class="row-form p50">
                   <button class="container-buttons" type="button" onclick="window.history.go(-1)" id="button-reset">Cancelar</button>
                 </div>
-              </div>
-            
+              </div>            
             </fieldset>
+         
+
+            
+                <%}else if( locals.user.estadosId==2){%>
+
+                  <fieldset class="edit-register">
+                    <div class="row justify-content-between">
+                      <div class="col-xs-12 col-md-6">
+                          <h3 class="titulo-main-index" style=" margin-left: -13%">Usuarios: Restringido</h3>
+                      </div>
+              </div>
+              <div class="bar-ccb" id="cc-bar"></div>
+                                                      
+              <div class="msg-acces3">
+                <img src="/desing/iconos/fdo2.png" alt="not acces" />
+                    <h4>Actualmente tu usuario se encuentra con restricciones en el acceso. Contactanos a soporte@tecnocom.com</h4>
+                 
+                  </fieldset>
+                <%}%>
+          </form>
+          <%}else{%>
+                <fieldset class="edit-register">
+                
+                  <!-- row 1 -->
+                  <div class="row justify-content-between">
+                    <div class="col-xs-12 col-md-6">
+                        <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: Personal Autorizado</h3>
+                    </div>
+            </div>
+            <div class="bar-ccb" id="cc-bar"></div>
+                
+            <div class="msg-acces">
+              
+                  <div class="container-link">
+                    
+                    <p id="link">
+                      <a href="/users/login">
+                        No dispones de privilegios para esta seccion <br> <span id="IniSesion">
+                          Iniciar Sesión</span></a>
+                    </p>
+                  </div>
+                  
+                  
+            </div>     
+                </fieldset>
+            <%}%>
 
             <div class="media-linea"></div>
-            <div class="container-link">
-              <p id="link">
-                <a href="./login">
-                  ¿Ya tenés una cuenta?<span id="IniSesion">
-                    Iniciar Sesión</span></a>
-              </p>
-            </div>
-          </form>
+         
+         
         </section>
-     
+      
       </main>
 
       <!-- Footer -->

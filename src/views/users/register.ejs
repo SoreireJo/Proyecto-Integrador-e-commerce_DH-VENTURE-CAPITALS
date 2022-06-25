@@ -124,7 +124,7 @@
                             placeholder="Tu teléfono" >
 
                         <label for="avatar">Foto de perfil </label>
-                        <input type="file" name="avatar" id="seleccionArchivos" accept="image/*">
+                        <input type="file" name="avatar" id="seleccionCuser" accept="image/*">
                         <%  if (locals.errores && errores.avatar) { %>
                             <div class="text-danger">
                                 <%= errores.avatar.msg %>
@@ -138,20 +138,13 @@
                             <div class="media-linea"></div>
 
                             <!-- La imagen que vamos a usar para previsualizar -->
-<<<<<<< HEAD
-                            <img id="userPrevisualizacion" alt="Imagen" class="user_img" >
-                                
-=======
-                            <img id="userPrevisualizacion" alt="Imagen" class="user_img"
+                            <img id="userCreate" name="avatar" alt="Imagen" class="user_img"
                             <% if (locals.image) { %>
                                 src="/images/users/<%= image %>"
                             <% } else { %>
                                 src="/images/users/user.png"
                             <% } %> >
-                                <!-- script -->
-                                <%- include('../partials/previewUsr.ejs') %>
-                                <!-- /script -->
->>>>>>> 3b271276753f441030b555dd5f723665406c5534
+                              
 
                             <div class="media-linea"></div>
                         </div>

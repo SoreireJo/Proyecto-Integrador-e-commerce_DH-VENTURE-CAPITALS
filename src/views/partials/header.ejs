@@ -75,6 +75,9 @@
                             <ul class="users-link">
                                 <% if(locals.isLogged){ %>
                                     <li>
+                                        <a href="/users/edit/<%=locals.user.id%>" data-modal="#verpedido" name="modal">perfil</a>
+                                    </li> 
+                                    <li>
                                         <a href="/testPruebas" data-modal="#verpedido" name="modal">Ver mi pedido</a>
                                     </li> 
                                     <li>
@@ -88,9 +91,10 @@
                                 <%}%> 
                             </ul>
                         </div>
+                       
                     </button>
                     <% if(locals.user){ %>  
-                        <p class="users-link"><%= locals.user %></p>
+                        <p class="users-link"><%= locals.user.nombreUsuario %></p>
                     <%}%> 
                 </div>
 

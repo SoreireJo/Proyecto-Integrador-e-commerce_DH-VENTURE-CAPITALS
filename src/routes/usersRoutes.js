@@ -42,7 +42,7 @@ router.post('/edit/:id', fileUpload.single('image'), usersControllers.Update);
 
 // Actualizado: Acceso Unicamente el admin
 
-router.get('/index', usersControllers.Index);
+router.get('/index',usersControllers.Index);
 
 
 /*** GET ALL USERS ***/ 

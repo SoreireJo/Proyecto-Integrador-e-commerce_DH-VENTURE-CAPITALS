@@ -31,27 +31,34 @@ const controller = {
 		
     },    
 	proccessLogin: (req, res) =>{
-				let resultValidation = validationResult(req);
-				if (resultValidation.isEmpty()) {
-					User.findOne({
-						where:{
-							nombreUsuario: req.body.user,
-							claveIngreso: req.body.password
-						}
-					})
-					.then((resultado)=>{
-							if(req.body.recordame){
-								res.cookie('user', req.body.user,{maxAge: (1000*60)*15})
-							}
-							req.session.usuario = resultado;
-							res.redirect('../');
-					}).catch(
-						e=>res.render('./users/login', {error: "Las credenciales no son validas"})
-						);	
+		let resultValidation = validationResult(req);
+		if (resultValidation.isEmpty()) {
+			User.findOne({ 
+				where:{
+					nombreUsuario: req.body.user,
+					claveIngreso: req.body.password
+				}
+			})
+			.then((resultado)=>{
+				console.log("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII",resultado)
+				if(resultado != null){
 
-				} else {
-					res.render('./users/login', {errors: resultValidation.mapped()});
-				} 
+
+
+				
+					if(req.body.recordame){
+						res.cookie('user', req.body.user,{maxAge: (1000*60)*15})
+					}
+					req.session.usuario = resultado;
+					res.redirect('../');
+				}else{
+					res.render('./users/login', {error: "Las credenciales no son validas"})
+				}
+			});	
+
+		} else {
+			res.render('./users/login', {errors: resultValidation.mapped(), old: req.body});
+		} 
 	
 
 	},
@@ -64,49 +71,40 @@ const controller = {
 	},
 
 	store: (req, res) => {
-		let error= ""; 
-		User.findAll(
-			{ where: { email: req.body.email } }
-		  ).then((users) => {
-			if(users.length > 0){
-				error = 'El email ya existe en la base de datos';
-			}})
+		let errores =  validationResult(req);
+            let image = req.file ? req.file.filename : (req.params.id != '-1') ? req.params.id : "user.png";
+            if (!errores.isEmpty() ) {
+                Provincia.findAll().then((resultadoProv)=>{
+                    Localidad.findAll().then((resultadoLoc)=>{
+                        res.render('./users/register', {errores: errores.mapped(), image, old:req.body, provincias:resultadoProv, localidades:resultadoLoc});
+                    })
+                })
+            }else{
+                User.create({
+                    nombres: req.body.nombre,
+                    apellidos: req.body.apellido,
+                    imagen: req.file ? req.file.filename : "user.png",
+                    email: req.body.email,
+                    nombreUsuario: req.body.usuario,
+                    claveIngreso: bcrypt.hashSync(req.body.contrasenia, 10),
+                    telefono: req.body.telefono,
+                    codigoPostal: req.body.cp,
+                    direccion: req.body.direccion,
+                    dni: req.body.dni,
+                    fechaCreacion: Date.now(),
+                    localidadId: req.body.localidad,
+                }).then((storedUser) => {
+                        console.log(storedUser);
+                        return res.redirect('./login');
+                    }).catch(error => console.log(error));
+            }
 
-			let errores =  validationResult(req);
-			let image = req.file ? req.file.filename : (req.params.id != '-1') ? req.params.id : "user.png";
-			if (!errores.isEmpty() || error == "") {
-				Provincia.findAll().then((resultadoProv)=>{
-					Localidad.findAll().then((resultadoLoc)=>{
-						res.render('./users/register', {errores: errores.mapped(), error, image, old:req.body, provincias:resultadoProv, localidades:resultadoLoc});
-					})
-				})
-			}else{
-				User.create({
-					nombres: req.body.nombre,
-					apellidos: req.body.apellido,
-					imagen: req.file ? req.file.filename : "user.png",
-					email: req.body.email,
-					activo: 1,
-					nombreUsuario: req.body.usuario,
-					claveIngreso: req.body.contrasenia,
-					telefono: req.body.telefono,
-					codigoPostal: req.body.cp,
-					direccion: req.body.direccion,
-					dni: req.body.dni,
-					fechaCreacion: Date.now(),
-					localidadId: req.body.localidad,
-					rolesId: 3,
-				})
-					.then((storedUser) => {
-						return res.redirect('./login');
-					}).catch(error => console.log(error));
-			}
 	},
 	logout: (req, res) => {
 		res.clearCookie('user')
 		res.locals.isLogged = false;
 		req.session.destroy();
-		res.redirect('/');
+		res.redirect('./login');
 
 	},
 	// Edit - Form to edit
@@ -144,7 +142,7 @@ const controller = {
 			apellidos: req.body.surname,
 			nombres: req.body.name,
 			nombreUsuario: req.body.user,
-			email: req.body.mail,
+			email: req.body.email,
 			dni: req.body.document,
 			direccion: req.body.address,
 			localidadId: req.body.localidad,
@@ -152,13 +150,18 @@ const controller = {
 			telefono: req.body.phone,
 			imagen: req.file ? req.file.filename : req.body.avatar,
 			estadosId: req.body.state,
-			claveIngreso: bcrypt.hashSync(req.body.resetPassword, 10),
+			claveIngreso: (bcrypt.hashSync(req.body.resetPassword)!= '') ?bcrypt.hashSync( req.body.resetPassword) : bcrypt.hashSync(req.body.password)  ,
 			fechaCreacion: Date.now(),
 			rolesId: req.body.roles
 		}, {
 			where: { id: req.params.id }
 
 		}).then((product) => {
+
+console.log(product);
+			let id = req.params.id;
+				console.log(id);
+			
 			res.redirect('/users/list');
 
 		})
@@ -202,8 +205,10 @@ const controller = {
 	Roledit: (req, res) => {
 
 		Rol.findByPk(req.params.id, { include: ["usuarios"] }).then((result) => {
-			let user = result
-			res.render('./users/roles/edit', { user })
+			// res.send(result)
+			console.log(result);
+			let roles = result
+			res.render('./users/roles/edit', { roles })
 
 
 		})

@@ -1,7 +1,7 @@
 function authMiddleware(req, res, next){
-    if(req.session.usuario != []){
-
-        next()
+    if (!req.session.usuario) {
+        return res.redirect("/users/login");
+    
     }else{
 
       
@@ -12,12 +12,4 @@ function authMiddleware(req, res, next){
 
 module.exports = authMiddleware; 
 
-authMiddleware = (req, res, next) => {
-    if (!req.session.usuario) {
-        return res.redirect("/users/login");
-    }
 
-    next();
-    }
-
-    module.exports = authMiddleware;

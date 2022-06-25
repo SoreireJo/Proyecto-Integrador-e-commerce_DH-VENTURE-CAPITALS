@@ -1,5 +1,4 @@
 const { send } = require('process');
-const reMix = require('../modules/reSort');
 const db = require('../database/models');
 const { Op } = require("sequelize");
 const Producto = db.Productos;
@@ -85,12 +84,15 @@ const controller = {
 	// Create -  Method to store
 	Store: (req, res) => {
 		let errores =  validationResult(req);
+		let image = req.file ? req.file.filename : (req.params.id != '-1') ? req.params.id : "default.png";
+		
+
 		if (!errores.isEmpty()) {
 				Categoria.findAll().then((result) => {
 					let categorias = result.filter(e => e.nombre);
 				Promo.findAll().then((result) => {
 					let promos = result.filter(e => e.nombre);
-					res.render('./products/create', { categorias, promos, toThousand, errores: errores.mapped(), old: req.body })
+					res.render('./products/create', { categorias, promos, toThousand, errores: errores.mapped(),old: req.body,image })
 				})
 				
 			})
@@ -103,7 +105,7 @@ const controller = {
 				descripcion: req.body.description,
 				precio: req.body.price,
 				stock: req.body.stock,
-				imagen: req.file ? req.file.filename : req.body.Imagen,
+				imagen: req.file ? req.file.filename : req.body.image,
 				descuento: req.body.discount,
 			}).then((product) => {
 				console.log(product);
@@ -118,7 +120,7 @@ const controller = {
 
 	// Edit - Form to edit
 	Edit: (req, res) => {
-
+//// aca debo crear la variable guardando la imagen y recupardola en locals 
 		Producto.findByPk(req.params.id, { include: ["categorias", "promos", "usuarios"] })
 
 			.then((product) => {
@@ -194,7 +196,7 @@ const controller = {
 //Anotacion: Menu para el perfil usuarios y administrador
 	Index: (req, res) => {
 		
-		Producto.findAll().then((result) => {
+		Producto.findAll( {include: ["usuarios"]}).then((result) => {
 			
 			res.render('./products/index', { result, toThousand })
 		}).catch(error => res.send(error))

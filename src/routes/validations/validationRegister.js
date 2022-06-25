@@ -1,9 +1,11 @@
 const { body, check } = require('express-validator');
 const path = require('path');
-let validUserRegister = []
+const db = require('../../database/models');
+const User = db.Usuarios;
+
 /*** REGISTER USER ***/ 
 // ** Validaciones **
-validUserRegister = [
+const validUserRegister = [
     check('apellido')
         .notEmpty().withMessage('Debes completar el campo apellido')
         .isLength({min: 2}).withMessage('El campo debe tener minimo 2 digitos'),
@@ -12,7 +14,16 @@ validUserRegister = [
         .isLength({min: 2}).withMessage('El campo debe tener minimo 2 digitos'),
     check('email')
         .notEmpty().withMessage('Debes completar el campo email')
-        .isEmail().withMessage('Debe tener un formato de email'),
+        .isEmail().withMessage('Debe tener un formato de email')
+        .custom((value, {req, loc, path}) => {
+            return User.findAll(
+                { where: { email: req.body.email } }
+              ).then((users) => {
+                console.log(users)
+                if(users.length > 0){
+                   throw new Error('Email ya registrado');
+                }})
+        }),
     check('dni')
         .notEmpty().withMessage('Debes completar el campo dni')
         .isLength({min: 7}).withMessage('La contraseña debe tener mínimo de 7 dígitos')

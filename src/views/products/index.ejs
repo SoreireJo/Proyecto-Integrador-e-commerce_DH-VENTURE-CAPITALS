@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    
+
 <!-- Head -->
 <%- include('../partials/head.ejs', {title: 'Administracion Usuarios' }) %>
     <!-- /Head -->
@@ -11,111 +11,245 @@
             <!-- /Header -->
 
             <!-- Main (Search) -->
-            <main class="main-index">
-                <div class="linea"></div>
-                <div class="row justify-content-between">
-                    <div class="col-xs-12 col-md-6">
-                        <h3 class="titulo-main-index" style=" margin-left: -13%">Detalle: Productos</h3>
+        <main class="main-index">
+            <%if(locals.isLogged){%>
+           <div>
+                    <div class="linea"></div>
+                    <%if(locals.user.rolesId==1 && locals.user.estadosId==1){%>
+                        <!-- Sección: Productos encontrados Admin-->
+                    <div class="row justify-content-between">
+                            <div class="col-xs-12 col-md-6">
+                                <h3 class="titulo-main-index" style=" margin-left: -13%">Detalle: Productos</h3>
+                            </div>
+                            <div class="col-md-4 mb-8" style=" margin-right: -30%">
+                                <a href="/users/index" class="btn btn-outline-light"
+                                    style="background-color: rgb(92, 179, 121)" ">volver</a>
+                            </div>
+                    </div>
+                        <div class=" bar-ccb" id="cc-bar"></div>
+                        <div class="linea"></div>
+                        <section class="sec-products">
+                            <div style=" margin-left: 91%; margin-bottom:3px">
+                                <a href="/products/create" class="btn btn-outline-light" style="background-color: rgb(92, 168, 179)">Agregar +
+                                </a>
+                            </div>
+                            <div id="usuarios" class="form-group table-responsive">
+                                <table class="table " id="lista-usuarios">
+                                    <thead class="table-secondary">
+                                        <tr style="text-align: center">
+                                            <th scope="col">Imagen</th>
+                                            <th scope="col">Producto</th>
+                                            <th scope="col">precio</th>
+                                            <th scope="col">descuento</th>
+                                            <th scope="col">stock</th>
+                                            <th scope="col">total</th>
+                                            <th scope="col">Editar</th>
+                                            <th scope="col">Borrar</th>
+                                        </tr>
+
+                                    </thead>
+                                    <% result.forEach(function(product){%>
+                                        <tbody style="text-align: center">
+
+
+                                            <td><a href="/products/edit/<%=product.id%>">
+                                                    <img src="../../images/products/<%= product.imagen %>"
+                                                        class="media-object" style="width:45px">
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <h6 class="media-left">
+                                                    <%= product.nombre %>
+                                                </h6>
+                                            </td>
+                                            <td>
+                                                <h6 class="media-left">
+                                                    <%= product.precio %>
+                                                </h6>
+                                            </td>
+                                            <td>
+                                                <h6 class="media-left">
+                                                    <%= product.descuento %>
+                                                </h6>
+                                            </td>
+                                            <td>
+                                                <h6 class="media-left">
+                                                    <%= product.stock %>
+                                                </h6>
+                                            </td>
+                                            <td>
+                                                <h6 class="media-left">
+                                                    <%= product.total%>
+                                                </h6>
+                                            </td>
+                                            <td>
+                                                <a href="/products/edit/<%=product.id%>" alt="editar">
+                                                    <i class="fa-solid fa-user-pen" style="color: rgb(13, 172, 7)"></i>
+
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <form action="/products/list/<%= product.id %>?_method=DELETE"
+                                                    method="POST" style="display: inline-flex">
+
+                                                    <button class="fa-solid fa-trash-can" type="submit"
+                                                        style="color: rgb(172, 7, 40);border:none; padding:none; width: none; background-color: transparent; box-shadow: none"></button>
+
+                                                </form>
+                                            </td>
+
+                                        </tbody>
+                                        <% }); %>
+
+                                </table>
+                            </div>
+                        </section>
                         
-                    </div>
-                    <div class="col-md-4 mb-8" style=" margin-right: -30%">
-                        <a href="/users/index"  class="btn btn-outline-light" style="background-color: rgb(92, 179, 121)" ">volver</a>
-                    </div>
-                   
-                    
+                        <%}else if((locals.user.rolesId==2 && locals.user.estadosId==1)|| (locals.user.rolesId==3 &&
+                            locals.user.estadosId==1)){%>
+                                <!-- Sección: Productos encontrados Usuarios -->
+                            <div class="row justify-content-between">
+                                    <div class="col-xs-12 col-md-6">
+                                        <h3 class="titulo-main-index" style=" margin-left: -13%">Detalle: Productos</h3>
+                                    </div>
+                            </div>
+                            <div class="bar-ccb" id="cc-bar"></div>
+                            <div class="linea"></div>
+                            <section class="sec-products">
 
-                </div>
-                <div class="bar-ccb" id="cc-bar"></div>
-                <div class="linea"></div>
+                                <div style=" margin-left: 91%; margin-bottom:3px">
+                                    <a href="/products/create" class="btn btn-outline-light"
+                                        style="background-color: rgb(92, 168, 179)">Agregar +</a>
+                                </div>
 
-                <!-- Sección: Productos encontrados -->
-                <section class="sec-products">
+                                <div id="usuarios" class="form-group table-responsive">
+                                    <table class="table " id="lista-usuarios">
+                                        <thead class="table-secondary">
+                                            <tr style="text-align: center">
+                                                <th scope="col">Imagen</th>
+                                                <th scope="col">Producto</th>
+                                                <th scope="col">precio</th>
+                                                <th scope="col">descuento</th>
+                                                <th scope="col">stock</th>
+                                                <th scope="col">total</th>
+                                                <th scope="col">Editar</th>
+                                                <th scope="col">Borrar</th>
+                                            </tr>
 
-                    <div style=" margin-left: 91%; margin-bottom:3px">
-                        <a href="/products/create" class="btn btn-outline-light" style="background-color: rgb(92, 168, 179)">Agregar +</a>
-                    </div>
+                                        </thead>
+                                        <% result.forEach(function(product){%>
+                                            <tbody style="text-align: center">
 
-                    <div id="usuarios" class="form-group table-responsive">
-                        <table class="table " id="lista-usuarios">
-                            <thead class="table-secondary">
-                                <tr style="text-align: center">
-                                    <th scope="col">Imagen</th>
-                                    <th scope="col">Producto</th>
-                                    <th scope="col">precio</th>
-                                    <th scope="col">descuento</th>
-                                    <th scope="col">stock</th>
-                                    <th scope="col">total</th>
-                                    <th scope="col">Editar</th>
-                                    <th scope="col">Borrar</th>
-                                </tr>
 
-                            </thead>
-                            <% result.forEach(function(product){%>
-                                <tbody style="text-align: center">
-                                    
-                               
-                                    <td ><a href="/products/edit/<%=product.id%>">
-                                            <img src="../../images/products/<%= product.imagen %>" 
-                                                class="media-object" style="width:45px">
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <h6 class="media-left">
-                                            <%= product.nombre %>
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="media-left">
-                                            <%= product.precio %>
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="media-left">
-                                            <%= product.descuento %>
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="media-left">
-                                            <%= product.stock %>
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <h6 class="media-left">
-                                            <%= product.total%>
-                                        </h6>
-                                    </td>
-                                    <td>
-                                        <a href="/products/edit/<%=product.id%>" alt="editar">
-                                         <i class="fa-solid fa-user-pen" style="color: rgb(13, 172, 7)"></i>
-                                       
-                                        </a>
-                                    </td>
-                                    <td>
-                                        <form action="/products/list/<%= product.id %>?_method=DELETE" method="POST" style="display: inline-flex">
+                                                <td><a href="/products/edit/<%=product.id%>">
+                                                        <img src="../../images/products/<%= product.imagen %>"
+                                                            class="media-object" style="width:45px">
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <h6 class="media-left">
+                                                        <%= product.nombre %>
+                                                    </h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="media-left">
+                                                        <%= product.precio %>
+                                                    </h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="media-left">
+                                                        <%= product.descuento %>
+                                                    </h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="media-left">
+                                                        <%= product.stock %>
+                                                    </h6>
+                                                </td>
+                                                <td>
+                                                    <h6 class="media-left">
+                                                        <%= product.total%>
+                                                    </h6>
+                                                </td>
+                                                <td>
+                                                    <a href="/products/edit/<%=product.id%>" alt="editar">
+                                                        <i class="fa-solid fa-user-pen"
+                                                            style="color: rgb(13, 172, 7)"></i>
+
+                                                    </a>
+                                                </td>
+                                                <td>
+                                                    <form action="/products/list/<%= product.id %>?_method=DELETE"
+                                                        method="POST" style="display: inline-flex">
+
+                                                        <button class="fa-solid fa-trash-can" type="submit"
+                                                            style="color: rgb(172, 7, 40);border:none; padding:none; width: none; background-color: transparent; box-shadow: none"></button>
+
+                                                    </form>
+                                                </td>
+
+                                            </tbody>
+                                            <% }); %>
+
+                                    </table>
+                                </div>
+
+
+
+
+
+
+                            </section>
+                            <%}else if(locals.user.rolesId==2 || locals.user.rolesId==1 || locals.user.rolesId==3 &&
+                            locals.user.estadosId==2){%>
+                                <!-- Sección:  Usuarios restringidos -->
+                                
+                                
+                                <fieldset class="edit-register">
+                                    <div class="row justify-content-between">
+                                      <div class="col-xs-12 col-md-6">
+                                          <h3 class="titulo-main-index" style=" margin-left: -13%">Usuarios: Restringido</h3>
+                                      </div>
+                              </div>
+                              <div class="bar-ccb" id="cc-bar"></div>
+                                                                      
+                              <div class="msg-acces3">
+                                <img src="/desing/iconos/fdo2.png" alt="not acces" />
+                                    <h4>Actualmente tu usuario se encuentra con restricciones en el acceso. Contactanos a soporte@tecnocom.com</h4>
+                                 
+                                  </fieldset>
+                                <%}%>
+                            </div>
+                                    <div class="linea"></div>
+                                    <%}else{%>
+                                        <fieldset class="edit-register">
+                
+                                            <!-- row 1 -->
+                                            <div class="row justify-content-between">
+                                              <div class="col-xs-12 col-md-6">
+                                                  <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: Personal Autorizado</h3>
+                                              </div>
+                                      </div>
+                                      <div class="bar-ccb" id="cc-bar"></div>
+                                          
+                                      <div class="msg-acces">
+                                        <div class="media-linea"></div>  
+                                            <div class="container-link">
+                                              
+                                              <p id="link">
+                                                <a href="/users/login"><br>
+                                                  No dispones de privilegios para esta seccion <br> <span id="IniSesion">
+                                                    Iniciar Sesión</span></a>
+                                              </p>
+                                            </div>
                                             
-                                            <button  class="fa-solid fa-trash-can" type="submit"  style="color: rgb(172, 7, 40);border:none; padding:none; width: none; background-color: transparent; box-shadow: none" ></button>
-                                        
-                                            </form>
-                                        </td>
-                                      
-                                </tbody>
-                                <% }); %>
-
-                        </table>
-                    </div>
-
-
-
-
-
-
-                </section>
-
-                <div class="linea"></div>
-            </main>
-
-
-
+                                            
+                                      </div>     
+                                          </fieldset>
+                                        <%}%>
+                                   
+        </main>
+        <div class="linea"></div>
             <!-- Footer -->
             <%- include('../partials/footer.ejs') %>
                 <!-- /Footer -->
