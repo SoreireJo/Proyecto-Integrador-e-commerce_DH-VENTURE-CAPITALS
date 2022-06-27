@@ -145,9 +145,13 @@
             </fieldset>
 
             <div class="media-linea"></div>
+            <%if(locals.isLogged){%>
+                <div class="media-linea"></div>
+        <%}else{%>
             <div class="container-link">
                 <p id="link"><a href="./login"> ¿Ya tenés una cuenta?<span id="IniSesion"> Iniciar Sesión</span></a></p>
             </div>
+       <% } %>
         </form>
     </section>
 </main>

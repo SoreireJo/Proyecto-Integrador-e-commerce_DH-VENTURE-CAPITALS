@@ -335,6 +335,13 @@ p#link a{
     font-family: BauerRegular, sans-serif;
     color: var(--color-input-link);
 }
+#acces{
+    
+    color: var(--color-input-link);
+}
+#acces:hover{
+    color: var(--color-input-ok-hover);
+}
 #IniSesion:hover{
     color: var(--color-input-ok-hover);
 }

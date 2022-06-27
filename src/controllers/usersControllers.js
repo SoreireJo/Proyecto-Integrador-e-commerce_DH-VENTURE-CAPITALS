@@ -34,6 +34,7 @@ const controller = {
 		let resultValidation = validationResult(req);
 		if (resultValidation.isEmpty()) {
 			User.findOne({ 
+				include: ["roles","estados","compras"],
 				where:{
 					nombreUsuario: req.body.user,
 					claveIngreso: req.body.password
