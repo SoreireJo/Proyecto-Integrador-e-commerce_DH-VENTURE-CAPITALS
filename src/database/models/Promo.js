@@ -9,9 +9,9 @@ module.exports = (sequelize, dataTypes) => {
         nombre: {
             type: dataTypes.STRING
         },
-        ultimaActualizacion: {
-            type: dataTypes.DATE
-        }
+        // ultimaActualizacion: {
+        //     type: dataTypes.DATE
+        // }
     };
     let config = {
         tableName: 'promos',

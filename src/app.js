@@ -45,12 +45,14 @@ app.set('views', path.join(__dirname, './views'));
 const webRouter = require('./routes/webRoutes'); // Rutas web
 const usersRouter = require('./routes/usersRoutes'); // Rutas users
 const productsRouter = require('./routes/productsRoutes'); // Rutas products */
+const apiRouter = require('./routes/apiRoutes.js'); // Rutas apis */
 // const carritoRoutes = require("./routes/carritoRoutes"); // Rutas para el carrito
 
 
 app.use('/', webRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
+app.use('/api', apiRouter);
 // app.use("/carrito", carritoRoutes);
 
 
