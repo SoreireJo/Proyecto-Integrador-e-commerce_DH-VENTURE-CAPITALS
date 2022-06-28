@@ -3,17 +3,17 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const path = require('path');
-const { body } = require('express-validator');
-const guestMiddleware = require('../middleware/guestMiddleware')
-const authMiddleware = require('../middleware/authMiddleware')
+const { check, validationResult } = require('express-validator');
+const validUserRegister = require('./validations/validationRegister');
+const validUserLogin = require('./validations/validationLogin');
 
 // ********* Controller Require ***********
 const usersControllers = require('../controllers/usersControllers');
-const userLoggedMiddleware = require('../middleware/userLoggedMiddleware');
+
 
 
 // ********* Configurando el Multer ***********
-let storage = multer.diskStorage( {    
+const storage = multer.diskStorage( {    
     // * Lugar donde guardamos el archivo
     destination: (req, file, callback) => {
         let folder = path.join(__dirname, '../../public/images/users');
@@ -25,32 +25,50 @@ let storage = multer.diskStorage( {
         callback(null, imageName);
     }
 });
-let fileUpload = multer({ storage });
-
-
-//VALIDACIONES
-let validateLogin = [
-    body('user')
-        .notEmpty().withMessage('Debes completar el campo usuario').bail(),
-    body('password')
-        .notEmpty().withMessage('Debes completar la campo contraseña').bail()
-];
+const fileUpload = multer({ storage });
 
 /*** LOGIN USER ***/ 
-router.get('/userLogin', usersControllers.userLogin);
-router.post('/userLogin', validateLogin,  usersControllers.proccessLogin);
+router.get('/login', usersControllers.login);
+router.post('/login', validUserLogin, usersControllers.proccessLogin);
+
 router.get('/logout', usersControllers.logout);
+
 /*** REGISTER USER ***/ 
-// ** Validaciones **
-let validUserRegister = [
-    body('document')
-        .isLength({min: 7, max: 8} )
-        .withMessage('El campo Documento debe tener 8 dígitos'),
-    body('password')
-        .isLength({ min: 6 })
-        .withMessage('La contraseña debe tener mínimo 6 dígitos'),
-];
-router.get('/userRegister', usersControllers.userRegister);
-router.post('/userRegister/:tac?', fileUpload.single('avatar'), validUserRegister, usersControllers.store);
+router.get('/register/:id?', usersControllers.register);
+router.post('/register', fileUpload.single('avatar'), validUserRegister, usersControllers.store);
+
+router.get('/edit/:id', usersControllers.Edit);
+router.post('/edit/:id', fileUpload.single('image'), usersControllers.Update);
+
+// Actualizado: Acceso Unicamente el admin
+
+router.get('/index',usersControllers.Index);
+
+
+/*** GET ALL USERS ***/ 
+
+router.get('/list/:id?', usersControllers.List);
+
+/*** GET REGISTER USERS ***/ 
+router.post('/register', fileUpload.single('avatar'), validUserRegister, usersControllers.Save);
+
+/*** DELETE ONE USERS***/
+router.delete('/list/:id?',  usersControllers.Delete);
+
+
+
+
+// Actualizado: Solo Admin Crud de Roles
+
+router.get('/roles/list/:id?', usersControllers.Roles);
+
+router.get('/roles/create',usersControllers.Rolcreate);
+router.post('/roles/create',usersControllers.Rolsave);
+
+/*** EDIT ONE PROMOS ***/ 
+router.get('/roles/edit/:id', usersControllers.Roledit);
+router.post('/roles/edit/:id',usersControllers.Rolupdate);
+
+
 
 module.exports = router;

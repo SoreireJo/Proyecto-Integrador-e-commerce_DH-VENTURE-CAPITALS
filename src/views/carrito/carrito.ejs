@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Aquí incorporo el head -->
+< <%- include('../partials/head.ejs', {title: 'Detalle del producto' }) %>
+   <!-- /Head -->
+
+   <body>
+      <!-- refresh productDetail -->
+
+      <!-- /refresh productDetail -->
+
+      <!-- Header -->
+      <%- include('../partials/header.ejs') %>
+
+         <main class="main-productDetail">
+            <div class="container-products-wrapper">
+               <% if(cartProducto.length !=0){ %>
+                  <div class="row">
+                     <article class="col-12">
+                        <h2 class="products-title ">Carrito de compras</h2>
+                     </article>
+                  </div>
+                  <div class="product-detail">
+                     <div class="bar-ccb" id="cc-bar"></div>
+                     <div class="row">
+                        <div class="col-12 col-lg-8 pt-4">
+                           <% cartProducto.forEach(item=> { %>
+
+                              <div class="col-12 mt-3">
+                                 <section class="row">
+
+                                    <figure class="col-3 ">
+
+                                       <img class="w-100" style='border: 1px solid grey'
+                                          src="/images/products/<%= item.productos.imagen %>"
+                                          alt="<%= item.productos.nombre %>">
+
+                                    </figure>
+                                    <section class="col-6 info">
+                                       <p>
+                                          $<%= item.precio; %>
+                                       </p>
+                                       <p>
+                                          <%= item.productos.nombre %>
+                                       </p>
+                                    </section>
+                                    <section class="col-3">
+                                       <p>Cantidad: <%= item.cantidad %></p>
+                                       <form action="/carrito/deleteItem" method="POST" class="mt-4"  style="display: inline-flex">
+                                          <input type="hidden" name="id" value="<%= item.productId %>" >
+                                          <button type="submit" class="action-button delete">ELIMINAR</button>
+                                       </form>
+                                    </section>
+                  
+                                 </section>
+                              </div>
+                              <hr>
+                              <% }); %>
+
+                        </div>
+                        <div class="col-12 col-lg-4">
+                           <article class="product-detail-info">
+                              <h2 class="product-detail-title">
+                                 Total: $<%= total %>
+                              </h2>
+                              <hr>
+                              <% if(locals.user.rolesId==2 ){%>
+                              <form action="/carrito/compra" method="POST">
+                                 <button type="submit" class=" buy-now-button">COMPRAR</button>
+                              </form>
+                              <%}%>
+                              <hr>
+                              <a class="action-button" style="text-decoration: none; color:black;"href="/products/list">Seguir comprando</a>
+                              <hr>
+                           </article>
+                        </div>
+                     </div>
+                  </div>
+                  <% } else { %>
+                     <fieldset class="edit-register">
+                     
+                        <!-- row 1 -->
+                        <div class="row justify-content-between">
+                           <div class="col-xs-12 col-md-6">
+                              <h3 class="titulo-main-index" style=" margin-left: -13%">Carrito vacio</h3>
+                           </div>
+                        </div>
+                        <div class="bar-ccb" id="cc-bar"></div>
+                     
+                       
+                           <div class="container-link">
+                              <p id="link">
+                                 <h2 class="product-detail-title ">No se agregaron elementos al carrito</h2>
+                              </p>
+                          
+                        </div>
+                     </fieldset>
+      
+                     <% } %>
+            </div>
+         </main>
+
+   </body>
+
+</html>

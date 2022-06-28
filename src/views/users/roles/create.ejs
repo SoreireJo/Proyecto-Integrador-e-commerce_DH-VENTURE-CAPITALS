@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<!-- Head -->
+<%- include('../../partials/head.ejs', {title: 'Crear Roles' }) %>
+    <!-- /Head -->
+
+    <body>
+        <!-- Header -->
+        <%- include('../../partials/header.ejs') %>
+            <!-- /Header -->
+
+            <!-- Main (Roles) -->
+            <main class="main-index">
+                <div><% if(locals.isLogged){ if(locals.user.rolesId==1 && locals.user.estadosId==1){%>
+                        <div class="linea"></div>
+                         <div class="row justify-content-between">
+                            <div class="col-xs-12 col-md-6">
+                                <h3 class="titulo-main-index" style=" margin-left: -13%">Nuevo: Rol</h3>
+                            </div>
+                            <div class="col-md-4 mb-8" style=" margin-right: -29%">
+                            <a href="/users/roles/list"  class="btn btn-outline-light" style="background-color: #5900ff9b" >Cancelar</a>
+                           </div>
+                        </div>               
+                        <div class="bar-ccb" id="cc-bar"></div>
+                        <div class="linea"></div>
+                       <!-- Sección: Creacion de Roles -->
+                        <section class="sec-products">
+                        
+                            <div id="roles" class="form-group table-responsive">
+                                <table class="table " id="lista-roles">
+                                    <thead class="table-secondary">
+                                        <tr style="text-align: center">
+                                            
+                                            <th scope="col">Descripción</th>
+                                            <th scope="col">Guardar</th>
+                                        
+                                        </tr>
+
+                                    </thead>
+                                    
+                                        <tbody  style="text-align: center">
+                                            
+                                            <form  action="/users/roles/create" method="POST">
+                                            
+                                            <td style="width: 50%">
+                                                
+                                                    <input type="text" id="name" name="name" value="" class="form-control ">
+                                            </td>
+                                            <td>
+                                            
+                                                <button type="submit"  id = "ok" class="fa-solid fa-floppy-disk" style="color: rgb(225, 162, 15);border:none; padding:none; width: none; background-color: transparent; box-shadow: none; font-size: 25px ;"></button>
+                                                
+                                            </td>
+                                        </form>
+                                        
+                                            
+                                        </tbody>
+                                    
+
+                                </table>
+                            </div>
+                        </section>
+                        <% } else if((locals.user.rolesId!==1 && locals.user.estadosId>=1)){%>
+                        <fieldset class="edit-register">
+                                
+                        <!-- row 1 -->
+                        <div class="row justify-content-between">
+                          <div class="col-xs-12 col-md-6">
+                              <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: No Autorizado</h3>
+                          </div>
+                  </div>
+                    <div class="bar-ccb" id="cc-bar"></div>
+                      
+                    <div class="msg-acces">
+                        <div class="media-linea"></div>  
+                            <div class="container-link">
+                            
+                            <p id="link">
+                                <a href="/users/logout"><br>
+                                No dispones de privilegios para esta seccion <br> <span id="IniSesion">
+                                    Iniciar Sesión</span></a>
+                            </p>
+                            </div>
+                            
+                            
+                    </div>     
+                        </fieldset>
+                        <% } else if(locals.user.rolesId==1  && locals.user.estadosId>1){%>
+                        <fieldset class="edit-register">
+                      <div class="row justify-content-between">
+                        <div class="col-xs-12 col-md-6">
+                            <h3 class="titulo-main-index" style=" margin-left: -13%">Usuarios: <%=locals.user.estados.descripcion%></h3>
+                        </div>
+                </div>
+                <div class="bar-ccb" id="cc-bar"></div>
+                                                        
+                <div class="msg-acces3">
+                                  
+                    <div class="container-link">
+                      <p id="link"><span id="acces" >
+                       <br> Actualmente tu usuario se encuentra con <br> restricciones en el acceso.<br> Contactanos a soporte@tecnocom.com</span>
+                      </p>
+                      </div>
+                        </fieldset>
+               
+                    <%}%>
+                  </div>
+                <%}else{%>
+                        <fieldset class="edit-register">
+                            
+                        <!-- row 1 -->
+                        <div class="row justify-content-between">
+                          <div class="col-xs-12 col-md-6">
+                              <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: No Autorizado</h3>
+                          </div>
+                  </div>
+                    <div class="bar-ccb" id="cc-bar"></div>
+                      
+                    <div class="msg-acces">
+                        <div class="media-linea"></div>  
+                            <div class="container-link">
+                            
+                            <p id="link">
+                                <a href="/users/login"><br>
+                                Solo personal autorizado tiene acceso  <br> <span id="IniSesion">
+                                    Iniciar Sesión</span></a>
+                            </p>
+                            </div>
+                            
+                    </div>     
+                        </fieldset>
+                <%}%>
+                <div class="linea"></div>
+            </main>
+
+
+
+            <!-- Footer -->
+            <%- include('../../partials/footer.ejs') %>
+                <!-- /Footer -->
+    </body>
+
+</html>

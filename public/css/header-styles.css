@@ -183,6 +183,7 @@ header button.users-dropdown-opener {
   
 header div .users-dropdown {
   background-color: #fff;
+  
   border-radius: 4px;
   box-shadow: var(--area-shadow);
   display: none;
@@ -202,7 +203,6 @@ header  .users-menu:checked + .users-dropdown,.users-truck:checked + .users-drop
 }
 
 
-
 /* ----------------------------*/
 /* --------- Top Nav ----------*/
 /* ----------------------------*/
@@ -219,8 +219,6 @@ header div.navbar {
   padding: 5px;
   text-decoration: none;
   --clippy: polygon(0 0, 0 0, 0 100%, 0% 100%);
-
-
 
 }
 
@@ -245,10 +243,7 @@ transition: all ease .3s;
   align-items: center;
   display: flex;
   justify-content: space-around;
-  padding: 0px 115px;
 
-
-  padding: 0px 150px;
 }
 .burger-menu i {
   color: var(--color-system-button);
@@ -261,29 +256,9 @@ transition: all ease .3s;
 header input.navbar-burger{
   display:none;
 }
-header .navbar-burger:checked + .navbar{
-  z-index: 2;
-  align-items: center;
-  display: flex;
-  margin-left: -1px;
-  background: #8e9eab;
-    background: -webkit-linear-gradient(to bottom, #ebe5dd, #8e9eab);
-    background: linear-gradient(to bottom, #ebe5dd, #8e9eab);
-
-  margin-bottom:75px;
-  width:100%;
-  flex-direction:column;
-  position: fixed;
-  margin-top: 470px;
-
-  /* margin-top: 461px; */
-  /* margin-top: 150px; */
-  margin-top: 461px;
-}
 header .navbar{
   position: absolute;
 }
-
 
 
 /* -------------------------------*/
@@ -327,6 +302,29 @@ header .navbar{
   }
 }
 
+@media (max-width: 768px) {
+  header .navbar-burger:checked + .navbar{
+    align-items: center;
+    display: flex;
+    margin-left: -1px;
+    background: #8e9eab;
+      background: -webkit-linear-gradient(to bottom, #ebe5dd, #8e9eab);
+      background: linear-gradient(to bottom, #ebe5dd, #8e9eab);
+  
+    margin-bottom:75px;
+    width:100%;
+    flex-direction:column;
+    position: fixed;
+    margin-top: 470px;
+  
+    /* margin-top: 461px; */
+    /* margin-top: 150px; */
+    margin-top: 461px;
+
+    z-index: 2;
+  }
+}
+
 @media (min-width: 768px) {
   /* Aquí controlamos que algunos elementos, */
   /*   ej. inputs no crezcan tanto,          */
@@ -343,8 +341,6 @@ header .navbar{
 
     height: auto;
   }
-
-  
 
   header div.container-header {
     max-width: 980px;
@@ -431,14 +427,12 @@ header .navbar{
   }
 
   div.container-navbar{
-    height: 20px;
-
-
+    
     height: auto;
   }
 
   div.item{
-    height: 20px;
+
 
 
     height: auto;

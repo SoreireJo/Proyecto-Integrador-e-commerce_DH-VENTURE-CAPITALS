@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Head -->
+<%- include('../partials/head.ejs', {title: 'Edición de productos'}) %>
+<!-- /Head -->
+
+<body>
+	<!-- Header -->
+	<%- include('../partials/header.ejs') %>
+	<!-- /Header -->
+
+	<div class="linea"></div>
+
+	<!-- Div (Edit) -->
+	<div class="container-products-wrapper">
+	
+		<!-- Form (Edit) enctype="multipart/form-data" -->
+		<div class="form-crud-wrap">
+			<form action="/products/edit/<%= product.id %>" method="POST"  enctype="multipart/form-data">
+				<fieldset>
+					<legend> Modificar Producto: </legend>
+					<div class="media-linea"></div>
+					<div class="row-product-detail">
+						<div class="form-crud form-crud-m1">
+							<label for="name" class="form-label">Nombre del producto:</label>
+							<input type="text" id="name" name="name" value="<%= product.nombre %>" class="form-input">
+							<h8 id="nameError" style= "margin-top: -10%;" class="text-danger" for="name"><%= locals.errores && errores.name ? errores.name.msg:"" %></h8> 
+
+						</div>
+						
+						<div class="form-crud form-crud-m2" >
+							<label for="price" class="form-label">Precio:</label>
+							<input type="number" id="price" name="price" value= "<%= product.precio %>" class="form-input">
+						</div>
+
+
+						
+							<!-- usuario.forEach(function(users){
+								if(req.locals.users == users.nombreUsuario ){
+												users.id
+							}
+						}); -->
+					 <!-- este div esta oculto pera cuando se realice la validacion de usuario si sirve ya este disponible y no se nos pase -->
+						<div class="form-crud form-crud-m2" style="display: none" >
+							<label for="user" class="form-label">user:</label>
+							<input  type="number" id="user" name="user" value= "<%= product.usuarioId %>" class="form-input">
+						</div>
+						<!-- ******************************************************************************************* -->
+					</div>	
+					<div class="row-product-detail">
+						<div class="form-crud form-crud-m3">
+							<label for="discount" class="form-label">Descuento:</label>
+							<input type="number" id="discount" name="discount" value="<%= product.descuento %>" class="form-input">
+						</div>
+						<div class="form-crud form-crud-m3">
+							<label for="stock" class="form-label">Stock:</label>
+							<input type="number" id="stock" name="stock" value="<%= product.stock%>" class="form-input">
+						</div>
+						<div class="form-crud form-crud-m3">
+							<label for="category" class="form-label">Categoría:</label>
+							
+							<select name="category" id="category" class="form-input">
+								<option value="<%= product.categorias.id%>"hidden>  <%= product.categorias.nombre%></option>
+								<% for (const categoria of categorias){ %>
+									<%if(product.categorias.nombre !== categoria.nombre){%>
+									<option value="<%= categoria.id%>"><%= categoria.nombre%></option>
+									<%}%>
+								<% } %>
+							</select>
+						</div>
+					</div>
+					<div class="linea"></div>
+					<div class="row-product-detail">
+						<div class="form-crud form-crud-md">
+							<label for="promo" class="form-label">Elegí una Promoción</label>
+							<select name="promo" id="promo" class="form-input">
+								<option value="<%= product.promos.id%>"hidden ><%= product.promos.nombre%></option>
+								<% for (const promo of promos){ %>
+                                    <%if(product.promos.nombre !== promo.nombre){%>
+									<option value="<%=promo.id%>"><%= promo.nombre %></option>
+										<%}%>
+								<% } %>
+							</select>
+							<div class="linea"></div>
+							<div class="linea"></div>
+							<label for="description" class="form-label">Descripción:</label>
+							<textarea name="description" id="description" class="form-input" value="<%= product.description %>"><%= product.descripcion %></textarea>
+							<h8 id="descriptionError" style= "margin-top: -10%;" class="text-danger" for="description"><%= locals.errores && errores.description ? errores.description.msg:"" %></h8> 
+
+							<div class="linea"></div>
+							<div class="linea"></div>
+							
+							<label for="image" class="form-label">Foto del producto:</label>
+							<input type="file" name="image" id="seleccionEp" class="form-control" accept="image/*">
+							<!-- seleccionArchivos -->
+							<h8 id="imageError" style= "margin-top: -10%;" class="text-danger" for="image"><%= locals.errores && errores.image ? errores.image.msg:"" %></h8> 
+
+						</div>
+						<div class="form-crud form-crud-md">
+							<div class="img-detail">
+								<div class="media-linea"></div>
+
+                                <!-- La imagen que vamos a usar para previsualizar -->
+                                <img id="editProduct" src="/images/products/<%= product.imagen %>" name="imagen" class="product_img">
+                                 
+									                                
+                                <div class="media-linea"></div>
+							</div>	
+						</div>
+					</div>
+				</fieldset>	
+
+				<div class="linea"></div>
+				<div class="linea"></div>
+
+				<!-- ■ Botones -->
+                <div class="buttons-block" id="but">
+					<!-- ■ Botón de enviar que nos lleve a la página principal -->
+                    <button class="button-form" type="submit" id="ok">Guardar modificaciones</button>
+
+                    <div class="linea"></div>
+
+					<!-- ■ Botón de borrar todos los datos del formulario -->
+                    <button class="button-form" type="button" onclick="window.location.href='/products/detail/<%= product.id %>'" id="cancel">Cancelar</button>
+                    
+                </div>
+				<div class="linea"></div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<%- include('../partials/footer.ejs') %>
+	<!-- /Footer -->
+</body>	
+<script src="/js/validationProducts.js"></script>
+</html>

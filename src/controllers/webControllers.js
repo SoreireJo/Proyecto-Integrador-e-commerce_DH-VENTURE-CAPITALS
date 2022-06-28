@@ -1,31 +1,46 @@
-const fs = require('fs');
-const path = require('path');
 const { send } = require('process');
-const reMix = require('../modules/reSort');
+const db = require('../database/models');
+const { Op } = require("sequelize");
+const Producto = db.Productos;
+const Categoria = db.Categorias;
+const Promo = db.Promos;
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-const productsFilePath = path.join(__dirname, '../data/productsDB.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-
-
 const controller = {
     index: (req, res) => {
-		let filaOffer = 1;
-		let filaLast = 1;
-			let productsLast = products.filter(product => product.promo == "last");
-			let productsOffer = products.filter(product => product.promo == "offer");
-			productsLast = reMix(productsLast);
-			productsOffer = reMix(productsOffer);
+
+		Producto.findAll({include: ["promos"]}).then((result) => {
+				
+				result.sort(() => { return (Math.random() - 0.5) });
 			
-			res.render('./web/index', {
-				productsOffer,
-				productsLast,
-				filaOffer,
-				filaLast,
-				toThousand
-			});
+			res.render('./web/index', {	result,	toThousand});
+		})
+	
+		
+			
+	},
+
+	cFooterMediosDePago: (req, res) => {
+		res.render('./web/mediosDePago');
+	},
+
+	cFooterBotonArrepentimiento: (req, res) => {
+		res.render('./web/botonArrepentimiento');
+	},
+	
+	cFooterQuienesSomos: (req, res) => {
+		res.render('./web/quienesSomos');
+	},
+
+	cFooterContacto: (req, res) => {
+		res.render('./web/contacto');
+	},
+	
+	cFooterPreguntasFrecuentes: (req, res) => {
+		res.render('./web/preguntasFrecuentes');
 	}
+
 };
 
 module.exports = controller;

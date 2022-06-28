@@ -1,14 +1,12 @@
 function authMiddleware(req, res, next){
-    if(req.session.usuario != []){
-        
-        console.log("usuario encontrado")
+    if (!req.session.usuario) {
+        return res.redirect("/users/login");
+    
+    }else{ 
         next()
-    }else{
-
-        console.log("usuario no encontrado")
-        next()
-        
     }
 }
 
 module.exports = authMiddleware; 
+
+
