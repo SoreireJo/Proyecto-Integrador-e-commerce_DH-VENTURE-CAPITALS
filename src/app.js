@@ -46,13 +46,13 @@ app.use(userLoggedMiddleware)
 const webRouter = require('./routes/webRoutes'); // Rutas web
 const usersRouter = require('./routes/usersRoutes'); // Rutas users
 const productsRouter = require('./routes/productsRoutes'); // Rutas products */
-// const carritoRoutes = require("./routes/carritoRoutes"); // Rutas para el carrito
+const carritoRoutes = require("./routes/carritoRoutes"); // Rutas para el carrito
 const apRouter = require('./routes/api/products'); // Rutas Apis */
 const auRouter = require('./routes/api/users')
 app.use('/', webRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
-// app.use("/carrito", carritoRoutes);
+app.use("/carrito", carritoRoutes);
 app.use('/api',apRouter);
 app.use('/api',auRouter);
 

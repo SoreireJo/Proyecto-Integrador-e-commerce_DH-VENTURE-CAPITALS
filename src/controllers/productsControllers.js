@@ -107,7 +107,7 @@ const controller = {
 	Edit: (req, res) => {
  		Producto.findByPk(req.params.id, { include: ["categorias", "promos", "usuarios"] })
 			.then((product) => {
-				console.log(product.usuarioId);
+			
 				Categoria.findAll().then((result) => {
 					let categorias = result.filter(e => e.nombre);
 					Promo.findAll().then((result) => {
@@ -117,7 +117,7 @@ const controller = {
 						res.render('./products/edit', { product, categorias, promos,usuario, toThousand })
 					})
 					})
-				})
+				}) 
 			}).catch(error => res.send(error))
 	},
 	// Update - Method to update

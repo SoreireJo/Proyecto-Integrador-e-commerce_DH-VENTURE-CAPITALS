@@ -70,49 +70,53 @@
                         
                                                       
                         <input type="checkbox" id="menu-users" class="users-menu" />
-
-                        <div class="users-dropdown">
-                            <ul class="users-link">
-                                <% if(locals.isLogged){ %>
-                                    <li>
-                                        <a href="/users/edit/<%=locals.user.id%>" data-modal="#verpedido" name="modal">perfil</a>
-                                    </li> 
-                                    <li>
-                                        <a href="/testPruebas" data-modal="#verpedido" name="modal">Ver mi pedido</a>
-                                    </li> 
-                                    <li>
-                                        <a href="/users/logout" data-modal="#verpedido" name="modal">Cerrar sesion</a>
-                                    </li> 
-                                
-                                <%}else{%> 
-                                    <li><a href="/users/login">Iniciar sesión</a></li>
-                                    <li><a href="/users/register">Registrarse</a></li>
+                        
+                        <div class="container-header-cart">
+                            <div class="users-dropdown">
+                                <ul class="users-link">
+                                    <% if(locals.isLogged){ %>
+                                        <li>
+                                            <a href="/users/edit/<%=locals.user.id%>" data-modal="#verpedido" name="modal">perfil</a>
+                                        </li> 
+                                        <li>
+                                            <a href="/testPruebas" data-modal="#verpedido" name="modal">Ver mi pedido</a>
+                                        </li> 
+                                        <li>
+                                            <a href="/users/logout" data-modal="#verpedido" name="modal">Cerrar sesion</a>
+                                        </li> 
                                     
-                                <%}%> 
-                            </ul>
+                                    <%}else{%> 
+                                        <li><a href="/users/login">Iniciar sesión</a></li>
+                                        <li><a href="/users/register">Registrarse</a></li>
+                                        
+                                    <%}%> 
+                                </ul>
+                            </div>
+                           
+                        </button>
+                        <% if(locals.user){ %>  
+                            <p class="users-link"><%= locals.user.nombreUsuario %></p>
+                        <%}%>
                         </div>
-                       
-                    </button>
-                    <% if(locals.user){ %>  
-                        <p class="users-link"><%= locals.user.nombreUsuario %></p>
-                    <%}%> 
+                         
                 </div>
 
                 <div class="bocadito"></div>
                 
                 <!-- carrito -->
+
                 <div class="container-header-cart" id="minicart">
                     <button class="users-dropdown-opener">
                         <label for="menu-minicart">
-                            <div class="number">0</div>
                             <img src="/desing/iconos/icn-nav-cart.png" alt="Carrito" title="Mis Compras"/>
                         </label>
                         <input type="checkbox" id="menu-minicart" class="users-truck" />
                         <div class="users-dropdown">
-                            <div class="mini-cart-footer">No hay elementos</div>
+                            <a href="/carrito" class="mini-cart-footer">Ver carrito</a>
                         </div>
                     </button>
                 </div>
+
 
                 <div class="bocadito"></div>
             </div>
@@ -172,4 +176,5 @@
             <%}%>
         </div> 
     </label>
+   <!-- <script src="/js/carrito.js"></script> --> 
 </header>
