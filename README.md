@@ -1,64 +1,70 @@
-# Título del Proyecto
+# Getting Started with Create React App
 
-TecnoCom - Insumos Tecnologicos.
-Proyecto integrador para curso Full Stack - Programacion Web - Digital House. 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Comenzando 🚀
+## Available Scripts
 
-_A definir
+In the project directory, you can run:
 
+### `npm start`
 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### Pre-requisitos 📋
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-_A definir
+### `npm test`
 
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### Instalación 🔧
+### `npm run build`
 
-_A definir
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-## Despliegue 📦
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-_instalar el proyecto con npm_
+### `npm run eject`
 
-## Construido con 🛠️
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-* [npm](https://www.npmjs.com/) - Package manager para Node.js.
-* [node](https://es.reactjs.org/) - Back-end framework
-* [react](https://es.reactjs.org/) - Desarrollo para interfaz 
-* [express](https://expressjs.com/es/) - Infraestructura de aplicaciones web
-* [bootstrap](https://react-bootstrap.github.io/) - Estilos
-* [DB] - A definir
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-## Versionado 📌
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-Usamos [Github](http://github.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/SoreireJo/grupo_6_Tecnocom.git).
+## Learn More
 
-## Autores ✒️
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-* **Chanampe, Nerea** - *Desarrollador* - [NereaChanampe](https://github.com/NereaChanampe)
-* **Montero, Luciano** - *Desarrollador* -  [lgmontero](https://github.com/lgmontero)
-* **Soreire, Jose Luis** - *Desarrollador* -  [SoreireJo](https://github.com/SoreireJo)
-* **Vera Gomez, Sigrid** - *Desarrollador* -  [sigridvg](https://github.com/sigridvg)
+### Code Splitting
 
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-## Licencia 📄
+### Analyzing the Bundle Size
 
-Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-## PAGINAS DE INSPIRACION  🤓
+### Making a Progressive Web App
 
-* [CompraGamer](https://compragamer.com/) - Venta de insumos similares
-* [BigPoint](https://bigpoint.com.ar/) - Detalles de productos deseado
-* [Likely](https://likely.es/account/register) - Diseño de pagina web.
-* [fullh4rd](https://www.fullh4rd.com.ar/) - Estética vistosa, funcionalidad amigable y tipo de producto similar.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Trello 📋
-* [Trello - TecnoCom](https://trello.com/b/PhOrSyRC/tecnocom-project)
+### Advanced Configuration
 
-###Retrospectiva
-* [Boldare - TecnoCom](https://boards.boldare.com/board/4eb4d5eb83774cbe8276c41191bce2dd)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
