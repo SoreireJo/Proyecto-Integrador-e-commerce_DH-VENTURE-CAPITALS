@@ -195,6 +195,9 @@ div#button-form,
     #IniSesion{
         font-size: var(--fz-form-link-dsk);
     }
+    #acces{
+        font-size: var(--fz-form-link-dsk);
+    }
     .bocadito_nav{ height: .1rem; width: .1rem; }
 }
 /*FIN MAIN */

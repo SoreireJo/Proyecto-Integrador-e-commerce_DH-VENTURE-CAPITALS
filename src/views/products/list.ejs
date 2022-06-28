@@ -33,8 +33,9 @@
                             <div class="main-article">
                                 <div class="min-row">
                                     <button class="buttAgregar2">
-                                        <i class="fa-solid fa-cart-plus" id="crtct" style="font-size: 1.2em;"></i>
-                                    </button>
+                                        <a href="/carrito/addItem/<%= product.id %>" style="text-decoration: none; color:grey;"><i class="fa-solid fa-cart-plus" id="crtct" style="font-size: 1.2em"></i></a>
+                                      </button>
+      
                                     <p class="discount"><%= product.descuento %>% off</p>
                                 </div>
                                 <p class="price">$ <%= toThousand(product.precio) %></p>

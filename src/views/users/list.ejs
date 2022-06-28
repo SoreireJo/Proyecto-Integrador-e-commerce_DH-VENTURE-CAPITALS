@@ -2,7 +2,7 @@
 <html lang="en">
     
 <!-- Head -->
-<%- include('../partials/head.ejs', {title: 'Administracion Usuarios' }) %>
+<%- include('../partials/head.ejs', {title: 'Listado Usuarios' }) %>
     <!-- /Head -->
 
     <body>
@@ -10,25 +10,22 @@
         <%- include('../partials/header.ejs') %>
             <!-- /Header -->
 
-            <!-- Main (Search) -->
+            <!-- Main (Lisado de Usuarios) -->
             <main class="main-index">
+                <div><% if(locals.isLogged){ if(locals.user.rolesId==1 && locals.user.estadosId==1){%>
                 <div class="linea"></div>
                 <div class="row justify-content-between">
                     <div class="col-xs-12 col-md-6">
                         <h3 class="titulo-main-index" style=" margin-left: -13%">Detalle: Usuarios</h3>
                         
                     </div>
-                   
                     <div class="col-md-4 mb-8" style=" margin-right: -30%">
                         <a href="/users/index"  class="btn btn-outline-light" style="background-color: rgb(92, 179, 121)" ">volver</a>
                     </div>
-                    
-
                 </div>
                 <div class="bar-ccb" id="cc-bar"></div>
                 <div class="linea"></div>
-
-                <!-- Sección: Productos encontrados -->
+                <!-- Sección: Listado de Usuarios -->
                 <section class="sec-products">
 
                     <div style=" margin-left: 91%; margin-bottom:3px">
@@ -91,11 +88,12 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="#">
-                                             <i class="fa-solid fa-trash-can" style="color: rgb(172, 7, 40)"></i>
-                                           
-                                            </a>
-                                        </td>
+                                        <form action="/users/list/<%= user.id %>?_method=DELETE" method="POST" style="display: inline-flex">
+                                                
+                                            <button  class="fa-solid fa-trash-can" type="submit"  style="color: rgb(172, 7, 40);border:none; padding:none; width: none; background-color: transparent; box-shadow: none; font-size: 18px" ></button>
+                                        
+                                            </form>
+                                    </td>
                                         <% } %>
                                 </tbody>
                                 <% }); %>
@@ -109,7 +107,76 @@
 
 
                 </section>
-
+                <% } else if((locals.user.rolesId!==1 && locals.user.estadosId>=1)){%>
+                <fieldset class="edit-register">
+                        
+                <!-- row 1 -->
+                <div class="row justify-content-between">
+                  <div class="col-xs-12 col-md-6">
+                      <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: No Autorizado</h3>
+                  </div>
+          </div>
+            <div class="bar-ccb" id="cc-bar"></div>
+              
+            <div class="msg-acces">
+                <div class="media-linea"></div>  
+                    <div class="container-link">
+                    
+                    <p id="link">
+                        <a href="/users/logout"><br>
+                        No dispones de privilegios para esta seccion <br> <span id="IniSesion">
+                            Iniciar Sesión</span></a>
+                    </p>
+                    </div>
+                    
+                    
+            </div>     
+                </fieldset>      
+                <% } else if(locals.user.rolesId==1  && locals.user.estadosId>1){%>
+                <fieldset class="edit-register">
+                  <div class="row justify-content-between">
+                    <div class="col-xs-12 col-md-6">
+                        <h3 class="titulo-main-index" style=" margin-left: -13%">Usuarios: <%=locals.user.estados.descripcion%></h3>
+                    </div>
+            </div>
+            <div class="bar-ccb" id="cc-bar"></div>
+                                                    
+            <div class="msg-acces3">
+                              
+                <div class="container-link">
+                  <p id="link"><span id="acces" >
+                   <br> Actualmente tu usuario se encuentra con <br> restricciones en el acceso.<br> Contactanos a soporte@tecnocom.com</span>
+                  </p>
+                  </div>
+                </fieldset>   
+                <%}%>
+            </div>
+            <%}else{%>
+                <fieldset class="edit-register">
+                        
+                    <!-- row 1 -->
+                    <div class="row justify-content-between">
+                      <div class="col-xs-12 col-md-6">
+                          <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: No Autorizado</h3>
+                      </div>
+              </div>
+                <div class="bar-ccb" id="cc-bar"></div>
+                  
+                <div class="msg-acces">
+                    <div class="media-linea"></div>  
+                        <div class="container-link">
+                        
+                        <p id="link">
+                            <a href="/users/login"><br>
+                            Solo personal autorizado tiene acceso  <br> <span id="IniSesion">
+                                Iniciar Sesión</span></a>
+                        </p>
+                        </div>
+                        
+                </div>     
+                </fieldset>
+            <%}%>
+        
                 <div class="linea"></div>
             </main>
 

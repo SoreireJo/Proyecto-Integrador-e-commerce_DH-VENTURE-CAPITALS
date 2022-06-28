@@ -81,4 +81,8 @@ router.post('/edit/:id', fileUpload.single('image'), validUserProducts, products
 /*** DELETE ONE PRODUCT***/
 router.delete('/list/:id?',  productsControllers.Delete);
 
+
+
+
+
 module.exports = router;

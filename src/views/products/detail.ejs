@@ -61,15 +61,18 @@
                                     </li>
                                 </ul>
 
-                                <a href="#" class="buy-now-button">Comprar</a>
+                               
+                                <a href="/carrito/addItem/<%= product.id %>" class="buy-now-button" style="text-decoration: none;" value="<% product.id %>">Comprar</a>
+                                
                                 <hr>
-                                <div class="butons">
+                           
+                                <!-- <div class="butons">
                                     <a href="/products/create" class="action-button create">Agregar</a>
                                     <a href="/products/edit/<%= product.id %>" class="action-button edit">Editar</a>
                                     <form action="/products/list/<%= product.id %>?_method=DELETE" method="POST" style="display: inline-flex">
                                         <button type="submit" class="action-button delete">Eliminar</button>
                                     </form>
-                                </div>
+                                </div> -->
 
                             </article>
                         </div>

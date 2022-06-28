@@ -2,7 +2,7 @@
 <html lang="en">
     
 <!-- Head -->
-<%- include('../../partials/head.ejs', {title: 'Administracion Roles' }) %>
+<%- include('../../partials/head.ejs', {title: 'Edicion Roles' }) %>
     <!-- /Head -->
 
     <body>
@@ -28,8 +28,7 @@
                 </div>
                 <div class="bar-ccb" id="cc-bar"></div>
                 <div class="linea"></div>
-
-                <!-- Sección: Roles encontrados -->
+                <!-- Sección: Edicion Roles -->
                 <section class="sec-products">
                    
                     <div id="Roles" class="form-group table-responsive">
@@ -66,13 +65,13 @@
                     </div>
                     
                 </section>
-                <% } else if((locals.user.rolesId!==1 && locals.user.estadosId==1)){%>
+                <% } else if((locals.user.rolesId!==1 && locals.user.estadosId>=1)){%>
                     <fieldset class="edit-register">
                 
                         <!-- row 1 -->
                         <div class="row justify-content-between">
                           <div class="col-xs-12 col-md-6">
-                              <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: Sin privilegio</h3>
+                              <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: No Autorizado</h3>
                           </div>
                   </div>
                     <div class="bar-ccb" id="cc-bar"></div>
@@ -92,22 +91,26 @@
                     </div>     
                       </fieldset>
                       
-                         <% } else if(locals.user.rolesId==2 || locals.user.rolesId==1 || locals.user.rolesId==3 && locals.user.estadosId==2){%>
+                         <% } else if(locals.user.rolesId==1  && locals.user.estadosId>1){%>
                 
                         <fieldset class="edit-register">
                           <div class="row justify-content-between">
                             <div class="col-xs-12 col-md-6">
-                                <h3 class="titulo-main-index" style=" margin-left: -13%">Usuarios: Restringido</h3>
+                                <h3 class="titulo-main-index" style=" margin-left: -13%">Usuario: <%=locals.user.estados.descripcion%></h3>
                             </div>
                     </div>
+
                     <div class="bar-ccb" id="cc-bar"></div>
                                                             
                     <div class="msg-acces3">
-                      <img src="/desing/iconos/fdo2.png" alt="not acces" />
-                          <h4>Actualmente tu usuario se encuentra con restricciones en el acceso. Contactanos a soporte@tecnocom.com</h4>
-                       
+                      
+                      <div class="container-link">
+                        <p id="link"><span id="acces" >
+                         <br> Actualmente tu usuario se encuentra con <br> restricciones en el acceso.<br> Contactanos a soporte@tecnocom.com</span>
+                        </p>
+                        </div>
                         </fieldset>
-                
+                 
                       <%}%>
                     </div>
                     <%}else{%>
@@ -116,9 +119,9 @@
                             <!-- row 1 -->
                             <div class="row justify-content-between">
                               <div class="col-xs-12 col-md-6">
-                                  <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: Personal Autorizado</h3>
+                                  <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: No Autorizado</h3>
                               </div>
-                      </div>
+                           </div>
                         <div class="bar-ccb" id="cc-bar"></div>
                           
                         <div class="msg-acces">
@@ -126,8 +129,8 @@
                                 <div class="container-link">
                                 
                                 <p id="link">
-                                    <a href="/users/logout"><br>
-                                    No dispones de privilegios para esta seccion <br> <span id="IniSesion">
+                                    <a href="/users/login"><br>
+                                    Solo personal autorizado tiene acceso  <br> <span id="IniSesion">
                                         Iniciar Sesión</span></a>
                                 </p>
                                 </div>
@@ -137,20 +140,8 @@
                           </fieldset>
                     <%}%>
 
-
-
-
-
-
-
-
-
-
                 <div class="linea"></div>
             </main>
-
-
-
             <!-- Footer -->
             <%- include('../../partials/footer.ejs') %>
                 <!-- /Footer -->

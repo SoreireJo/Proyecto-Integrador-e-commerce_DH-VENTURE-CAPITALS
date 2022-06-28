@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Aquí incorporo el head -->
+< <%- include('../partials/head.ejs', {title: 'Detalle del producto' }) %>
+   <!-- /Head -->
+
+   <body>
+      <!-- refresh productDetail -->
+
+      <!-- /refresh productDetail -->
+
+      <!-- Header -->
+      <%- include('../partials/header.ejs') %>
+
+         <main class="main-productDetail">
+            <div class="container-products-wrapper">
+                     <fieldset class="edit-register">
+                        <!-- row 1 -->
+                        <div class="row justify-content-between">
+                           <div class="col-xs-12 col-md-6">
+                              <h3 class="titulo-main-index" style=" margin-left: -13%">¡Compra exitosa!</h3>
+                           </div>
+                        </div>
+                        <div class="bar-ccb" id="cc-bar"></div>
+
+                           <div class="container-link">
+                              <p id="link">
+                                 <h2 class="product-detail-title ">¡Tu compra se realizó correctamente!</h2><br>
+                                 <p class="">Recibiras detalles del envio mediante email.</p>
+                              </p>
+                        </div>
+                     </fieldset>
+      
+            </div>
+         </main>
+
+   </body>
+
+</html>

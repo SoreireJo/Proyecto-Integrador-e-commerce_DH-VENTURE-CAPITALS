@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Head -->
-<%- include('../partials/head.ejs', {title: 'Registro de usuario' }) %>
+<%- include('../partials/head.ejs', {title: 'Edicion usuario' }) %>
   <!-- /Head -->
 
   <body>
@@ -128,7 +128,7 @@
             
                   <!-- *************************** -->
             
-            <%}else if((locals.user.rolesId==2 && locals.user.estadosId==1)|| (locals.user.rolesId==3 && locals.user.estadosId==1)){%>
+            <%}else if((locals.user.rolesId!==1 && locals.user.estadosId==1)){%>
             <fieldset class="edit-register">
               <legend>Editar Usuario:</legend>
               <!-- row 1 -->
@@ -207,52 +207,51 @@
                   <button class="container-buttons" type="button" onclick="window.history.go(-1)" id="button-reset">Cancelar</button>
                 </div>
               </div>            
-            </fieldset>
-         
+            </fieldset>            
+                <%}else if( locals.user.estadosId>1){%>
 
-            
-                <%}else if( locals.user.estadosId==2){%>
-
-                  <fieldset class="edit-register">
-                    <div class="row justify-content-between">
-                      <div class="col-xs-12 col-md-6">
-                          <h3 class="titulo-main-index" style=" margin-left: -13%">Usuarios: Restringido</h3>
-                      </div>
-              </div>
-              <div class="bar-ccb" id="cc-bar"></div>
-                                                      
-              <div class="msg-acces3">
-                <img src="/desing/iconos/fdo2.png" alt="not acces" />
-                    <h4>Actualmente tu usuario se encuentra con restricciones en el acceso. Contactanos a soporte@tecnocom.com</h4>
-                 
-                  </fieldset>
+                <fieldset class="edit-register">
+          <div class="row justify-content-between">
+            <div class="col-xs-12 col-md-6">
+                <h3 class="titulo-main-index" style=" margin-left: -13%">Usuarios: <%=locals.user.estados.descripcion%></h3>
+            </div>
+    </div>
+    <div class="bar-ccb" id="cc-bar"></div>
+                                            
+    <div class="msg-acces3">
+                      
+        <div class="container-link">
+          <p id="link"><span id="acces" >
+           <br> Actualmente tu usuario se encuentra con <br> restricciones en el acceso.<br> Contactanos a soporte@tecnocom.com</span>
+          </p>
+          </div>
+                </fieldset>  
                 <%}%>
           </form>
           <%}else{%>
-                <fieldset class="edit-register">
+            <fieldset class="edit-register">
                 
-                  <!-- row 1 -->
-                  <div class="row justify-content-between">
-                    <div class="col-xs-12 col-md-6">
-                        <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: Personal Autorizado</h3>
-                    </div>
-            </div>
-            <div class="bar-ccb" id="cc-bar"></div>
-                
-            <div class="msg-acces">
-              
+              <!-- row 1 -->
+              <div class="row justify-content-between">
+                <div class="col-xs-12 col-md-6">
+                    <h3 class="titulo-main-index" style=" margin-left: -13%">Acceso: No Autorizado</h3>
+                </div>
+        </div>
+          <div class="bar-ccb" id="cc-bar"></div>
+            
+          <div class="msg-acces">
+              <div class="media-linea"></div>  
                   <div class="container-link">
-                    
-                    <p id="link">
-                      <a href="/users/login">
-                        No dispones de privilegios para esta seccion <br> <span id="IniSesion">
+                  
+                  <p id="link">
+                      <a href="/users/login"><br>
+                      Solo personal autorizado tiene acceso  <br> <span id="IniSesion">
                           Iniciar Sesión</span></a>
-                    </p>
+                  </p>
                   </div>
                   
-                  
-            </div>     
-                </fieldset>
+          </div>     
+          </fieldset>
             <%}%>
 
             <div class="media-linea"></div>

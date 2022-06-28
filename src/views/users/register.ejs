@@ -53,9 +53,7 @@
                     </div>
                     <div class="row-pill-form p50">
                         <label for="document">D.N.I.</label>
-                        <input type="text" name="dni" id="dni" class="form-label"
-                            value="<%= locals.old && old.dni ? old.dni : '' %>" 
-                            placeholder="Tu DNI..." >  
+                        <input type="text" name="dni" id="dni" class="form-label" value="<%= locals.old && old.dni ? old.dni : '' %>" placeholder="Tu DNI..." >  
                             <h8 id="dniError" style= "margin-top: -5%;" class="text-danger" for="dni"><%= locals.errores && errores.dni ? errores.dni.msg:"" %></h8> 
                     </div>
                 </div>
@@ -72,9 +70,11 @@
                         <label for="city">Provincia</label>
                         <select name="provincia" id="provincia" class="form-input">
                             <option value="<%= locals.old && old.provincias ? old.provincia : '' %>">
-                            <%= locals.old && old.prov ? old.prov.replace('_', ' ') : 'Seleccioná tu provincia...'%></option>
+                            <%= locals.old && old.prov ? old.prov.replace('_', ' ') : 'Seleccioná tu provincia...'%>
+                        </option>
 							<% for (const provincia of provincias){ %>
-                                <option value="<%= provincia.id%>"><%= provincia.provincia%></option>
+                                <option value="<%= provincia.id%>"><%= provincia.provincia%>
+                                </option>
                             <% } %>
 						</select>
                     </div>
@@ -145,9 +145,13 @@
             </fieldset>
 
             <div class="media-linea"></div>
+            <%if(locals.isLogged){%>
+                <div class="media-linea"></div>
+        <%}else{%>
             <div class="container-link">
                 <p id="link"><a href="./login"> ¿Ya tenés una cuenta?<span id="IniSesion"> Iniciar Sesión</span></a></p>
             </div>
+       <% } %>
         </form>
     </section>
 </main>

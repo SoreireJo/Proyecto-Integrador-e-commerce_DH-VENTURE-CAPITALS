@@ -6,10 +6,7 @@ module.exports = (sequelize, dataTypes) => {
             primaryKey: true,
             autoIncrement: true
         },
-    
-        precio: dataTypes.INTEGER,
-        descuento: dataTypes.INTEGER,
-        cantidad: dataTypes.INTEGER,
+        nroCompra: dataTypes.INTEGER,
         total: dataTypes.INTEGER,
         fechaCreacion: dataTypes.DATE
     };
@@ -28,11 +25,11 @@ module.exports = (sequelize, dataTypes) => {
             foreignKey: 'usuarioId',
             timestamps: false
         });
-        Compra.belongsTo(models.Productos, {
-            as: 'productos',
-            foreignKey: 'productoId',
+        Compra.hasMany(models.Items, { 
+            as: "items",
+            foreignKey: "compraId",
             timestamps: false
-        });
+        })
     };
     return Compra;
 }
