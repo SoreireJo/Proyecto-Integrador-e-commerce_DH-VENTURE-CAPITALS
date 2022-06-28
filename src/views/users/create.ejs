@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <!-- Head -->
-<%- include('../partials/head.ejs', {title: 'Edicion usuario' }) %>
+<%- include('../partials/head.ejs', {title: 'Creacion usuario' }) %>
   <!-- /Head -->
 
   <body>
@@ -9,7 +9,7 @@
     <%- include('../partials/header.ejs') %>
       <!-- /Header -->
 
-      <!-- Main (Edicion de Usuario) -->
+      <!-- Main (Creacion de Usuario) -->
       <main class="container-main">
         <section class="container-users ">
           <%if(locals.isLogged){%>
@@ -23,46 +23,71 @@
               <div class="row-form">
                 <div class="row-pill-form p80">
                   <label for="surname">Apellido</label>
-                  <input type="text" name="apellido" id="apellido" class="form-input edit" value="<%= userRoles.apellidos %>" required disabled />
+                  <input type="text" name="apellido" id="apellido" class="form-input edit" value="<%= locals.old && old.apellido ? old.apellido : '' %>"  
+                  placeholder="Tu apellido..."/>
+                  <h8 id="apellidoError" style= "margin-top: -9%;" class="text-danger" for="apellido">
+                    <%= locals.errores && errores.apellido ? errores.apellido.msg:"" %>
+                  </h8>
+
                   <label for="email">Correo electrónico</label>
-                  <input type="email" name="email" id="email" class="form-input edit" value="<%= userRoles.email %>" required disabled />
+                  <input type="email" name="email" id="email" class="form-input edit" value="<%= locals.old && old.email ? old.email : '' %>" 
+                  placeholder="Tu e-mail..."  />
+                  <h8 id="emailError" style= "margin-top: -5%;" class="text-danger" for="email"><%= locals.errores && errores.email ? errores.email.msg:"" %></h8>
+
                   <label for="city">Provincia</label>
-                    <select name="provincia" id="provincia" class="form-input edit " disabled>
-                        <%provi.forEach(function(provincia){
-                          if (userRoles.localidad.provinciaId==provincia.id){%>
-                      <option value="<%=userRoles.localidad.provinciaId%>"><%=provincia.provincia.provincia%> </option>
-                          <%}});for (const provincia of provincias){%>
-                      <option value="<%= provincia.id %>"> <%= provincia.provincia%></option>
-                                <% } %>
-                    </select>
+                  <select name="provincia" id="provincia" class="form-input">
+                     <option value="<%= locals.old && old.provincias ? old.provincia : '' %>">
+                    <%= locals.old && old.prov ? old.prov.replace('_', ' ') : 'Seleccioná tu provincia...'%>
+                    </option>
+                   <% for (const provincia of provincias){ %>
+                        <option value="<%= provincia.id%>"><%= provincia.provincia%>
+                        </option>
+                    <% } %>
+                   </select>
 
                   <label for="prov">Localidad</label>
-                    <select name="localidad" id="localidad" class="form-input edit"   disabled>
-                      <option value="<%= userRoles.localidad.id%>"> <%=userRoles.localidad.localidad%> </option>
-                      <% for (const localidad of localidades){ %>
-                      <option value="<%= localidad.id %>"> <%= localidad.localidad%></option>
-                        <% } %>
-                    </select>
+                  <select name="localidad" id="localidad" class="form-input">
+                      <option value="<%= locals.old && old.localidad ? old.localidad : '' %>">
+                    <%= locals.old && old.prov ? old.prov.replace('_', ' ') : 'Seleccioná tu localidad...'%>
+                      </option>
+                    <% for (const localidad of localidades){ %>
+                        <option value="<%= localidad.id%>"><%= localidad.localidad%>
+                        </option>
+                    <% } %>
+                  </select>
                 </div>
 
                 <div class="row-pill-form p80 ">
                   <label for="user">Nombre *</label>
-                  <input type="text" name="usuario" id="usuario" class="form-input edit" value="<%= userRoles.nombres %>" required disabled />
+                  <input type="text" name="usuario" id="usuario" class="form-label" value="<%= locals.old && old.usuario ? old.usuario : '' %>"  placeholder="Nombre de usuario..." > 
+
                   <label for="document">D.N.I.</label>
-                  <input type="text" name="dni" id="dni" class="form-input edit" value="<%= userRoles.dni %>" required disabled />
+                  <input type="text" name="dni" id="dni" class="form-label" value="<%= locals.old && old.dni ? old.dni : '' %>" placeholder="Tu DNI..." > 
+                  <h8 id="dniError" style= "margin-top: -5%;" class="text-danger" for="dni"><%= locals.errores && errores.dni ? errores.dni.msg:"" %></h8>
+
+
                   <label for="address">Direccion</label>
-                  <input type="text" name="direccion" id="direccion" class="form-input edit" value="<%= userRoles.direccion %>" required disabled />
+                  <input type="text" name="direccion" id="direccion" class="form-input" value="<%= locals.old && old.direccion ? old.direccion : '' %>" placeholder="Tu domicilio" > 
+
+
+
+
+
                   <label for="contrasenia">Contraseña</label>
-                  <input type="password" name="contrasenia" id="contrasenia" class="form-input edit" value="<%=userRoles.claveIngreso%>"required disabled />
+                  <input type="password" name="contrasenia" id="contrasenia" class="form-input2"
+                  placeholder="Ingresar contraseña" >
+                  <h8 id="contraseniaError" style= "margin-top: -9%;" class="text-danger" for="contrasenia"><%= locals.errores && errores.contrasenia ? errores.contrasenia.msg:"" %></h8>
                 </div>
                 
                 <div class="row-pill-form p40">
                   <label for="user">Usuario</label>
-                  <input type="text" name="user" id="user" class="form-input edit" value="<%= userRoles.nombreUsuario %>" required disabled />
+                  <input type="text" name="usuario" id="usuario" class="form-label" value="<%= locals.old && old.usuario ? old.usuario : '' %>"  placeholder="Nombre de usuario..." >
+
                   <label for="phone">Teléfono </label>
-                  <input type="tel" name="telefono" id="telefono" class="form-input edit" value="<%= userRoles.telefono %>" required  disabled />
+                  <input type="tel" name="telefono" id="telefono" class="form-input2" value="<%= locals.old && old.telefono ? old.telefono : '' %>" placeholder="Tu teléfono" >
+
                   <label for="cp">CP </label>
-                  <input type="text" name="cp" id="cp" class="form-input edit" value="<%=userRoles.codigoPostal%>" required disabled />
+                   <input type="text" name="cp" id="cp" class="form-input2" value="<%= locals.old && old.cp ? old.cp : '' %>"  placeholder="Tu código postal" >
                 </div>
                 
                 <div>
@@ -70,8 +95,8 @@
                     <label for="seleccionArchivo" disabled>Foto de perfil
                       <div class="media-linea"></div>
                       <img class="img-detail edit_img"  alt="Imagen"  src="/images/users/<%= userRoles.imagen %>" name="Imagen"  /></label>
-                    <input type="file" class="editFile" name="avatar" accept="image/* "disabled  />
-                  
+                    <input type="file" id="seleccionArchivos" class="editFile" name="avatar" accept="image/* " />
+                    <h8 id="avatarError" style= "margin-top: -10%;" class="text-danger" for="avatar"><%= locals.errores && errores.avatar ? errores.avatar.msg:"" %></h8> 
                     <!-- script -->
                     
                     <!-- /script -->
@@ -85,11 +110,15 @@
                 <div class="row-pill-form p40">
                     <label for="roles">Roles </label>
                     <select name="roles" id="roles" class="form-input admin">
-                      <option value="<%= userRoles.rolesId%>" hidden><%=userRoles.roles.descripcion%> </option>
+                      <option value="<%= locals.lod && old.roles ? old.roles: '' 
+                      
+                      %>" hidden><%=userRoles.roles.descripcion%> 
+                      </option>
                         <% for (const rol of rolesUser){
-                        if(userRoles.roles.descripcion !==rol.descripcion){%>
-                      <option value="<%= rol.id %>"><%= rol.descripcion%> </option>
-                          <% }} %>                         
+                        descripcion){%>
+                      <option value="<%= rol.id %>"><%= rol.descripcion%>
+                       </option>
+                                                
                     </select>
                 </div>
 

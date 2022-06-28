@@ -64,12 +64,13 @@
                                  Total: $<%= total %>
                               </h2>
                               <hr>
-
+                              <% if(locals.user.rolesId==2 ){%>
                               <form action="/carrito/compra" method="POST">
                                  <button type="submit" class=" buy-now-button">COMPRAR</button>
                               </form>
+                              <%}%>
                               <hr>
-                              <a class="action-button" href="/productos">Seguir comprando</a>
+                              <a class="action-button" style="text-decoration: none; color:black;"href="/products/list">Seguir comprando</a>
                               <hr>
                            </article>
                         </div>

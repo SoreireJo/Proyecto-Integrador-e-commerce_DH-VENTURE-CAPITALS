@@ -71,33 +71,56 @@
                                                       
                         <input type="checkbox" id="menu-users" class="users-menu" />
                         
-                        <div class="container-header-cart">
-                            <div class="users-dropdown">
+                        
+           <div class="users-dropdown">
                                 <ul class="users-link">
                                     <% if(locals.isLogged){ %>
+                                        <div>
+                                            <% if(locals.user.rolesId==1){%>
                                         <li>
                                             <a href="/users/edit/<%=locals.user.id%>" data-modal="#verpedido" name="modal">perfil</a>
                                         </li> 
                                         <li>
-                                            <a href="/testPruebas" data-modal="#verpedido" name="modal">Ver mi pedido</a>
-                                        </li> 
-                                        <li>
-                                            <a href="/users/logout" data-modal="#verpedido" name="modal">Cerrar sesion</a>
-                                        </li> 
-                                    
+                                        <a href="/users/index/" data-modal="#verpedido" name="modal">Administrar</a>
+                                      </li> 
+                                        
+                                        <%}%>
+                                        <% if(locals.user.rolesId==3){%>
+                                            <li>
+                                                <a href="/users/edit/<%=locals.user.id%>" data-modal="#verpedido" name="modal">Perfil</a>
+                                            </li> 
+                                            <li>
+                                                <a href="/products/index/" data-modal="#verpedido" name="modal">Administrar</a>
+                                              </li> 
+                                            
+                                            <%}%>
+                                            <% if(locals.user.rolesId==2){%>
+                                                <li>
+                                                    <a href="/users/edit/<%=locals.user.id%>" data-modal="#verpedido" name="modal">Perfil</a>
+                                                </li>                                                
+                                               
+                                                <%}%>
+                                                <li>
+                                                    <a href="/users/logout" data-modal="#verpedido" name="modal">Cerrar sesion</a>
+                                                </li> 
+                                    </div>
                                     <%}else{%> 
-                                        <li><a href="/users/login">Iniciar sesión</a></li>
-                                        <li><a href="/users/register">Registrarse</a></li>
+                                        <li>
+                                            <a href="/users/login">Iniciar sesión</a>
+                                        </li>
+                                        <li>
+                                            <a href="/users/register">Registrarse</a>
+                                        </li>
                                         
                                     <%}%> 
                                 </ul>
                             </div>
                            
-                        </button>
-                        <% if(locals.user){ %>  
+                     </button>
+                             <% if(locals.user){ %>  
                             <p class="users-link"><%= locals.user.nombreUsuario %></p>
-                        <%}%>
-                        </div>
+                             <%}%>
+                       
                          
                 </div>
 
@@ -157,18 +180,7 @@
                             <div class="text">Ver todo</div>
                         </a>
                     </div>
-                    <div class="item">
-                        <a href="/users/index/">
-                            <div class="icon"></div>
-                            <div class="text">users</div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="/products/index/">
-                            <div class="icon"></div>
-                            <div class="text">productos</div>
-                        </a>
-                    </div>
+                  
                     
                 </div>
                 
