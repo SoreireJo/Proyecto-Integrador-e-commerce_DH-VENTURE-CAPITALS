@@ -88,11 +88,12 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="#">
-                                             <i class="fa-solid fa-trash-can" style="color: rgb(172, 7, 40)"></i>
-                                           
-                                            </a>
-                                        </td>
+                                        <form action="/users/list/<%= user.id %>?_method=DELETE" method="POST" style="display: inline-flex">
+                                                
+                                            <button  class="fa-solid fa-trash-can" type="submit"  style="color: rgb(172, 7, 40);border:none; padding:none; width: none; background-color: transparent; box-shadow: none; font-size: 18px" ></button>
+                                        
+                                            </form>
+                                    </td>
                                         <% } %>
                                 </tbody>
                                 <% }); %>

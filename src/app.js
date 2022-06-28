@@ -17,6 +17,10 @@ const app = express();
 
 // ******** Elementos estáticos ***********
 app.use(express.static(path.join(__dirname, '../public')));  
+// ********* Template Engine *********
+// view engine setup
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, './views'));
 
 // ******** Usando Middlewares ***********
 app.use(express.urlencoded({ extended: false }));
@@ -36,23 +40,21 @@ app.use(session({
 
 app.use(userLoggedMiddleware)
 
-// ********* Template Engine *********
-// view engine setup
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, './views'));
+
 
 // ******* Route System require and use() *******
 const webRouter = require('./routes/webRoutes'); // Rutas web
 const usersRouter = require('./routes/usersRoutes'); // Rutas users
 const productsRouter = require('./routes/productsRoutes'); // Rutas products */
 // const carritoRoutes = require("./routes/carritoRoutes"); // Rutas para el carrito
-
-
+const apRouter = require('./routes/api/products'); // Rutas Apis */
+const auRouter = require('./routes/api/users')
 app.use('/', webRouter);
 app.use('/products', productsRouter);
 app.use('/users', usersRouter);
 // app.use("/carrito", carritoRoutes);
-
+app.use('/api',apRouter);
+app.use('/api',auRouter);
 
 // ************ catch 404 and forward to error handler ************
 app.use((req, res, next) => next(createError(404)));

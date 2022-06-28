@@ -48,8 +48,12 @@ router.get('/index',usersControllers.Index);
 /*** GET ALL USERS ***/ 
 
 router.get('/list/:id?', usersControllers.List);
-/*** SEARCH ***/ 
-router.get('/search', usersControllers.Search); // vemos si queda
+
+/*** GET REGISTER USERS ***/ 
+router.post('/register', fileUpload.single('avatar'), validUserRegister, usersControllers.Save);
+
+/*** DELETE ONE USERS***/
+router.delete('/list/:id?',  usersControllers.Delete);
 
 
 
@@ -65,6 +69,6 @@ router.post('/roles/create',usersControllers.Rolsave);
 router.get('/roles/edit/:id', usersControllers.Roledit);
 router.post('/roles/edit/:id',usersControllers.Rolupdate);
 
-router.delete('/roles/list/:id?',  usersControllers.Roldelet);
+
 
 module.exports = router;

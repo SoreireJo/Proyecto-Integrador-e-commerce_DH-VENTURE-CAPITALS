@@ -27,78 +27,72 @@ const controller = {
 
 		// res.render('./users/login', { users: " " });
 
-        res.render('./users/login', {user:req.session.usuarioLogueado});
-		
-    },    
-	proccessLogin: (req, res) =>{
-		let resultValidation = validationResult(req);
-		if (resultValidation.isEmpty()) {
-			User.findOne({ 
-				include: ["roles","estados","compras"],
-				where:{
-					nombreUsuario: req.body.user,
-					claveIngreso: req.body.password
-				}
-			})
-			.then((resultado)=>{
-				console.log("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII",resultado)
-				if(resultado != null){
-
-
-
-				
-					if(req.body.recordame){
-						res.cookie('user', req.body.user,{maxAge: (1000*60)*15})
-					}
-					req.session.usuario = resultado;
-					res.redirect('../');
-				}else{
-					res.render('./users/login', {error: "Las credenciales no son validas"})
-				}
-			});	
-
-		} else {
-			res.render('./users/login', {errors: resultValidation.mapped(), old: req.body});
-		} 
-	
+		res.render('./users/login', { user: req.session.usuarioLogueado });
 
 	},
-    register: (req, res) => {	
-		Provincia.findAll().then((resultadoProv)=>{
-			Localidad.findAll().then((resultadoLoc)=>{
-				res.render('./users/register',{provincias:resultadoProv, localidades:resultadoLoc})	
+	proccessLogin: (req, res) => {
+
+		let resultValidation = validationResult(req);
+
+		if (resultValidation.isEmpty()) {
+			User.findOne({
+				include: ["roles", "estados", "compras"],
+				where: {
+					nombreUsuario: req.body.user,
+					claveIngreso: req.body.password
+				    }
+			})
+				.then((resultado) => {
+					if (resultado != null) {
+						if (req.body.recordame) {
+						    res.cookie('user', req.body.user, { maxAge: (1000 * 60) * 15 })
+						}
+					req.session.usuario = resultado;
+					res.redirect('../');
+					} else {
+						res.render('./users/login', { error: "Las credenciales no son validas" })
+						}
+				});
+		} else {
+			res.render('./users/login', { errors: resultValidation.mapped(), old: req.body });
+		}
+	},
+	register: (req, res) => {
+		Provincia.findAll().then((resultadoProv) => {
+			Localidad.findAll().then((resultadoLoc) => {
+				res.render('./users/register', { provincias: resultadoProv, localidades: resultadoLoc })
 			})
 		}).catch(error => res.send(error))
 	},
 
 	store: (req, res) => {
-		let errores =  validationResult(req);
-            let image = req.file ? req.file.filename : (req.params.id != '-1') ? req.params.id : "user.png";
-            if (!errores.isEmpty() ) {
-                Provincia.findAll().then((resultadoProv)=>{
-                    Localidad.findAll().then((resultadoLoc)=>{
-                        res.render('./users/register', {errores: errores.mapped(), image, old:req.body, provincias:resultadoProv, localidades:resultadoLoc});
-                    })
-                })
-            }else{
-                User.create({
-                    nombres: req.body.nombre,
-                    apellidos: req.body.apellido,
-                    imagen: req.file ? req.file.filename : "user.png",
-                    email: req.body.email,
-                    nombreUsuario: req.body.usuario,
-                    claveIngreso: bcrypt.hashSync(req.body.contrasenia, 10),
-                    telefono: req.body.telefono,
-                    codigoPostal: req.body.cp,
-                    direccion: req.body.direccion,
-                    dni: req.body.dni,
-                    fechaCreacion: Date.now(),
-                    localidadId: req.body.localidad,
-                }).then((storedUser) => {
-                        console.log(storedUser);
-                        return res.redirect('./login');
-                    }).catch(error => console.log(error));
-            }
+		let errores = validationResult(req);
+		let image = req.file ? req.file.filename : (req.params.id != '-1') ? req.params.id : "user.png";
+		if (!errores.isEmpty()) {
+			Provincia.findAll().then((resultadoProv) => {
+				Localidad.findAll().then((resultadoLoc) => {
+					res.render('./users/register', { errores: errores.mapped(), image, old: req.body, provincias: resultadoProv, localidades: resultadoLoc });
+				})
+			})
+		} else {
+			User.create({
+				nombres: req.body.nombre,
+				apellidos: req.body.apellido,
+				imagen: req.file ? req.file.filename : "user.png",
+				email: req.body.email,
+				nombreUsuario: req.body.usuario,
+				claveIngreso: req.body.contrasenia,
+				telefono: req.body.telefono,
+				codigoPostal: req.body.cp,
+				direccion: req.body.direccion,
+				dni: req.body.dni,
+				fechaCreacion: Date.now(),
+				localidadId: req.body.localidad,
+			}).then((storedUser) => {
+				console.log(storedUser);
+				return res.redirect('./login');
+			}).catch(error => console.log(error));
+		}
 
 	},
 	logout: (req, res) => {
@@ -138,7 +132,7 @@ const controller = {
 	},
 	// Update - Method to update
 	Update: (req, res) => {
-	
+
 		User.update({
 			apellidos: req.body.surname,
 			nombres: req.body.name,
@@ -151,7 +145,7 @@ const controller = {
 			telefono: req.body.phone,
 			imagen: req.file ? req.file.filename : req.body.avatar,
 			estadosId: req.body.state,
-			claveIngreso: (bcrypt.hashSync(req.body.resetPassword)!= '') ?bcrypt.hashSync( req.body.resetPassword) : bcrypt.hashSync(req.body.password)  ,
+			claveIngreso: (req.body.resetPassword) != '' ? req.body.resetPassword : req.body.password,
 			fechaCreacion: Date.now(),
 			rolesId: req.body.roles
 		}, {
@@ -159,10 +153,10 @@ const controller = {
 
 		}).then((product) => {
 
-console.log(product);
+			console.log(product);
 			let id = req.params.id;
-				console.log(id);
-			
+			console.log(id);
+
 			res.redirect('/users/list');
 
 		})
@@ -172,29 +166,50 @@ console.log(product);
 		res.render('./users/index')
 
 	},
+	
 	List: (req, res) => {
-
 		User.findAll().then((result) => {
-
 			res.render('./users/list', { result })
 		})
 	},
+	Save: (req, res) => {
+		let errores = validationResult(req);
+		let image = req.file ? req.file.filename : (req.params.id != '-1') ? req.params.id : "user.png";
+		if (!errores.isEmpty()) {
+			Provincia.findAll().then((resultadoProv) => {
+				Localidad.findAll().then((resultadoLoc) => {
+					res.render('./users/register', { errores: errores.mapped(), image, old: req.body, provincias: resultadoProv, localidades: resultadoLoc });
+				})
+			})
+		} else {
+			User.create({
+				nombres: req.body.nombre,
+				apellidos: req.body.apellido,
+				imagen: req.file ? req.file.filename : "user.png",
+				email: req.body.email,
+				nombreUsuario: req.body.usuario,
+				claveIngreso: req.body.contrasenia,
+				telefono: req.body.telefono,
+				codigoPostal: req.body.cp,
+				direccion: req.body.direccion,
+				dni: req.body.dni,
+				fechaCreacion: Date.now(),
+				localidadId: req.body.localidad,
+			}).then((storedUser) => {
+				console.log(storedUser);
+				return res.redirect('/users/list');
+			}).catch(error => console.log(error));
+		}
 
-	Search: (req, res) => {
-		let search = req.query.search;
-		Producto.findAll({
-			where: {
-				[Op.or]: [
-					{ nombre: { [Op.like]: '%' + search + '%' } },
-					{ descripcion: { [Op.like]: '%' + search + '%' } }
-				]
-			}
-		}).then((product) => {
-
-			product.reverse();
-			res.render('/users/search', { search, product, toThousand })
+	},
+	Delete: (req, res) => {
+		User.destroy({
+			where: { id: req.params.id }
 		})
-	}, // veo si lo puedo hacer
+			.then((result) => {
+				res.redirect('/users/list');
+			})
+	},
 
 	Roles: (req, res) => {
 
@@ -202,7 +217,7 @@ console.log(product);
 			res.render('./users/roles/list', { result })
 		}).catch(error => res.send(error))
 	},
-	// Edit - one category
+	// Edit - one Rol
 	Roledit: (req, res) => {
 
 		Rol.findByPk(req.params.id, { include: ["usuarios"] }).then((result) => {
@@ -228,8 +243,8 @@ console.log(product);
 			res.redirect('/users/roles/list');
 
 		}).catch(error => res.send(error));
-		
-	
+
+
 	},
 	// Create one category
 	Rolcreate: (req, res) => {
@@ -241,32 +256,21 @@ console.log(product);
 	Rolsave: (req, res) => {
 
 		Rol.create({
-
 			descripcion: req.body.name
 		}).then((resul) => {
-
-			// console.alert("Creaste el usuario");
 
 			res.redirect('/users/roles/list');
 
 		}).catch(error => res.send(error))
 	},
-
 	// Delete - Delete one Rol
-
 	Roldelet: (req, res) => {
 		Rol.destroy({
-			where: {
-				id: req.params.id
-			}
+			where: { id: req.params.id }
 		})
 			.then((result) => {
-				let id = req.params.id;
-				console.log(id);
 				res.redirect('/users/roles/list');
 			})
-
-
 	},
 
 }
