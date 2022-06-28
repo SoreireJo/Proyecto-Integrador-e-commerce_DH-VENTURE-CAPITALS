@@ -16,15 +16,56 @@
     
             <div class="linea"></div>
             <div class="linea"></div>
-    
-            <p class="contentPageParagraph">
-                Acá va todo lo que tenga que ver con el botón de arrepentimiento.
-            </p>
+            
+            <div class="contentPageParagraphAlert">
+                <ul >
+                    <br>
+                    <li class="contentPageParagraph-item">
+                        Estimado cliente, lamentamos que hayas decidido no continuar con tu compra.
+                    </li>
+                    <li class="contentPageParagraph-item">Recuerda que ingresando a <a href="../users/login">Mi Cuenta</a> podrás cancelar tu compra.</li>
+                    <li class="contentPageParagraph-item">
+                        Podrás solicitar la cancelación de tu compra hasta 10 días corridos a partir de la entrega del producto.
+                    </li>
+                    <li class="contentPageParagraph-item">
+                        Si no pudiste solicitar la cancelación desde Mi Cuenta, completá el siguiente formulario.
+                    </li>
+                </ul>
+            </div><br>
+
+            <form class="users" action="/boton-de-arrepentimiento" method="POST" >
+                <fieldset class="login-access">
+                    <legend>Formulario de arrepentimiento</legend>
+
+                    <label for="factura">Factura o Pedido de Compra: </label>
+                    <input type="text" name="factura" id="user" placeholder="Ingresar el número de la factura o pedido" required>
+
+                    <label for="name">Nombre y Apellido: </label>
+                    <input type="text" name="name" id="user" placeholder="Ingresar su nombre y apellido" required>
+
+                    <label for="dni">DNI o CUIT: </label>
+                    <input type="text" name="dni" id="user" placeholder="Ingresar su nombre y apellido" required>
+
+                    <label for="email">Correo electrónico: </label>
+                    <input type="email" name="email" id="user" placeholder="Ingresar su correo electrónico" required>
+
+                    <label for="subject" class="form-label">Motivo o Consulta: </label>
+					<textarea name="subject" id="description" class="form-input"></textarea>
+                </fieldset><br>
+                
+                <div class="linea"></div>
+                
+                <div class="container-buttons">
+                    <button class="container-buttons" type="submit" id="button-in">Enviar</button>
+                </div>
+
+                <div class="linea"></div>
+                <div class="media-linea"></div>
 
             <div class="container-buttons">
                 <button class="container-buttons" onclick="window.location.href='/'" id="button-in">Volver al Inicio</button>
             </div>
-    
+            </form>
         </main>
         
     <!-- Footer -->

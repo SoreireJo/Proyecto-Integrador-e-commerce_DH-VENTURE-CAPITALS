@@ -10,7 +10,11 @@ router.get('/medios-de-pago', webControllers.cFooterMediosDePago);
 
 router.get('/boton-de-arrepentimiento', webControllers.cFooterBotonArrepentimiento);
 
-router.get('/quienes-somos', webControllers.cFooterQuienesSomos);
+router.post('/boton-de-arrepentimiento', webControllers.cFooterBotonArrepentimientoRes);
+
+router.get('/politica-de-cambios', webControllers.cFooterCambios);
+
+router.get('/quienesSomos', webControllers.cFooterQuienesSomos);
 
 router.get('/contacto', webControllers.cFooterContacto);
 

@@ -12,26 +12,8 @@
     text-align: center;
     font-size: var(--fz-h4-dsk);
     background-color: var(--color-footer-back-s);
-    background: rgb(132,34,195);
-    background: linear-gradient(0deg, rgba(132,34,195,1) 0%, rgba(37,23,52,0) 23%);
-    background: rgb(132,34,195);
-    background: linear-gradient(0deg, rgba(132,34,195,1) 0%, rgba(37,23,52,0) 55%);
-    background: rgb(136,78,189);
-background: linear-gradient(0deg, rgba(136,78,189,1) 0%, rgba(44,23,52,0) 45%);
-background: rgb(136,78,189);
-background: linear-gradient(0deg, rgba(136,78,189,1) 0%, rgba(44,23,52,0) 38%);
-background: rgb(213,210,215);
-background: linear-gradient(0deg, rgba(213,210,215,1) 0%, rgba(44,23,52,0) 38%);
-background: rgb(198,195,201);
-background: linear-gradient(0deg, rgba(198,195,201,1) 0%, rgba(44,23,52,0) 38%);
-background: rgb(201,18,215);
-background: linear-gradient(0deg, rgba(201,18,215,1) 0%, rgba(44,23,52,0) 32%);
-background: rgb(201,18,215);
-background: linear-gradient(0deg, rgba(201,18,215,1) 0%, rgba(44,23,52,0) 43%);
-background: rgb(207,97,218);
-background: linear-gradient(0deg, rgba(207,97,218,1) 0%, rgba(220,220,220,0.5034624201242996) 43%);
-background: rgb(81,11,88);
-background: linear-gradient(0deg, rgba(81,11,88,1) 0%, rgba(220,220,220,0.5034624201242996) 28%);
+    background: rgb(81,11,88);
+    background: linear-gradient(0deg, rgba(81,11,88,1) 0%, rgba(220,220,220,0.5034624201242996) 28%);
     color: var(--color-footer-title);
     font-family: HandSean, sans-serif;
     font-weight: bolder;
@@ -48,7 +30,6 @@ background: linear-gradient(0deg, rgba(81,11,88,1) 0%, rgba(220,220,220,0.503462
 
 .contentPageParagraph{
     text-align: left;
-    /* list-style: square inside url("/desing/logo/tcom.png") important!; */
     font-size: var(--fz-h5-dsk);
     font-family: HandSean, sans-serif;
     padding: 6px 17px 6px;
@@ -61,15 +42,26 @@ background: linear-gradient(0deg, rgba(81,11,88,1) 0%, rgba(220,220,220,0.503462
     -ms-border-radius: 18px;
     -o-border-radius: 18px;
     color: var(--color-footer-paragraph);
-    background: rgb(198,195,201);
-    background: linear-gradient(0deg, rgba(198,195,201,1) 0%, rgba(44,23,52,0) 38%);
+    background: rgb(188,186,186);
+    background: linear-gradient(0deg, rgba(188,186,186,0.9012215237657563) 0%, rgba(220,220,220,0.5034624201242996) 9%);
+}
 
-    background: rgb(122,122,122);
-background: linear-gradient(0deg, rgba(122,122,122,1) 0%, rgba(220,220,220,0.5034624201242996) 43%);
-background: rgb(213,213,213);
-background: linear-gradient(0deg, rgba(213,213,213,0.9012215237657563) 0%, rgba(220,220,220,0.5034624201242996) 9%);
-background: rgb(188,186,186);
-background: linear-gradient(0deg, rgba(188,186,186,0.9012215237657563) 0%, rgba(220,220,220,0.5034624201242996) 9%);
+.contentPageParagraphAlert{
+    text-align: left;
+    font-size: var(--fz-h5-dsk);
+    font-family: HandSean, sans-serif;
+    padding: 6px 6px 6px;
+    margin-bottom: 15px;
+    border: solid #6e1f1f 5px;
+    border-radius: 19px;
+    width: auto;
+    -webkit-border-radius: 19px;
+    -moz-border-radius: 19px;
+    -ms-border-radius: 19px;
+    -o-border-radius: 19px;
+    color: rgb(41, 2, 49);
+    background: rgb(145,142,142);
+    background: linear-gradient(90deg, rgba(145,142,142,0.48592951584930844) 0%, rgba(180,177,177,0.3822880592666754) 57%, rgba(214,212,210,0.3962936615075717) 100%);
 }
 
 .contentPageParagraph-item{

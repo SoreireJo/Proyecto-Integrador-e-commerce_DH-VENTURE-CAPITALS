@@ -28,6 +28,14 @@ const controller = {
 	cFooterBotonArrepentimiento: (req, res) => {
 		res.render('./web/botonArrepentimiento');
 	},
+
+	cFooterBotonArrepentimientoRes: (req, res) => {
+		res.render('./web/botonArrepentimientoRes');
+	},
+
+	cFooterCambios: (req, res) => {
+		res.render('./web/politica-de-cambios');
+	},
 	
 	cFooterQuienesSomos: (req, res) => {
 		res.render('./web/quienesSomos');
