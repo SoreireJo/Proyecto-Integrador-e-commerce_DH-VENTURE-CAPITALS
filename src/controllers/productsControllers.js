@@ -124,7 +124,8 @@ const controller = {
 		Producto.findByPk(req.params.id, { include: ["categorias", "promos", "usuarios"] })
 
 			.then((product) => {
-				console.log(product.usuarioId);
+				return res.send(product)
+				/* console.log(product.usuarioId);
 				Categoria.findAll().then((result) => {
 					let categorias = result.filter(e => e.nombre);
 
@@ -135,10 +136,10 @@ const controller = {
 							
 							let usuario = result.filter(e =>e.nombreUsuario);
 							
-						res.render('./products/edit', { product, categorias, promos,usuario, toThousand })
+						res.render('./products/edit', { product, categorias, promos, usuario, toThousand })
 					})
 					})
-				})
+				}) */
 			}).catch(error => res.send(error))
 	},
 

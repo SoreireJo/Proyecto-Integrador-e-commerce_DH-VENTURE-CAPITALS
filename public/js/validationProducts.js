@@ -61,7 +61,7 @@ window.addEventListener("load", function(){
 
     // CHECK FILE EXTENSION
     function validar_extension(file) {
-        var valid_extensions = ['jpeg', 'jpg', 'gif'];
+        var valid_extensions = ['jpeg', 'jpg','png', 'gif'];
         file_extension = file.split('.').pop();
 
         return valid_extensions.includes(file_extension);

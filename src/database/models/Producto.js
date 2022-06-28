@@ -18,31 +18,30 @@ module.exports = (sequelize, dataTypes) => {
         tableName: 'productos',
         timestamps: false
     };
-        
-    
+
+
     const Producto = sequelize.define(alias, cols, config)
 
-    Producto.associate = function(models) {
+    Producto.associate = function (models) {
         Producto.belongsTo(models.Categorias, {
-                as : 'categorias',
-                foreignKey: 'categoriaId',
-                timestamps: false
+            as: 'categorias',
+            foreignKey: 'categoriaId',
+            timestamps: false
         });
         Producto.belongsTo(models.Promos, {
-            as : 'promos',
-            foreignKey:'promoId',
+            as: 'promos',
+            foreignKey: 'promoId',
             timestamps: false
-    });
-        Producto.hasMany(models.Compras, {
-            as : 'compras',
-            foreignKey: 'productoId',
+        });
+        Producto.belongsTo(models.Usuarios, {
+            as: 'usuarios',
+            foreignKey: 'usuarioId',
             timestamps: false
-    });
-    Producto.belongsTo(models.Usuarios, {
-        as : 'usuarios',
-        foreignKey: 'usuarioId',
-        timestamps: false
-});
-};
+        });
+        Producto.hasMany(models.Items, {
+            as: "items",
+            foreignKey: "productId"
+        })
+    };
     return Producto;
 }
